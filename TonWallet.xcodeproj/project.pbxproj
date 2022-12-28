@@ -8,22 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		2C2DCBDF29597E4200E4B688 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCBDE29597E4200E4B688 /* AppDelegate.swift */; };
-		2C2DCBE129597E4200E4B688 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCBE029597E4200E4B688 /* SceneDelegate.swift */; };
-		2C2DCBE329597E4200E4B688 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCBE229597E4200E4B688 /* ViewController.swift */; };
-		2C2DCBE629597E4200E4B688 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCBE429597E4200E4B688 /* Main.storyboard */; };
 		2C2DCBE829597E4300E4B688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCBE729597E4300E4B688 /* Assets.xcassets */; };
 		2C2DCBEB29597E4300E4B688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCBE929597E4300E4B688 /* LaunchScreen.storyboard */; };
+		2C2DCBF629598E6400E4B688 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCBF529598E6400E4B688 /* R.generated.swift */; };
+		2C2DCC0629598FB700E4B688 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCBFE29598FB700E4B688 /* RootView.swift */; };
+		2C2DCC0829598FB700E4B688 /* UIIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCC0229598FB700E4B688 /* UIIColor+hex.swift */; };
+		2C2DCC0929598FB700E4B688 /* ListCollectionContext+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCC0529598FB700E4B688 /* ListCollectionContext+Dequeue.swift */; };
+		2C2DCC0E2959908300E4B688 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCC102959908300E4B688 /* Localizable.strings */; };
+		2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F115295C288600258A98 /* CreateViewController.swift */; };
+		B3791D54ECE7C84BCA846C5F /* Pods_TonWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0B5B92E5EB9A7C84C0B389 /* Pods_TonWallet.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A371F3D3DCE7773577B6E98 /* Pods-TonWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TonWallet.debug.xcconfig"; path = "Target Support Files/Pods-TonWallet/Pods-TonWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		2C2DCBDB29597E4200E4B688 /* TonWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TonWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C2DCBDE29597E4200E4B688 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2C2DCBE029597E4200E4B688 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2C2DCBE229597E4200E4B688 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2C2DCBE529597E4200E4B688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C2DCBE729597E4300E4B688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C2DCBEA29597E4300E4B688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C2DCBEC29597E4300E4B688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C2DCBF529598E6400E4B688 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		2C2DCBFE29598FB700E4B688 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		2C2DCC0229598FB700E4B688 /* UIIColor+hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIIColor+hex.swift"; sourceTree = "<group>"; };
+		2C2DCC0529598FB700E4B688 /* ListCollectionContext+Dequeue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ListCollectionContext+Dequeue.swift"; sourceTree = "<group>"; };
+		2C2DCC0F2959908300E4B688 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2CE8F115295C288600258A98 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		3FFC720241E87254142E4955 /* Pods-TonWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TonWallet.release.xcconfig"; path = "Target Support Files/Pods-TonWallet/Pods-TonWallet.release.xcconfig"; sourceTree = "<group>"; };
+		BA0B5B92E5EB9A7C84C0B389 /* Pods_TonWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TonWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3791D54ECE7C84BCA846C5F /* Pods_TonWallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,8 +51,11 @@
 		2C2DCBD229597E4200E4B688 = {
 			isa = PBXGroup;
 			children = (
+				2C2DCBF529598E6400E4B688 /* R.generated.swift */,
 				2C2DCBDD29597E4200E4B688 /* TonWallet */,
 				2C2DCBDC29597E4200E4B688 /* Products */,
+				3821818A4C7E1B6BCD9642F6 /* Pods */,
+				9DDD469C5B51637894AA3443 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +70,154 @@
 		2C2DCBDD29597E4200E4B688 /* TonWallet */ = {
 			isa = PBXGroup;
 			children = (
-				2C2DCBDE29597E4200E4B688 /* AppDelegate.swift */,
-				2C2DCBE029597E4200E4B688 /* SceneDelegate.swift */,
-				2C2DCBE229597E4200E4B688 /* ViewController.swift */,
-				2C2DCBE429597E4200E4B688 /* Main.storyboard */,
-				2C2DCBE729597E4300E4B688 /* Assets.xcassets */,
-				2C2DCBE929597E4300E4B688 /* LaunchScreen.storyboard */,
-				2C2DCBEC29597E4300E4B688 /* Info.plist */,
+				2C2DCBF729598EA000E4B688 /* Application */,
+				2C2DCBF829598EAB00E4B688 /* Modules */,
+				2C2DCBF929598EBB00E4B688 /* Shared */,
+				2C2DCBFA29598EC800E4B688 /* Supporting files */,
 			);
 			path = TonWallet;
+			sourceTree = "<group>";
+		};
+		2C2DCBF729598EA000E4B688 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				2C2DCBDE29597E4200E4B688 /* AppDelegate.swift */,
+				2C2DCBE929597E4300E4B688 /* LaunchScreen.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		2C2DCBF829598EAB00E4B688 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				2CE8F112295C285E00258A98 /* Create */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		2C2DCBF929598EBB00E4B688 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				2C2DCC0A2959905800E4B688 /* Resources */,
+				2C2DCBFB29598FB700E4B688 /* Common */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		2C2DCBFA29598EC800E4B688 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				2C2DCBEC29597E4300E4B688 /* Info.plist */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		2C2DCBFB29598FB700E4B688 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2C2DCBFC29598FB700E4B688 /* UI */,
+				2C2DCC0029598FB700E4B688 /* Extentions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		2C2DCBFC29598FB700E4B688 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				2C2DCBFD29598FB700E4B688 /* Views */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		2C2DCBFD29598FB700E4B688 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2C2DCBFE29598FB700E4B688 /* RootView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2C2DCC0029598FB700E4B688 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				2C2DCC0129598FB700E4B688 /* UIKit */,
+				2C2DCC0329598FB700E4B688 /* Foundation */,
+				2C2DCC0429598FB700E4B688 /* IGListKit */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		2C2DCC0129598FB700E4B688 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				2C2DCC0229598FB700E4B688 /* UIIColor+hex.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		2C2DCC0329598FB700E4B688 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		2C2DCC0429598FB700E4B688 /* IGListKit */ = {
+			isa = PBXGroup;
+			children = (
+				2C2DCC0529598FB700E4B688 /* ListCollectionContext+Dequeue.swift */,
+			);
+			path = IGListKit;
+			sourceTree = "<group>";
+		};
+		2C2DCC0A2959905800E4B688 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2C2DCC0B2959906B00E4B688 /* Strings */,
+				2C2DCBE729597E4300E4B688 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2C2DCC0B2959906B00E4B688 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				2C2DCC102959908300E4B688 /* Localizable.strings */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		2CE8F112295C285E00258A98 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				2CE8F113295C286900258A98 /* View */,
+				2CE8F115295C288600258A98 /* CreateViewController.swift */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
+		2CE8F113295C286900258A98 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3821818A4C7E1B6BCD9642F6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A371F3D3DCE7773577B6E98 /* Pods-TonWallet.debug.xcconfig */,
+				3FFC720241E87254142E4955 /* Pods-TonWallet.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9DDD469C5B51637894AA3443 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA0B5B92E5EB9A7C84C0B389 /* Pods_TonWallet.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +227,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C2DCBEF29597E4300E4B688 /* Build configuration list for PBXNativeTarget "TonWallet" */;
 			buildPhases = (
+				76E4C208E6573CE48A45634C /* [CP] Check Pods Manifest.lock */,
+				2C2DCBF429598DB300E4B688 /* ShellScript */,
 				2C2DCBD729597E4200E4B688 /* Sources */,
 				2C2DCBD829597E4200E4B688 /* Frameworks */,
 				2C2DCBD929597E4200E4B688 /* Resources */,
+				7C4359928CB32067322D6E09 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,41 +282,105 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C2DCBEB29597E4300E4B688 /* LaunchScreen.storyboard in Resources */,
+				2C2DCC0E2959908300E4B688 /* Localizable.strings in Resources */,
 				2C2DCBE829597E4300E4B688 /* Assets.xcassets in Resources */,
-				2C2DCBE629597E4200E4B688 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C2DCBF429598DB300E4B688 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
+		76E4C208E6573CE48A45634C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TonWallet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C4359928CB32067322D6E09 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TonWallet/Pods-TonWallet-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TonWallet/Pods-TonWallet-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TonWallet/Pods-TonWallet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2C2DCBD729597E4200E4B688 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C2DCBE329597E4200E4B688 /* ViewController.swift in Sources */,
+				2C2DCC0629598FB700E4B688 /* RootView.swift in Sources */,
+				2C2DCC0829598FB700E4B688 /* UIIColor+hex.swift in Sources */,
+				2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */,
+				2C2DCC0929598FB700E4B688 /* ListCollectionContext+Dequeue.swift in Sources */,
 				2C2DCBDF29597E4200E4B688 /* AppDelegate.swift in Sources */,
-				2C2DCBE129597E4200E4B688 /* SceneDelegate.swift in Sources */,
+				2C2DCBF629598E6400E4B688 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2C2DCBE429597E4200E4B688 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2C2DCBE529597E4200E4B688 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2C2DCBE929597E4300E4B688 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				2C2DCBEA29597E4300E4B688 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2C2DCC102959908300E4B688 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C2DCC0F2959908300E4B688 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -282,6 +502,7 @@
 		};
 		2C2DCBF029597E4300E4B688 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A371F3D3DCE7773577B6E98 /* Pods-TonWallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -310,6 +531,7 @@
 		};
 		2C2DCBF129597E4300E4B688 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FFC720241E87254142E4955 /* Pods-TonWallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
