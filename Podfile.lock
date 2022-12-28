@@ -1,20 +1,32 @@
 PODS:
+  - Atributika (4.10.1)
+  - IGListDiffKit (4.0.0)
+  - IGListKit (4.0.0):
+    - IGListDiffKit (= 4.0.0)
   - R.swift (7.2.4)
   - SnapKit (5.6.0)
 
 DEPENDENCIES:
+  - Atributika
+  - IGListKit
   - R.swift
   - SnapKit
 
 SPEC REPOS:
   trunk:
+    - Atributika
+    - IGListDiffKit
+    - IGListKit
     - R.swift
     - SnapKit
 
 SPEC CHECKSUMS:
+  Atributika: 47e778507cfb3cd2c996278b0285221a62e97d71
+  IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
+  IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
   R.swift: 681bb9135f482e7a81d9d27445b837fef5467e11
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
-PODFILE CHECKSUM: 19ba3229f5f37ddf70a447c300a4c157f5586217
+PODFILE CHECKSUM: 6985062569cacafd3ea9163ffc456c8733c0ad30
 
 COCOAPODS: 1.11.3

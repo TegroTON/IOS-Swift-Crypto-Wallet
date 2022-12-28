@@ -16,6 +16,12 @@
 		2C2DCC0929598FB700E4B688 /* ListCollectionContext+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCC0529598FB700E4B688 /* ListCollectionContext+Dequeue.swift */; };
 		2C2DCC0E2959908300E4B688 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCC102959908300E4B688 /* Localizable.strings */; };
 		2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F115295C288600258A98 /* CreateViewController.swift */; };
+		2CE8F118295C29B600258A98 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F117295C29B600258A98 /* CreateView.swift */; };
+		2CE8F11E295C352200258A98 /* MontserratBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F11A295C352200258A98 /* MontserratBold.ttf */; };
+		2CE8F11F295C352200258A98 /* MontserratMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F11B295C352200258A98 /* MontserratMedium.ttf */; };
+		2CE8F120295C352200258A98 /* MontserratRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F11C295C352200258A98 /* MontserratRegular.ttf */; };
+		2CE8F121295C352200258A98 /* MontserratSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F11D295C352200258A98 /* MontserratSemiBold.ttf */; };
+		2CE8F123295C4A0700258A98 /* MontserratExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F122295C49E100258A98 /* MontserratExtraBold.ttf */; };
 		B3791D54ECE7C84BCA846C5F /* Pods_TonWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0B5B92E5EB9A7C84C0B389 /* Pods_TonWallet.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +38,12 @@
 		2C2DCC0529598FB700E4B688 /* ListCollectionContext+Dequeue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ListCollectionContext+Dequeue.swift"; sourceTree = "<group>"; };
 		2C2DCC0F2959908300E4B688 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2CE8F115295C288600258A98 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		2CE8F117295C29B600258A98 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
+		2CE8F11A295C352200258A98 /* MontserratBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratBold.ttf; sourceTree = "<group>"; };
+		2CE8F11B295C352200258A98 /* MontserratMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratMedium.ttf; sourceTree = "<group>"; };
+		2CE8F11C295C352200258A98 /* MontserratRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratRegular.ttf; sourceTree = "<group>"; };
+		2CE8F11D295C352200258A98 /* MontserratSemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratSemiBold.ttf; sourceTree = "<group>"; };
+		2CE8F122295C49E100258A98 /* MontserratExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratExtraBold.ttf; sourceTree = "<group>"; };
 		3FFC720241E87254142E4955 /* Pods-TonWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TonWallet.release.xcconfig"; path = "Target Support Files/Pods-TonWallet/Pods-TonWallet.release.xcconfig"; sourceTree = "<group>"; };
 		BA0B5B92E5EB9A7C84C0B389 /* Pods_TonWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TonWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -173,6 +185,7 @@
 		2C2DCC0A2959905800E4B688 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2CE8F119295C352200258A98 /* Fonts */,
 				2C2DCC0B2959906B00E4B688 /* Strings */,
 				2C2DCBE729597E4300E4B688 /* Assets.xcassets */,
 			);
@@ -199,8 +212,21 @@
 		2CE8F113295C286900258A98 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2CE8F117295C29B600258A98 /* CreateView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2CE8F119295C352200258A98 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2CE8F11A295C352200258A98 /* MontserratBold.ttf */,
+				2CE8F122295C49E100258A98 /* MontserratExtraBold.ttf */,
+				2CE8F11B295C352200258A98 /* MontserratMedium.ttf */,
+				2CE8F11C295C352200258A98 /* MontserratRegular.ttf */,
+				2CE8F11D295C352200258A98 /* MontserratSemiBold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		3821818A4C7E1B6BCD9642F6 /* Pods */ = {
@@ -281,9 +307,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CE8F123295C4A0700258A98 /* MontserratExtraBold.ttf in Resources */,
+				2CE8F120295C352200258A98 /* MontserratRegular.ttf in Resources */,
+				2CE8F121295C352200258A98 /* MontserratSemiBold.ttf in Resources */,
 				2C2DCBEB29597E4300E4B688 /* LaunchScreen.storyboard in Resources */,
 				2C2DCC0E2959908300E4B688 /* Localizable.strings in Resources */,
+				2CE8F11E295C352200258A98 /* MontserratBold.ttf in Resources */,
 				2C2DCBE829597E4300E4B688 /* Assets.xcassets in Resources */,
+				2CE8F11F295C352200258A98 /* MontserratMedium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +390,7 @@
 				2C2DCC0829598FB700E4B688 /* UIIColor+hex.swift in Sources */,
 				2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */,
 				2C2DCC0929598FB700E4B688 /* ListCollectionContext+Dequeue.swift in Sources */,
+				2CE8F118295C29B600258A98 /* CreateView.swift in Sources */,
 				2C2DCBDF29597E4200E4B688 /* AppDelegate.swift in Sources */,
 				2C2DCBF629598E6400E4B688 /* R.generated.swift in Sources */,
 			);
@@ -510,10 +542,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N422RJM586;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TonWallet/Info.plist;
+				INFOPLIST_FILE = "TonWallet/Supporting files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -539,10 +570,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N422RJM586;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TonWallet/Info.plist;
+				INFOPLIST_FILE = "TonWallet/Supporting files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

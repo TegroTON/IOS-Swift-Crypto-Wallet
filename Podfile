@@ -7,5 +7,7 @@ target 'TonWallet' do
 
   pod 'SnapKit'
   pod 'R.swift'
+  pod 'IGListKit'
+  pod 'Atributika'
 
 end
