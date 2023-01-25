@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C1BD16129817F1F001284C0 /* UIFont+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD16029817F1F001284C0 /* UIFont+Custom.swift */; };
+		2C1BD169298181B2001284C0 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BD16629818061001284C0 /* Rubik-Bold.ttf */; };
+		2C1BD16A298181B2001284C0 /* Rubik-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BD16729818061001284C0 /* Rubik-ExtraBold.ttf */; };
+		2C1BD16B298181B2001284C0 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BD16529818061001284C0 /* Rubik-Medium.ttf */; };
+		2C1BD16C298181B2001284C0 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BD16829818061001284C0 /* Rubik-Regular.ttf */; };
+		2C1BD16D298181B2001284C0 /* Rubik-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BD16429818061001284C0 /* Rubik-SemiBold.ttf */; };
+		2C1BD17229818334001284C0 /* SeedPhraseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD17129818334001284C0 /* SeedPhraseAlertViewController.swift */; };
+		2C1BD17529818357001284C0 /* SeedPhraseAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD17429818357001284C0 /* SeedPhraseAlertView.swift */; };
+		2C1BD179298189D2001284C0 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD178298189D2001284C0 /* RootNavigationController.swift */; };
 		2C2DCBDF29597E4200E4B688 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCBDE29597E4200E4B688 /* AppDelegate.swift */; };
 		2C2DCBE829597E4300E4B688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCBE729597E4300E4B688 /* Assets.xcassets */; };
 		2C2DCBEB29597E4300E4B688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCBE929597E4300E4B688 /* LaunchScreen.storyboard */; };
@@ -17,16 +26,25 @@
 		2C2DCC0E2959908300E4B688 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCC102959908300E4B688 /* Localizable.strings */; };
 		2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F115295C288600258A98 /* CreateViewController.swift */; };
 		2CE8F118295C29B600258A98 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F117295C29B600258A98 /* CreateView.swift */; };
-		2CE8F11E295C352200258A98 /* MontserratBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F11A295C352200258A98 /* MontserratBold.ttf */; };
-		2CE8F11F295C352200258A98 /* MontserratMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F11B295C352200258A98 /* MontserratMedium.ttf */; };
-		2CE8F120295C352200258A98 /* MontserratRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F11C295C352200258A98 /* MontserratRegular.ttf */; };
-		2CE8F121295C352200258A98 /* MontserratSemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F11D295C352200258A98 /* MontserratSemiBold.ttf */; };
-		2CE8F123295C4A0700258A98 /* MontserratExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F122295C49E100258A98 /* MontserratExtraBold.ttf */; };
+		2CE8F11E295C352200258A98 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F11A295C352200258A98 /* Montserrat-Bold.ttf */; };
+		2CE8F11F295C352200258A98 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F11B295C352200258A98 /* Montserrat-Medium.ttf */; };
+		2CE8F120295C352200258A98 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F11C295C352200258A98 /* Montserrat-Regular.ttf */; };
+		2CE8F121295C352200258A98 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F11D295C352200258A98 /* Montserrat-SemiBold.ttf */; };
+		2CE8F123295C4A0700258A98 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F122295C49E100258A98 /* Montserrat-ExtraBold.ttf */; };
 		B3791D54ECE7C84BCA846C5F /* Pods_TonWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0B5B92E5EB9A7C84C0B389 /* Pods_TonWallet.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0A371F3D3DCE7773577B6E98 /* Pods-TonWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TonWallet.debug.xcconfig"; path = "Target Support Files/Pods-TonWallet/Pods-TonWallet.debug.xcconfig"; sourceTree = "<group>"; };
+		2C1BD16029817F1F001284C0 /* UIFont+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Custom.swift"; sourceTree = "<group>"; };
+		2C1BD16429818061001284C0 /* Rubik-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-SemiBold.ttf"; sourceTree = "<group>"; };
+		2C1BD16529818061001284C0 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
+		2C1BD16629818061001284C0 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
+		2C1BD16729818061001284C0 /* Rubik-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-ExtraBold.ttf"; sourceTree = "<group>"; };
+		2C1BD16829818061001284C0 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
+		2C1BD17129818334001284C0 /* SeedPhraseAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseAlertViewController.swift; sourceTree = "<group>"; };
+		2C1BD17429818357001284C0 /* SeedPhraseAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseAlertView.swift; sourceTree = "<group>"; };
+		2C1BD178298189D2001284C0 /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		2C2DCBDB29597E4200E4B688 /* TonWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TonWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C2DCBDE29597E4200E4B688 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C2DCBE729597E4300E4B688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -39,11 +57,11 @@
 		2C2DCC0F2959908300E4B688 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2CE8F115295C288600258A98 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		2CE8F117295C29B600258A98 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
-		2CE8F11A295C352200258A98 /* MontserratBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratBold.ttf; sourceTree = "<group>"; };
-		2CE8F11B295C352200258A98 /* MontserratMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratMedium.ttf; sourceTree = "<group>"; };
-		2CE8F11C295C352200258A98 /* MontserratRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratRegular.ttf; sourceTree = "<group>"; };
-		2CE8F11D295C352200258A98 /* MontserratSemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratSemiBold.ttf; sourceTree = "<group>"; };
-		2CE8F122295C49E100258A98 /* MontserratExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MontserratExtraBold.ttf; sourceTree = "<group>"; };
+		2CE8F11A295C352200258A98 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		2CE8F11B295C352200258A98 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		2CE8F11C295C352200258A98 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		2CE8F11D295C352200258A98 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		2CE8F122295C49E100258A98 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
 		3FFC720241E87254142E4955 /* Pods-TonWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TonWallet.release.xcconfig"; path = "Target Support Files/Pods-TonWallet/Pods-TonWallet.release.xcconfig"; sourceTree = "<group>"; };
 		BA0B5B92E5EB9A7C84C0B389 /* Pods_TonWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TonWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -60,6 +78,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C1BD16229817F66001284C0 /* Montserrat */ = {
+			isa = PBXGroup;
+			children = (
+				2CE8F11A295C352200258A98 /* Montserrat-Bold.ttf */,
+				2CE8F122295C49E100258A98 /* Montserrat-ExtraBold.ttf */,
+				2CE8F11B295C352200258A98 /* Montserrat-Medium.ttf */,
+				2CE8F11C295C352200258A98 /* Montserrat-Regular.ttf */,
+				2CE8F11D295C352200258A98 /* Montserrat-SemiBold.ttf */,
+			);
+			path = Montserrat;
+			sourceTree = "<group>";
+		};
+		2C1BD16329817F74001284C0 /* Rubic */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD16629818061001284C0 /* Rubik-Bold.ttf */,
+				2C1BD16729818061001284C0 /* Rubik-ExtraBold.ttf */,
+				2C1BD16529818061001284C0 /* Rubik-Medium.ttf */,
+				2C1BD16829818061001284C0 /* Rubik-Regular.ttf */,
+				2C1BD16429818061001284C0 /* Rubik-SemiBold.ttf */,
+			);
+			path = Rubic;
+			sourceTree = "<group>";
+		};
+		2C1BD16F29818307001284C0 /* SeedPhrase */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD17029818319001284C0 /* Alert */,
+			);
+			path = SeedPhrase;
+			sourceTree = "<group>";
+		};
+		2C1BD17029818319001284C0 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD17329818345001284C0 /* View */,
+				2C1BD17129818334001284C0 /* SeedPhraseAlertViewController.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		2C1BD17329818345001284C0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD17429818357001284C0 /* SeedPhraseAlertView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C1BD176298189D2001284C0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD177298189D2001284C0 /* NavigationController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2C1BD177298189D2001284C0 /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD178298189D2001284C0 /* RootNavigationController.swift */,
+			);
+			path = NavigationController;
+			sourceTree = "<group>";
+		};
 		2C2DCBD229597E4200E4B688 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +185,7 @@
 		2C2DCBF829598EAB00E4B688 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2C1BD16F29818307001284C0 /* SeedPhrase */,
 				2CE8F112295C285E00258A98 /* Create */,
 			);
 			path = Modules;
@@ -136,6 +220,7 @@
 		2C2DCBFC29598FB700E4B688 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2C1BD176298189D2001284C0 /* Controllers */,
 				2C2DCBFD29598FB700E4B688 /* Views */,
 			);
 			path = UI;
@@ -162,6 +247,7 @@
 		2C2DCC0129598FB700E4B688 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				2C1BD16029817F1F001284C0 /* UIFont+Custom.swift */,
 				2C2DCC0229598FB700E4B688 /* UIIColor+hex.swift */,
 			);
 			path = UIKit;
@@ -220,11 +306,8 @@
 		2CE8F119295C352200258A98 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				2CE8F11A295C352200258A98 /* MontserratBold.ttf */,
-				2CE8F122295C49E100258A98 /* MontserratExtraBold.ttf */,
-				2CE8F11B295C352200258A98 /* MontserratMedium.ttf */,
-				2CE8F11C295C352200258A98 /* MontserratRegular.ttf */,
-				2CE8F11D295C352200258A98 /* MontserratSemiBold.ttf */,
+				2C1BD16329817F74001284C0 /* Rubic */,
+				2C1BD16229817F66001284C0 /* Montserrat */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -307,14 +390,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CE8F123295C4A0700258A98 /* MontserratExtraBold.ttf in Resources */,
-				2CE8F120295C352200258A98 /* MontserratRegular.ttf in Resources */,
-				2CE8F121295C352200258A98 /* MontserratSemiBold.ttf in Resources */,
+				2C1BD169298181B2001284C0 /* Rubik-Bold.ttf in Resources */,
+				2C1BD16A298181B2001284C0 /* Rubik-ExtraBold.ttf in Resources */,
+				2C1BD16B298181B2001284C0 /* Rubik-Medium.ttf in Resources */,
+				2C1BD16C298181B2001284C0 /* Rubik-Regular.ttf in Resources */,
+				2C1BD16D298181B2001284C0 /* Rubik-SemiBold.ttf in Resources */,
+				2CE8F123295C4A0700258A98 /* Montserrat-ExtraBold.ttf in Resources */,
+				2CE8F120295C352200258A98 /* Montserrat-Regular.ttf in Resources */,
+				2CE8F121295C352200258A98 /* Montserrat-SemiBold.ttf in Resources */,
 				2C2DCBEB29597E4300E4B688 /* LaunchScreen.storyboard in Resources */,
 				2C2DCC0E2959908300E4B688 /* Localizable.strings in Resources */,
-				2CE8F11E295C352200258A98 /* MontserratBold.ttf in Resources */,
+				2CE8F11E295C352200258A98 /* Montserrat-Bold.ttf in Resources */,
 				2C2DCBE829597E4300E4B688 /* Assets.xcassets in Resources */,
-				2CE8F11F295C352200258A98 /* MontserratMedium.ttf in Resources */,
+				2CE8F11F295C352200258A98 /* Montserrat-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,10 +474,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C1BD17529818357001284C0 /* SeedPhraseAlertView.swift in Sources */,
 				2C2DCC0629598FB700E4B688 /* RootView.swift in Sources */,
+				2C1BD16129817F1F001284C0 /* UIFont+Custom.swift in Sources */,
+				2C1BD179298189D2001284C0 /* RootNavigationController.swift in Sources */,
 				2C2DCC0829598FB700E4B688 /* UIIColor+hex.swift in Sources */,
 				2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */,
 				2C2DCC0929598FB700E4B688 /* ListCollectionContext+Dequeue.swift in Sources */,
+				2C1BD17229818334001284C0 /* SeedPhraseAlertViewController.swift in Sources */,
 				2CE8F118295C29B600258A98 /* CreateView.swift in Sources */,
 				2C2DCBDF29597E4200E4B688 /* AppDelegate.swift in Sources */,
 				2C2DCBF629598E6400E4B688 /* R.generated.swift in Sources */,

@@ -5,3 +5,11 @@ create-new-wallet = "Create wallet";
 create-subtitle = "Create a Toncoin wallet\nor connect an existing one";
 create-by = "by Tegro";
 create-title = "TON Wallet";
+
+// Seed phrase
+seed-phrase-title = "Your private key";
+seed-phrase-subtitle = "Write these 24 words in exactly that order and hide them in a safe place.";
+seed-phrase-button = "Next";
+seed-phrase-alert-title = "Take a pen and paper";
+seed-phrase-alert-subtitle = "Get ready to write down the secret key. This is the only way to regain access to the wallet. It is safest not to store the key on the devices.";
+

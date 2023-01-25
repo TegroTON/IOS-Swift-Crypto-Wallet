@@ -18,7 +18,7 @@ class CreateView: RootView {
         button.setTitleColor(R.color.secondTextColor(), for: .normal)
         button.setTitle(R.string.localizable.createPrivacy(), for: .normal)
         button.backgroundColor = .clear
-        button.titleLabel?.font = R.font.montserratMedium(size: 14)
+        button.titleLabel?.font = .montserratFont(ofSize: 14, weight: .medium)
         
         return button
     }()
@@ -28,7 +28,7 @@ class CreateView: RootView {
         button.setTitleColor(R.color.textColor(), for: .normal)
         button.setTitle(R.string.localizable.createConnectWallet(), for: .normal)
         button.backgroundColor = R.color.createNewButtonBackground()
-        button.titleLabel?.font = R.font.montserratSemiBold(size: 14)
+        button.titleLabel?.font = .montserratFont(ofSize: 14, weight: .semiBold)
         button.layer.borderColor = R.color.createNewButtonBorder()?.cgColor
         button.layer.borderWidth = 1.0
         button.layer.cornerRadius = 6.0
@@ -41,7 +41,7 @@ class CreateView: RootView {
         button.setTitleColor(.white, for: .normal)
         button.setTitle(R.string.localizable.createNewWallet(), for: .normal)
         button.backgroundColor = .init(hex6: 0x4285F4)
-        button.titleLabel?.font = R.font.montserratSemiBold(size: 14)
+        button.titleLabel?.font = .montserratFont(ofSize: 14, weight: .semiBold)
         button.layer.cornerRadius = 6.0
         
         return button
@@ -58,7 +58,7 @@ class CreateView: RootView {
         
         let style = Style()
             .paragraphStyle(paragraphStyle)
-            .font(R.font.montserratMedium(size: 16)!)
+            .font(.montserratFont(ofSize: 16, weight: .medium))
             .foregroundColor(R.color.subtitleColor()!)
         
         label.attributedText = R.string.localizable.createSubtitle().styleAll(style)
@@ -69,7 +69,7 @@ class CreateView: RootView {
     let createdByLabel: UILabel = {
         let label = UILabel()
         label.text = R.string.localizable.createBy()
-        label.font = R.font.montserratBold(size: 14)
+        label.font = .rubicFont(ofSize: 14, weight: .bold)
         label.textColor = R.color.textColor()
         label.textAlignment = .right
         
@@ -79,7 +79,7 @@ class CreateView: RootView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = R.string.localizable.createTitle()
-        label.font = R.font.montserratExtraBold(size: 40)
+        label.font = .rubicFont(ofSize: 40, weight: .extraBold)
         label.textColor = R.color.textColor()
         label.textAlignment = .right
         

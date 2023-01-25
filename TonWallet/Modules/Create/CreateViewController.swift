@@ -13,7 +13,7 @@ class CreateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        mainView.createNewButton.addTarget(self, action: #selector(createButtonTapped), for: .touchUpInside)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -22,6 +22,12 @@ class CreateViewController: UIViewController {
         if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
             colorAppearanceToggled()
         }
+    }
+    
+    @objc private func createButtonTapped() {
+        let vc = SeedPhraseAlertViewController()
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func colorAppearanceToggled() {
