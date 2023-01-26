@@ -5,7 +5,7 @@ class RootNavigationController: UINavigationController {
     static let shared = RootNavigationController()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .darkContent
     }
 
     init() {

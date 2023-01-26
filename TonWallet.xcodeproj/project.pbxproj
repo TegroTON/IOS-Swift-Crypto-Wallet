@@ -16,6 +16,13 @@
 		2C1BD17229818334001284C0 /* SeedPhraseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD17129818334001284C0 /* SeedPhraseAlertViewController.swift */; };
 		2C1BD17529818357001284C0 /* SeedPhraseAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD17429818357001284C0 /* SeedPhraseAlertView.swift */; };
 		2C1BD179298189D2001284C0 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD178298189D2001284C0 /* RootNavigationController.swift */; };
+		2C1BD17D29818D84001284C0 /* SeedPhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD17C29818D84001284C0 /* SeedPhraseView.swift */; };
+		2C1BD17F29818D90001284C0 /* SeedPhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD17E29818D90001284C0 /* SeedPhraseViewController.swift */; };
+		2C1BD181298191F9001284C0 /* SeedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD180298191F9001284C0 /* SeedWordView.swift */; };
+		2C1BD18529828646001284C0 /* SeedWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD18429828646001284C0 /* SeedWordCell.swift */; };
+		2C1BD1892982BAD3001284C0 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD1882982BAD3001284C0 /* PasswordView.swift */; };
+		2C1BD18B2982BAF7001284C0 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD18A2982BAF7001284C0 /* PasswordViewController.swift */; };
+		2C1BD18E2982C07E001284C0 /* PassIndicatorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD18D2982C07E001284C0 /* PassIndicatorsView.swift */; };
 		2C2DCBDF29597E4200E4B688 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCBDE29597E4200E4B688 /* AppDelegate.swift */; };
 		2C2DCBE829597E4300E4B688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCBE729597E4300E4B688 /* Assets.xcassets */; };
 		2C2DCBEB29597E4300E4B688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCBE929597E4300E4B688 /* LaunchScreen.storyboard */; };
@@ -45,6 +52,13 @@
 		2C1BD17129818334001284C0 /* SeedPhraseAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseAlertViewController.swift; sourceTree = "<group>"; };
 		2C1BD17429818357001284C0 /* SeedPhraseAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseAlertView.swift; sourceTree = "<group>"; };
 		2C1BD178298189D2001284C0 /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
+		2C1BD17C29818D84001284C0 /* SeedPhraseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseView.swift; sourceTree = "<group>"; };
+		2C1BD17E29818D90001284C0 /* SeedPhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseViewController.swift; sourceTree = "<group>"; };
+		2C1BD180298191F9001284C0 /* SeedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordView.swift; sourceTree = "<group>"; };
+		2C1BD18429828646001284C0 /* SeedWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedWordCell.swift; sourceTree = "<group>"; };
+		2C1BD1882982BAD3001284C0 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
+		2C1BD18A2982BAF7001284C0 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		2C1BD18D2982C07E001284C0 /* PassIndicatorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassIndicatorsView.swift; sourceTree = "<group>"; };
 		2C2DCBDB29597E4200E4B688 /* TonWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TonWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C2DCBDE29597E4200E4B688 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C2DCBE729597E4300E4B688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -106,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				2C1BD17029818319001284C0 /* Alert */,
+				2C1BD17A29818D6F001284C0 /* SeedPrhase */,
 			);
 			path = SeedPhrase;
 			sourceTree = "<group>";
@@ -141,6 +156,67 @@
 				2C1BD178298189D2001284C0 /* RootNavigationController.swift */,
 			);
 			path = NavigationController;
+			sourceTree = "<group>";
+		};
+		2C1BD17A29818D6F001284C0 /* SeedPrhase */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD18329828614001284C0 /* Cell */,
+				2C1BD17B29818D78001284C0 /* View */,
+				2C1BD17E29818D90001284C0 /* SeedPhraseViewController.swift */,
+			);
+			path = SeedPrhase;
+			sourceTree = "<group>";
+		};
+		2C1BD17B29818D78001284C0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD18229819462001284C0 /* Subview */,
+				2C1BD17C29818D84001284C0 /* SeedPhraseView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C1BD18229819462001284C0 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD180298191F9001284C0 /* SeedWordView.swift */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
+		2C1BD18329828614001284C0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD18429828646001284C0 /* SeedWordCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		2C1BD1862982BA62001284C0 /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD1872982BAC2001284C0 /* View */,
+				2C1BD18A2982BAF7001284C0 /* PasswordViewController.swift */,
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
+		2C1BD1872982BAC2001284C0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD18C2982BFC3001284C0 /* Subview */,
+				2C1BD1882982BAD3001284C0 /* PasswordView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C1BD18C2982BFC3001284C0 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD18D2982C07E001284C0 /* PassIndicatorsView.swift */,
+			);
+			path = Subview;
 			sourceTree = "<group>";
 		};
 		2C2DCBD229597E4200E4B688 = {
@@ -185,6 +261,7 @@
 		2C2DCBF829598EAB00E4B688 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2C1BD1862982BA62001284C0 /* Password */,
 				2C1BD16F29818307001284C0 /* SeedPhrase */,
 				2CE8F112295C285E00258A98 /* Create */,
 			);
@@ -194,8 +271,8 @@
 		2C2DCBF929598EBB00E4B688 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				2C2DCC0A2959905800E4B688 /* Resources */,
 				2C2DCBFB29598FB700E4B688 /* Common */,
+				2C2DCC0A2959905800E4B688 /* Resources */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -477,14 +554,21 @@
 				2C1BD17529818357001284C0 /* SeedPhraseAlertView.swift in Sources */,
 				2C2DCC0629598FB700E4B688 /* RootView.swift in Sources */,
 				2C1BD16129817F1F001284C0 /* UIFont+Custom.swift in Sources */,
+				2C1BD18E2982C07E001284C0 /* PassIndicatorsView.swift in Sources */,
 				2C1BD179298189D2001284C0 /* RootNavigationController.swift in Sources */,
+				2C1BD18529828646001284C0 /* SeedWordCell.swift in Sources */,
+				2C1BD18B2982BAF7001284C0 /* PasswordViewController.swift in Sources */,
 				2C2DCC0829598FB700E4B688 /* UIIColor+hex.swift in Sources */,
 				2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */,
+				2C1BD17D29818D84001284C0 /* SeedPhraseView.swift in Sources */,
+				2C1BD181298191F9001284C0 /* SeedWordView.swift in Sources */,
 				2C2DCC0929598FB700E4B688 /* ListCollectionContext+Dequeue.swift in Sources */,
 				2C1BD17229818334001284C0 /* SeedPhraseAlertViewController.swift in Sources */,
+				2C1BD1892982BAD3001284C0 /* PasswordView.swift in Sources */,
 				2CE8F118295C29B600258A98 /* CreateView.swift in Sources */,
 				2C2DCBDF29597E4200E4B688 /* AppDelegate.swift in Sources */,
 				2C2DCBF629598E6400E4B688 /* R.generated.swift in Sources */,
+				2C1BD17F29818D90001284C0 /* SeedPhraseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,7 +644,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -614,7 +698,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
