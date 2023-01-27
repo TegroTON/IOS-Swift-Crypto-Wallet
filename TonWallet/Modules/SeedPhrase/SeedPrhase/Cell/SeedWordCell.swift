@@ -61,6 +61,13 @@ class SeedWordCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        textField.text = nil
+        indexLabel.text = nil
+    }
+    
     @objc private func cellTapped() {
         textField.becomeFirstResponder()
     }
@@ -82,6 +89,7 @@ class SeedWordCell: UITableViewCell {
         }
         
         separatorView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(48.0)
             make.bottom.equalToSuperview()
             make.height.equalTo(1.0)
             make.left.right.equalToSuperview().inset(24.0)

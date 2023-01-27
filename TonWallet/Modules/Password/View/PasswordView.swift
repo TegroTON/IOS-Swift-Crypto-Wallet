@@ -8,7 +8,7 @@ class PasswordView: RootView {
     let textField: UITextField = {
         let view = UITextField()
         view.autocorrectionType = .no
-        view.keyboardType = .decimalPad
+        view.keyboardType = .numberPad
         view.autocapitalizationType = .none
         view.alpha = 0
         
@@ -24,7 +24,7 @@ class PasswordView: RootView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.seedPhraseTitle()
+        label.text = R.string.localizable.passwordSetTitle()
         label.font = .montserratFont(ofSize: 18, weight: .medium)
         label.textColor = R.color.textColor()
         label.textAlignment = .center
@@ -46,7 +46,7 @@ class PasswordView: RootView {
             .font(.montserratFont(ofSize: 14, weight: .medium))
             .foregroundColor(R.color.subtitleColor()!)
         
-        label.attributedText = R.string.localizable.seedPhraseSubtitle().styleAll(style)
+        label.attributedText = R.string.localizable.passwordSetTitle().styleAll(style)
         
         return label
     }()
@@ -58,7 +58,6 @@ class PasswordView: RootView {
         button.titleLabel?.font = .montserratFont(ofSize: 14, weight: .semiBold)
         button.layer.cornerRadius = 6
         button.backgroundColor = .init(hex6: 0x4285F4)
-        button.alpha = 0
         
         return button
     }()
@@ -74,6 +73,20 @@ class PasswordView: RootView {
         addSubview(nextButton)
         
         setupConstraints()
+    }
+    
+    func setSubtitle(text: String) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        paragraphStyle.lineHeightMultiple = 1.29
+        paragraphStyle.lineBreakMode = .byWordWrapping
+        
+        let style = Style()
+            .paragraphStyle(paragraphStyle)
+            .font(.montserratFont(ofSize: 14, weight: .medium))
+            .foregroundColor(R.color.subtitleColor()!)
+        
+        subtitleLabel.attributedText = text.styleAll(style)
     }
     
     private func setupConstraints() {
@@ -96,6 +109,12 @@ class PasswordView: RootView {
         indicatorsView.snp.makeConstraints { make in
             make.top.equalTo(subtitleLabel.snp.bottom).offset(48.0)
             make.centerX.equalToSuperview()
+        }
+        
+        nextButton.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(78.0)
+            make.height.equalTo(48.0)
+            make.bottom.equalToSuperview().offset(48.0)
         }
     }
 }

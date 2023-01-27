@@ -2,7 +2,10 @@ import UIKit
 
 class PasswordViewController: UIViewController {
     
-    var userPassword = ""
+    var userPassword: String = ""
+    var isPasswordSetted: Bool = false
+    var keyboardHeight: CGFloat = 0
+    var isButtonHidden: Bool = true
     
     var mainView: PasswordView {
         return view as! PasswordView
@@ -21,47 +24,109 @@ class PasswordViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardFrameChanged), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         mainView.textField.becomeFirstResponder()
     }
     
+    // MARK: - Action mehtods
+    
     @objc private func keyboardFrameChanged(_ notification: Notification) {
         guard let frame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         
-        let rect = frame.cgRectValue
-        let height = rect.height
-        
-        mainView.nextButton.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(78.0)
-            make.height.equalTo(48.0)
-            make.bottom.equalToSuperview().offset(-33 - height)
-        }
-        
-        mainView.layoutIfNeeded()
+        keyboardHeight = frame.cgRectValue.height
     }
     
     @objc private func textFieldDidChanged(_ sender: UITextField) {
         let safeText = sender.text ?? ""
         
         if safeText.count < 5 {
-            userPassword = sender.text ?? ""
-            
             if safeText.count == 4 {
-                UIView.animate(withDuration: 0.3) {
-                    self.mainView.nextButton.alpha = 1
+                moveNextButton(needShow: true)
+                
+                if !isPasswordSetted {
+                    userPassword = safeText
                 }
             } else {
-                mainView.nextButton.alpha = 0
+                moveNextButton(needShow: false)
             }
         }
-        
-        print(userPassword)
     }
     
     @objc private func nextButtonTapped() {
+        if isPasswordSetted {
+            if userPassword == mainView.textField.text ?? "" {
+                mainView.textField.resignFirstResponder()
+                
+                let vc = SuccessViewController()
+                vc.modalPresentationStyle = .overFullScreen
+                
+                present(vc, animated: false) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                        self.navigationController?.pushViewController(MainViewController(), animated: false)
+                    }
+                }
+            } else {
+                userPassword = ""
+                mainView.textField.text = nil
+                isPasswordSetted = false
+                
+                animateIncorrectPassword(needToSet: true)
+            }
+        } else {
+            mainView.textField.text = nil
+            isPasswordSetted = true
+            
+            let title = R.string.localizable.passwordConfirmTitle()
+            let subtitle = R.string.localizable.passwordConfirmSubtitle()
+            
+            animateReset(with: title, subtitle: subtitle)
+        }
+    }
+    
+    // MARK: - Private methods
+    
+    private func animateReset(with title: String, subtitle: String) {
+        UIView.transition(with: mainView.titleLabel, duration: 0.3, options: .transitionFlipFromRight) {
+            self.mainView.titleLabel.text = title
+        }
+        
+        UIView.transition(with: mainView.subtitleLabel, duration: 0.3, options: .transitionFlipFromRight) {
+            self.mainView.setSubtitle(text: subtitle)
+        }
+        
+        UIView.transition(with: mainView.indicatorsView, duration: 0.3, options: .transitionFlipFromRight) {
+            self.mainView.indicatorsView.turnOffIndicators()
+        }
+        
+        moveNextButton(needShow: false)
+    }
+    
+    private func animateIncorrectPassword(needToSet: Bool) {
+        let title = needToSet ? R.string.localizable.passwordSetTitle() : R.string.localizable.passwordEnterTitle()
+        let subtitle = needToSet ? R.string.localizable.passwordSetSubtitle() : R.string.localizable.passwordEnterSubtitle()
+        
+        mainView.indicatorsView.animateRedIndicators()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            self.animateReset(with: title, subtitle: subtitle)
+            self.moveNextButton(needShow: false)
+        }
+    }
+    
+    private func moveNextButton(needShow: Bool) {
+        let offset = needShow ? -33 - keyboardHeight : 48
+        
+        mainView.nextButton.snp.remakeConstraints { make in
+            make.left.right.equalToSuperview().inset(78.0)
+            make.height.equalTo(48.0)
+            make.bottom.equalToSuperview().offset(offset)
+        }
+        
+        UIView.animate(withDuration: 0.3) {
+            self.mainView.layoutIfNeeded()
+        }
     }
     
 }
@@ -75,34 +140,10 @@ extension PasswordViewController: UITextFieldDelegate {
         
         if string == "" {
             UIView.animate(withDuration: 0.15) {
-                if safeText.count == 4 {
-                    self.mainView.indicatorsView.fourthView.backgroundColor = R.color.passwordIndicator()
-                    self.mainView.indicatorsView.fourthView.layer.borderWidth = 1
-                } else if safeText.count == 3 {
-                    self.mainView.indicatorsView.thirdView.backgroundColor = R.color.passwordIndicator()
-                    self.mainView.indicatorsView.thirdView.layer.borderWidth = 1
-                } else if safeText.count == 2 {
-                    self.mainView.indicatorsView.secondView.backgroundColor = R.color.passwordIndicator()
-                    self.mainView.indicatorsView.secondView.layer.borderWidth = 1
-                } else if safeText.count == 1 {
-                    self.mainView.indicatorsView.firstView.backgroundColor = R.color.passwordIndicator()
-                    self.mainView.indicatorsView.firstView.layer.borderWidth = 1
-                }
+                self.mainView.indicatorsView.changeIndicator(isOn: false, index: safeText.count - 1)
             }
         } else {
-            if safeText.count == 0 {
-                self.mainView.indicatorsView.firstView.backgroundColor = .init(hex6: 0x4285F4)
-                self.mainView.indicatorsView.firstView.layer.borderWidth = 0
-            } else if safeText.count == 1 {
-                self.mainView.indicatorsView.secondView.backgroundColor = .init(hex6: 0x4285F4)
-                self.mainView.indicatorsView.secondView.layer.borderWidth = 0
-            } else if safeText.count == 2 {
-                self.mainView.indicatorsView.thirdView.backgroundColor = .init(hex6: 0x4285F4)
-                self.mainView.indicatorsView.thirdView.layer.borderWidth = 0
-            } else if safeText.count == 3 {
-                self.mainView.indicatorsView.fourthView.backgroundColor = .init(hex6: 0x4285F4)
-                self.mainView.indicatorsView.fourthView.layer.borderWidth = 0
-            }
+            mainView.indicatorsView.changeIndicator(isOn: true, index: safeText.count)
         }
         
         return true

@@ -23,6 +23,11 @@
 		2C1BD1892982BAD3001284C0 /* PasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD1882982BAD3001284C0 /* PasswordView.swift */; };
 		2C1BD18B2982BAF7001284C0 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD18A2982BAF7001284C0 /* PasswordViewController.swift */; };
 		2C1BD18E2982C07E001284C0 /* PassIndicatorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD18D2982C07E001284C0 /* PassIndicatorsView.swift */; };
+		2C1BD1912983F447001284C0 /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD1902983F447001284C0 /* SuccessViewController.swift */; };
+		2C1BD1942983F48D001284C0 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD1932983F48D001284C0 /* SuccessView.swift */; };
+		2C1BD1982983F948001284C0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD1972983F948001284C0 /* MainView.swift */; };
+		2C1BD19A2983F955001284C0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD1992983F955001284C0 /* MainViewController.swift */; };
+		2C1BD19C2983FFEE001284C0 /* SeedNextButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD19B2983FFEE001284C0 /* SeedNextButtonCell.swift */; };
 		2C2DCBDF29597E4200E4B688 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCBDE29597E4200E4B688 /* AppDelegate.swift */; };
 		2C2DCBE829597E4300E4B688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCBE729597E4300E4B688 /* Assets.xcassets */; };
 		2C2DCBEB29597E4300E4B688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCBE929597E4300E4B688 /* LaunchScreen.storyboard */; };
@@ -59,6 +64,11 @@
 		2C1BD1882982BAD3001284C0 /* PasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordView.swift; sourceTree = "<group>"; };
 		2C1BD18A2982BAF7001284C0 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		2C1BD18D2982C07E001284C0 /* PassIndicatorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassIndicatorsView.swift; sourceTree = "<group>"; };
+		2C1BD1902983F447001284C0 /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
+		2C1BD1932983F48D001284C0 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
+		2C1BD1972983F948001284C0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		2C1BD1992983F955001284C0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2C1BD19B2983FFEE001284C0 /* SeedNextButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedNextButtonCell.swift; sourceTree = "<group>"; };
 		2C2DCBDB29597E4200E4B688 /* TonWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TonWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C2DCBDE29597E4200E4B688 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C2DCBE729597E4300E4B688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -189,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				2C1BD18429828646001284C0 /* SeedWordCell.swift */,
+				2C1BD19B2983FFEE001284C0 /* SeedNextButtonCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -217,6 +228,40 @@
 				2C1BD18D2982C07E001284C0 /* PassIndicatorsView.swift */,
 			);
 			path = Subview;
+			sourceTree = "<group>";
+		};
+		2C1BD18F2983F42D001284C0 /* Success */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD1922983F480001284C0 /* View */,
+				2C1BD1902983F447001284C0 /* SuccessViewController.swift */,
+			);
+			path = Success;
+			sourceTree = "<group>";
+		};
+		2C1BD1922983F480001284C0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD1932983F48D001284C0 /* SuccessView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C1BD1952983F928001284C0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD1962983F933001284C0 /* View */,
+				2C1BD1992983F955001284C0 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		2C1BD1962983F933001284C0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD1972983F948001284C0 /* MainView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		2C2DCBD229597E4200E4B688 = {
@@ -261,6 +306,8 @@
 		2C2DCBF829598EAB00E4B688 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2C1BD1952983F928001284C0 /* Main */,
+				2C1BD18F2983F42D001284C0 /* Success */,
 				2C1BD1862982BA62001284C0 /* Password */,
 				2C1BD16F29818307001284C0 /* SeedPhrase */,
 				2CE8F112295C285E00258A98 /* Create */,
@@ -552,8 +599,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C1BD17529818357001284C0 /* SeedPhraseAlertView.swift in Sources */,
+				2C1BD19A2983F955001284C0 /* MainViewController.swift in Sources */,
+				2C1BD1982983F948001284C0 /* MainView.swift in Sources */,
 				2C2DCC0629598FB700E4B688 /* RootView.swift in Sources */,
 				2C1BD16129817F1F001284C0 /* UIFont+Custom.swift in Sources */,
+				2C1BD19C2983FFEE001284C0 /* SeedNextButtonCell.swift in Sources */,
 				2C1BD18E2982C07E001284C0 /* PassIndicatorsView.swift in Sources */,
 				2C1BD179298189D2001284C0 /* RootNavigationController.swift in Sources */,
 				2C1BD18529828646001284C0 /* SeedWordCell.swift in Sources */,
@@ -563,8 +613,10 @@
 				2C1BD17D29818D84001284C0 /* SeedPhraseView.swift in Sources */,
 				2C1BD181298191F9001284C0 /* SeedWordView.swift in Sources */,
 				2C2DCC0929598FB700E4B688 /* ListCollectionContext+Dequeue.swift in Sources */,
+				2C1BD1942983F48D001284C0 /* SuccessView.swift in Sources */,
 				2C1BD17229818334001284C0 /* SeedPhraseAlertViewController.swift in Sources */,
 				2C1BD1892982BAD3001284C0 /* PasswordView.swift in Sources */,
+				2C1BD1912983F447001284C0 /* SuccessViewController.swift in Sources */,
 				2CE8F118295C29B600258A98 /* CreateView.swift in Sources */,
 				2C2DCBDF29597E4200E4B688 /* AppDelegate.swift in Sources */,
 				2C2DCBF629598E6400E4B688 /* R.generated.swift in Sources */,

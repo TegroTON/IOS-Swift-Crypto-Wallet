@@ -14,6 +14,7 @@ class CreateViewController: UIViewController {
         super.viewDidLoad()
         
         mainView.createNewButton.addTarget(self, action: #selector(createButtonTapped), for: .touchUpInside)
+        mainView.connectButton.addTarget(self, action: #selector(connectButtonTapped), for: .touchUpInside)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -26,6 +27,12 @@ class CreateViewController: UIViewController {
     
     @objc private func createButtonTapped() {
         let vc = SeedPhraseAlertViewController()
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func connectButtonTapped() {
+        let vc = SeedPhraseViewController(type: .enter)
         
         navigationController?.pushViewController(vc, animated: true)
     }

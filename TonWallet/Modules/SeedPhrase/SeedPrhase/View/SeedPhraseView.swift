@@ -3,6 +3,8 @@ import Atributika
 
 class SeedPhraseView: UIView {
 
+    let textField = UITextField()
+    
     let imageView: UIImageView = {
         let view = UIImageView()
         view.image = R.image.seedPhrase()
@@ -12,7 +14,6 @@ class SeedPhraseView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.seedPhraseTitle()
         label.font = .montserratFont(ofSize: 18, weight: .medium)
         label.textColor = R.color.textColor()
         label.textAlignment = .center
@@ -34,7 +35,7 @@ class SeedPhraseView: UIView {
             .font(.montserratFont(ofSize: 14, weight: .medium))
             .foregroundColor(R.color.subtitleColor()!)
         
-        label.attributedText = R.string.localizable.seedPhraseSubtitle().styleAll(style)
+        label.attributedText = R.string.localizable.seedPhraseReadSubtitle().styleAll(style)
         
         return label
     }()
@@ -74,10 +75,12 @@ class SeedPhraseView: UIView {
         let view = UITableView()
         view.backgroundColor = .clear
         view.register(SeedWordCell.self, forCellReuseIdentifier: SeedWordCell.description())
+        view.register(SeedNextButtonCell.self, forCellReuseIdentifier: SeedNextButtonCell.description())
         view.alpha = 0
         view.separatorStyle = .none
         view.allowsSelection = false
-        view.isScrollEnabled = false
+        view.estimatedRowHeight = UITableView.automaticDimension
+        view.rowHeight = UITableView.automaticDimension
         
         return view
     }()
@@ -103,6 +106,7 @@ class SeedPhraseView: UIView {
         addSubview(nextButton)
         addSubview(tableView)
         
+        setupContent(for: type)
         setupConstraints(for: type)
     }
     
@@ -115,6 +119,25 @@ class SeedPhraseView: UIView {
         case .enter: enterConstraints()
         case .read: readContsraints()
         case .check: checkConstraints()
+        }
+    }
+    
+    func setupContent(for type: SeedPhraseViewController.ViewType) {
+        switch type {
+        case .read:
+            titleLabel.text = R.string.localizable.seedPhraseReadTitle()
+            setSubtitle(text: R.string.localizable.seedPhraseReadSubtitle())
+            
+        case .check:
+            titleLabel.text = R.string.localizable.seedPhraseCheckTitle()
+            setSubtitle(text: R.string.localizable.seedPhraseCheckSubtitle())
+            
+        case .enter:
+            titleLabel.text = R.string.localizable.seedPhraseEnterTitle()
+            setSubtitle(text: R.string.localizable.seedPhraseEnterSubtitle())
+            
+            mainStackView.isHidden = true
+            tableView.alpha = 1
         }
     }
     
@@ -133,7 +156,27 @@ class SeedPhraseView: UIView {
     }
     
     private func enterConstraints() {
+        imageView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(35.0)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(80.0)
+        }
         
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(imageView.snp.bottom).offset(40.0)
+            make.left.right.equalToSuperview()
+        }
+        
+        subtitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(8.0)
+            make.left.right.equalToSuperview().inset(30.0)
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(subtitleLabel.snp.bottom).offset(8.0)
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
     }
         
     private func readContsraints() {
@@ -160,14 +203,13 @@ class SeedPhraseView: UIView {
         mainStackView.snp.makeConstraints { make in
             make.top.equalTo(subtitleLabel.snp.bottom).offset(24.0)
             make.centerX.equalToSuperview()
-//            make.width.equalTo(219.0)
             make.bottom.equalTo(nextButton.snp.top).offset(-38.0)
         }
         
         tableView.snp.makeConstraints { make in
             make.top.equalTo(subtitleLabel.snp.bottom).offset(8.0)
             make.left.right.equalToSuperview()
-            make.height.equalTo(192.0)
+            make.bottom.equalToSuperview()
         }
         
         nextButton.snp.makeConstraints { make in
@@ -179,10 +221,6 @@ class SeedPhraseView: UIView {
     
     /// using after read constraints
     private func checkConstraints() {
-        nextButton.snp.remakeConstraints { make in
-            make.top.equalTo(tableView.snp.bottom).offset(64.0)
-            make.left.right.equalToSuperview().inset(78.0)
-            make.height.equalTo(48.0)
-        }
+        
     }
 }
