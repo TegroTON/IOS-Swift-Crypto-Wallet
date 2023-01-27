@@ -28,6 +28,10 @@
 		2C1BD1982983F948001284C0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD1972983F948001284C0 /* MainView.swift */; };
 		2C1BD19A2983F955001284C0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD1992983F955001284C0 /* MainViewController.swift */; };
 		2C1BD19C2983FFEE001284C0 /* SeedNextButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD19B2983FFEE001284C0 /* SeedNextButtonCell.swift */; };
+		2C1BD19F298429C0001284C0 /* MainChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD19E298429C0001284C0 /* MainChartModel.swift */; };
+		2C1BD1A229842B10001284C0 /* MainChartSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD1A129842B10001284C0 /* MainChartSection.swift */; };
+		2C1BD1A629842BEA001284C0 /* MainChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD1A529842BEA001284C0 /* MainChartCell.swift */; };
+		2C1BD1A829842C01001284C0 /* MainChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD1A729842C01001284C0 /* MainChartView.swift */; };
 		2C2DCBDF29597E4200E4B688 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCBDE29597E4200E4B688 /* AppDelegate.swift */; };
 		2C2DCBE829597E4300E4B688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCBE729597E4300E4B688 /* Assets.xcassets */; };
 		2C2DCBEB29597E4300E4B688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCBE929597E4300E4B688 /* LaunchScreen.storyboard */; };
@@ -69,6 +73,10 @@
 		2C1BD1972983F948001284C0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2C1BD1992983F955001284C0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2C1BD19B2983FFEE001284C0 /* SeedNextButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedNextButtonCell.swift; sourceTree = "<group>"; };
+		2C1BD19E298429C0001284C0 /* MainChartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChartModel.swift; sourceTree = "<group>"; };
+		2C1BD1A129842B10001284C0 /* MainChartSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChartSection.swift; sourceTree = "<group>"; };
+		2C1BD1A529842BEA001284C0 /* MainChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChartCell.swift; sourceTree = "<group>"; };
+		2C1BD1A729842C01001284C0 /* MainChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChartView.swift; sourceTree = "<group>"; };
 		2C2DCBDB29597E4200E4B688 /* TonWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TonWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C2DCBDE29597E4200E4B688 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C2DCBE729597E4300E4B688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -250,6 +258,9 @@
 		2C1BD1952983F928001284C0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				2C1BD1A329842BBD001284C0 /* Cell */,
+				2C1BD1A029842AFB001284C0 /* Section */,
+				2C1BD19D298429AC001284C0 /* Model */,
 				2C1BD1962983F933001284C0 /* View */,
 				2C1BD1992983F955001284C0 /* MainViewController.swift */,
 			);
@@ -262,6 +273,39 @@
 				2C1BD1972983F948001284C0 /* MainView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2C1BD19D298429AC001284C0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD19E298429C0001284C0 /* MainChartModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2C1BD1A029842AFB001284C0 /* Section */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD1A129842B10001284C0 /* MainChartSection.swift */,
+			);
+			path = Section;
+			sourceTree = "<group>";
+		};
+		2C1BD1A329842BBD001284C0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD1A429842BC5001284C0 /* Chart */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		2C1BD1A429842BC5001284C0 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD1A529842BEA001284C0 /* MainChartCell.swift */,
+				2C1BD1A729842C01001284C0 /* MainChartView.swift */,
+			);
+			path = Chart;
 			sourceTree = "<group>";
 		};
 		2C2DCBD229597E4200E4B688 = {
@@ -610,8 +654,11 @@
 				2C1BD18B2982BAF7001284C0 /* PasswordViewController.swift in Sources */,
 				2C2DCC0829598FB700E4B688 /* UIIColor+hex.swift in Sources */,
 				2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */,
+				2C1BD1A829842C01001284C0 /* MainChartView.swift in Sources */,
 				2C1BD17D29818D84001284C0 /* SeedPhraseView.swift in Sources */,
+				2C1BD1A229842B10001284C0 /* MainChartSection.swift in Sources */,
 				2C1BD181298191F9001284C0 /* SeedWordView.swift in Sources */,
+				2C1BD1A629842BEA001284C0 /* MainChartCell.swift in Sources */,
 				2C2DCC0929598FB700E4B688 /* ListCollectionContext+Dequeue.swift in Sources */,
 				2C1BD1942983F48D001284C0 /* SuccessView.swift in Sources */,
 				2C1BD17229818334001284C0 /* SeedPhraseAlertViewController.swift in Sources */,
@@ -621,6 +668,7 @@
 				2C2DCBDF29597E4200E4B688 /* AppDelegate.swift in Sources */,
 				2C2DCBF629598E6400E4B688 /* R.generated.swift in Sources */,
 				2C1BD17F29818D90001284C0 /* SeedPhraseViewController.swift in Sources */,
+				2C1BD19F298429C0001284C0 /* MainChartModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,6 +823,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -803,6 +852,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
