@@ -7,6 +7,13 @@ xcuserdata/
 
 *.DS_Store
 */.DS_Store
+*.iml
+.gradle
+.idea
+captures
+.externalNativeBuild
+.cxx
+local.properties
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint

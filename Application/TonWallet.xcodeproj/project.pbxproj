@@ -40,6 +40,7 @@
 		2C2DCC0829598FB700E4B688 /* UIIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCC0229598FB700E4B688 /* UIIColor+hex.swift */; };
 		2C2DCC0929598FB700E4B688 /* ListCollectionContext+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCC0529598FB700E4B688 /* ListCollectionContext+Dequeue.swift */; };
 		2C2DCC0E2959908300E4B688 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCC102959908300E4B688 /* Localizable.strings */; };
+		2CDA0007298474A000A8CA23 /* SharedWithYouCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDA0006298474A000A8CA23 /* SharedWithYouCore.framework */; };
 		2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F115295C288600258A98 /* CreateViewController.swift */; };
 		2CE8F118295C29B600258A98 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F117295C29B600258A98 /* CreateView.swift */; };
 		2CE8F11E295C352200258A98 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F11A295C352200258A98 /* Montserrat-Bold.ttf */; };
@@ -87,6 +88,7 @@
 		2C2DCC0229598FB700E4B688 /* UIIColor+hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIIColor+hex.swift"; sourceTree = "<group>"; };
 		2C2DCC0529598FB700E4B688 /* ListCollectionContext+Dequeue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ListCollectionContext+Dequeue.swift"; sourceTree = "<group>"; };
 		2C2DCC0F2959908300E4B688 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2CDA0006298474A000A8CA23 /* SharedWithYouCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SharedWithYouCore.framework; path = System/Library/Frameworks/SharedWithYouCore.framework; sourceTree = SDKROOT; };
 		2CE8F115295C288600258A98 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		2CE8F117295C29B600258A98 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		2CE8F11A295C352200258A98 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CDA0007298474A000A8CA23 /* SharedWithYouCore.framework in Frameworks */,
 				B3791D54ECE7C84BCA846C5F /* Pods_TonWallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,6 +495,7 @@
 		9DDD469C5B51637894AA3443 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2CDA0006298474A000A8CA23 /* SharedWithYouCore.framework */,
 				BA0B5B92E5EB9A7C84C0B389 /* Pods_TonWallet.framework */,
 			);
 			name = Frameworks;
@@ -504,6 +508,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C2DCBEF29597E4300E4B688 /* Build configuration list for PBXNativeTarget "TonWallet" */;
 			buildPhases = (
+				2C1BD207298434E5001284C0 /* ShellScript */,
 				76E4C208E6573CE48A45634C /* [CP] Check Pods Manifest.lock */,
 				2C2DCBF429598DB300E4B688 /* ShellScript */,
 				2C2DCBD729597E4200E4B688 /* Sources */,
@@ -577,10 +582,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2C1BD207298434E5001284C0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$SRCROOT/..\"\n./gradlew :shared:embedAndSignAppleFrameworkForXcode\n";
+		};
 		2C2DCBF429598DB300E4B688 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -817,6 +838,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N422RJM586;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Atributika\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/IGListDiffKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/IGListKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/R.swift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit\"",
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TonWallet/Supporting files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -846,6 +876,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N422RJM586;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Atributika\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/IGListDiffKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/IGListKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/R.swift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit\"",
+					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TonWallet/Supporting files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
