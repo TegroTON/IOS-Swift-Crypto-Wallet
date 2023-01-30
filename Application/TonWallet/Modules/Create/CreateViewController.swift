@@ -1,7 +1,10 @@
 import UIKit
+import shared
 
 class CreateViewController: UIViewController {
 
+    let queue = DispatchQueue(label: "testQueue", attributes: .concurrent)
+    
     var mainView: CreateView {
         return view as! CreateView
     }
@@ -26,9 +29,21 @@ class CreateViewController: UIViewController {
     }
     
     @objc private func createButtonTapped() {
-        let vc = SeedPhraseAlertViewController()
+//        let vc = SeedPhraseAlertViewController()
+//
+//        navigationController?.pushViewController(vc, animated: true)
         
-        navigationController?.pushViewController(vc, animated: true)
+        let ton = Ton()
+        let mnemonic = MnemonicCompanion.shared
+        let liteClient = ton.doInitLiteClient()
+        
+//        mnemonic.doGenerate { array, error in
+//
+//        }
+//        mnemonic.generate(wordCount: 24, password: "", wordlist: mnemonic.DEFAULT_WORDLIST, random: KotlinRandom()) { array, error in
+//            print("fuck this shit", array)
+//        }
+//        let wallet = ton.mnemonicGeneration()
     }
     
     @objc private func connectButtonTapped() {
