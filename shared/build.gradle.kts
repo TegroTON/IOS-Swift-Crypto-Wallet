@@ -17,7 +17,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api("org.ton:ton-kotlin:0.2.10")
+                api("org.ton:ton-kotlin:0.2.13")
             }
         }
         val commonTest by getting {
