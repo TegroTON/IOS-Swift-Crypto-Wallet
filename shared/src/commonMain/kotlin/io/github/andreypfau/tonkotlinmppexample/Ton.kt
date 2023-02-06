@@ -20,6 +20,7 @@ class Ton {
         initLiteClientAsync()
     }
 
+    @Throws(Exception::class)
     fun getLastBlockId(liteClient: LiteClient): String = runBlocking {
         liteClient.getLastBlockId().toString()
     }

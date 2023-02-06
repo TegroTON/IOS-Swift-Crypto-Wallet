@@ -34,16 +34,10 @@ class CreateViewController: UIViewController {
 //        navigationController?.pushViewController(vc, animated: true)
         
         let ton = Ton()
-        let mnemonic = MnemonicCompanion.shared
         let liteClient = ton.doInitLiteClient()
+        let seedWords = getSeedWords()
         
-//        mnemonic.doGenerate { array, error in
-//
-//        }
-//        mnemonic.generate(wordCount: 24, password: "", wordlist: mnemonic.DEFAULT_WORDLIST, random: KotlinRandom()) { array, error in
-//            print("fuck this shit", array)
-//        }
-//        let wallet = ton.mnemonicGeneration()
+        
     }
     
     @objc private func connectButtonTapped() {
@@ -54,6 +48,20 @@ class CreateViewController: UIViewController {
     
     private func colorAppearanceToggled() {
         mainView.updateColors()
+    }
+    
+    func getSeedWords() -> [String] {
+        let kotlinArray = MnemonicCompanion.shared.doGenerate()
+        var swiftArray = [String]()
+        
+        if let count = kotlinArray?.size, let kotlinArray = kotlinArray {
+            for index in 0..<count {
+                let string = kotlinArray.get(index: index)! as String
+                swiftArray.append(string)
+            }
+        }
+        
+        return swiftArray
     }
     
 }
