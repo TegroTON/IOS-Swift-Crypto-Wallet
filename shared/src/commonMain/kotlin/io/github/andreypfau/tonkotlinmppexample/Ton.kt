@@ -2,14 +2,14 @@ package io.github.andreypfau.tonkotlinmppexample
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.selects.select
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.ton.api.liteclient.config.LiteClientConfigGlobal
 import org.ton.lite.client.LiteClient
 import org.ton.mnemonic.Mnemonic
 import kotlin.native.Platform
-import kotlin.random.Random
+import kotlin.time.ExperimentalTime
+import kotlin.time.TimeSource
 
 class Ton {
     suspend fun initLiteClientAsync(): LiteClient = coroutineScope {
@@ -29,13 +29,13 @@ class Ton {
         liteClient.getLastBlockId().toString()
     }
 
-    @OptIn(ExperimentalStdlibApi::class)
-    fun generateMnemonic(): List<String> = runBlocking {
+    @OptIn(ExperimentalStdlibApi::class, ExperimentalTime::class)
+    suspend fun generateMnemonic(): List<String> = coroutineScope {
         val channel = Channel<List<String>>()
+        val time = TimeSource.Monotonic.markNow()
         val tasks = async {
             List(Platform.getAvailableProcessors()) { num ->
                 async {
-                    println("Mnemonic generation thread $num started")
                     while (isActive) {
                         val mnemonics = Mnemonic.generate()
                         // sometimes mnemonic can be both basic and password seed, retry generate
@@ -43,7 +43,6 @@ class Ton {
                             println("Found password seed in basic mnemonic, retry...")
                             continue
                         }
-                        println("Mnemonic generation $num completed")
                         channel.send(mnemonics)
                         break
                     }
@@ -51,7 +50,8 @@ class Ton {
             }
         }
         val mnemonics = channel.receive()
+        println("Mnemonic generated for ${time.elapsedNow()}")
         tasks.cancel() // cancel non-completed tasks
-        return@runBlocking mnemonics
+        return@coroutineScope mnemonics
     }
 }

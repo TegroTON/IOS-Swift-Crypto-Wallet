@@ -508,8 +508,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C2DCBEF29597E4300E4B688 /* Build configuration list for PBXNativeTarget "TonWallet" */;
 			buildPhases = (
-				2C1BD207298434E5001284C0 /* ShellScript */,
 				76E4C208E6573CE48A45634C /* [CP] Check Pods Manifest.lock */,
+				2C1BD207298434E5001284C0 /* ShellScript */,
 				2C2DCBF429598DB300E4B688 /* ShellScript */,
 				2C2DCBD729597E4200E4B688 /* Sources */,
 				2C2DCBD829597E4200E4B688 /* Frameworks */,
@@ -611,7 +611,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

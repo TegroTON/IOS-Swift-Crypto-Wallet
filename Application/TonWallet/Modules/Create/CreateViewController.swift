@@ -30,16 +30,15 @@ class CreateViewController: UIViewController {
     }
 
     @objc private func createButtonTapped() {
-//        let vc = SeedPhraseAlertViewController()
+        let vc = SeedPhraseAlertViewController()
+        navigationController?.pushViewController(vc, animated: true)
+
+//        mainView.createNewButton.isEnabled = false
 //
-//        navigationController?.pushViewController(vc, animated: true)
-
-        mainView.createNewButton.isEnabled = false
-
-        let seedWords = ton.generateMnemonic()
-        print("seed words: ", seedWords)
-
-        mainView.createNewButton.isEnabled = true
+//        let seedWords = ton.generateMnemonic()
+//        print("seed words: ", seedWords)
+//
+//        mainView.createNewButton.isEnabled = true
     }
 
     @objc private func connectButtonTapped() {
