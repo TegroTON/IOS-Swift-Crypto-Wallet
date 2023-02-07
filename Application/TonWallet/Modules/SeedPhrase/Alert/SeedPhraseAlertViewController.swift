@@ -13,14 +13,19 @@ class SeedPhraseAlertViewController: UIViewController {
         view = SeedPhraseAlertView()
     }
 
+    // Main -> Paper and pen [start mnemonic generation] -> Creating wallet [generation keypair] -> wallet
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.nextButton.isEnabled = false
         print("Start generate words")
-        ton.generateMnemonic { words, error in
-            print("words: ", words)
+        ton.generateMnemonic { mnemonics, error in
+            print("words: ", mnemonics)
             DispatchQueue.main.async {
-                self.mainView.nextButton.isEnabled = true
+                // Creating wallet view...
+                self.ton.calculateKeyPair(mnemonics: mnemonics!) { keypair, error in
+                    print("Address: ", self.ton.walletAddress(publicKey: keypair!.second!))
+                    // Wallet view...
+                }
             }
         }
         print("after scope")
