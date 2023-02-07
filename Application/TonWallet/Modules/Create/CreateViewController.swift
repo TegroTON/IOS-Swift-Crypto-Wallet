@@ -36,7 +36,7 @@ class CreateViewController: UIViewController {
 
         mainView.createNewButton.isEnabled = false
 
-        let seedWords = getSeedWords()
+        let seedWords = ton.generateMnemonic()
         print("seed words: ", seedWords)
 
         mainView.createNewButton.isEnabled = true
@@ -51,18 +51,4 @@ class CreateViewController: UIViewController {
     private func colorAppearanceToggled() {
         mainView.updateColors()
     }
-
-    func getSeedWords() -> [String] {
-        let kotlinArray = ton.generateMnemonic()
-        var swiftArray = [String]()
-
-        let count = kotlinArray.size
-        for index in 0..<count {
-            let string = kotlinArray.get(index: index)! as String
-            swiftArray.append(string)
-        }
-
-        return swiftArray
-    }
-
 }

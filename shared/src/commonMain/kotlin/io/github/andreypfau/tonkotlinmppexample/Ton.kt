@@ -1,14 +1,14 @@
 package io.github.andreypfau.tonkotlinmppexample
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.selects.select
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.ton.api.liteclient.config.LiteClientConfigGlobal
 import org.ton.lite.client.LiteClient
 import org.ton.mnemonic.Mnemonic
+import kotlin.native.Platform
 import kotlin.random.Random
 
 class Ton {
@@ -29,9 +29,29 @@ class Ton {
         liteClient.getLastBlockId().toString()
     }
 
-    fun generateMnemonic() = runBlocking {
-        Mnemonic.generate(
-            random = Random
-        )
+    @OptIn(ExperimentalStdlibApi::class)
+    fun generateMnemonic(): List<String> = runBlocking {
+        val channel = Channel<List<String>>()
+        val tasks = async {
+            List(Platform.getAvailableProcessors()) { num ->
+                async {
+                    println("Mnemonic generation thread $num started")
+                    while (isActive) {
+                        val mnemonics = Mnemonic.generate()
+                        // sometimes mnemonic can be both basic and password seed, retry generate
+                        if (Mnemonic.isPasswordSeed(Mnemonic.toEntropy(mnemonics))) {
+                            println("Found password seed in basic mnemonic, retry...")
+                            continue
+                        }
+                        println("Mnemonic generation $num completed")
+                        channel.send(mnemonics)
+                        break
+                    }
+                }
+            }
+        }
+        val mnemonics = channel.receive()
+        tasks.cancel() // cancel non-completed tasks
+        return@runBlocking mnemonics
     }
 }

@@ -2,6 +2,11 @@ plugins {
     kotlin("multiplatform")
 }
 
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
 kotlin {
 
     listOf(
@@ -17,7 +22,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api("org.ton:ton-kotlin:0.2.13")
+                api("org.ton:ton-kotlin:0.2.14")
             }
         }
         val commonTest by getting {
