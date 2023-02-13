@@ -3,9 +3,6 @@ import shared
 
 class CreateViewController: UIViewController {
 
-    let queue = DispatchQueue(label: "testQueue", attributes: .concurrent)
-    let ton = Ton()
-
     var mainView: CreateView {
         return view as! CreateView
     }
@@ -32,13 +29,6 @@ class CreateViewController: UIViewController {
     @objc private func createButtonTapped() {
         let vc = SeedPhraseAlertViewController()
         navigationController?.pushViewController(vc, animated: true)
-
-//        mainView.createNewButton.isEnabled = false
-//
-//        let seedWords = ton.generateMnemonic()
-//        print("seed words: ", seedWords)
-//
-//        mainView.createNewButton.isEnabled = true
     }
 
     @objc private func connectButtonTapped() {

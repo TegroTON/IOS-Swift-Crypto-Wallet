@@ -48,6 +48,9 @@
 		2CE8F120295C352200258A98 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F11C295C352200258A98 /* Montserrat-Regular.ttf */; };
 		2CE8F121295C352200258A98 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F11D295C352200258A98 /* Montserrat-SemiBold.ttf */; };
 		2CE8F123295C4A0700258A98 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE8F122295C49E100258A98 /* Montserrat-ExtraBold.ttf */; };
+		6C8BA53D097E57E34EE801AF /* TonKeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8BAB58F4C34AC9D9CD6D3A /* TonKeyPair.swift */; };
+		6C8BA6EC50877D78EB58E2F6 /* TonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8BAFD75E236600AE4F8772 /* TonManager.swift */; };
+		6C8BADCC48B1E7F0A7F32C92 /* TonManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8BAE59CE7020DD0EEE2892 /* TonManagerDelegate.swift */; };
 		B3791D54ECE7C84BCA846C5F /* Pods_TonWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA0B5B92E5EB9A7C84C0B389 /* Pods_TonWallet.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +100,9 @@
 		2CE8F11D295C352200258A98 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
 		2CE8F122295C49E100258A98 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
 		3FFC720241E87254142E4955 /* Pods-TonWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TonWallet.release.xcconfig"; path = "Target Support Files/Pods-TonWallet/Pods-TonWallet.release.xcconfig"; sourceTree = "<group>"; };
+		6C8BAB58F4C34AC9D9CD6D3A /* TonKeyPair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TonKeyPair.swift; sourceTree = "<group>"; };
+		6C8BAE59CE7020DD0EEE2892 /* TonManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TonManagerDelegate.swift; sourceTree = "<group>"; };
+		6C8BAFD75E236600AE4F8772 /* TonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TonManager.swift; sourceTree = "<group>"; };
 		BA0B5B92E5EB9A7C84C0B389 /* Pods_TonWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TonWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -365,6 +371,7 @@
 		2C2DCBF929598EBB00E4B688 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				6C8BA8D891584884DEB3A3E4 /* Service */,
 				2C2DCBFB29598FB700E4B688 /* Common */,
 				2C2DCC0A2959905800E4B688 /* Resources */,
 			);
@@ -492,6 +499,32 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		6C8BA4412952930AE6670F61 /* Ton */ = {
+			isa = PBXGroup;
+			children = (
+				6C8BAA4E290DD25CA2DBB705 /* Model */,
+				6C8BAE59CE7020DD0EEE2892 /* TonManagerDelegate.swift */,
+				6C8BAFD75E236600AE4F8772 /* TonManager.swift */,
+			);
+			path = Ton;
+			sourceTree = "<group>";
+		};
+		6C8BA8D891584884DEB3A3E4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				6C8BA4412952930AE6670F61 /* Ton */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		6C8BAA4E290DD25CA2DBB705 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6C8BAB58F4C34AC9D9CD6D3A /* TonKeyPair.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9DDD469C5B51637894AA3443 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,7 +644,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -690,6 +723,9 @@
 				2C2DCBF629598E6400E4B688 /* R.generated.swift in Sources */,
 				2C1BD17F29818D90001284C0 /* SeedPhraseViewController.swift in Sources */,
 				2C1BD19F298429C0001284C0 /* MainChartModel.swift in Sources */,
+				6C8BA6EC50877D78EB58E2F6 /* TonManager.swift in Sources */,
+				6C8BADCC48B1E7F0A7F32C92 /* TonManagerDelegate.swift in Sources */,
+				6C8BA53D097E57E34EE801AF /* TonKeyPair.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

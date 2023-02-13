@@ -12,9 +12,10 @@ class SeedPhraseViewController: UIViewController {
         return view as! SeedPhraseView
     }
     
-    let phrases = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
+    let phrases = TonManager.shared.mnemonics ?? []
     var wordsForCheck = [(index: Int, word: String)]()
-    var userWordsForCheck = [Int: String]()
+    var userSeedPhrase = [Int: String]()
+    
     var type: ViewType {
         didSet {
             mainView.setupConstraints(for: type)
@@ -29,32 +30,7 @@ class SeedPhraseViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         if type == .enter {
-            wordsForCheck = [
-                (index: 0, word: "0"),
-                (index: 1, word: "1"),
-                (index: 2, word: "2"),
-                (index: 3, word: "3"),
-                (index: 4, word: "4"),
-                (index: 5, word: "5"),
-                (index: 6, word: "6"),
-                (index: 7, word: "7"),
-                (index: 8, word: "8"),
-                (index: 9, word: "9"),
-                (index: 10, word: "10"),
-                (index: 11, word: "11"),
-                (index: 12, word: "12"),
-                (index: 13, word: "13"),
-                (index: 14, word: "14"),
-                (index: 15, word: "15"),
-                (index: 16, word: "16"),
-                (index: 17, word: "17"),
-                (index: 18, word: "18"),
-                (index: 19, word: "19"),
-                (index: 20, word: "20"),
-                (index: 21, word: "21"),
-                (index: 22, word: "22"),
-                (index: 23, word: "23")
-            ]
+            wordsForCheck = Array(0...23).map { (index: $0, word: "") }
         }
     }
     
@@ -95,7 +71,7 @@ class SeedPhraseViewController: UIViewController {
             switchToCheckType()
             
         case .enter:
-            break
+            connectWallet()
             
         case .check:
             checkUserWords()
@@ -172,9 +148,9 @@ class SeedPhraseViewController: UIViewController {
     private func checkUserWords() {
         resignAllFirstResponder()
         
-        if userWordsForCheck[wordsForCheck[0].index] == wordsForCheck[0].word {
-            if userWordsForCheck[wordsForCheck[1].index] == wordsForCheck[1].word {
-                if userWordsForCheck[wordsForCheck[2].index] == wordsForCheck[2].word {
+        if userSeedPhrase[wordsForCheck[0].index] == wordsForCheck[0].word {
+            if userSeedPhrase[wordsForCheck[1].index] == wordsForCheck[1].word {
+                if userSeedPhrase[wordsForCheck[2].index] == wordsForCheck[2].word {
                     navigationController?.pushViewController(PasswordViewController(), animated: true)
                 } else {
                     print("not correct 3rd word")
@@ -184,6 +160,19 @@ class SeedPhraseViewController: UIViewController {
             }
         } else {
             print("not correct 1st word")
+        }
+    }
+    
+    private func connectWallet() {
+        resignAllFirstResponder()
+        let words = Array(0...23).compactMap { userSeedPhrase[$0] }
+        
+        if words.count == 24 {
+            TonManager.shared.delegate = self
+            TonManager.shared.calculateKeyPair(mnemonics: words)
+        } else {
+            let index = IndexPath(row: words.count - 1, section: 0)
+            mainView.tableView.scrollToRow(at: index, at: .middle, animated: true)
         }
     }
 }
@@ -207,6 +196,7 @@ extension SeedPhraseViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: SeedWordCell.description(), for: indexPath) as! SeedWordCell
             cell.indexLabel.text = (wordsForCheck[indexPath.row].index + 1).description + "."
+            cell.textField.text = userSeedPhrase[indexPath.row]
             cell.textField.tag = indexPath.row
             cell.delegate = self
             
@@ -224,6 +214,8 @@ extension SeedPhraseViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+// MARK: - SeedWordCellDelegate
+
 extension SeedPhraseViewController: SeedWordCellDelegate {
     func seedWord(didReturned rowIndex: Int) {
         if rowIndex < wordsForCheck.count - 1 {
@@ -240,7 +232,20 @@ extension SeedPhraseViewController: SeedWordCellDelegate {
     }
     
     func seedWord(didEndEditing text: String, word index: Int) {
-        userWordsForCheck[index] = text
+        userSeedPhrase[index] = text
     }
 }
 
+// MARK: - TonManagerDelegate
+
+extension SeedPhraseViewController: TonManagerDelegate {
+    func ton(keyPairCalculated result: Result<TonKeyPair, Error>) {
+        switch result {
+        case .success(let keyPair):
+            print("key pair", keyPair)
+            
+        case .failure(let error):
+            print("❤️ error calculate key pair connect wallet", error)
+        }
+    }
+}
