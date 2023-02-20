@@ -4,10 +4,14 @@ class RootNavigationController: UINavigationController {
 
     static let shared = RootNavigationController()
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .darkContent
+    override var childForStatusBarStyle: UIViewController? {
+        return visibleViewController
     }
-
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return visibleViewController?.preferredStatusBarStyle ?? .default
+    }
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         

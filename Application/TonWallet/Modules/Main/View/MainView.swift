@@ -8,7 +8,7 @@ class MainView: RootView {
         let label = UILabel()
         label.text = R.string.localizable.mainTitle()
         label.font = .montserratFont(ofSize: 20, weight: .semiBold)
-        label.textColor = R.color.textColor()
+//        label.textColor = R.color.textColor()
         label.textAlignment = .center
         
         return label
@@ -38,7 +38,7 @@ class MainView: RootView {
     }()
     
     override func setup() {
-        backgroundColor = R.color.background()
+//        backgroundColor = R.color.background()
         
         addSubview(headerContainerView)
         addSubview(collectionView)

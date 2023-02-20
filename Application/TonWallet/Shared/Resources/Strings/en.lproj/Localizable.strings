@@ -1,10 +1,9 @@
 // Create
-create-privacy = "Privacy Policy";
-create-connect-wallet = "Connect";
-create-new-wallet = "Create wallet";
-create-subtitle = "Create a Toncoin wallet\nor connect an existing one";
-create-by = "by Tegro";
-create-title = "TON Wallet";
+create-hello = "Hi there  👋";
+create-title = "DeFi Wallet";
+create-subtitle = "A next evolution Crypto Wallet\non TON Blockchain";
+create-connect-wallet = "Connect Wallet";
+create-new-wallet = "Create new";
 
 // Seed phrase
 seed-phrase-read-title = "Your private key";

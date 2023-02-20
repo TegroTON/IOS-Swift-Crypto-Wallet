@@ -15,7 +15,7 @@ class SuccessView: UIView {
         let label = UILabel()
         label.text = R.string.localizable.successCreateTitle()
         label.font = .montserratFont(ofSize: 20, weight: .medium)
-        label.textColor = R.color.textColor()
+//        label.textColor = R.color.textColor()
         label.textAlignment = .center
         
         return label
@@ -25,7 +25,7 @@ class SuccessView: UIView {
         let label = UILabel()
         label.text = R.string.localizable.successCreateSubtitle()
         label.font = .montserratFont(ofSize: 16, weight: .medium)
-        label.textColor = R.color.subtitleColor()
+//        label.textColor = R.color.subtitleColor()
         label.textAlignment = .center
         
         return label
@@ -35,7 +35,7 @@ class SuccessView: UIView {
         super.init(frame: .zero)
         
         alpha = 0
-        backgroundColor = R.color.background()
+//        backgroundColor = R.color.background()
         addSubview(containerView)
         
         containerView.addSubview(imageView)

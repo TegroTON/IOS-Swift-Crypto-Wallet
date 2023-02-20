@@ -19,4 +19,9 @@ extension UIFont {
         let name = "Rubik" + weight.rawValue
         return UIFont(name: name, size: fontSize)!
     }
+    
+    class func interFont(ofSize fontSize: CGFloat, weight: FontWeight) -> UIFont {
+        let name = "Inter" + weight.rawValue
+        return UIFont(name: name, size: fontSize)!
+    }
 }

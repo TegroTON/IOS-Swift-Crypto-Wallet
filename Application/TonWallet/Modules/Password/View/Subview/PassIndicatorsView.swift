@@ -6,8 +6,8 @@ class PassIndicatorsView: RootView {
         let view = UIView()
         view.layer.cornerRadius = 24/2
         view.layer.borderWidth = 1
-        view.layer.borderColor = R.color.passwordIndicatorBorder()?.cgColor
-        view.backgroundColor = R.color.passwordIndicator()
+//        view.layer.borderColor = R.color.passwordIndicatorBorder()?.cgColor
+//        view.backgroundColor = R.color.passwordIndicator()
         
         return view
     }()
@@ -16,8 +16,8 @@ class PassIndicatorsView: RootView {
         let view = UIView()
         view.layer.cornerRadius = 24/2
         view.layer.borderWidth = 1
-        view.layer.borderColor = R.color.passwordIndicatorBorder()?.cgColor
-        view.backgroundColor = R.color.passwordIndicator()
+//        view.layer.borderColor = R.color.passwordIndicatorBorder()?.cgColor
+//        view.backgroundColor = R.color.passwordIndicator()
         
         return view
     }()
@@ -26,8 +26,8 @@ class PassIndicatorsView: RootView {
         let view = UIView()
         view.layer.cornerRadius = 24/2
         view.layer.borderWidth = 1
-        view.layer.borderColor = R.color.passwordIndicatorBorder()?.cgColor
-        view.backgroundColor = R.color.passwordIndicator()
+//        view.layer.borderColor = R.color.passwordIndicatorBorder()?.cgColor
+//        view.backgroundColor = R.color.passwordIndicator()
         
         return view
     }()
@@ -36,8 +36,8 @@ class PassIndicatorsView: RootView {
         let view = UIView()
         view.layer.cornerRadius = 24/2
         view.layer.borderWidth = 1
-        view.layer.borderColor = R.color.passwordIndicatorBorder()?.cgColor
-        view.backgroundColor = R.color.passwordIndicator()
+//        view.layer.borderColor = R.color.passwordIndicatorBorder()?.cgColor
+//        view.backgroundColor = R.color.passwordIndicator()
         
         return view
     }()
@@ -68,16 +68,16 @@ class PassIndicatorsView: RootView {
             self.firstView.layer.borderWidth = 0
         } completion: { _ in
             UIView.animate(withDuration: 0.3) {
-                self.fourthView.backgroundColor = R.color.passwordIndicator()
+//                self.fourthView.backgroundColor = R.color.passwordIndicator()
                 self.fourthView.layer.borderWidth = 1
                 
-                self.thirdView.backgroundColor = R.color.passwordIndicator()
+//                self.thirdView.backgroundColor = R.color.passwordIndicator()
                 self.thirdView.layer.borderWidth = 1
                 
-                self.secondView.backgroundColor = R.color.passwordIndicator()
+//                self.secondView.backgroundColor = R.color.passwordIndicator()
                 self.secondView.layer.borderWidth = 1
                 
-                self.firstView.backgroundColor = R.color.passwordIndicator()
+//                self.firstView.backgroundColor = R.color.passwordIndicator()
                 self.firstView.layer.borderWidth = 1
             }
         }
@@ -85,21 +85,23 @@ class PassIndicatorsView: RootView {
     }
     
     func turnOffIndicators() {
-        fourthView.backgroundColor = R.color.passwordIndicator()
+//        fourthView.backgroundColor = R.color.passwordIndicator()
         fourthView.layer.borderWidth = 1
         
-        thirdView.backgroundColor = R.color.passwordIndicator()
+//        thirdView.backgroundColor = R.color.passwordIndicator()
         thirdView.layer.borderWidth = 1
         
-        secondView.backgroundColor = R.color.passwordIndicator()
+//        secondView.backgroundColor = R.color.passwordIndicator()
         secondView.layer.borderWidth = 1
         
-        firstView.backgroundColor = R.color.passwordIndicator()
+//        firstView.backgroundColor = R.color.passwordIndicator()
         firstView.layer.borderWidth = 1
     }
     
     func changeIndicator(isOn: Bool, index: Int) {
-        let color: UIColor? = isOn ? .init(hex6: 0x4285F4) : R.color.passwordIndicator()
+        let color: UIColor? = isOn ? .init(hex6: 0x4285F4) :
+            .white
+//        R.color.passwordIndicator()
         let width: CGFloat = isOn ? 0 : 1
         
         if index == 3 {

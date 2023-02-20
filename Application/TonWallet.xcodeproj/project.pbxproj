@@ -35,11 +35,18 @@
 		2C2DCBDF29597E4200E4B688 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCBDE29597E4200E4B688 /* AppDelegate.swift */; };
 		2C2DCBE829597E4300E4B688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCBE729597E4300E4B688 /* Assets.xcassets */; };
 		2C2DCBEB29597E4300E4B688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCBE929597E4300E4B688 /* LaunchScreen.storyboard */; };
-		2C2DCBF629598E6400E4B688 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCBF529598E6400E4B688 /* R.generated.swift */; };
 		2C2DCC0629598FB700E4B688 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCBFE29598FB700E4B688 /* RootView.swift */; };
 		2C2DCC0829598FB700E4B688 /* UIIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCC0229598FB700E4B688 /* UIIColor+hex.swift */; };
 		2C2DCC0929598FB700E4B688 /* ListCollectionContext+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCC0529598FB700E4B688 /* ListCollectionContext+Dequeue.swift */; };
 		2C2DCC0E2959908300E4B688 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCC102959908300E4B688 /* Localizable.strings */; };
+		2C3BE49429A30AA1000358C0 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3BE48F29A30AA1000358C0 /* Inter-Medium.ttf */; };
+		2C3BE49529A30AA1000358C0 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3BE49029A30AA1000358C0 /* Inter-Bold.ttf */; };
+		2C3BE49629A30AA1000358C0 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3BE49129A30AA1000358C0 /* Inter-Regular.ttf */; };
+		2C3BE49729A30AA1000358C0 /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3BE49229A30AA1000358C0 /* Inter-ExtraBold.ttf */; };
+		2C3BE49829A30AA1000358C0 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3BE49329A30AA1000358C0 /* Inter-SemiBold.ttf */; };
+		2C4DE29929A3143200BD1F05 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29829A3143200BD1F05 /* R.generated.swift */; };
+		2C4DE29E29A3B48700BD1F05 /* LoadSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29D29A3B48700BD1F05 /* LoadSeedView.swift */; };
+		2C4DE2A029A3B5A300BD1F05 /* LoadSeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29F29A3B5A300BD1F05 /* LoadSeedViewController.swift */; };
 		2CDA0007298474A000A8CA23 /* SharedWithYouCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDA0006298474A000A8CA23 /* SharedWithYouCore.framework */; };
 		2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F115295C288600258A98 /* CreateViewController.swift */; };
 		2CE8F118295C29B600258A98 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F117295C29B600258A98 /* CreateView.swift */; };
@@ -86,11 +93,18 @@
 		2C2DCBE729597E4300E4B688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C2DCBEA29597E4300E4B688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C2DCBEC29597E4300E4B688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C2DCBF529598E6400E4B688 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		2C2DCBFE29598FB700E4B688 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		2C2DCC0229598FB700E4B688 /* UIIColor+hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIIColor+hex.swift"; sourceTree = "<group>"; };
 		2C2DCC0529598FB700E4B688 /* ListCollectionContext+Dequeue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ListCollectionContext+Dequeue.swift"; sourceTree = "<group>"; };
 		2C2DCC0F2959908300E4B688 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C3BE48F29A30AA1000358C0 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
+		2C3BE49029A30AA1000358C0 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
+		2C3BE49129A30AA1000358C0 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
+		2C3BE49229A30AA1000358C0 /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
+		2C3BE49329A30AA1000358C0 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		2C4DE29829A3143200BD1F05 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		2C4DE29D29A3B48700BD1F05 /* LoadSeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSeedView.swift; sourceTree = "<group>"; };
+		2C4DE29F29A3B5A300BD1F05 /* LoadSeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSeedViewController.swift; sourceTree = "<group>"; };
 		2CDA0006298474A000A8CA23 /* SharedWithYouCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SharedWithYouCore.framework; path = System/Library/Frameworks/SharedWithYouCore.framework; sourceTree = SDKROOT; };
 		2CE8F115295C288600258A98 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		2CE8F117295C29B600258A98 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
@@ -320,7 +334,7 @@
 		2C2DCBD229597E4200E4B688 = {
 			isa = PBXGroup;
 			children = (
-				2C2DCBF529598E6400E4B688 /* R.generated.swift */,
+				2C4DE29829A3143200BD1F05 /* R.generated.swift */,
 				2C2DCBDD29597E4200E4B688 /* TonWallet */,
 				2C2DCBDC29597E4200E4B688 /* Products */,
 				3821818A4C7E1B6BCD9642F6 /* Pods */,
@@ -362,7 +376,6 @@
 				2C1BD1952983F928001284C0 /* Main */,
 				2C1BD18F2983F42D001284C0 /* Success */,
 				2C1BD1862982BA62001284C0 /* Password */,
-				2C1BD16F29818307001284C0 /* SeedPhrase */,
 				2CE8F112295C285E00258A98 /* Create */,
 			);
 			path = Modules;
@@ -464,11 +477,50 @@
 			path = Strings;
 			sourceTree = "<group>";
 		};
-		2CE8F112295C285E00258A98 /* Create */ = {
+		2C3BE48E29A30AA1000358C0 /* Inter */ = {
+			isa = PBXGroup;
+			children = (
+				2C3BE48F29A30AA1000358C0 /* Inter-Medium.ttf */,
+				2C3BE49029A30AA1000358C0 /* Inter-Bold.ttf */,
+				2C3BE49129A30AA1000358C0 /* Inter-Regular.ttf */,
+				2C3BE49229A30AA1000358C0 /* Inter-ExtraBold.ttf */,
+				2C3BE49329A30AA1000358C0 /* Inter-SemiBold.ttf */,
+			);
+			path = Inter;
+			sourceTree = "<group>";
+		};
+		2C4DE29A29A3B43100BD1F05 /* Start */ = {
 			isa = PBXGroup;
 			children = (
 				2CE8F113295C286900258A98 /* View */,
 				2CE8F115295C288600258A98 /* CreateViewController.swift */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
+		2C4DE29B29A3B45600BD1F05 /* Load */ = {
+			isa = PBXGroup;
+			children = (
+				2C4DE29C29A3B47600BD1F05 /* View */,
+				2C4DE29F29A3B5A300BD1F05 /* LoadSeedViewController.swift */,
+			);
+			path = Load;
+			sourceTree = "<group>";
+		};
+		2C4DE29C29A3B47600BD1F05 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C4DE29D29A3B48700BD1F05 /* LoadSeedView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2CE8F112295C285E00258A98 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				2C4DE29A29A3B43100BD1F05 /* Start */,
+				2C4DE29B29A3B45600BD1F05 /* Load */,
+				2C1BD16F29818307001284C0 /* SeedPhrase */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -484,6 +536,7 @@
 		2CE8F119295C352200258A98 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				2C3BE48E29A30AA1000358C0 /* Inter */,
 				2C1BD16329817F74001284C0 /* Rubic */,
 				2C1BD16229817F66001284C0 /* Montserrat */,
 			);
@@ -596,18 +649,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C3BE49729A30AA1000358C0 /* Inter-ExtraBold.ttf in Resources */,
 				2C1BD169298181B2001284C0 /* Rubik-Bold.ttf in Resources */,
 				2C1BD16A298181B2001284C0 /* Rubik-ExtraBold.ttf in Resources */,
 				2C1BD16B298181B2001284C0 /* Rubik-Medium.ttf in Resources */,
 				2C1BD16C298181B2001284C0 /* Rubik-Regular.ttf in Resources */,
+				2C3BE49429A30AA1000358C0 /* Inter-Medium.ttf in Resources */,
 				2C1BD16D298181B2001284C0 /* Rubik-SemiBold.ttf in Resources */,
+				2C3BE49529A30AA1000358C0 /* Inter-Bold.ttf in Resources */,
 				2CE8F123295C4A0700258A98 /* Montserrat-ExtraBold.ttf in Resources */,
 				2CE8F120295C352200258A98 /* Montserrat-Regular.ttf in Resources */,
 				2CE8F121295C352200258A98 /* Montserrat-SemiBold.ttf in Resources */,
 				2C2DCBEB29597E4300E4B688 /* LaunchScreen.storyboard in Resources */,
+				2C3BE49829A30AA1000358C0 /* Inter-SemiBold.ttf in Resources */,
 				2C2DCC0E2959908300E4B688 /* Localizable.strings in Resources */,
 				2CE8F11E295C352200258A98 /* Montserrat-Bold.ttf in Resources */,
 				2C2DCBE829597E4300E4B688 /* Assets.xcassets in Resources */,
+				2C3BE49629A30AA1000358C0 /* Inter-Regular.ttf in Resources */,
 				2CE8F11F295C352200258A98 /* Montserrat-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -706,6 +764,7 @@
 				2C1BD179298189D2001284C0 /* RootNavigationController.swift in Sources */,
 				2C1BD18529828646001284C0 /* SeedWordCell.swift in Sources */,
 				2C1BD18B2982BAF7001284C0 /* PasswordViewController.swift in Sources */,
+				2C4DE29E29A3B48700BD1F05 /* LoadSeedView.swift in Sources */,
 				2C2DCC0829598FB700E4B688 /* UIIColor+hex.swift in Sources */,
 				2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */,
 				2C1BD1A829842C01001284C0 /* MainChartView.swift in Sources */,
@@ -713,14 +772,15 @@
 				2C1BD1A229842B10001284C0 /* MainChartSection.swift in Sources */,
 				2C1BD181298191F9001284C0 /* SeedWordView.swift in Sources */,
 				2C1BD1A629842BEA001284C0 /* MainChartCell.swift in Sources */,
+				2C4DE29929A3143200BD1F05 /* R.generated.swift in Sources */,
 				2C2DCC0929598FB700E4B688 /* ListCollectionContext+Dequeue.swift in Sources */,
 				2C1BD1942983F48D001284C0 /* SuccessView.swift in Sources */,
 				2C1BD17229818334001284C0 /* SeedPhraseAlertViewController.swift in Sources */,
 				2C1BD1892982BAD3001284C0 /* PasswordView.swift in Sources */,
+				2C4DE2A029A3B5A300BD1F05 /* LoadSeedViewController.swift in Sources */,
 				2C1BD1912983F447001284C0 /* SuccessViewController.swift in Sources */,
 				2CE8F118295C29B600258A98 /* CreateView.swift in Sources */,
 				2C2DCBDF29597E4200E4B688 /* AppDelegate.swift in Sources */,
-				2C2DCBF629598E6400E4B688 /* R.generated.swift in Sources */,
 				2C1BD17F29818D90001284C0 /* SeedPhraseViewController.swift in Sources */,
 				2C1BD19F298429C0001284C0 /* MainChartModel.swift in Sources */,
 				6C8BA6EC50877D78EB58E2F6 /* TonManager.swift in Sources */,
