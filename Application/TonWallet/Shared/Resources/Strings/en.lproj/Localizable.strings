@@ -5,6 +5,10 @@ create-subtitle = "A next evolution Crypto Wallet\non TON Blockchain";
 create-connect-wallet = "Connect Wallet";
 create-new-wallet = "Create new";
 
+// Load seed
+load-title = "Creating wallet ...";
+load-subtitle = "Find a save and private place. Get a pen\nand some paper to write down\nyour recovery phrase.";
+
 // Seed phrase
 seed-phrase-read-title = "Your private key";
 seed-phrase-read-subtitle = "Write these 24 words in exactly that order and hide them in a safe place.";
