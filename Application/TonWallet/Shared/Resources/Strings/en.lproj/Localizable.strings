@@ -10,15 +10,16 @@ load-title = "Creating wallet ...";
 load-subtitle = "Find a save and private place. Get a pen\nand some paper to write down\nyour recovery phrase.";
 
 // Seed phrase
-seed-phrase-read-title = "Your private key";
-seed-phrase-read-subtitle = "Write these 24 words in exactly that order and hide them in a safe place.";
-seed-phrase-button = "Next";
-seed-phrase-alert-title = "Take a pen and paper";
-seed-phrase-alert-subtitle = "Get ready to write down the secret key. This is the only way to regain access to the wallet. It is safest not to store the key on the devices.";
+seed-phrase-read-title = "Your recovery phrase";
+seed-phrase-read-warning = "Never share the recovery phrase with anyone and store it in a secure place!";
+seed-phrase-button = "Continue";
+seed-phrase-created-title = "Wallet created!";
+seed-phrase-created-subtitle = "Find a save and private place. Get a pen\nand some paper to write down\nyour recovery phrase.";
 seed-phrase-check-title = "Let's check";
-seed-phrase-check-subtitle = "To make sure you spelled the words\ncorrectly, enter words 6, 16 and 18";
+seed-phrase-check-subtitle = "To make sure you spelled the words\ncorrectly, enter words %@, %@ and %@";
 seed-phrase-enter-title = "Enter the secret key";
-seed-phrase-enter-subtitle = "To restore access, enter the 24 secret words you receivedwhen creating a wallet";
+seed-phrase-enter-subtitle = "To restore access, enter the 24 secret words you received when creating a wallet";
+seed-phrase-enter-button = "Connect Wallet";
 
 // Password
 password-set-title = "Set pin code";

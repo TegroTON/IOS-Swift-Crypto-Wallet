@@ -1,14 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "fi_cpu.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "fi_cpu@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "fi_cpu@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

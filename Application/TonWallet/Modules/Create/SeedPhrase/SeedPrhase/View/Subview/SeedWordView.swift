@@ -4,8 +4,8 @@ class SeedWordView: UIView {
 
     let indexLabel: UILabel = {
         let label = UILabel()
-        label.font = .montserratFont(ofSize: 14, weight: .medium)
-//        label.textColor = R.color.subtitleColor()
+        label.font = .interFont(ofSize: 16, weight: .regular)
+        label.textColor = R.color.textSecond()
         label.textAlignment = .left
         
         return label
@@ -13,8 +13,8 @@ class SeedWordView: UIView {
     
     let wordLabel: UILabel = {
         let label = UILabel()
-        label.font = .montserratFont(ofSize: 14, weight: .medium)
-//        label.textColor = R.color.textColor()
+        label.font = .montserratFont(ofSize: 16, weight: .regular)
+        label.textColor = R.color.textPrimary()
         label.textAlignment = .left
         
         return label
@@ -44,7 +44,7 @@ class SeedWordView: UIView {
         }
         
         wordLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(24.0)
+            make.left.equalToSuperview().offset(30.0)
             make.right.equalToSuperview()
             make.centerY.equalToSuperview()
         }

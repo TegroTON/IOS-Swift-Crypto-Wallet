@@ -6,7 +6,7 @@ class SuccessView: UIView {
     
     let imageView: UIImageView = {
         let view = UIImageView()
-        view.image = R.image.successCreate()
+//        view.image = R.image.successCreate()
         
         return view
     }()

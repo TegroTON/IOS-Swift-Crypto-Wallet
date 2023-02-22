@@ -17,7 +17,7 @@ class PasswordView: RootView {
     
     let imageView: UIImageView = {
         let view = UIImageView()
-        view.image = R.image.password()
+//        view.image = R.image.password()
         
         return view
     }()

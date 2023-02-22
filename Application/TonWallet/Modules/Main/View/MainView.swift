@@ -16,14 +16,14 @@ class MainView: RootView {
     
     let updateButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(R.image.mainUpdate(), for: .normal)
+//        button.setImage(R.image.mainUpdate(), for: .normal)
         
         return button
     }()
     
     let copyButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(R.image.mainCopy(), for: .normal)
+//        button.setImage(R.image.mainCopy(), for: .normal)
         
         return button
     }()

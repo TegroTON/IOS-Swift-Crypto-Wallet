@@ -27,7 +27,7 @@ class CreateViewController: UIViewController {
     }
     
     @objc private func connectButtonTapped() {
-        navigationController?.pushViewController(SeedPhraseViewController(type: .enter), animated: true)
+        navigationController?.pushViewController(CheckSeedViewController(type: .enter), animated: true)
     }
     
 }

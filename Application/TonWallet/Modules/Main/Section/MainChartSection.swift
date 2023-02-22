@@ -27,9 +27,9 @@ class MainChartSection: ListSectionController {
     @discardableResult
     private func configure(cell: MainChartCell) -> MainChartCell {
         
-        cell.contentConfiguration = UIHostingConfiguration {
-            MainChartView()
-        }
+//        cell.contentConfiguration = UIHostingConfiguration {
+//            MainChartView()
+//        }
         
         return cell
     }

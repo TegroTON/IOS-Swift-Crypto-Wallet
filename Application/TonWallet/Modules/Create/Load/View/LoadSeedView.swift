@@ -5,14 +5,8 @@ class LoadSeedView: RootView {
     
     let titlesBgView: UIView = UIView()
     let titlesContainer: UIView = UIView()
-    
-    let backButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(R.image.back(), for: .normal)
-        button.tintColor = R.color.textPrimary()
-        
-        return button
-    }()
+    let animateContainer: UIView = UIView()
+    let animateView: LoadAnimateView = LoadAnimateView()
     
     let imageView: UIImageView = {
         let view = UIImageView()
@@ -49,20 +43,13 @@ class LoadSeedView: RootView {
         return label
     }()
     
-    let animateView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .init(hex6: 0x0066FF)
-        
-        return view
-    }()
-    
     override func setup() {
         backgroundColor = R.color.bgPrimary()
         
-        addSubview(backButton)
         addSubview(titlesBgView)
-        addSubview(animateView)
+        addSubview(animateContainer)
         
+        animateContainer.addSubview(animateView)
         titlesBgView.addSubview(titlesContainer)
         
         titlesContainer.addSubview(imageView)
@@ -72,16 +59,10 @@ class LoadSeedView: RootView {
         setupConstraints()
     }
     
-    private func setupConstraints() {
-        backButton.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(16.0)
-            make.left.equalToSuperview().offset(24.0)
-            make.size.equalTo(24.0)
-        }
-        
+    private func setupConstraints() {        
         titlesBgView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.bottom.equalTo(animateView.snp.top)
+            make.bottom.equalTo(animateContainer.snp.top)
             make.left.right.equalToSuperview()
         }
         
@@ -107,10 +88,14 @@ class LoadSeedView: RootView {
             make.bottom.equalToSuperview()
         }
         
+        animateContainer.snp.makeConstraints { make in
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-16)
+            make.left.right.equalToSuperview().inset(24.0)
+            make.height.equalTo(60.0)
+        }
+        
         animateView.snp.makeConstraints { make in
-            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-38.0)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(44.0)
+            make.center.equalToSuperview()
             make.height.equalTo(16.0)
         }
     }

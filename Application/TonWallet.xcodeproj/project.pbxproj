@@ -39,6 +39,7 @@
 		2C2DCC0829598FB700E4B688 /* UIIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCC0229598FB700E4B688 /* UIIColor+hex.swift */; };
 		2C2DCC0929598FB700E4B688 /* ListCollectionContext+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2DCC0529598FB700E4B688 /* ListCollectionContext+Dequeue.swift */; };
 		2C2DCC0E2959908300E4B688 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C2DCC102959908300E4B688 /* Localizable.strings */; };
+		2C35C6A529A521FF00A0F181 /* SeedHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35C6A429A521FF00A0F181 /* SeedHeaderCell.swift */; };
 		2C3BE49429A30AA1000358C0 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3BE48F29A30AA1000358C0 /* Inter-Medium.ttf */; };
 		2C3BE49529A30AA1000358C0 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3BE49029A30AA1000358C0 /* Inter-Bold.ttf */; };
 		2C3BE49629A30AA1000358C0 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3BE49129A30AA1000358C0 /* Inter-Regular.ttf */; };
@@ -47,6 +48,11 @@
 		2C4DE29929A3143200BD1F05 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29829A3143200BD1F05 /* R.generated.swift */; };
 		2C4DE29E29A3B48700BD1F05 /* LoadSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29D29A3B48700BD1F05 /* LoadSeedView.swift */; };
 		2C4DE2A029A3B5A300BD1F05 /* LoadSeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29F29A3B5A300BD1F05 /* LoadSeedViewController.swift */; };
+		2C4DE2A329A3E64200BD1F05 /* LoadAnimateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE2A229A3E64200BD1F05 /* LoadAnimateView.swift */; };
+		2C4DE2A829A4147700BD1F05 /* CheckSeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE2A729A4147700BD1F05 /* CheckSeedViewController.swift */; };
+		2C4DE2AA29A414A800BD1F05 /* CheckSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE2A929A414A800BD1F05 /* CheckSeedView.swift */; };
+		2C4DE2AC29A4154900BD1F05 /* SeedPhraseWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE2AB29A4154900BD1F05 /* SeedPhraseWarningView.swift */; };
+		2C4DE2AE29A4160D00BD1F05 /* SeedPhraseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE2AD29A4160D00BD1F05 /* SeedPhraseHeaderView.swift */; };
 		2CDA0007298474A000A8CA23 /* SharedWithYouCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDA0006298474A000A8CA23 /* SharedWithYouCore.framework */; };
 		2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F115295C288600258A98 /* CreateViewController.swift */; };
 		2CE8F118295C29B600258A98 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F117295C29B600258A98 /* CreateView.swift */; };
@@ -97,6 +103,7 @@
 		2C2DCC0229598FB700E4B688 /* UIIColor+hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIIColor+hex.swift"; sourceTree = "<group>"; };
 		2C2DCC0529598FB700E4B688 /* ListCollectionContext+Dequeue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ListCollectionContext+Dequeue.swift"; sourceTree = "<group>"; };
 		2C2DCC0F2959908300E4B688 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C35C6A429A521FF00A0F181 /* SeedHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedHeaderCell.swift; sourceTree = "<group>"; };
 		2C3BE48F29A30AA1000358C0 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
 		2C3BE49029A30AA1000358C0 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
 		2C3BE49129A30AA1000358C0 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
@@ -105,6 +112,11 @@
 		2C4DE29829A3143200BD1F05 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		2C4DE29D29A3B48700BD1F05 /* LoadSeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSeedView.swift; sourceTree = "<group>"; };
 		2C4DE29F29A3B5A300BD1F05 /* LoadSeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSeedViewController.swift; sourceTree = "<group>"; };
+		2C4DE2A229A3E64200BD1F05 /* LoadAnimateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAnimateView.swift; sourceTree = "<group>"; };
+		2C4DE2A729A4147700BD1F05 /* CheckSeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSeedViewController.swift; sourceTree = "<group>"; };
+		2C4DE2A929A414A800BD1F05 /* CheckSeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSeedView.swift; sourceTree = "<group>"; };
+		2C4DE2AB29A4154900BD1F05 /* SeedPhraseWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseWarningView.swift; sourceTree = "<group>"; };
+		2C4DE2AD29A4160D00BD1F05 /* SeedPhraseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseHeaderView.swift; sourceTree = "<group>"; };
 		2CDA0006298474A000A8CA23 /* SharedWithYouCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SharedWithYouCore.framework; path = System/Library/Frameworks/SharedWithYouCore.framework; sourceTree = SDKROOT; };
 		2CE8F115295C288600258A98 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		2CE8F117295C29B600258A98 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
@@ -160,6 +172,7 @@
 		2C1BD16F29818307001284C0 /* SeedPhrase */ = {
 			isa = PBXGroup;
 			children = (
+				2C4DE2A429A4144100BD1F05 /* Check */,
 				2C1BD17029818319001284C0 /* Alert */,
 				2C1BD17A29818D6F001284C0 /* SeedPrhase */,
 			);
@@ -202,7 +215,6 @@
 		2C1BD17A29818D6F001284C0 /* SeedPrhase */ = {
 			isa = PBXGroup;
 			children = (
-				2C1BD18329828614001284C0 /* Cell */,
 				2C1BD17B29818D78001284C0 /* View */,
 				2C1BD17E29818D90001284C0 /* SeedPhraseViewController.swift */,
 			);
@@ -222,6 +234,8 @@
 			isa = PBXGroup;
 			children = (
 				2C1BD180298191F9001284C0 /* SeedWordView.swift */,
+				2C4DE2AB29A4154900BD1F05 /* SeedPhraseWarningView.swift */,
+				2C4DE2AD29A4160D00BD1F05 /* SeedPhraseHeaderView.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -231,6 +245,7 @@
 			children = (
 				2C1BD18429828646001284C0 /* SeedWordCell.swift */,
 				2C1BD19B2983FFEE001284C0 /* SeedNextButtonCell.swift */,
+				2C35C6A429A521FF00A0F181 /* SeedHeaderCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -477,6 +492,13 @@
 			path = Strings;
 			sourceTree = "<group>";
 		};
+		2C35C6A329A51E2600A0F181 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
 		2C3BE48E29A30AA1000358C0 /* Inter */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,7 +532,35 @@
 		2C4DE29C29A3B47600BD1F05 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2C4DE2A129A3E61D00BD1F05 /* Subview */,
 				2C4DE29D29A3B48700BD1F05 /* LoadSeedView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C4DE2A129A3E61D00BD1F05 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				2C4DE2A229A3E64200BD1F05 /* LoadAnimateView.swift */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
+		2C4DE2A429A4144100BD1F05 /* Check */ = {
+			isa = PBXGroup;
+			children = (
+				2C1BD18329828614001284C0 /* Cell */,
+				2C4DE2A529A4145200BD1F05 /* View */,
+				2C4DE2A729A4147700BD1F05 /* CheckSeedViewController.swift */,
+			);
+			path = Check;
+			sourceTree = "<group>";
+		};
+		2C4DE2A529A4145200BD1F05 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C35C6A329A51E2600A0F181 /* Subview */,
+				2C4DE2A929A414A800BD1F05 /* CheckSeedView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -761,6 +811,7 @@
 				2C2DCC0629598FB700E4B688 /* RootView.swift in Sources */,
 				2C1BD16129817F1F001284C0 /* UIFont+Custom.swift in Sources */,
 				2C1BD19C2983FFEE001284C0 /* SeedNextButtonCell.swift in Sources */,
+				2C4DE2A329A3E64200BD1F05 /* LoadAnimateView.swift in Sources */,
 				2C1BD18E2982C07E001284C0 /* PassIndicatorsView.swift in Sources */,
 				2C1BD179298189D2001284C0 /* RootNavigationController.swift in Sources */,
 				2C1BD18529828646001284C0 /* SeedWordCell.swift in Sources */,
@@ -771,11 +822,14 @@
 				2C1BD1A829842C01001284C0 /* MainChartView.swift in Sources */,
 				2C1BD17D29818D84001284C0 /* SeedPhraseView.swift in Sources */,
 				2C1BD1A229842B10001284C0 /* MainChartSection.swift in Sources */,
+				2C35C6A529A521FF00A0F181 /* SeedHeaderCell.swift in Sources */,
 				2C1BD181298191F9001284C0 /* SeedWordView.swift in Sources */,
 				2C1BD1A629842BEA001284C0 /* MainChartCell.swift in Sources */,
+				2C4DE2AC29A4154900BD1F05 /* SeedPhraseWarningView.swift in Sources */,
 				2C4DE29929A3143200BD1F05 /* R.generated.swift in Sources */,
 				2C2DCC0929598FB700E4B688 /* ListCollectionContext+Dequeue.swift in Sources */,
 				2C1BD1942983F48D001284C0 /* SuccessView.swift in Sources */,
+				2C4DE2A829A4147700BD1F05 /* CheckSeedViewController.swift in Sources */,
 				2C1BD17229818334001284C0 /* SeedPhraseAlertViewController.swift in Sources */,
 				2C1BD1892982BAD3001284C0 /* PasswordView.swift in Sources */,
 				2C4DE2A029A3B5A300BD1F05 /* LoadSeedViewController.swift in Sources */,
@@ -785,7 +839,9 @@
 				2C1BD17F29818D90001284C0 /* SeedPhraseViewController.swift in Sources */,
 				2C1BD19F298429C0001284C0 /* MainChartModel.swift in Sources */,
 				6C8BA6EC50877D78EB58E2F6 /* TonManager.swift in Sources */,
+				2C4DE2AE29A4160D00BD1F05 /* SeedPhraseHeaderView.swift in Sources */,
 				6C8BADCC48B1E7F0A7F32C92 /* TonManagerDelegate.swift in Sources */,
+				2C4DE2AA29A414A800BD1F05 /* CheckSeedView.swift in Sources */,
 				6C8BA53D097E57E34EE801AF /* TonKeyPair.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -946,21 +1002,25 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TonWallet/Supporting files/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.xaker.TonWallet;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = org.xaker.DeFiWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -984,21 +1044,25 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "TonWallet/Supporting files/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.xaker.TonWallet;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = org.xaker.DeFiWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
