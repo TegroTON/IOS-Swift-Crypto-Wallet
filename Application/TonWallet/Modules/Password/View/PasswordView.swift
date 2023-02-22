@@ -5,6 +5,14 @@ class PasswordView: RootView {
 
     let indicatorsView: PassIndicatorsView = PassIndicatorsView()
     
+    let backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(R.image.back(), for: .normal)
+        button.tintColor = R.color.textPrimary()
+        
+        return button
+    }()
+    
     let textField: UITextField = {
         let view = UITextField()
         view.autocorrectionType = .no
@@ -17,7 +25,7 @@ class PasswordView: RootView {
     
     let imageView: UIImageView = {
         let view = UIImageView()
-//        view.image = R.image.password()
+        view.image = R.image.password()
         
         return view
     }()
@@ -25,8 +33,8 @@ class PasswordView: RootView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = R.string.localizable.passwordSetTitle()
-        label.font = .montserratFont(ofSize: 18, weight: .medium)
-//        label.textColor = R.color.textColor()
+        label.font = .interFont(ofSize: 24, weight: .semiBold)
+        label.textColor = R.color.textPrimary()
         label.textAlignment = .center
         
         return label
@@ -38,39 +46,29 @@ class PasswordView: RootView {
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        paragraphStyle.lineHeightMultiple = 1.29
+        paragraphStyle.lineHeightMultiple = 1.24
         paragraphStyle.lineBreakMode = .byWordWrapping
         
         let style = Style()
             .paragraphStyle(paragraphStyle)
-            .font(.montserratFont(ofSize: 14, weight: .medium))
-//            .foregroundColor(R.color.subtitleColor()!)
+            .font(.interFont(ofSize: 16, weight: .regular))
+            .foregroundColor(R.color.textSecond()!)
         
-        label.attributedText = R.string.localizable.passwordSetTitle().styleAll(style)
+        label.attributedText = R.string.localizable.passwordSubtitle().styleAll(style)
         
         return label
     }()
     
-    let nextButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle(R.string.localizable.passwordCreateButton(), for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .montserratFont(ofSize: 14, weight: .semiBold)
-        button.layer.cornerRadius = 6
-        button.backgroundColor = .init(hex6: 0x4285F4)
-        
-        return button
-    }()
     
     override func setup() {
-//        backgroundColor = R.color.background()
+        backgroundColor = R.color.bgPrimary()
         
+        addSubview(backButton)
         addSubview(textField)
         addSubview(imageView)
         addSubview(titleLabel)
         addSubview(subtitleLabel)
         addSubview(indicatorsView)
-        addSubview(nextButton)
         
         setupConstraints()
     }
@@ -78,43 +76,43 @@ class PasswordView: RootView {
     func setSubtitle(text: String) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        paragraphStyle.lineHeightMultiple = 1.29
+        paragraphStyle.lineHeightMultiple = 1.24
         paragraphStyle.lineBreakMode = .byWordWrapping
         
         let style = Style()
             .paragraphStyle(paragraphStyle)
-            .font(.montserratFont(ofSize: 14, weight: .medium))
-//            .foregroundColor(R.color.subtitleColor()!)
+            .font(.interFont(ofSize: 16, weight: .regular))
+            .foregroundColor(R.color.textSecond()!)
         
         subtitleLabel.attributedText = text.styleAll(style)
     }
     
     private func setupConstraints() {
+        backButton.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(24.0)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(16.0)
+            make.size.equalTo(24.0)
+        }
+        
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(35.0)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(72.0)
             make.centerX.equalToSuperview()
-            make.size.equalTo(80.0)
+            make.size.equalTo(100.0)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(40.0)
+            make.top.equalTo(imageView.snp.bottom).offset(32.0)
             make.left.right.equalToSuperview()
         }
         
         subtitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(8.0)
+            make.top.equalTo(titleLabel.snp.bottom).offset(16.0)
             make.left.right.equalToSuperview().inset(30.0)
         }
         
         indicatorsView.snp.makeConstraints { make in
             make.top.equalTo(subtitleLabel.snp.bottom).offset(48.0)
             make.centerX.equalToSuperview()
-        }
-        
-        nextButton.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(78.0)
-            make.height.equalTo(48.0)
-            make.bottom.equalToSuperview().offset(48.0)
         }
     }
 }

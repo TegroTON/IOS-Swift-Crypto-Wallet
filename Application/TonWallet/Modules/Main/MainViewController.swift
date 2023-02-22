@@ -16,8 +16,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        adapter.collectionView = mainView.collectionView
-        adapter.dataSource = self
+//        adapter.collectionView = mainView.collectionView
+//        adapter.dataSource = self
     }
 
 }

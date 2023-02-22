@@ -6,7 +6,7 @@ class SuccessView: UIView {
     
     let imageView: UIImageView = {
         let view = UIImageView()
-//        view.image = R.image.successCreate()
+        view.image = R.image.seedPhraseCreated()
         
         return view
     }()
@@ -14,8 +14,8 @@ class SuccessView: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = R.string.localizable.successCreateTitle()
-        label.font = .montserratFont(ofSize: 20, weight: .medium)
-//        label.textColor = R.color.textColor()
+        label.font = .interFont(ofSize: 24, weight: .semiBold)
+        label.textColor = R.color.textPrimary()
         label.textAlignment = .center
         
         return label
@@ -24,8 +24,8 @@ class SuccessView: UIView {
     let subtitleLabel: UILabel = {
         let label = UILabel()
         label.text = R.string.localizable.successCreateSubtitle()
-        label.font = .montserratFont(ofSize: 16, weight: .medium)
-//        label.textColor = R.color.subtitleColor()
+        label.font = .interFont(ofSize: 16, weight: .regular)
+        label.textColor = R.color.textSecond()
         label.textAlignment = .center
         
         return label
@@ -35,7 +35,7 @@ class SuccessView: UIView {
         super.init(frame: .zero)
         
         alpha = 0
-//        backgroundColor = R.color.background()
+        backgroundColor = R.color.bgPrimary()
         addSubview(containerView)
         
         containerView.addSubview(imageView)

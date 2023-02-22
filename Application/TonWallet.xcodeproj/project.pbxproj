@@ -389,7 +389,6 @@
 			isa = PBXGroup;
 			children = (
 				2C1BD1952983F928001284C0 /* Main */,
-				2C1BD18F2983F42D001284C0 /* Success */,
 				2C1BD1862982BA62001284C0 /* Password */,
 				2CE8F112295C285E00258A98 /* Create */,
 			);
@@ -571,6 +570,7 @@
 				2C4DE29A29A3B43100BD1F05 /* Start */,
 				2C4DE29B29A3B45600BD1F05 /* Load */,
 				2C1BD16F29818307001284C0 /* SeedPhrase */,
+				2C1BD18F2983F42D001284C0 /* Success */,
 			);
 			path = Create;
 			sourceTree = "<group>";

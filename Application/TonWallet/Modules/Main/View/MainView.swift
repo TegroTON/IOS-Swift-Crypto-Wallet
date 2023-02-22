@@ -38,7 +38,7 @@ class MainView: RootView {
     }()
     
     override func setup() {
-//        backgroundColor = R.color.background()
+        backgroundColor = R.color.bgPrimary()
         
         addSubview(headerContainerView)
         addSubview(collectionView)
