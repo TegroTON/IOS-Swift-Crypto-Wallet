@@ -91,7 +91,7 @@ class PasswordViewController: UIViewController {
                 
                 present(vc, animated: false) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        self.navigationController?.setViewControllers([MainViewController()], animated: true)
+                        self.navigationController?.setViewControllers([TabBarViewController()], animated: true)
                     }
                 }
             } else {

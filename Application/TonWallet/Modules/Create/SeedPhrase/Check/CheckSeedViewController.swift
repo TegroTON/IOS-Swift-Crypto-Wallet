@@ -86,6 +86,19 @@ class CheckSeedViewController: UIViewController {
         navigationController?.pushViewController(PasswordViewController(), animated: true)
     }
     
+    @objc private func connectButtonTapped() {
+        resignAllFirstResponder()
+        let words = Array(0...23).compactMap { userSeedPhrase[$0] }
+        
+        if words.count == 24 {
+            TonManager.shared.delegate = self
+            TonManager.shared.mnemonics = words
+            TonManager.shared.calculateKeyPair(mnemonics: words)
+        } else {
+            // TODO: scroll to and show wrong phrase
+        }
+    }
+    
     @objc private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
@@ -105,17 +118,6 @@ class CheckSeedViewController: UIViewController {
 
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
-    }
-    
-    private func connectWallet() {
-        resignAllFirstResponder()
-        let words = Array(0...23).compactMap { userSeedPhrase[$0] }
-        
-        if words.count == 24 {
-            
-        } else {
-            // TODO: scroll to and show wrong phrase
-        }
     }
     
 }
@@ -168,7 +170,7 @@ extension CheckSeedViewController: UITableViewDataSource, UITableViewDelegate {
         
         if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: SeedNextButtonCell.description(), for: indexPath) as! SeedNextButtonCell
-            cell.nextButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
+            cell.nextButton.addTarget(self, action: #selector(connectButtonTapped), for: .touchUpInside)
             
             return cell
         }
@@ -201,5 +203,19 @@ extension CheckSeedViewController: SeedWordCellDelegate {
         
         let word = wordsForCheck[rowIndex]
         return type == .check ? userSeedPhrase[word.index] == word.word : true
+    }
+}
+
+// MARK: - TonManagerDelegate
+
+extension CheckSeedViewController: TonManagerDelegate {
+    func ton(keyPairCalculated result: Result<TonKeyPair, Error>) {
+        switch result {
+        case .success:
+            navigationController?.pushViewController(PasswordViewController(), animated: true)
+            
+        case .failure(let error):
+            print("❤️ keyPairCalculated error", error)
+        }
     }
 }

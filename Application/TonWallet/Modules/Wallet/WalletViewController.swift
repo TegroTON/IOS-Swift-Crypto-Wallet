@@ -1,38 +1,38 @@
 import UIKit
 import IGListKit
 
-class MainViewController: UIViewController {
+class WalletViewController: UIViewController {
 
-    var mainView: MainView {
-        return view as! MainView
+    var mainView: WalletView {
+        return view as! WalletView
     }
     
     lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: self)
     
     override func loadView() {
-        view = MainView()
+        view = WalletView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        adapter.collectionView = mainView.collectionView
-//        adapter.dataSource = self
+        adapter.collectionView = mainView.collectionView
+        adapter.dataSource = self
     }
 
 }
 
 // MARK: - ListAdapterDataSource
 
-extension MainViewController: ListAdapterDataSource {
+extension WalletViewController: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return [MainChartModel(test: "charts")]
+        return [WalletsSectionModel(wallet: "wallets")]
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         switch object {
-        case is MainChartModel:
-            return MainChartSection()
+        case is WalletsSectionModel:
+            return WalletsSection()
             
         default:
             preconditionFailure("Unknown object type")

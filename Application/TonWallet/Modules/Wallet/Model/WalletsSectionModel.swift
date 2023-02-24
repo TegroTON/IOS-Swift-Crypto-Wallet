@@ -1,23 +1,23 @@
 import IGListDiffKit
 
-class MainChartModel {
-    let test: String
+class WalletsSectionModel {
+    let wallet: String
     
-    init(test: String) {
-        self.test = test
+    init(wallet: String) {
+        self.wallet = wallet
     }
 }
 
 // MARK: - ListDiffable
 
-extension MainChartModel: ListDiffable {
+extension WalletsSectionModel: ListDiffable {
     func diffIdentifier() -> NSObjectProtocol {
-        return test as NSObjectProtocol
+        return wallet as NSObjectProtocol
     }
     
     func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
         guard let object = object as? Self else { return false }
         
-        return object.test == test
+        return object.wallet == wallet
     }
 }
