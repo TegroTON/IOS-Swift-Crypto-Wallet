@@ -22,7 +22,13 @@ class WalletManager {
     func createWallet(mnemonics: [String]) -> Wallet {
         let newWallet = Wallet(id: generateUniqueID())
         wallets.append(newWallet)
-        keychein.storeMnemonics(mnemonics, id: newWallet.id)
+        keychein.storeMnemonics(mnemonics, id: newWallet.id) { success in
+            if success {
+                print("💙 success store mnemonics")
+            } else {
+                print("❤️ failure store mnemonics")
+            }
+        }
         saveWallets()
         
         return newWallet
@@ -41,7 +47,13 @@ class WalletManager {
     }
     
     func setKeys(_ keys: TonKeyPair, for id: String) {
-        keychein.storeKeys(id: id, publicKey: keys.publicKey, privateKey: keys.privateKey)
+        keychein.storeKeys(id: id, publicKey: keys.publicKey, privateKey: keys.privateKey) { success in
+            if success {
+                print("💙 success store keys")
+            } else {
+                print("❤️ failure store keys")
+            }
+        }
     }
     
     // MARK: - Private methods

@@ -22,7 +22,7 @@ class LoadSeedViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-                
+        
         mainView.animateView.startAnimation { [weak self] in
             self?.navigationController?.pushViewController(SeedPhraseAlertViewController(), animated: true)
         }
@@ -36,7 +36,7 @@ extension LoadSeedViewController: TonManagerDelegate {
     func ton(mnemonicsDidGenerated result: Result<[String], Error>) {
         switch result {
         case .success(let mnemonics):
-            createdWallet = WalletManager.shared.createWallet(mnemonics: <#T##[String]##[Swift.String]#>)
+            createdWallet = WalletManager.shared.createWallet(mnemonics: mnemonics)
             manager.calculateKeyPair(mnemonics: mnemonics)
 
         case .failure(let error):

@@ -17,7 +17,7 @@ class CreateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         mainView.createButton.addTarget(self, action: #selector(createButtonTapped), for: .touchUpInside)
         mainView.connectButton.addTarget(self, action: #selector(connectButtonTapped), for: .touchUpInside)
     }

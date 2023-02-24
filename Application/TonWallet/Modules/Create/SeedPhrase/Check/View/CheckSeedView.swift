@@ -1,4 +1,5 @@
 import UIKit
+import Security
 
 class CheckSeedView: RootView {
     
@@ -15,7 +16,7 @@ class CheckSeedView: RootView {
         label.font = .interFont(ofSize: 18, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         label.textAlignment = .center
-        label.text = R.string.localizable.seedPhraseReadTitle()
+        label.text = R.string.localizable.seedPhraseCheckTitle()
         
         return label
     }()
@@ -54,7 +55,7 @@ class CheckSeedView: RootView {
         addSubview(titleLabel)
         addSubview(tableView)
         addSubview(continueButton)
-        
+                
         setupConstraints()
     }
     
@@ -62,9 +63,11 @@ class CheckSeedView: RootView {
         switch type {
         case .check:
             continueButton.isHidden = false
+            titleLabel.text = R.string.localizable.seedPhraseCheckTitle()
             
         case .enter:
             continueButton.isHidden = true
+            titleLabel.text = R.string.localizable.seedPhraseEnterTitle()
         }
     }
     

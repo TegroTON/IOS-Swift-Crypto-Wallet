@@ -24,6 +24,16 @@ class KeychainManager {
     
     func storeKeys(id: String, publicKey: String, privateKey: String, completion: ((Bool) -> Void)? = nil) {
         keychainQueue.async {
+            guard
+                let privateData = privateKey.data(using: .utf8),
+                let publicData = publicKey.data(using: .utf8)
+            else {
+                DispatchQueue.main.async {
+                    completion?(false)
+                }
+                return
+            }
+            
             let privateKeyTag = KeyType.privateKey(id: id).value
             let publicKeyTag = KeyType.publicKey(id: id).value
             
@@ -31,47 +41,61 @@ class KeychainManager {
                 kSecClass as String: kSecClassKey,
                 kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
                 kSecAttrApplicationTag as String: privateKeyTag,
-                kSecValueData as String: privateKey
+                kSecValueData as String: privateData
             ]
             
             let publicKeyAttributes: [String: Any] = [
                 kSecClass as String: kSecClassKey,
                 kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
                 kSecAttrApplicationTag as String: publicKeyTag,
-                kSecValueData as String: publicKey
+                kSecValueData as String: publicData
             ]
             
-            let privateKeyDeleteStatus = SecItemDelete(privateKeyAttributes as CFDictionary)
-            let publicKeyDeleteStatus = SecItemDelete(publicKeyAttributes as CFDictionary)
-            
+            let _ = SecItemDelete(privateKeyAttributes as CFDictionary)
+            let _ = SecItemDelete(publicKeyAttributes as CFDictionary)
+                        
             let privateKeyAddStatus = SecItemAdd(privateKeyAttributes as CFDictionary, nil)
             let publicKeyAddStatus = SecItemAdd(publicKeyAttributes as CFDictionary, nil)
-            
-            let isSuccess = privateKeyDeleteStatus == errSecSuccess &&
-            publicKeyDeleteStatus == errSecSuccess &&
-            privateKeyAddStatus == errSecSuccess &&
-            publicKeyAddStatus == errSecSuccess
-            
+                        
             DispatchQueue.main.async {
-                completion?(isSuccess)
+                completion?(privateKeyAddStatus == errSecSuccess && publicKeyAddStatus == errSecSuccess)
             }
         }
     }
     
     func storeMnemonics(_ mnemonics: [String], id: String, completion: ((Bool) -> Void)? = nil) {
         keychainQueue.async {
+            let data = mnemonics.joined(separator: ";").data(using: .utf8)!
+            
             let mnemonicsAttributes: [String: Any] = [
                 kSecClass as String: kSecClassKey,
                 kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
                 kSecAttrApplicationTag as String: "\(Bundle.main.bundleIdentifier!).\(id).mnemonics",
-                kSecValueData as String: mnemonics.joined(separator: ";")
+                kSecValueData as String: data
             ]
             
-            let mnemonicsDeleteStatus = SecItemDelete(mnemonicsAttributes as CFDictionary)
             let mnemonicsAddStatus = SecItemAdd(mnemonicsAttributes as CFDictionary, nil)
             
             DispatchQueue.main.async {
-                completion?(mnemonicsDeleteStatus == errSecSuccess && mnemonicsAddStatus == errSecSuccess)
+                completion?(mnemonicsAddStatus == errSecSuccess)
+            }
+        }
+    }
+
+    func storePassword(_ password: String, completion: ((Bool) -> Void)? = nil) {
+        keychainQueue.async {
+            let passwordAttributes: [String: Any] = [
+                kSecClass as String: kSecClassKey,
+                kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
+                kSecAttrApplicationTag as String: "\(Bundle.main.bundleIdentifier!).password",
+                kSecValueData as String: password
+            ]
+            
+            _ = SecItemDelete(passwordAttributes as CFDictionary)
+            let passwordAddStatus = SecItemAdd(passwordAttributes as CFDictionary, nil)
+            
+            DispatchQueue.main.async {
+                completion?(passwordAddStatus == errSecSuccess)
             }
         }
     }
@@ -88,7 +112,7 @@ class KeychainManager {
             var keyTypeRef: AnyObject?
             let status = SecItemCopyMatching(query as CFDictionary, &keyTypeRef)
             
-            if status == errSecSuccess, let key = keyTypeRef as? String {
+            if status == errSecSuccess, let data = keyTypeRef as? Data, let key = String(data: data, encoding: .utf8) {
                 return key
             }
             
@@ -108,8 +132,9 @@ class KeychainManager {
             var mnemonicsTypeRef: AnyObject?
             let status = SecItemCopyMatching(query as CFDictionary, &mnemonicsTypeRef)
             
-            if status == errSecSuccess, let string = mnemonicsTypeRef as? String {
+            if status == errSecSuccess, let data = mnemonicsTypeRef as? Data, let string = String(data: data, encoding: .utf8) {
                 let array = string.components(separatedBy: ";")
+                
                 return array
             }
             
