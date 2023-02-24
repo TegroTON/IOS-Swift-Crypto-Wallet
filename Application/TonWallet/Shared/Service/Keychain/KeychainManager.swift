@@ -84,11 +84,16 @@ class KeychainManager {
 
     func storePassword(_ password: String, completion: ((Bool) -> Void)? = nil) {
         keychainQueue.async {
+            guard let data = password.data(using: .utf8) else {
+                completion?(false)
+                return
+            }
+            
             let passwordAttributes: [String: Any] = [
                 kSecClass as String: kSecClassKey,
                 kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
                 kSecAttrApplicationTag as String: "\(Bundle.main.bundleIdentifier!).password",
-                kSecValueData as String: password
+                kSecValueData as String: data
             ]
             
             _ = SecItemDelete(passwordAttributes as CFDictionary)
@@ -139,6 +144,28 @@ class KeychainManager {
             }
             
             return nil
+        }
+    }
+    
+    func getPassword() -> String? {
+        keychainQueue.sync {
+            let query: [String: Any] = [
+                kSecClass as String: kSecClassKey,
+                kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
+                kSecAttrApplicationTag as String: "\(Bundle.main.bundleIdentifier!).password",
+                kSecReturnData as String: true
+            ]
+            
+            var passwordTypeRef: AnyObject?
+            let status = SecItemCopyMatching(query as CFDictionary, &passwordTypeRef)
+            
+            guard
+                status == errSecSuccess,
+                let data = passwordTypeRef as? Data,
+                let password = String(data: data, encoding: .utf8)
+            else { return nil }
+            
+            return password
         }
     }
     

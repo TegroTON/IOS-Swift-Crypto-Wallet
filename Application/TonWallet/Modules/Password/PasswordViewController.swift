@@ -86,6 +86,14 @@ class PasswordViewController: UIViewController {
                 mainView.textField.resignFirstResponder()
                 notificationFeedback.notificationOccurred(.success)
                 
+                KeychainManager().storePassword(userPassword) { success in
+                    if success {
+                        print("💙 success store password")
+                    } else {
+                        print("❤️ failure store password")
+                    }
+                }
+                
                 let vc = SuccessViewController()
                 vc.modalPresentationStyle = .overFullScreen
                 

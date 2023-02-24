@@ -27,7 +27,7 @@ class WalletCardView: RootView {
         
         backgroundColor = .init(hex6: 0x0066FF)
         layer.cornerRadius = 12
-        layer.shadowColor = UIColor(red: 154/255, green: 173/255, blue: 191/255, alpha: 1.0).cgColor
+        layer.shadowColor = R.color.walletCardShadow()!.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 6)
         layer.shadowRadius = 12
         layer.shadowOpacity = 1.0
