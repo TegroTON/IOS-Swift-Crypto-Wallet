@@ -48,6 +48,7 @@
 		2C35C6BC29A7F31F00A0F181 /* WalletCardSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35C6BB29A7F31F00A0F181 /* WalletCardSection.swift */; };
 		2C35C6BE29A7F4B000A0F181 /* WalletsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35C6BD29A7F4B000A0F181 /* WalletsCell.swift */; };
 		2C35C6C029A7F5F500A0F181 /* WalletCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35C6BF29A7F5F500A0F181 /* WalletCardView.swift */; };
+		2C35C6C329A8CF1A00A0F181 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35C6C229A8CF1A00A0F181 /* KeychainManager.swift */; };
 		2C3BE49429A30AA1000358C0 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3BE48F29A30AA1000358C0 /* Inter-Medium.ttf */; };
 		2C3BE49529A30AA1000358C0 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3BE49029A30AA1000358C0 /* Inter-Bold.ttf */; };
 		2C3BE49629A30AA1000358C0 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3BE49129A30AA1000358C0 /* Inter-Regular.ttf */; };
@@ -120,6 +121,7 @@
 		2C35C6BB29A7F31F00A0F181 /* WalletCardSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCardSection.swift; sourceTree = "<group>"; };
 		2C35C6BD29A7F4B000A0F181 /* WalletsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletsCell.swift; sourceTree = "<group>"; };
 		2C35C6BF29A7F5F500A0F181 /* WalletCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCardView.swift; sourceTree = "<group>"; };
+		2C35C6C229A8CF1A00A0F181 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		2C3BE48F29A30AA1000358C0 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
 		2C3BE49029A30AA1000358C0 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
 		2C3BE49129A30AA1000358C0 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
@@ -554,6 +556,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		2C35C6C129A8CF0800A0F181 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				2C35C6C229A8CF1A00A0F181 /* KeychainManager.swift */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
 		2C3BE48E29A30AA1000358C0 /* Inter */ = {
 			isa = PBXGroup;
 			children = (
@@ -671,6 +681,7 @@
 		6C8BA8D891584884DEB3A3E4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				2C35C6C129A8CF0800A0F181 /* Keychain */,
 				6C8BA4412952930AE6670F61 /* Ton */,
 			);
 			path = Service;
@@ -875,6 +886,7 @@
 				2C35C6A829A71C1800A0F181 /* TabBarViewController.swift in Sources */,
 				2C35C6BA29A7F2A400A0F181 /* WalletCardModel.swift in Sources */,
 				2C1BD18B2982BAF7001284C0 /* PasswordViewController.swift in Sources */,
+				2C35C6C329A8CF1A00A0F181 /* KeychainManager.swift in Sources */,
 				2C4DE29E29A3B48700BD1F05 /* LoadSeedView.swift in Sources */,
 				2C2DCC0829598FB700E4B688 /* UIIColor+hex.swift in Sources */,
 				2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */,
