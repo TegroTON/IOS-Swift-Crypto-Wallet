@@ -32,11 +32,11 @@ class Ton {
         liteClient.getLastBlockId().toString()
     }
 
-    suspend fun calculateKeyPair(mnemonics: List<String>): Pair<PrivateKeyEd25519, PublicKeyEd25519> = coroutineScope {
+    suspend fun calculateKeyPair(mnemonics: List<String>): Pair<String, String> = coroutineScope {
         val seed = Mnemonic.toSeed(mnemonics)
         val pk = PrivateKeyEd25519(seed)
         val pub = pk.publicKey()
-        pk to pub
+        pk.toString() to pub.toString()
     }
 
     fun walletAddress(publicKey: PublicKeyEd25519): String {

@@ -42,7 +42,7 @@ class LoadAnimateView: RootView {
         setupConstraints()
     }
     
-    func startAnimation(_ completion: @escaping () -> ()) {
+    func startAnimation(_ completion: @escaping () -> Void) {
         firstSizeConstraint?.update(offset: 12)
         secondSizeConstraint?.update(offset: 16)
                 
@@ -81,7 +81,7 @@ class LoadAnimateView: RootView {
         }
     }
     
-    func reset(_ completion: @escaping () -> ()) {
+    func reset(_ completion: @escaping () -> Void) {
         firstSizeConstraint?.update(offset: 16)
         secondSizeConstraint?.update(offset: 12)
         thirdSizeConstraint?.update(offset: 8)

@@ -6,8 +6,9 @@ class LoadSeedViewController: UIViewController {
         return view as! LoadSeedView
     }
     
-    let manager = TonManager.shared
-    
+    private let manager = TonManager.shared
+    private var createdWallet: Wallet!
+
     override func loadView() {
         view = LoadSeedView()
     }
@@ -21,7 +22,7 @@ class LoadSeedViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+                
         mainView.animateView.startAnimation { [weak self] in
             self?.navigationController?.pushViewController(SeedPhraseAlertViewController(), animated: true)
         }
@@ -35,9 +36,8 @@ extension LoadSeedViewController: TonManagerDelegate {
     func ton(mnemonicsDidGenerated result: Result<[String], Error>) {
         switch result {
         case .success(let mnemonics):
-            print("💜 success mnemonic")
+            createdWallet = WalletManager.shared.createWallet(mnemonics: <#T##[String]##[Swift.String]#>)
             manager.calculateKeyPair(mnemonics: mnemonics)
-            print("💜 after key pair")
 
         case .failure(let error):
             print("❤️ mnemonics generate error", error)
@@ -46,7 +46,8 @@ extension LoadSeedViewController: TonManagerDelegate {
     
     func ton(keyPairCalculated result: Result<TonKeyPair, Error>) {
         switch result {
-        case .success:
+        case .success(let keys):
+            WalletManager.shared.setKeys(keys, for: createdWallet.id)
             mainView.animateView.needToStopAnimation = true
             
         case .failure(let error):
