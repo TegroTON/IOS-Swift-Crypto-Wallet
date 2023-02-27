@@ -2,7 +2,7 @@ import UIKit
 
 class WalletCardCell: UICollectionViewCell {
     
-    let cardView: WalletCardView = WalletCardView()
+    let cardView: WalletCardView = WalletCardView(type: .default)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
