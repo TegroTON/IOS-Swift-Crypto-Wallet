@@ -8,6 +8,7 @@ import org.ton.api.liteclient.config.LiteClientConfigGlobal
 import org.ton.api.pk.PrivateKeyEd25519
 import org.ton.api.pub.PublicKeyEd25519
 import org.ton.contract.wallet.WalletV4R2Contract
+import org.ton.crypto.base64
 import org.ton.lite.client.LiteClient
 import org.ton.mnemonic.Mnemonic
 import kotlin.native.Platform
@@ -32,14 +33,15 @@ class Ton {
         liteClient.getLastBlockId().toString()
     }
 
-    suspend fun calculateKeyPair(mnemonics: List<String>): Pair<String, String> = coroutineScope {
+    suspend fun calculateKeyPair(mnemonics: List<String>) = coroutineScope {
         val seed = Mnemonic.toSeed(mnemonics)
         val pk = PrivateKeyEd25519(seed)
         val pub = pk.publicKey()
-        pk.toString() to pub.toString()
+        TonKeyPair(pk.key.base64(), pub.key.base64())
     }
 
-    fun walletAddress(publicKey: PublicKeyEd25519): String {
+    fun walletAddress(base64: String): String {
+        val publicKey = PublicKeyEd25519(base64(base64))
         val wallet = WalletV4R2Contract(publicKey)
         val address = wallet.address.toString(userFriendly = true)
         return address

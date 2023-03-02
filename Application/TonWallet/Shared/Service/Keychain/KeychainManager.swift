@@ -3,62 +3,30 @@ import Foundation
 
 class KeychainManager {
     
-    enum KeyType {
-        case privateKey(id: String)
-        case publicKey(id: String)
-        
-        var value: String {
-            let bundle = Bundle.main.bundleIdentifier!
-
-            switch self {
-            case .privateKey(let id):
-                return "\(bundle).\(id).privateKey"
-
-            case .publicKey(let id):
-                return "\(bundle).\(id).publicKey"
-            }
-        }
-    }
-    
     let keychainQueue = DispatchQueue(label: "\(Bundle.main.bundleIdentifier!).keychain")
     
-    func storeKeys(id: String, publicKey: String, privateKey: String, completion: ((Bool) -> Void)? = nil) {
+    func storeKeys(id: String, keyPair: TonKeyPair, completion: ((Bool) -> Void)? = nil) {
         keychainQueue.async {
-            guard
-                let privateData = privateKey.data(using: .utf8),
-                let publicData = publicKey.data(using: .utf8)
-            else {
+            guard let data = try? JSONEncoder().encode(keyPair) else {
                 DispatchQueue.main.async {
                     completion?(false)
                 }
                 return
             }
-            
-            let privateKeyTag = KeyType.privateKey(id: id).value
-            let publicKeyTag = KeyType.publicKey(id: id).value
-            
-            let privateKeyAttributes: [String: Any] = [
+
+            let keysAttributes: [String: Any] = [
                 kSecClass as String: kSecClassKey,
                 kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
-                kSecAttrApplicationTag as String: privateKeyTag,
-                kSecValueData as String: privateData
+                kSecAttrApplicationTag as String: "\(Bundle.main.bundleIdentifier!).\(id).keyPair",
+                kSecValueData as String: data
             ]
-            
-            let publicKeyAttributes: [String: Any] = [
-                kSecClass as String: kSecClassKey,
-                kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
-                kSecAttrApplicationTag as String: publicKeyTag,
-                kSecValueData as String: publicData
-            ]
-            
-            let _ = SecItemDelete(privateKeyAttributes as CFDictionary)
-            let _ = SecItemDelete(publicKeyAttributes as CFDictionary)
-                        
-            let privateKeyAddStatus = SecItemAdd(privateKeyAttributes as CFDictionary, nil)
-            let publicKeyAddStatus = SecItemAdd(publicKeyAttributes as CFDictionary, nil)
-                        
+
+            let _ = SecItemDelete(keysAttributes as CFDictionary)
+
+            let keysAddStatus = SecItemAdd(keysAttributes as CFDictionary, nil)
+
             DispatchQueue.main.async {
-                completion?(privateKeyAddStatus == errSecSuccess && publicKeyAddStatus == errSecSuccess)
+                completion?(keysAddStatus == errSecSuccess)
             }
         }
     }
@@ -105,21 +73,21 @@ class KeychainManager {
         }
     }
     
-    func getKey(keyType: KeyType) -> String? {
+    func getKey(id: String) -> TonKeyPair? {
         keychainQueue.sync {
             let query: [String: Any] = [
                 kSecClass as String: kSecClassKey,
                 kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
-                kSecAttrApplicationTag as String: keyType.value,
+                kSecAttrApplicationTag as String: "\(Bundle.main.bundleIdentifier!).\(id).keyPair",
                 kSecReturnData as String: true
             ]
             
-            var keyTypeRef: AnyObject?
-            let status = SecItemCopyMatching(query as CFDictionary, &keyTypeRef)
+            var keysTypeRef: AnyObject?
+            let status = SecItemCopyMatching(query as CFDictionary, &keysTypeRef)
             
-            if status == errSecSuccess, let data = keyTypeRef as? Data, let key = String(data: data, encoding: .utf8) {
-                return key
-            }
+//            if status == errSecSuccess, let data = keysTypeRef as? Data {
+//                return try? JSONDecoder().decode(TonKeyPair.self, from: data)
+//            }
             
             return nil
         }
@@ -171,25 +139,15 @@ class KeychainManager {
     
     func deleteKeys(for id: String, completion: ((Bool) -> Void)? = nil) {
         keychainQueue.async {
-            let privateKeyTag = KeyType.privateKey(id: id).value
-            let publicKeyTag = KeyType.publicKey(id: id).value
-            
-            let privateKeyAttributes: [String: Any] = [
+            let keysAttributes: [String: Any] = [
                 kSecClass as String: kSecClassKey,
                 kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
-                kSecAttrApplicationTag as String: privateKeyTag,
+                kSecAttrApplicationTag as String: "\(Bundle.main.bundleIdentifier!).\(id).keyPair",
             ]
+                
+            let keysDeleteStatus = SecItemDelete(keysAttributes as CFDictionary)
             
-            let publicKeyAttributes: [String: Any] = [
-                kSecClass as String: kSecClassKey,
-                kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
-                kSecAttrApplicationTag as String: publicKeyTag,
-            ]
-            
-            let privateKeyDeleteStatus = SecItemDelete(privateKeyAttributes as CFDictionary)
-            let publicKeyDeleteStatus = SecItemDelete(publicKeyAttributes as CFDictionary)
-            
-            completion?(privateKeyDeleteStatus == errSecSuccess && publicKeyDeleteStatus == errSecSuccess)
+            completion?(keysDeleteStatus == errSecSuccess)
         }
     }
     
@@ -206,5 +164,4 @@ class KeychainManager {
             completion?(mnemonicsDeleteStatus == errSecSuccess)
         }
     }
-    
 }

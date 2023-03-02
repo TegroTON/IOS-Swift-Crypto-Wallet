@@ -47,7 +47,7 @@ class WalletManager {
     }
     
     func setKeys(_ keys: TonKeyPair, for id: String) {
-        keychein.storeKeys(id: id, publicKey: keys.publicKey, privateKey: keys.privateKey) { success in
+        keychein.storeKeys(id: id, keyPair: keys) { success in
             if success {
                 print("💙 success store keys")
             } else {

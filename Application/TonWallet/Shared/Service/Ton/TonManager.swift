@@ -35,8 +35,8 @@ class TonManager {
                 if let error = error {
                     self.keyPair = nil
                     self.delegate?.ton(keyPairCalculated: .failure(error))
-                } else if let keyPair = keyPair, let privateKey = keyPair.first as? String, let publicKey = keyPair.second as? String {
-                    let keyPair = TonKeyPair(privateKey: privateKey, publicKey: publicKey)
+                } else if let keyPair = keyPair {
+                    let keyPair = TonKeyPair(privateKey: keyPair.privateKey, publicKey: keyPair.publicKey)
                     self.keyPair = keyPair
                     self.delegate?.ton(keyPairCalculated: .success(keyPair))
                 } else {
