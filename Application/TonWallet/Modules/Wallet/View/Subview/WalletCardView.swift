@@ -110,27 +110,43 @@ class WalletCardView: UIView {
         return UIButton(configuration: configuration)
     }()
     
+    let shadowView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 12
+        view.layer.shadowColor = R.color.walletCardShadow()!.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 6)
+        view.layer.shadowRadius = 8
+        view.layer.shadowOpacity = 1.0
+        view.layer.masksToBounds = false
+        view.backgroundColor = .white
+        
+        return view
+    }()
+    
+    let containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .init(hex6: 0x0066FF)
+        view.layer.cornerRadius = 12
+        
+        return view
+    }()
+    
     init(type: CardType) {
         self.type = type
         super.init(frame: .zero)
         
-        backgroundColor = .init(hex6: 0x0066FF)
-        layer.cornerRadius = 12
-        layer.shadowColor = R.color.walletCardShadow()!.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 6)
-        layer.shadowRadius = 12
-        layer.shadowOpacity = 1.0
-        layer.masksToBounds = false
+        addSubview(shadowView)
+        addSubview(containerView)
         
-        addSubview(wavesImageView)
-        addSubview(dimondImageView)
-        addSubview(settingsButton)
-        addSubview(nameLabel)
-        addSubview(balanceLabel)
-        addSubview(addressLabel)
-        addSubview(copyImage)
-        addSubview(sendButton)
-        addSubview(receiveButton)
+        containerView.addSubview(wavesImageView)
+        containerView.addSubview(dimondImageView)
+        containerView.addSubview(settingsButton)
+        containerView.addSubview(nameLabel)
+        containerView.addSubview(balanceLabel)
+        containerView.addSubview(addressLabel)
+        containerView.addSubview(copyImage)
+        containerView.addSubview(sendButton)
+        containerView.addSubview(receiveButton)
         
         setupConstraints()
     }
@@ -144,6 +160,17 @@ class WalletCardView: UIView {
     }
     
     private func setupConstraints() {
+        containerView.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        shadowView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+            make.left.right.equalToSuperview().inset(20.0)
+            make.height.equalTo(20)
+        }
+        
         dimondImageView.snp.makeConstraints { make in
             make.top.bottom.right.equalToSuperview()
         }

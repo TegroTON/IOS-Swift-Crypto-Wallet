@@ -57,6 +57,7 @@
 		2C3BE49629A30AA1000358C0 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3BE49129A30AA1000358C0 /* Inter-Regular.ttf */; };
 		2C3BE49729A30AA1000358C0 /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3BE49229A30AA1000358C0 /* Inter-ExtraBold.ttf */; };
 		2C3BE49829A30AA1000358C0 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3BE49329A30AA1000358C0 /* Inter-SemiBold.ttf */; };
+		2C44327A29C5C0E8009B7771 /* PagingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44327929C5C0E8009B7771 /* PagingFlowLayout.swift */; };
 		2C4DE29929A3143200BD1F05 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29829A3143200BD1F05 /* R.generated.swift */; };
 		2C4DE29E29A3B48700BD1F05 /* LoadSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29D29A3B48700BD1F05 /* LoadSeedView.swift */; };
 		2C4DE2A029A3B5A300BD1F05 /* LoadSeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29F29A3B5A300BD1F05 /* LoadSeedViewController.swift */; };
@@ -133,6 +134,7 @@
 		2C3BE49129A30AA1000358C0 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
 		2C3BE49229A30AA1000358C0 /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
 		2C3BE49329A30AA1000358C0 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		2C44327929C5C0E8009B7771 /* PagingFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingFlowLayout.swift; sourceTree = "<group>"; };
 		2C4DE29829A3143200BD1F05 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		2C4DE29D29A3B48700BD1F05 /* LoadSeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSeedView.swift; sourceTree = "<group>"; };
 		2C4DE29F29A3B5A300BD1F05 /* LoadSeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSeedViewController.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 		2C2DCBFC29598FB700E4B688 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2C44327829C5C09D009B7771 /* Layout */,
 				2C1BD176298189D2001284C0 /* Controllers */,
 				2C2DCBFD29598FB700E4B688 /* Views */,
 			);
@@ -606,6 +609,14 @@
 				2C3BE49329A30AA1000358C0 /* Inter-SemiBold.ttf */,
 			);
 			path = Inter;
+			sourceTree = "<group>";
+		};
+		2C44327829C5C09D009B7771 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				2C44327929C5C0E8009B7771 /* PagingFlowLayout.swift */,
+			);
+			path = Layout;
 			sourceTree = "<group>";
 		};
 		2C4DE29A29A3B43100BD1F05 /* Start */ = {
@@ -926,6 +937,7 @@
 				2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */,
 				2C35C6C629A8DAB500A0F181 /* WalletManager.swift in Sources */,
 				2C1BD17D29818D84001284C0 /* SeedPhraseView.swift in Sources */,
+				2C44327A29C5C0E8009B7771 /* PagingFlowLayout.swift in Sources */,
 				2C1BD1A229842B10001284C0 /* WalletsSection.swift in Sources */,
 				2C35C6A529A521FF00A0F181 /* SeedHeaderCell.swift in Sources */,
 				2C35C6CC29A9243900A0F181 /* UserSettings.swift in Sources */,

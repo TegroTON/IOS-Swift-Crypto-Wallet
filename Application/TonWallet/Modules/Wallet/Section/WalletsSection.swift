@@ -17,17 +17,15 @@ class WalletsSection: ListSectionController {
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         let cell = collectionContext!.dequeue(of: WalletsCell.self, for: self, at: index)
         
-        return configure(cell: cell)
-    }
-    
-    @discardableResult
-    private func configure(cell: WalletsCell) -> WalletsCell {
         adapter.collectionView = cell.collectionView
         adapter.dataSource = self
         
         return cell
     }
+    
 }
+
+// MARK: - ListAdapterDataSource
 
 extension WalletsSection: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {

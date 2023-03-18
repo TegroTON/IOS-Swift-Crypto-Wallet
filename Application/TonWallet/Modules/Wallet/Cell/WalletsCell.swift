@@ -3,11 +3,13 @@ import UIKit
 class WalletsCell: UICollectionViewCell {
     
     let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
+        let layout = PagingFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0.0, left: 24.0, bottom: 0.0, right: 24.0)
         
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = .clear
+        view.decelerationRate = .fast
         view.showsHorizontalScrollIndicator = false
         
         return view

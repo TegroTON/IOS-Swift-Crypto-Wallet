@@ -6,10 +6,11 @@ class WalletCardSection: ListSectionController {
         super.init()
         
         inset = UIEdgeInsets(top: 0.0, left: 24.0, bottom: 0.0, right: 24.0)
+        minimumLineSpacing = 16
     }
     
     override func numberOfItems() -> Int {
-        return 1
+        return 2
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
