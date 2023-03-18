@@ -1,7 +1,7 @@
 import IGListKit
 
 protocol WalletCardsSectionDelegate: AnyObject {
-    
+    func walletCards(_ section: WalletCardsSection, sendFrom wallet: Wallet)
 }
 
 class WalletCardsSection: ListSectionController {
@@ -40,7 +40,18 @@ class WalletCardsSection: ListSectionController {
         cell.cardView.nameLabel.text = wallet.name
         cell.cardView.addressLabel.text = wallet.selectedAddress?.address
         cell.cardView.balanceLabel.text = "???"
+        cell.cardView.sendButton.tag = index
+        
+        cell.cardView.sendButton.removeTarget(nil, action: nil, for: .touchUpInside)
+        cell.cardView.sendButton.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
         
         return cell
+    }
+    
+    @objc private func sendButtonTapped(_ sender: UIButton) {
+        let index = sender.tag
+        let wallet = model.wallets[index]
+        
+        delegate?.walletCards(self, sendFrom: wallet)
     }
 }

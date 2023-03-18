@@ -52,5 +52,10 @@ extension WalletViewController: ListAdapterDataSource {
 // MARK: - WalletsSectionDelegate
 
 extension WalletViewController: WalletsSectionDelegate {
-    
+    func wallets(_ section: WalletsSection, sendFrom wallet: Wallet) {
+        let vc = SendViewController()
+        vc.modalPresentationStyle = .fullScreen
+        
+        present(vc, animated: true)
+    }
 }

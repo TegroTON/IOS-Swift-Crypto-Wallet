@@ -43,3 +43,6 @@ tab-bar-wallet = "Wallet";
 tab-bar-swap = "Swap";
 tab-bar-browse = "Browse";
 tab-bar-settings = "Settings";
+
+// Send
+send-title = "Send TON";

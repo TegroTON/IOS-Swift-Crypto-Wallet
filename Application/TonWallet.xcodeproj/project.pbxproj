@@ -58,6 +58,9 @@
 		2C3BE49729A30AA1000358C0 /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3BE49229A30AA1000358C0 /* Inter-ExtraBold.ttf */; };
 		2C3BE49829A30AA1000358C0 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3BE49329A30AA1000358C0 /* Inter-SemiBold.ttf */; };
 		2C44327A29C5C0E8009B7771 /* PagingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44327929C5C0E8009B7771 /* PagingFlowLayout.swift */; };
+		2C44327E29C5EF3E009B7771 /* SendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44327D29C5EF3E009B7771 /* SendView.swift */; };
+		2C44328129C5EFEB009B7771 /* SendHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44328029C5EFEB009B7771 /* SendHeaderView.swift */; };
+		2C44328329C5F429009B7771 /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44328229C5F429009B7771 /* SendViewController.swift */; };
 		2C4DE29929A3143200BD1F05 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29829A3143200BD1F05 /* R.generated.swift */; };
 		2C4DE29E29A3B48700BD1F05 /* LoadSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29D29A3B48700BD1F05 /* LoadSeedView.swift */; };
 		2C4DE2A029A3B5A300BD1F05 /* LoadSeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29F29A3B5A300BD1F05 /* LoadSeedViewController.swift */; };
@@ -135,6 +138,9 @@
 		2C3BE49229A30AA1000358C0 /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
 		2C3BE49329A30AA1000358C0 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
 		2C44327929C5C0E8009B7771 /* PagingFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingFlowLayout.swift; sourceTree = "<group>"; };
+		2C44327D29C5EF3E009B7771 /* SendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendView.swift; sourceTree = "<group>"; };
+		2C44328029C5EFEB009B7771 /* SendHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendHeaderView.swift; sourceTree = "<group>"; };
+		2C44328229C5F429009B7771 /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
 		2C4DE29829A3143200BD1F05 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		2C4DE29D29A3B48700BD1F05 /* LoadSeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSeedView.swift; sourceTree = "<group>"; };
 		2C4DE29F29A3B5A300BD1F05 /* LoadSeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSeedViewController.swift; sourceTree = "<group>"; };
@@ -409,6 +415,7 @@
 		2C2DCBF829598EAB00E4B688 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2C44327B29C5EF23009B7771 /* Send */,
 				2C35C6A629A71C0300A0F181 /* TabBar */,
 				2C1BD1952983F928001284C0 /* Wallet */,
 				2C35C6A929A7257A00A0F181 /* Settings */,
@@ -617,6 +624,32 @@
 				2C44327929C5C0E8009B7771 /* PagingFlowLayout.swift */,
 			);
 			path = Layout;
+			sourceTree = "<group>";
+		};
+		2C44327B29C5EF23009B7771 /* Send */ = {
+			isa = PBXGroup;
+			children = (
+				2C44327C29C5EF2C009B7771 /* View */,
+				2C44328229C5F429009B7771 /* SendViewController.swift */,
+			);
+			path = Send;
+			sourceTree = "<group>";
+		};
+		2C44327C29C5EF2C009B7771 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C44327F29C5EFDC009B7771 /* Subview */,
+				2C44327D29C5EF3E009B7771 /* SendView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C44327F29C5EFDC009B7771 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				2C44328029C5EFEB009B7771 /* SendHeaderView.swift */,
+			);
+			path = Subview;
 			sourceTree = "<group>";
 		};
 		2C4DE29A29A3B43100BD1F05 /* Start */ = {
@@ -918,6 +951,7 @@
 			files = (
 				2C1BD17529818357001284C0 /* SeedPhraseAlertView.swift in Sources */,
 				2C1BD19A2983F955001284C0 /* WalletViewController.swift in Sources */,
+				2C44328329C5F429009B7771 /* SendViewController.swift in Sources */,
 				2C1BD1982983F948001284C0 /* WalletView.swift in Sources */,
 				2C2DCC0629598FB700E4B688 /* RootView.swift in Sources */,
 				2C1BD16129817F1F001284C0 /* UIFont+Custom.swift in Sources */,
@@ -962,10 +996,12 @@
 				2C1BD17F29818D90001284C0 /* SeedPhraseViewController.swift in Sources */,
 				2C35C6B829A7F26E00A0F181 /* WalletCardCell.swift in Sources */,
 				2C1BD19F298429C0001284C0 /* WalletsSectionModel.swift in Sources */,
+				2C44328129C5EFEB009B7771 /* SendHeaderView.swift in Sources */,
 				6C8BA6EC50877D78EB58E2F6 /* TonManager.swift in Sources */,
 				2C4DE2AE29A4160D00BD1F05 /* SeedPhraseHeaderView.swift in Sources */,
 				6C8BADCC48B1E7F0A7F32C92 /* TonManagerDelegate.swift in Sources */,
 				2C4DE2AA29A414A800BD1F05 /* CheckSeedView.swift in Sources */,
+				2C44327E29C5EF3E009B7771 /* SendView.swift in Sources */,
 				6C8BA53D097E57E34EE801AF /* TonKeyPair.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
