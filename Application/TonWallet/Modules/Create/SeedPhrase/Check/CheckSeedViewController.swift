@@ -211,7 +211,11 @@ extension CheckSeedViewController: SeedWordCellDelegate {
 extension CheckSeedViewController: TonManagerDelegate {
     func ton(keyPairCalculated result: Result<TonKeyPair, Error>) {
         switch result {
-        case .success:
+        case .success(let keyPair):
+            guard let mnemonics = TonManager.shared.mnemonics else { return }
+            let createdWallet = WalletManager.shared.create(wallet: mnemonics)
+            WalletManager.shared.set(keys: keyPair, for: createdWallet.id)
+            
             navigationController?.pushViewController(PasswordViewController(), animated: true)
             
         case .failure(let error):
