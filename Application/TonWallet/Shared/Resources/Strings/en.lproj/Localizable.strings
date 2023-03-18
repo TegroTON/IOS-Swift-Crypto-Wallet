@@ -45,4 +45,9 @@ tab-bar-browse = "Browse";
 tab-bar-settings = "Settings";
 
 // Send
-send-title = "Send TON";
+send-title = "Send %@";
+send-form-title = "For whom";
+send-form-balance = "Balance:";
+send-form-balance-amount = "%@ %@";
+send-form-address = "Wallet address or domain";
+send-button = "Send";

@@ -5,7 +5,7 @@ class SendHeaderView: RootView {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.sendTitle()
+        label.text = R.string.localizable.sendTitle("TON")
         label.font = .interFont(ofSize: 18, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         label.textAlignment = .center

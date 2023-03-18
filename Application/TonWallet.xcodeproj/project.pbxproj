@@ -61,6 +61,9 @@
 		2C44327E29C5EF3E009B7771 /* SendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44327D29C5EF3E009B7771 /* SendView.swift */; };
 		2C44328129C5EFEB009B7771 /* SendHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44328029C5EFEB009B7771 /* SendHeaderView.swift */; };
 		2C44328329C5F429009B7771 /* SendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44328229C5F429009B7771 /* SendViewController.swift */; };
+		2C44328529C6144C009B7771 /* SendFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44328429C6144C009B7771 /* SendFormView.swift */; };
+		2C44328729C61B0F009B7771 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44328629C61B0F009B7771 /* TextField.swift */; };
+		2C44328929C62BCD009B7771 /* SendTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44328829C62BCD009B7771 /* SendTokenView.swift */; };
 		2C4DE29929A3143200BD1F05 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29829A3143200BD1F05 /* R.generated.swift */; };
 		2C4DE29E29A3B48700BD1F05 /* LoadSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29D29A3B48700BD1F05 /* LoadSeedView.swift */; };
 		2C4DE2A029A3B5A300BD1F05 /* LoadSeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29F29A3B5A300BD1F05 /* LoadSeedViewController.swift */; };
@@ -141,6 +144,9 @@
 		2C44327D29C5EF3E009B7771 /* SendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendView.swift; sourceTree = "<group>"; };
 		2C44328029C5EFEB009B7771 /* SendHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendHeaderView.swift; sourceTree = "<group>"; };
 		2C44328229C5F429009B7771 /* SendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendViewController.swift; sourceTree = "<group>"; };
+		2C44328429C6144C009B7771 /* SendFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFormView.swift; sourceTree = "<group>"; };
+		2C44328629C61B0F009B7771 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		2C44328829C62BCD009B7771 /* SendTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTokenView.swift; sourceTree = "<group>"; };
 		2C4DE29829A3143200BD1F05 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		2C4DE29D29A3B48700BD1F05 /* LoadSeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSeedView.swift; sourceTree = "<group>"; };
 		2C4DE29F29A3B5A300BD1F05 /* LoadSeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSeedViewController.swift; sourceTree = "<group>"; };
@@ -467,6 +473,7 @@
 			isa = PBXGroup;
 			children = (
 				2C2DCBFE29598FB700E4B688 /* RootView.swift */,
+				2C44328629C61B0F009B7771 /* TextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -648,6 +655,8 @@
 			isa = PBXGroup;
 			children = (
 				2C44328029C5EFEB009B7771 /* SendHeaderView.swift */,
+				2C44328429C6144C009B7771 /* SendFormView.swift */,
+				2C44328829C62BCD009B7771 /* SendTokenView.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -952,6 +961,7 @@
 				2C1BD17529818357001284C0 /* SeedPhraseAlertView.swift in Sources */,
 				2C1BD19A2983F955001284C0 /* WalletViewController.swift in Sources */,
 				2C44328329C5F429009B7771 /* SendViewController.swift in Sources */,
+				2C44328729C61B0F009B7771 /* TextField.swift in Sources */,
 				2C1BD1982983F948001284C0 /* WalletView.swift in Sources */,
 				2C2DCC0629598FB700E4B688 /* RootView.swift in Sources */,
 				2C1BD16129817F1F001284C0 /* UIFont+Custom.swift in Sources */,
@@ -959,6 +969,7 @@
 				2C1BD19C2983FFEE001284C0 /* SeedNextButtonCell.swift in Sources */,
 				2C4DE2A329A3E64200BD1F05 /* LoadAnimateView.swift in Sources */,
 				2C35C6C929A8DAC400A0F181 /* Wallet.swift in Sources */,
+				2C44328929C62BCD009B7771 /* SendTokenView.swift in Sources */,
 				2C1BD18E2982C07E001284C0 /* PassIndicatorsView.swift in Sources */,
 				2C1BD179298189D2001284C0 /* RootNavigationController.swift in Sources */,
 				2C1BD18529828646001284C0 /* SeedWordCell.swift in Sources */,
@@ -967,6 +978,7 @@
 				2C1BD18B2982BAF7001284C0 /* PasswordViewController.swift in Sources */,
 				2C35C6C329A8CF1A00A0F181 /* KeychainManager.swift in Sources */,
 				2C4DE29E29A3B48700BD1F05 /* LoadSeedView.swift in Sources */,
+				2C44328529C6144C009B7771 /* SendFormView.swift in Sources */,
 				2C2DCC0829598FB700E4B688 /* UIIColor+hex.swift in Sources */,
 				2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */,
 				2C35C6C629A8DAB500A0F181 /* WalletManager.swift in Sources */,

@@ -32,7 +32,7 @@ class PasswordViewController: UIViewController {
         mainView.textField.becomeFirstResponder()
     }
     
-    // MARK: - Action mehtods
+    // MARK: - Private actions
     
     @objc private func keyboardFrameChanged(_ notification: Notification) {
         guard let frame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
