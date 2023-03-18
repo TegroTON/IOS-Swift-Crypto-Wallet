@@ -1,8 +1,21 @@
 import IGListKit
 
+protocol WalletsSectionDelegate: AnyObject {
+    
+}
+
 class WalletsSection: ListSectionController {
        
+    weak var delegate: WalletsSectionDelegate?
+    
     lazy var adapter = ListAdapter(updater: ListAdapterUpdater(), viewController: viewController)
+    
+    var model: WalletsSectionModel!
+    
+    override func didUpdate(to object: Any) {
+        precondition(object is WalletsSectionModel)
+        model = object as? WalletsSectionModel
+    }
     
     override func numberOfItems() -> Int {
         return 1
@@ -29,11 +42,14 @@ class WalletsSection: ListSectionController {
 
 extension WalletsSection: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return [WalletCardModel(wallet: "WalletCardModel")]
+        return [
+            WalletCardsModel(wallets: model.wallets)
+        ]
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        let section = WalletCardSection()
+        let section = WalletCardsSection()
+        section.delegate = self
         
         return section
     }
@@ -41,4 +57,10 @@ extension WalletsSection: ListAdapterDataSource {
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         return nil
     }
+}
+
+// MARK: - WalletCardsSectionDelegate
+
+extension WalletsSection: WalletCardsSectionDelegate {
+    
 }

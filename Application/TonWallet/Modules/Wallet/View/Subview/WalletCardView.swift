@@ -71,9 +71,10 @@ class WalletCardView: UIView {
     
     let addressLabel: UILabel = {
         let label = UILabel()
-        label.text = "EQCy2yFpu9Va...L9Y9SB"
+        label.text = "wallet address"
         label.font = .interFont(ofSize: 14, weight: .regular)
         label.textColor = .init(hex6: 0xE8EFFB)
+        label.lineBreakMode = .byTruncatingMiddle
         
         return label
     }()
@@ -197,6 +198,7 @@ class WalletCardView: UIView {
         addressLabel.snp.makeConstraints { make in
             make.top.equalTo(balanceLabel.snp.bottom).offset(16.0)
             make.left.equalToSuperview().offset(16.0)
+            make.right.equalTo(sendButton.snp.left)
         }
         
         copyImage.snp.makeConstraints { make in

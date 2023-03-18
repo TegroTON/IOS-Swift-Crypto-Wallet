@@ -1,8 +1,14 @@
 import Foundation
 import shared
 
+typealias AddressType = TonManager.AddressType
+
 class TonManager {
 
+    enum AddressType: String {
+        case v4r2 = "V4R2"
+    }
+    
     weak var delegate: TonManagerDelegate?
 
     static let shared: TonManager = TonManager()
@@ -45,6 +51,15 @@ class TonManager {
                     self.delegate?.ton(keyPairCalculated: .failure(error))
                 }
             }
+        }
+    }
+    
+    func getAddress(_ type: AddressType, publicKey: String) -> WalletAddress {
+        switch type {
+        case .v4r2:
+            let address = ton.walletAddress(base64: publicKey)
+            let name = "V4R2"
+            return WalletAddress(name: name, address: address)
         }
     }
 

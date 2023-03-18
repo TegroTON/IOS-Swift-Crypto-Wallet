@@ -85,9 +85,9 @@ class KeychainManager {
             var keysTypeRef: AnyObject?
             let status = SecItemCopyMatching(query as CFDictionary, &keysTypeRef)
             
-//            if status == errSecSuccess, let data = keysTypeRef as? Data {
-//                return try? JSONDecoder().decode(TonKeyPair.self, from: data)
-//            }
+            if status == errSecSuccess, let data = keysTypeRef as? Data {
+                return try? JSONDecoder().decode(TonKeyPair.self, from: data)
+            }
             
             return nil
         }

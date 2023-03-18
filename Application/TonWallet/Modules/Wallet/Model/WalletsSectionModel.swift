@@ -1,10 +1,10 @@
 import IGListDiffKit
 
 class WalletsSectionModel {
-    let wallet: String
+    let wallets: [Wallet]
     
-    init(wallet: String) {
-        self.wallet = wallet
+    init(wallets: [Wallet]) {
+        self.wallets = wallets
     }
 }
 
@@ -12,12 +12,12 @@ class WalletsSectionModel {
 
 extension WalletsSectionModel: ListDiffable {
     func diffIdentifier() -> NSObjectProtocol {
-        return wallet as NSObjectProtocol
+        return wallets as NSObjectProtocol
     }
     
     func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
         guard let object = object as? Self else { return false }
         
-        return object.wallet == wallet
+        return object.wallets == wallets
     }
 }

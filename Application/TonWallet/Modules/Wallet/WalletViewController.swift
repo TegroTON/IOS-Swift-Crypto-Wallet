@@ -26,13 +26,18 @@ class WalletViewController: UIViewController {
 
 extension WalletViewController: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return [WalletsSectionModel(wallet: "wallets")]
+        return [
+            WalletsSectionModel(wallets: WalletManager.shared.wallets)
+        ]
     }
     
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         switch object {
         case is WalletsSectionModel:
-            return WalletsSection()
+            let section = WalletsSection()
+            section.delegate = self
+            
+            return section
             
         default:
             preconditionFailure("Unknown object type")
@@ -42,4 +47,10 @@ extension WalletViewController: ListAdapterDataSource {
     func emptyView(for listAdapter: ListAdapter) -> UIView? {
         nil
     }
+}
+
+// MARK: - WalletsSectionDelegate
+
+extension WalletViewController: WalletsSectionDelegate {
+    
 }

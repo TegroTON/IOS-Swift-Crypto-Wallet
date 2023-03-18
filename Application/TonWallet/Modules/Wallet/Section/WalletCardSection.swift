@@ -1,6 +1,14 @@
 import IGListKit
 
-class WalletCardSection: ListSectionController {
+protocol WalletCardsSectionDelegate: AnyObject {
+    
+}
+
+class WalletCardsSection: ListSectionController {
+    
+    weak var delegate: WalletCardsSectionDelegate?
+    
+    var model: WalletCardsModel!
     
     override init() {
         super.init()
@@ -9,8 +17,13 @@ class WalletCardSection: ListSectionController {
         minimumLineSpacing = 16
     }
     
+    override func didUpdate(to object: Any) {
+        precondition(object is WalletCardsModel)
+        model = object as? WalletCardsModel
+    }
+    
     override func numberOfItems() -> Int {
-        return 2
+        return model.wallets.count
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
@@ -22,6 +35,11 @@ class WalletCardSection: ListSectionController {
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         let cell = collectionContext!.dequeue(of: WalletCardCell.self, for: self, at: index)
+        let wallet = model.wallets[index]
+        
+        cell.cardView.nameLabel.text = wallet.name
+        cell.cardView.addressLabel.text = wallet.selectedAddress?.address
+        cell.cardView.balanceLabel.text = "???"
         
         return cell
     }

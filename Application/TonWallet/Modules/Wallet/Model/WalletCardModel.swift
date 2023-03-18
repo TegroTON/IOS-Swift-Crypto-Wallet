@@ -1,21 +1,21 @@
 import IGListDiffKit
 
-class WalletCardModel {
-    let wallet: String
+class WalletCardsModel {
+    let wallets: [Wallet]
     
-    init(wallet: String) {
-        self.wallet = wallet
+    init(wallets: [Wallet]) {
+        self.wallets = wallets
     }
 }
 
-extension WalletCardModel: ListDiffable {
+extension WalletCardsModel: ListDiffable {
     func diffIdentifier() -> NSObjectProtocol {
-        return wallet as NSObjectProtocol
+        return wallets as NSObjectProtocol
     }
     
     func isEqual(toDiffableObject object: ListDiffable?) -> Bool {
         guard let object = object as? Self else { return false }
         
-        return object.wallet == wallet
+        return object.wallets == wallets
     }
 }

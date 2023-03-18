@@ -1,6 +1,6 @@
 import Foundation
 
-class Wallet: Codable {
+class Wallet: Codable, Equatable {
     let id: String
     var name: String = "Wallet"
     var selectedAddress: WalletAddress?
@@ -8,6 +8,10 @@ class Wallet: Codable {
     
     init(id: String) {
         self.id = id
+    }
+    
+    static func == (lhs: Wallet, rhs: Wallet) -> Bool {
+        return lhs.id == rhs.id
     }
 }
 
