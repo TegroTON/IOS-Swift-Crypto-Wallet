@@ -2,12 +2,12 @@ import UIKit
 
 class PasswordViewController: UIViewController {
     
-    var userPassword: String = ""
-    var isPasswordSetted: Bool = false
-    var keyboardHeight: CGFloat = 0
-    var isButtonHidden: Bool = true
-    let selectionFeedback = UISelectionFeedbackGenerator()
-    let notificationFeedback = UINotificationFeedbackGenerator()
+    private var userPassword: String = ""
+    private var isPasswordSetted: Bool = false
+    private var keyboardHeight: CGFloat = 0
+    private var isButtonHidden: Bool = true
+    private let selectionFeedback = UISelectionFeedbackGenerator()
+    private let notificationFeedback = UINotificationFeedbackGenerator()
     
     var mainView: PasswordView {
         return view as! PasswordView

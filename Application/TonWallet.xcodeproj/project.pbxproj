@@ -64,6 +64,13 @@
 		2C44328529C6144C009B7771 /* SendFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44328429C6144C009B7771 /* SendFormView.swift */; };
 		2C44328729C61B0F009B7771 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44328629C61B0F009B7771 /* TextField.swift */; };
 		2C44328929C62BCD009B7771 /* SendTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44328829C62BCD009B7771 /* SendTokenView.swift */; };
+		2C44328E29C73539009B7771 /* SendConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44328D29C73539009B7771 /* SendConfirmViewController.swift */; };
+		2C44329029C73557009B7771 /* SendConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44328F29C73557009B7771 /* SendConfirmView.swift */; };
+		2C44329329C737B9009B7771 /* ConfirmCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44329229C737B9009B7771 /* ConfirmCommentView.swift */; };
+		2C44329529C74107009B7771 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44329429C74107009B7771 /* TextView.swift */; };
+		2C44329729C74E0F009B7771 /* Inter-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C44329629C74DE8009B7771 /* Inter-Italic.ttf */; };
+		2C44329929C74F33009B7771 /* ConfirmDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44329829C74F33009B7771 /* ConfirmDetailsView.swift */; };
+		2C44329C29C75684009B7771 /* ConfirmDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44329B29C75684009B7771 /* ConfirmDetailsModel.swift */; };
 		2C4DE29929A3143200BD1F05 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29829A3143200BD1F05 /* R.generated.swift */; };
 		2C4DE29E29A3B48700BD1F05 /* LoadSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29D29A3B48700BD1F05 /* LoadSeedView.swift */; };
 		2C4DE2A029A3B5A300BD1F05 /* LoadSeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29F29A3B5A300BD1F05 /* LoadSeedViewController.swift */; };
@@ -147,6 +154,13 @@
 		2C44328429C6144C009B7771 /* SendFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFormView.swift; sourceTree = "<group>"; };
 		2C44328629C61B0F009B7771 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		2C44328829C62BCD009B7771 /* SendTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendTokenView.swift; sourceTree = "<group>"; };
+		2C44328D29C73539009B7771 /* SendConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendConfirmViewController.swift; sourceTree = "<group>"; };
+		2C44328F29C73557009B7771 /* SendConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendConfirmView.swift; sourceTree = "<group>"; };
+		2C44329229C737B9009B7771 /* ConfirmCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCommentView.swift; sourceTree = "<group>"; };
+		2C44329429C74107009B7771 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		2C44329629C74DE8009B7771 /* Inter-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Italic.ttf"; sourceTree = "<group>"; };
+		2C44329829C74F33009B7771 /* ConfirmDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsView.swift; sourceTree = "<group>"; };
+		2C44329B29C75684009B7771 /* ConfirmDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsModel.swift; sourceTree = "<group>"; };
 		2C4DE29829A3143200BD1F05 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		2C4DE29D29A3B48700BD1F05 /* LoadSeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSeedView.swift; sourceTree = "<group>"; };
 		2C4DE29F29A3B5A300BD1F05 /* LoadSeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSeedViewController.swift; sourceTree = "<group>"; };
@@ -474,6 +488,7 @@
 			children = (
 				2C2DCBFE29598FB700E4B688 /* RootView.swift */,
 				2C44328629C61B0F009B7771 /* TextField.swift */,
+				2C44329429C74107009B7771 /* TextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -616,6 +631,7 @@
 		2C3BE48E29A30AA1000358C0 /* Inter */ = {
 			isa = PBXGroup;
 			children = (
+				2C44329629C74DE8009B7771 /* Inter-Italic.ttf */,
 				2C3BE48F29A30AA1000358C0 /* Inter-Medium.ttf */,
 				2C3BE49029A30AA1000358C0 /* Inter-Bold.ttf */,
 				2C3BE49129A30AA1000358C0 /* Inter-Regular.ttf */,
@@ -636,8 +652,8 @@
 		2C44327B29C5EF23009B7771 /* Send */ = {
 			isa = PBXGroup;
 			children = (
-				2C44327C29C5EF2C009B7771 /* View */,
-				2C44328229C5F429009B7771 /* SendViewController.swift */,
+				2C44328A29C734FC009B7771 /* Send */,
+				2C44328B29C73519009B7771 /* Confirm */,
 			);
 			path = Send;
 			sourceTree = "<group>";
@@ -659,6 +675,51 @@
 				2C44328829C62BCD009B7771 /* SendTokenView.swift */,
 			);
 			path = Subview;
+			sourceTree = "<group>";
+		};
+		2C44328A29C734FC009B7771 /* Send */ = {
+			isa = PBXGroup;
+			children = (
+				2C44327C29C5EF2C009B7771 /* View */,
+				2C44328229C5F429009B7771 /* SendViewController.swift */,
+			);
+			path = Send;
+			sourceTree = "<group>";
+		};
+		2C44328B29C73519009B7771 /* Confirm */ = {
+			isa = PBXGroup;
+			children = (
+				2C44329A29C75672009B7771 /* Model */,
+				2C44328C29C73524009B7771 /* View */,
+				2C44328D29C73539009B7771 /* SendConfirmViewController.swift */,
+			);
+			path = Confirm;
+			sourceTree = "<group>";
+		};
+		2C44328C29C73524009B7771 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C44329129C737A1009B7771 /* Subview */,
+				2C44328F29C73557009B7771 /* SendConfirmView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C44329129C737A1009B7771 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				2C44329229C737B9009B7771 /* ConfirmCommentView.swift */,
+				2C44329829C74F33009B7771 /* ConfirmDetailsView.swift */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
+		2C44329A29C75672009B7771 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C44329B29C75684009B7771 /* ConfirmDetailsModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		2C4DE29A29A3B43100BD1F05 /* Start */ = {
@@ -852,6 +913,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C44329729C74E0F009B7771 /* Inter-Italic.ttf in Resources */,
 				2C3BE49729A30AA1000358C0 /* Inter-ExtraBold.ttf in Resources */,
 				2C1BD169298181B2001284C0 /* Rubik-Bold.ttf in Resources */,
 				2C1BD16A298181B2001284C0 /* Rubik-ExtraBold.ttf in Resources */,
@@ -962,14 +1024,18 @@
 				2C1BD19A2983F955001284C0 /* WalletViewController.swift in Sources */,
 				2C44328329C5F429009B7771 /* SendViewController.swift in Sources */,
 				2C44328729C61B0F009B7771 /* TextField.swift in Sources */,
+				2C44329929C74F33009B7771 /* ConfirmDetailsView.swift in Sources */,
 				2C1BD1982983F948001284C0 /* WalletView.swift in Sources */,
+				2C44329329C737B9009B7771 /* ConfirmCommentView.swift in Sources */,
 				2C2DCC0629598FB700E4B688 /* RootView.swift in Sources */,
 				2C1BD16129817F1F001284C0 /* UIFont+Custom.swift in Sources */,
 				2C35C6AE29A725A000A0F181 /* SettingsView.swift in Sources */,
 				2C1BD19C2983FFEE001284C0 /* SeedNextButtonCell.swift in Sources */,
 				2C4DE2A329A3E64200BD1F05 /* LoadAnimateView.swift in Sources */,
+				2C44329529C74107009B7771 /* TextView.swift in Sources */,
 				2C35C6C929A8DAC400A0F181 /* Wallet.swift in Sources */,
 				2C44328929C62BCD009B7771 /* SendTokenView.swift in Sources */,
+				2C44329C29C75684009B7771 /* ConfirmDetailsModel.swift in Sources */,
 				2C1BD18E2982C07E001284C0 /* PassIndicatorsView.swift in Sources */,
 				2C1BD179298189D2001284C0 /* RootNavigationController.swift in Sources */,
 				2C1BD18529828646001284C0 /* SeedWordCell.swift in Sources */,
@@ -984,9 +1050,11 @@
 				2C35C6C629A8DAB500A0F181 /* WalletManager.swift in Sources */,
 				2C1BD17D29818D84001284C0 /* SeedPhraseView.swift in Sources */,
 				2C44327A29C5C0E8009B7771 /* PagingFlowLayout.swift in Sources */,
+				2C44329029C73557009B7771 /* SendConfirmView.swift in Sources */,
 				2C1BD1A229842B10001284C0 /* WalletsSection.swift in Sources */,
 				2C35C6A529A521FF00A0F181 /* SeedHeaderCell.swift in Sources */,
 				2C35C6CC29A9243900A0F181 /* UserSettings.swift in Sources */,
+				2C44328E29C73539009B7771 /* SendConfirmViewController.swift in Sources */,
 				2C1BD181298191F9001284C0 /* SeedWordView.swift in Sources */,
 				2C35C6B129A7264700A0F181 /* WalletHeaderView.swift in Sources */,
 				2C4DE2AC29A4154900BD1F05 /* SeedPhraseWarningView.swift in Sources */,

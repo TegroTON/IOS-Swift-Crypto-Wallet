@@ -26,6 +26,19 @@ class SendViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    @objc private func sendButtonTapped() {
+        let address = mainView.formView.addressTextField.text ?? ""
+        let amount = Double(mainView.formView.amountTextField.text ?? "") ?? 0.0
+        let commission = 0.00551003
+        
+        let model = ConfirmDetailsModel(address: address, amount: amount, commission: commission, token: "TON")
+        let vc = SendConfirmViewController(model: model)
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        
+        present(vc, animated: true)
+    }
+    
     @objc private func balanceViewTapped() {
         // TODO: Нужно заполнить поле суммы балансом
         generator.selectionChanged()
@@ -97,7 +110,7 @@ class SendViewController: UIViewController {
         let option = UIView.AnimationOptions(rawValue: curve.uintValue)
         let duration = animationDuration.doubleValue
         
-        mainView.sendButtonBottomConstraint.update(offset: -mainView.safeAreaInsets.bottom - 16)
+        mainView.sendButtonBottomConstraint.update(offset: 0)
         
         UIView.animate(withDuration: duration, delay: 0, options: option, animations: {
             self.mainView.layoutIfNeeded()
@@ -108,6 +121,7 @@ class SendViewController: UIViewController {
     
     private func setupTargets() {
         mainView.headerView.closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        mainView.sendButton.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
         mainView.formView.addressTextField.addTarget(self, action: #selector(addressFieldChanged), for: .editingChanged)
         mainView.formView.amountTextField.addTarget(self, action: #selector(amountFieldChanged), for: .editingChanged)
     }
@@ -134,8 +148,6 @@ class SendViewController: UIViewController {
     private func updateAvailableState() {
         let addressIsEmpty = mainView.formView.addressTextField.text?.isEmpty == true
         let amountIsEmpty = mainView.formView.amountTextField.text?.isEmpty == true
-        
-        print("❤️", addressIsEmpty, amountIsEmpty)
         
         if !addressIsEmpty && !amountIsEmpty {
             guard mainView.sendButton.isEnabled == false else { return }

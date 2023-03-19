@@ -7,6 +7,7 @@ enum FontWeight: String {
     case regular = "-Regular"
     case semiBold = "-SemiBold"
     case black = "-Black"
+    case italic = "-Italic"
 }
 
 extension UIFont {
