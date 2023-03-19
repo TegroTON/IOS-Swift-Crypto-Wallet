@@ -40,6 +40,15 @@ class SendConfirmViewController: UIViewController {
         mainView.endEditing(true)
     }
     
+    @objc private func confirmButtonTapped() {
+        let vc = PasswordViewController(type: .check)
+        vc.completionHandler = { [weak self] _ in
+            guard let self = self else { return }
+            
+            
+        }
+    }
+    
     // MARK: - Private methods
     
     // TODO: коммиссия только в тонах или в чем?

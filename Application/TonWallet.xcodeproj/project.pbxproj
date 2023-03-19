@@ -71,6 +71,10 @@
 		2C44329729C74E0F009B7771 /* Inter-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C44329629C74DE8009B7771 /* Inter-Italic.ttf */; };
 		2C44329929C74F33009B7771 /* ConfirmDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44329829C74F33009B7771 /* ConfirmDetailsView.swift */; };
 		2C44329C29C75684009B7771 /* ConfirmDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44329B29C75684009B7771 /* ConfirmDetailsModel.swift */; };
+		2C4432A029C78378009B7771 /* SendSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C44329F29C78378009B7771 /* SendSuccessView.swift */; };
+		2C4432A229C78395009B7771 /* SendSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4432A129C78395009B7771 /* SendSuccessViewController.swift */; };
+		2C4432A529C78513009B7771 /* SendSuccessHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4432A429C78513009B7771 /* SendSuccessHeaderView.swift */; };
+		2C4432A729C7881F009B7771 /* SendSuccessDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4432A629C7881F009B7771 /* SendSuccessDetailsView.swift */; };
 		2C4DE29929A3143200BD1F05 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29829A3143200BD1F05 /* R.generated.swift */; };
 		2C4DE29E29A3B48700BD1F05 /* LoadSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29D29A3B48700BD1F05 /* LoadSeedView.swift */; };
 		2C4DE2A029A3B5A300BD1F05 /* LoadSeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE29F29A3B5A300BD1F05 /* LoadSeedViewController.swift */; };
@@ -161,6 +165,10 @@
 		2C44329629C74DE8009B7771 /* Inter-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Italic.ttf"; sourceTree = "<group>"; };
 		2C44329829C74F33009B7771 /* ConfirmDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsView.swift; sourceTree = "<group>"; };
 		2C44329B29C75684009B7771 /* ConfirmDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsModel.swift; sourceTree = "<group>"; };
+		2C44329F29C78378009B7771 /* SendSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSuccessView.swift; sourceTree = "<group>"; };
+		2C4432A129C78395009B7771 /* SendSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSuccessViewController.swift; sourceTree = "<group>"; };
+		2C4432A429C78513009B7771 /* SendSuccessHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSuccessHeaderView.swift; sourceTree = "<group>"; };
+		2C4432A629C7881F009B7771 /* SendSuccessDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSuccessDetailsView.swift; sourceTree = "<group>"; };
 		2C4DE29829A3143200BD1F05 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		2C4DE29D29A3B48700BD1F05 /* LoadSeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSeedView.swift; sourceTree = "<group>"; };
 		2C4DE29F29A3B5A300BD1F05 /* LoadSeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadSeedViewController.swift; sourceTree = "<group>"; };
@@ -654,6 +662,7 @@
 			children = (
 				2C44328A29C734FC009B7771 /* Send */,
 				2C44328B29C73519009B7771 /* Confirm */,
+				2C44329D29C7835E009B7771 /* Success */,
 			);
 			path = Send;
 			sourceTree = "<group>";
@@ -720,6 +729,33 @@
 				2C44329B29C75684009B7771 /* ConfirmDetailsModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2C44329D29C7835E009B7771 /* Success */ = {
+			isa = PBXGroup;
+			children = (
+				2C44329E29C78368009B7771 /* View */,
+				2C4432A129C78395009B7771 /* SendSuccessViewController.swift */,
+			);
+			path = Success;
+			sourceTree = "<group>";
+		};
+		2C44329E29C78368009B7771 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C4432A329C78482009B7771 /* Subview */,
+				2C44329F29C78378009B7771 /* SendSuccessView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C4432A329C78482009B7771 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				2C4432A429C78513009B7771 /* SendSuccessHeaderView.swift */,
+				2C4432A629C7881F009B7771 /* SendSuccessDetailsView.swift */,
+			);
+			path = Subview;
 			sourceTree = "<group>";
 		};
 		2C4DE29A29A3B43100BD1F05 /* Start */ = {
@@ -1046,10 +1082,12 @@
 				2C4DE29E29A3B48700BD1F05 /* LoadSeedView.swift in Sources */,
 				2C44328529C6144C009B7771 /* SendFormView.swift in Sources */,
 				2C2DCC0829598FB700E4B688 /* UIIColor+hex.swift in Sources */,
+				2C4432A229C78395009B7771 /* SendSuccessViewController.swift in Sources */,
 				2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */,
 				2C35C6C629A8DAB500A0F181 /* WalletManager.swift in Sources */,
 				2C1BD17D29818D84001284C0 /* SeedPhraseView.swift in Sources */,
 				2C44327A29C5C0E8009B7771 /* PagingFlowLayout.swift in Sources */,
+				2C4432A529C78513009B7771 /* SendSuccessHeaderView.swift in Sources */,
 				2C44329029C73557009B7771 /* SendConfirmView.swift in Sources */,
 				2C1BD1A229842B10001284C0 /* WalletsSection.swift in Sources */,
 				2C35C6A529A521FF00A0F181 /* SeedHeaderCell.swift in Sources */,
@@ -1058,6 +1096,7 @@
 				2C1BD181298191F9001284C0 /* SeedWordView.swift in Sources */,
 				2C35C6B129A7264700A0F181 /* WalletHeaderView.swift in Sources */,
 				2C4DE2AC29A4154900BD1F05 /* SeedPhraseWarningView.swift in Sources */,
+				2C4432A729C7881F009B7771 /* SendSuccessDetailsView.swift in Sources */,
 				2C4DE29929A3143200BD1F05 /* R.generated.swift in Sources */,
 				2C35C6AB29A7258D00A0F181 /* SettingsViewController.swift in Sources */,
 				2C35C6BC29A7F31F00A0F181 /* WalletCardSection.swift in Sources */,
@@ -1066,6 +1105,7 @@
 				2C4DE2A829A4147700BD1F05 /* CheckSeedViewController.swift in Sources */,
 				2C1BD17229818334001284C0 /* SeedPhraseAlertViewController.swift in Sources */,
 				2C1BD1892982BAD3001284C0 /* PasswordView.swift in Sources */,
+				2C4432A029C78378009B7771 /* SendSuccessView.swift in Sources */,
 				2C35C6C029A7F5F500A0F181 /* WalletCardView.swift in Sources */,
 				2C35C6BE29A7F4B000A0F181 /* WalletsCell.swift in Sources */,
 				2C4DE2A029A3B5A300BD1F05 /* LoadSeedViewController.swift in Sources */,

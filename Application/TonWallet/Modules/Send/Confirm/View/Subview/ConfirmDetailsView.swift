@@ -91,7 +91,7 @@ class ConfirmDetailsView: RootView {
         setupConstraints()
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         recipientValueLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         recipientLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         

@@ -60,3 +60,8 @@ send-confirm-recipient = "Recipient";
 send-confirm-sum = "Sum";
 send-confirm-commission = "Commission";
 send-confirm-button = "Confirm and send";
+send-success-title = "%@ Sent";
+send-success-subtitle = "Your transaction has been sent to the\nnetwork and will be processed\nin a few seconds";
+send-success-button = "Done";
+send-success-add-contact = "Add recipient to contacts";
+

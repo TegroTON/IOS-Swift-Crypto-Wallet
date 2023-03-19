@@ -83,7 +83,7 @@ class CheckSeedViewController: UIViewController {
             }
         }
         
-        navigationController?.pushViewController(PasswordViewController(), animated: true)
+        presentPassword()
     }
     
     @objc private func connectButtonTapped() {
@@ -120,6 +120,31 @@ class CheckSeedViewController: UIViewController {
         mainView.tableView.dataSource = self
     }
     
+    private func presentPassword() {
+        let vc = PasswordViewController(type: .set)
+        vc.completionHandler = { [weak self] password in
+            guard let self = self else { return }
+            
+            KeychainManager().storePassword(password) { success in
+                if success {
+                    print("💙 success store password")
+                } else {
+                    print("❤️ failure store password")
+                }
+            }
+            
+            let vc = SuccessViewController()
+            vc.modalPresentationStyle = .overFullScreen
+            
+            self.present(vc, animated: false) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    self.navigationController?.setViewControllers([TabBarViewController()], animated: true)
+                }
+            }
+        }
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -213,10 +238,10 @@ extension CheckSeedViewController: TonManagerDelegate {
         switch result {
         case .success(let keyPair):
             guard let mnemonics = TonManager.shared.mnemonics else { return }
+            
             let createdWallet = WalletManager.shared.create(wallet: mnemonics)
             WalletManager.shared.set(keys: keyPair, for: createdWallet.id)
-            
-            navigationController?.pushViewController(PasswordViewController(), animated: true)
+            presentPassword()
             
         case .failure(let error):
             print("❤️ keyPairCalculated error", error)

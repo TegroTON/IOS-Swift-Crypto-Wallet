@@ -2,10 +2,17 @@ import UIKit
 
 class PasswordViewController: UIViewController {
     
+    enum ViewType {
+        case set
+        case check
+    }
+    
+    var completionHandler: ((String) -> Void)?
+    
+    private let type: ViewType
     private var userPassword: String = ""
     private var isPasswordSetted: Bool = false
     private var keyboardHeight: CGFloat = 0
-    private var isButtonHidden: Bool = true
     private let selectionFeedback = UISelectionFeedbackGenerator()
     private let notificationFeedback = UINotificationFeedbackGenerator()
     
@@ -15,6 +22,31 @@ class PasswordViewController: UIViewController {
     
     override func loadView() {
         view = PasswordView()
+    }
+    
+    init(type: ViewType) {
+        self.type = type
+        super.init(nibName: nil, bundle: nil)
+        
+        switch type {
+        case .check:
+            userPassword = KeychainManager().getPassword() ?? ""
+            isPasswordSetted = true
+            
+            mainView.setSubtitle(text: R.string.localizable.passwordEnterSubtitle())
+            mainView.titleLabel.text = R.string.localizable.passwordEnterTitle()
+            
+        case .set:
+            userPassword = ""
+            isPasswordSetted = false
+            
+            mainView.setSubtitle(text: R.string.localizable.passwordSubtitle())
+            mainView.titleLabel.text = R.string.localizable.passwordSetTitle()
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -86,26 +118,14 @@ class PasswordViewController: UIViewController {
                 mainView.textField.resignFirstResponder()
                 notificationFeedback.notificationOccurred(.success)
                 
-                KeychainManager().storePassword(userPassword) { success in
-                    if success {
-                        print("💙 success store password")
-                    } else {
-                        print("❤️ failure store password")
-                    }
-                }
-                
-                let vc = SuccessViewController()
-                vc.modalPresentationStyle = .overFullScreen
-                
-                present(vc, animated: false) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        self.navigationController?.setViewControllers([TabBarViewController()], animated: true)
-                    }
-                }
+                completionHandler?(userPassword)
             } else {
-                userPassword = ""
+                if type == .set {
+                    userPassword = ""
+                    isPasswordSetted = false
+                }
+                
                 mainView.textField.text = nil
-                isPasswordSetted = false
                 
                 notificationFeedback.notificationOccurred(.error)
                 animateIncorrectPassword(needToSet: true)
