@@ -23,7 +23,7 @@ class SendFormView: RootView {
         view.layer.borderColor = R.color.borderColor()?.cgColor
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 10
-        view.contentInset = UIEdgeInsets(top: 16.0, left: 16.0, bottom: 20.0, right: 72.0)
+        view.contentInset = UIEdgeInsets(top: 16.0, left: 16.0, bottom: 20.0, right: 90.0) 
         view.smartQuotesType = .no
         view.smartDashesType = .no
         view.autocorrectionType = .no

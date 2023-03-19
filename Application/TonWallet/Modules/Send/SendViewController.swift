@@ -2,6 +2,8 @@ import UIKit
 
 class SendViewController: UIViewController {
 
+    let generator = UISelectionFeedbackGenerator()
+    
     var mainView: SendView {
         return view as! SendView
     }
@@ -13,22 +15,9 @@ class SendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        mainView.headerView.closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
-        
-        let viewGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
-        let tokenGesture = UITapGestureRecognizer(target: self, action: #selector(tokenViewTapped))
-        let scanGesture = UITapGestureRecognizer(target: self, action: #selector(scanViewTapped))
-        let pasteGesture = UITapGestureRecognizer(target: self, action: #selector(pasteViewTapped))
-        let balanceGesture = UITapGestureRecognizer(target: self, action: #selector(balanceViewTapped))
-        
-        mainView.addGestureRecognizer(viewGesture)
-        mainView.formView.tokenView.addGestureRecognizer(tokenGesture)
-        mainView.formView.scanContainer.addGestureRecognizer(scanGesture)
-        mainView.formView.pasteContainer.addGestureRecognizer(pasteGesture)
-        mainView.formView.balanceContainer.addGestureRecognizer(balanceGesture)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        setupTargets()
+        setupGestures()
+        setupObservers()
     }
 
     // MARK: - Private actions
@@ -38,27 +27,45 @@ class SendViewController: UIViewController {
     }
     
     @objc private func balanceViewTapped() {
-        // TODO: Нужно заполнить филд балансом
-        UISelectionFeedbackGenerator().selectionChanged()
+        // TODO: Нужно заполнить поле суммы балансом
+        generator.selectionChanged()
     }
     
     @objc private func tokenViewTapped() {
         // TODO: Нужно вызвать модалку выбора токенов
-        UISelectionFeedbackGenerator().selectionChanged()
+        generator.selectionChanged()
     }
     
     @objc private func scanViewTapped() {
         // TODO: Нужно вызвать модалку сканирования qr
-        UISelectionFeedbackGenerator().selectionChanged()
+        generator.selectionChanged()
     }
     
     @objc private func pasteViewTapped() {
-        // TODO: Нужно вставить адрес
-        UISelectionFeedbackGenerator().selectionChanged()
+        mainView.formView.addressTextField.text = UIPasteboard.general.string
+        addressFieldChanged(mainView.formView.addressTextField)
+        generator.selectionChanged()
     }
     
     @objc private func viewTapped() {
         mainView.endEditing(true)
+    }
+    
+    @objc private func addressFieldChanged(_ sender: TextField) {
+        //TODO: надо добавить таймер, чтобы через некоторое время проверять корректность адреса
+        
+        let isHidden = sender.text?.isEmpty == false
+        let rightInset = isHidden ? 16.0 : 90.0
+        
+        sender.contentInset.right = rightInset
+        mainView.formView.scanContainer.isHidden = isHidden
+        mainView.formView.pasteContainer.isHidden = isHidden
+        
+        updateAvailableState()
+    }
+    
+    @objc private func amountFieldChanged(_ sender: TextField) {
+        updateAvailableState()
     }
     
     @objc private func keyboardWillShow(_ notification: Notification) {
@@ -97,4 +104,55 @@ class SendViewController: UIViewController {
         }, completion: nil)
     }
     
+    // MARK: - Private methods
+    
+    private func setupTargets() {
+        mainView.headerView.closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        mainView.formView.addressTextField.addTarget(self, action: #selector(addressFieldChanged), for: .editingChanged)
+        mainView.formView.amountTextField.addTarget(self, action: #selector(amountFieldChanged), for: .editingChanged)
+    }
+    
+    private func setupGestures() {
+        let viewGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        let tokenGesture = UITapGestureRecognizer(target: self, action: #selector(tokenViewTapped))
+        let scanGesture = UITapGestureRecognizer(target: self, action: #selector(scanViewTapped))
+        let pasteGesture = UITapGestureRecognizer(target: self, action: #selector(pasteViewTapped))
+        let balanceGesture = UITapGestureRecognizer(target: self, action: #selector(balanceViewTapped))
+        
+        mainView.addGestureRecognizer(viewGesture)
+        mainView.formView.tokenView.addGestureRecognizer(tokenGesture)
+        mainView.formView.scanContainer.addGestureRecognizer(scanGesture)
+        mainView.formView.pasteContainer.addGestureRecognizer(pasteGesture)
+        mainView.formView.balanceContainer.addGestureRecognizer(balanceGesture)
+    }
+    
+    private func setupObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    private func updateAvailableState() {
+        let addressIsEmpty = mainView.formView.addressTextField.text?.isEmpty == true
+        let amountIsEmpty = mainView.formView.amountTextField.text?.isEmpty == true
+        
+        print("❤️", addressIsEmpty, amountIsEmpty)
+        
+        if !addressIsEmpty && !amountIsEmpty {
+            guard mainView.sendButton.isEnabled == false else { return }
+            mainView.sendButton.isEnabled = true
+            
+            UIView.animate(withDuration: 0.3) {
+                self.mainView.sendButton.backgroundColor = .init(hex6: 0x0066FF)
+                self.mainView.sendButton.setTitleColor(.white, for: .normal)
+            }
+        } else {
+            guard mainView.sendButton.isEnabled == true else { return }
+            mainView.sendButton.isEnabled = false
+            
+            UIView.animate(withDuration: 0.3) {
+                self.mainView.sendButton.backgroundColor = R.color.btnSecond()
+                self.mainView.sendButton.setTitleColor(R.color.textSecond(), for: .normal)
+            }
+        }
+    }
 }
