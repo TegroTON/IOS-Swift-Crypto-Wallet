@@ -13,19 +13,9 @@ class SendSuccessDetailsView: ConfirmDetailsView {
         return button
     }()
     
-    override func setup() {
-        detailsContainer.addSubview(addButton)
-        addButton.layer.addSublayer(testLayer)
-        
-        /// тут добавляются все вьюшки из супер вью и вызывается setupConstraints()
-        super.setup()
-        
-        titleLabel.removeFromSuperview()
-    }
-    
-    let testLayer: CAShapeLayer = {
+    let borderLayer: CAShapeLayer = {
         let layer = CAShapeLayer()
-        layer.strokeColor = UIColor(hex6: 0xB6C6D6).cgColor
+        layer.strokeColor = R.color.testBorder()?.cgColor
         layer.lineWidth = 1
         layer.lineDashPattern = [8, 8] // alternate 4 points on and 4 points off
         layer.fillColor = nil
@@ -33,13 +23,21 @@ class SendSuccessDetailsView: ConfirmDetailsView {
         return layer
     }()
     
+    override func setup() {
+        detailsContainer.addSubview(addButton)
+        addButton.layer.addSublayer(borderLayer)
+        
+        /// тут добавляются все вьюшки из супер вью и вызывается setupConstraints()
+        super.setup()
+        
+        titleLabel.removeFromSuperview()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        print(addButton.bounds)
-        
-        testLayer.frame = addButton.bounds
-        testLayer.path = UIBezierPath(roundedRect: addButton.bounds, cornerRadius: 10).cgPath
+        borderLayer.frame = addButton.bounds
+        borderLayer.path = UIBezierPath(roundedRect: addButton.bounds, cornerRadius: 10).cgPath
     }
     
     override func setupConstraints() {

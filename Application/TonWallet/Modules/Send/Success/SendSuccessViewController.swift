@@ -22,5 +22,13 @@ class SendSuccessViewController: UIViewController {
         ///без этого метод layoutSubviews() в detailsView вызывается только с нулевыми ректами
         mainView.detailsView.setNeedsLayout()
     }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            mainView.detailsView.borderLayer.strokeColor = R.color.testBorder()?.cgColor
+        }
+    }
 
 }
