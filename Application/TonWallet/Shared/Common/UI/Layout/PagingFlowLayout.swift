@@ -35,8 +35,8 @@ class PagingFlowLayout: UICollectionViewFlowLayout {
             
             var offset = CGFloat.greatestFiniteMagnitude
             
-            for i in 0..<collectionView.numberOfItems(inSection: 0) {
-                let indexPath = IndexPath(item: i, section: 0)
+            for item in 0..<collectionView.numberOfItems(inSection: 0) {
+                let indexPath = IndexPath(item: item, section: 0)
                 let attributes = layoutAttributesForItem(at: indexPath)!
                 let itemOffset = attributes.frame.origin.x - sectionInset.left
                 
@@ -55,8 +55,8 @@ class PagingFlowLayout: UICollectionViewFlowLayout {
             
             var offset = CGFloat.greatestFiniteMagnitude
             
-            for i in (0..<collectionView.numberOfItems(inSection: 0)).reversed() {
-                let indexPath = IndexPath(item: i, section: 0)
+            for item in (0..<collectionView.numberOfItems(inSection: 0)).reversed() {
+                let indexPath = IndexPath(item: item, section: 0)
                 let attributes = layoutAttributesForItem(at: indexPath)!
                 let itemOffset = attributes.frame.origin.x - sectionInset.left
                 

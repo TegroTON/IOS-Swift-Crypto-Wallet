@@ -2,6 +2,8 @@ import UIKit
 
 class SendConfirmViewController: UIViewController {
 
+    let model: ConfirmDetailsModel
+    
     var mainView: SendConfirmView {
         return view as! SendConfirmView
     }
@@ -11,6 +13,7 @@ class SendConfirmViewController: UIViewController {
     }
     
     init(model: ConfirmDetailsModel) {
+        self.model = model
         super.init(nibName: nil, bundle: nil)
         
         updateContent(with: model)
@@ -23,6 +26,7 @@ class SendConfirmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        mainView.confirmButton.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
         mainView.headerView.closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         
         let viewGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
@@ -45,8 +49,11 @@ class SendConfirmViewController: UIViewController {
         vc.completionHandler = { [weak self] _ in
             guard let self = self else { return }
             
-            
+            let successVC = SendSuccessViewController(model: self.model)
+            vc.navigationController?.pushViewController(successVC, animated: true)
         }
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - Private methods

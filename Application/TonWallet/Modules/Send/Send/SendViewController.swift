@@ -30,13 +30,9 @@ class SendViewController: UIViewController {
         let address = mainView.formView.addressTextField.text ?? ""
         let amount = Double(mainView.formView.amountTextField.text ?? "") ?? 0.0
         let commission = 0.00551003
-        
         let model = ConfirmDetailsModel(address: address, amount: amount, commission: commission, token: "TON")
-        let vc = SendConfirmViewController(model: model)
-        vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .crossDissolve
         
-        present(vc, animated: true)
+        navigationController?.pushViewController(SendConfirmViewController(model: model), animated: true)
     }
     
     @objc private func balanceViewTapped() {

@@ -2,22 +2,22 @@ import UIKit
 import Atributika
 
 class CheckSeedViewController: UIViewController {
-    
+
     enum ViewType {
         case check
         case enter
     }
-    
+
     var mainView: CheckSeedView {
-        return view as! CheckSeedView
+        return view as? CheckSeedView ?? CheckSeedView()
     }
-    
+
     let type: ViewType
     let phrases = TonManager.shared.mnemonics ?? []
     var wordsForCheck = [(index: Int, word: String)]()
     var userSeedPhrase = [Int: String]()
     var didAppeared: Bool = false
-    
+
     override func loadView() {
         view = CheckSeedView()
     }

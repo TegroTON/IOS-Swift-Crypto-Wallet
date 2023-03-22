@@ -15,8 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             rootVC = TabBarViewController()
         }
         
+        let navVC = RootNavigationController.shared
+        navVC.setViewControllers([rootVC], animated: false)
+        
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = RootNavigationController(rootViewController: SendSuccessViewController())
+        window?.rootViewController = navVC
         window?.makeKeyAndVisible()
         
         return true
