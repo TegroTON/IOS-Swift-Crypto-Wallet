@@ -62,6 +62,8 @@ class PasswordViewController: UIViewController {
         super.viewDidAppear(animated)
         
         mainView.textField.becomeFirstResponder()
+        
+        mainView.backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
     }
     
     // MARK: - Private actions
@@ -128,7 +130,7 @@ class PasswordViewController: UIViewController {
                 mainView.textField.text = nil
                 
                 notificationFeedback.notificationOccurred(.error)
-                animateIncorrectPassword(needToSet: true)
+                animateIncorrectPassword(needToSet: type == .set)
             }
         } else {
             mainView.textField.text = nil
