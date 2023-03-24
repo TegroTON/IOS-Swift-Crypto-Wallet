@@ -65,3 +65,9 @@ send-success-subtitle = "Your transaction has been sent to the\nnetwork and will
 send-success-button = "Done";
 send-success-add-contact = "Add recipient to contacts";
 
+// Receive
+receive-title = "Receive";
+receive-qr = "QR Code";
+receive-wallet = "Wallet address";
+receive-share = "Share";
+receive-copy = "Copy address";

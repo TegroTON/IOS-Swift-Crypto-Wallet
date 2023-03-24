@@ -84,6 +84,9 @@
 		2C4DE2AC29A4154900BD1F05 /* SeedPhraseWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE2AB29A4154900BD1F05 /* SeedPhraseWarningView.swift */; };
 		2C4DE2AE29A4160D00BD1F05 /* SeedPhraseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE2AD29A4160D00BD1F05 /* SeedPhraseHeaderView.swift */; };
 		2CCE902029CD572E00C904B6 /* UIView+shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE901F29CD572E00C904B6 /* UIView+shake.swift */; };
+		2CCE902429CD58D300C904B6 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE902329CD58D300C904B6 /* ReceiveViewController.swift */; };
+		2CCE902629CD58DF00C904B6 /* ReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE902529CD58DF00C904B6 /* ReceiveView.swift */; };
+		2CCE902929CD593800C904B6 /* ReceiveHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE902829CD593700C904B6 /* ReceiveHeaderView.swift */; };
 		2CDA0007298474A000A8CA23 /* SharedWithYouCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDA0006298474A000A8CA23 /* SharedWithYouCore.framework */; };
 		2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F115295C288600258A98 /* CreateViewController.swift */; };
 		2CE8F118295C29B600258A98 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F117295C29B600258A98 /* CreateView.swift */; };
@@ -179,6 +182,9 @@
 		2C4DE2AB29A4154900BD1F05 /* SeedPhraseWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseWarningView.swift; sourceTree = "<group>"; };
 		2C4DE2AD29A4160D00BD1F05 /* SeedPhraseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseHeaderView.swift; sourceTree = "<group>"; };
 		2CCE901F29CD572E00C904B6 /* UIView+shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+shake.swift"; sourceTree = "<group>"; };
+		2CCE902329CD58D300C904B6 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
+		2CCE902529CD58DF00C904B6 /* ReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveView.swift; sourceTree = "<group>"; };
+		2CCE902829CD593700C904B6 /* ReceiveHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveHeaderView.swift; sourceTree = "<group>"; };
 		2CDA0006298474A000A8CA23 /* SharedWithYouCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SharedWithYouCore.framework; path = System/Library/Frameworks/SharedWithYouCore.framework; sourceTree = SDKROOT; };
 		2CE8F115295C288600258A98 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		2CE8F117295C29B600258A98 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
@@ -445,6 +451,7 @@
 		2C2DCBF829598EAB00E4B688 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2CCE902129CD58AC00C904B6 /* Receive */,
 				2C44327B29C5EF23009B7771 /* Send */,
 				2C35C6A629A71C0300A0F181 /* TabBar */,
 				2C1BD1952983F928001284C0 /* Wallet */,
@@ -815,6 +822,32 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		2CCE902129CD58AC00C904B6 /* Receive */ = {
+			isa = PBXGroup;
+			children = (
+				2CCE902229CD58C100C904B6 /* View */,
+				2CCE902329CD58D300C904B6 /* ReceiveViewController.swift */,
+			);
+			path = Receive;
+			sourceTree = "<group>";
+		};
+		2CCE902229CD58C100C904B6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2CCE902729CD592700C904B6 /* Subview */,
+				2CCE902529CD58DF00C904B6 /* ReceiveView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2CCE902729CD592700C904B6 /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				2CCE902829CD593700C904B6 /* ReceiveHeaderView.swift */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
 		2CE8F112295C285E00258A98 /* Create */ = {
 			isa = PBXGroup;
 			children = (
@@ -1060,6 +1093,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C1BD17529818357001284C0 /* SeedPhraseAlertView.swift in Sources */,
+				2CCE902929CD593800C904B6 /* ReceiveHeaderView.swift in Sources */,
 				2C1BD19A2983F955001284C0 /* WalletViewController.swift in Sources */,
 				2C44328329C5F429009B7771 /* SendViewController.swift in Sources */,
 				2C44328729C61B0F009B7771 /* TextField.swift in Sources */,
@@ -1081,6 +1115,7 @@
 				2C35C6A829A71C1800A0F181 /* TabBarViewController.swift in Sources */,
 				2C35C6BA29A7F2A400A0F181 /* WalletCardModel.swift in Sources */,
 				2C1BD18B2982BAF7001284C0 /* PasswordViewController.swift in Sources */,
+				2CCE902629CD58DF00C904B6 /* ReceiveView.swift in Sources */,
 				2C35C6C329A8CF1A00A0F181 /* KeychainManager.swift in Sources */,
 				2C4DE29E29A3B48700BD1F05 /* LoadSeedView.swift in Sources */,
 				2C44328529C6144C009B7771 /* SendFormView.swift in Sources */,
@@ -1096,6 +1131,7 @@
 				2C35C6A529A521FF00A0F181 /* SeedHeaderCell.swift in Sources */,
 				2C35C6CC29A9243900A0F181 /* UserSettings.swift in Sources */,
 				2C44328E29C73539009B7771 /* SendConfirmViewController.swift in Sources */,
+				2CCE902429CD58D300C904B6 /* ReceiveViewController.swift in Sources */,
 				2C1BD181298191F9001284C0 /* SeedWordView.swift in Sources */,
 				2C35C6B129A7264700A0F181 /* WalletHeaderView.swift in Sources */,
 				2C4DE2AC29A4154900BD1F05 /* SeedPhraseWarningView.swift in Sources */,
