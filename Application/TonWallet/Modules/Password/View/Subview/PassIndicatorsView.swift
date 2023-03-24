@@ -2,6 +2,11 @@ import UIKit
 
 class PassIndicatorsView: RootView {
     
+    enum IndicatorsType {
+        case off
+        case error
+    }
+    
     let firstContainer: UIView = {
         let view = UIView()
         view.layer.borderColor = R.color.borderColor()?.cgColor
@@ -86,42 +91,26 @@ class PassIndicatorsView: RootView {
         setupConstraints()
     }
     
-    func animateRedIndicators() {
-        UIView.animate(withDuration: 0.3) {
-            self.fourthContainer.layer.borderColor = UIColor(hex6: 0xF44242).cgColor
-            self.fourthView.backgroundColor = .init(hex6: 0xF44242)
-            
-            self.thirdContainer.layer.borderColor = UIColor(hex6: 0xF44242).cgColor
-            self.thirdView.backgroundColor = .init(hex6: 0xF44242)
-            
-            self.secondContainer.layer.borderColor = UIColor(hex6: 0xF44242).cgColor
-            self.secondView.backgroundColor = .init(hex6: 0xF44242)
-            
-            self.firstContainer.layer.borderColor = UIColor(hex6: 0xF44242).cgColor
-            self.firstView.backgroundColor = .init(hex6: 0xF44242)
-        } completion: { _ in
-            UIView.animate(withDuration: 0.3) {
-                self.turnOffIndicators()
-            }
-        }
-
+    // MARK: - Public methods
+    
+    func setIndicators(to type: IndicatorsType) {
+        let borderColor = type == .error ? UIColor(hex6: 0xF44242).cgColor : R.color.borderColor()?.cgColor
+        let backgroundColor = type == .error ? UIColor(hex6: 0xF44242) : UIColor.clear
+        
+        fourthContainer.layer.borderColor = borderColor
+        fourthView.backgroundColor = backgroundColor
+        
+        thirdContainer.layer.borderColor = borderColor
+        thirdView.backgroundColor = backgroundColor
+        
+        secondContainer.layer.borderColor = borderColor
+        secondView.backgroundColor = backgroundColor
+        
+        firstContainer.layer.borderColor = borderColor
+        firstView.backgroundColor = backgroundColor
     }
     
-    func turnOffIndicators() {
-        firstContainer.layer.borderColor = R.color.borderColor()?.cgColor
-        firstView.backgroundColor = .clear
-        
-        secondContainer.layer.borderColor = R.color.borderColor()?.cgColor
-        secondView.backgroundColor = .clear
-        
-        thirdContainer.layer.borderColor = R.color.borderColor()?.cgColor
-        thirdView.backgroundColor = .clear
-        
-        fourthContainer.layer.borderColor = R.color.borderColor()?.cgColor
-        fourthView.backgroundColor = .clear
-    }
-    
-    func changeIndicator(isOn: Bool, index: Int, animate: Bool) {
+    func setOn(_ isOn: Bool, indicator index: Int, animate: Bool) {
         changeIndicator(isOn: isOn, index: index)
         
         if animate {
@@ -147,6 +136,8 @@ class PassIndicatorsView: RootView {
 
         }
     }
+    
+    // MARK: - Private methods
     
     private func changeIndicator(isOn: Bool, index: Int) {
         let borderColor: UIColor? = isOn ? .init(hex6: 0x0066FF) : R.color.borderColor()

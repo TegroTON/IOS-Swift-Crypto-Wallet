@@ -12,7 +12,7 @@ class PasswordViewController: UIViewController {
     private let type: ViewType
     private var userPassword: String = ""
     private var isPasswordSetted: Bool = false
-    private var keyboardHeight: CGFloat = 0
+    private var isAnimating = false
     private let selectionFeedback = UISelectionFeedbackGenerator()
     private let notificationFeedback = UINotificationFeedbackGenerator()
     
@@ -33,6 +33,7 @@ class PasswordViewController: UIViewController {
             userPassword = KeychainManager().getPassword() ?? ""
             isPasswordSetted = true
             
+            mainView.backButton.isHidden = true
             mainView.setSubtitle(text: R.string.localizable.passwordEnterSubtitle())
             mainView.titleLabel.text = R.string.localizable.passwordEnterTitle()
             
@@ -40,6 +41,7 @@ class PasswordViewController: UIViewController {
             userPassword = ""
             isPasswordSetted = false
             
+            mainView.backButton.isHidden = false
             mainView.setSubtitle(text: R.string.localizable.passwordSubtitle())
             mainView.titleLabel.text = R.string.localizable.passwordSetTitle()
         }
@@ -54,25 +56,16 @@ class PasswordViewController: UIViewController {
         
         mainView.textField.delegate = self
         mainView.textField.addTarget(self, action: #selector(textFieldDidChanged), for: .editingChanged)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardFrameChanged), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        mainView.backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         mainView.textField.becomeFirstResponder()
-        
-        mainView.backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
     }
     
     // MARK: - Private actions
-    
-    @objc private func keyboardFrameChanged(_ notification: Notification) {
-        guard let frame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-        
-        keyboardHeight = frame.cgRectValue.height
-    }
     
     @objc private func textFieldDidChanged(_ sender: UITextField) {
         let safeText = sender.text ?? ""
@@ -94,25 +87,6 @@ class PasswordViewController: UIViewController {
     }
     
     // MARK: - Private methods
-    
-    private func animateReset(with title: String) {
-        UIView.transition(with: mainView.titleLabel, duration: 0.3, options: .transitionCrossDissolve) {
-            self.mainView.titleLabel.text = title
-        }
-        
-        UIView.transition(with: mainView.indicatorsView, duration: 0.3, options: .transitionCrossDissolve) {
-            self.mainView.indicatorsView.turnOffIndicators()
-        }
-    }
-    
-    private func animateIncorrectPassword(needToSet: Bool) {
-        let title = needToSet ? R.string.localizable.passwordSetTitle() : R.string.localizable.passwordEnterTitle()
-        
-        mainView.indicatorsView.animateRedIndicators()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-            self.animateReset(with: title)
-        }
-    }
     
     private func checkPassword() {
         if isPasswordSetted {
@@ -136,12 +110,48 @@ class PasswordViewController: UIViewController {
             mainView.textField.text = nil
             isPasswordSetted = true
             
-            let title = R.string.localizable.passwordRepeatTitle()
-            
-            animateReset(with: title)
+            animateReset(with: R.string.localizable.passwordRepeatTitle())
         }
     }
     
+    private func animateReset(with title: String) {
+        isAnimating = true
+        
+        UIView.transition(with: mainView.titleLabel, duration: 0.3, options: .transitionCrossDissolve) {
+            self.mainView.titleLabel.text = title
+        }
+
+        UIView.transition(with: mainView.indicatorsView, duration: 0.3, options: .transitionCrossDissolve) {
+            self.mainView.indicatorsView.setIndicators(to: .off)
+        } completion: { _ in
+            self.isAnimating = false
+        }
+    }
+    
+    private func animateIncorrectPassword(needToSet: Bool) {
+        let title = needToSet ? R.string.localizable.passwordSetTitle() : R.string.localizable.passwordEnterTitle()
+        isAnimating = true
+        
+        mainView.indicatorsView.shake()
+        
+        UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut) {
+            self.mainView.indicatorsView.setIndicators(to: .error)
+        } completion: { _ in
+            guard self.isAnimating else {
+                self.mainView.titleLabel.text = title
+                return
+            }
+            
+            UIView.animate(withDuration: 0.15, delay: 0.1, options: .curveEaseInOut) {
+                self.mainView.indicatorsView.setIndicators(to: .off)
+            } completion: { _ in
+                self.isAnimating = false
+                UIView.transition(with: self.mainView.titleLabel, duration: 0.3, options: .transitionCrossDissolve) {
+                    self.mainView.titleLabel.text = title
+                }
+            }
+        }
+    }
 }
 
 // MARK: - UITextFieldDelegate
@@ -149,14 +159,21 @@ class PasswordViewController: UIViewController {
 extension PasswordViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let safeText = textField.text ?? ""
+        
+        if safeText.isEmpty && isAnimating {
+            isAnimating = false
+            mainView.layer.removeAllAnimations()
+            mainView.indicatorsView.setIndicators(to: .off)
+        }
+        
         guard safeText.count < 4 || string == "" else { return false }
         
         if string == "" {
             UIView.animate(withDuration: 0.15) {
-                self.mainView.indicatorsView.changeIndicator(isOn: false, index: safeText.count - 1, animate: false)
+                self.mainView.indicatorsView.setOn(false, indicator: safeText.count - 1, animate: false)
             }
         } else {
-            mainView.indicatorsView.changeIndicator(isOn: true, index: safeText.count, animate: true)
+            mainView.indicatorsView.setOn(true, indicator: safeText.count, animate: true)
         }
         
         return true

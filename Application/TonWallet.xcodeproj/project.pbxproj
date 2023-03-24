@@ -83,6 +83,7 @@
 		2C4DE2AA29A414A800BD1F05 /* CheckSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE2A929A414A800BD1F05 /* CheckSeedView.swift */; };
 		2C4DE2AC29A4154900BD1F05 /* SeedPhraseWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE2AB29A4154900BD1F05 /* SeedPhraseWarningView.swift */; };
 		2C4DE2AE29A4160D00BD1F05 /* SeedPhraseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE2AD29A4160D00BD1F05 /* SeedPhraseHeaderView.swift */; };
+		2CCE902029CD572E00C904B6 /* UIView+shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE901F29CD572E00C904B6 /* UIView+shake.swift */; };
 		2CDA0007298474A000A8CA23 /* SharedWithYouCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDA0006298474A000A8CA23 /* SharedWithYouCore.framework */; };
 		2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F115295C288600258A98 /* CreateViewController.swift */; };
 		2CE8F118295C29B600258A98 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F117295C29B600258A98 /* CreateView.swift */; };
@@ -177,6 +178,7 @@
 		2C4DE2A929A414A800BD1F05 /* CheckSeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSeedView.swift; sourceTree = "<group>"; };
 		2C4DE2AB29A4154900BD1F05 /* SeedPhraseWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseWarningView.swift; sourceTree = "<group>"; };
 		2C4DE2AD29A4160D00BD1F05 /* SeedPhraseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseHeaderView.swift; sourceTree = "<group>"; };
+		2CCE901F29CD572E00C904B6 /* UIView+shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+shake.swift"; sourceTree = "<group>"; };
 		2CDA0006298474A000A8CA23 /* SharedWithYouCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SharedWithYouCore.framework; path = System/Library/Frameworks/SharedWithYouCore.framework; sourceTree = SDKROOT; };
 		2CE8F115295C288600258A98 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		2CE8F117295C29B600258A98 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 			children = (
 				2C1BD16029817F1F001284C0 /* UIFont+Custom.swift */,
 				2C2DCC0229598FB700E4B688 /* UIIColor+hex.swift */,
+				2CCE901F29CD572E00C904B6 /* UIView+shake.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1113,6 +1116,7 @@
 				2CE8F118295C29B600258A98 /* CreateView.swift in Sources */,
 				2C2DCBDF29597E4200E4B688 /* AppDelegate.swift in Sources */,
 				2C35C6B429A72D8100A0F181 /* TabBarView.swift in Sources */,
+				2CCE902029CD572E00C904B6 /* UIView+shake.swift in Sources */,
 				2C1BD17F29818D90001284C0 /* SeedPhraseViewController.swift in Sources */,
 				2C35C6B829A7F26E00A0F181 /* WalletCardCell.swift in Sources */,
 				2C1BD19F298429C0001284C0 /* WalletsSectionModel.swift in Sources */,
