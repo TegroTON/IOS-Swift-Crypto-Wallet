@@ -2,7 +2,7 @@ import UIKit
 import SwiftUI
 
 class ReceiveHeaderView: RootView {
-
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = R.string.localizable.receiveTitle()
