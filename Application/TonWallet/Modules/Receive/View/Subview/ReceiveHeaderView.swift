@@ -20,7 +20,7 @@ class ReceiveHeaderView: RootView {
         
         return UIButton(configuration: configuration)
     }()
-        
+    
     override func setup() {
         addSubview(titleLabel)
         addSubview(closeButton)
