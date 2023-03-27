@@ -33,6 +33,7 @@ class SeedWordCell: UITableViewCell {
         view.textColor = R.color.textPrimary()
         view.autocorrectionType = .no
         view.autocapitalizationType = .none
+        view.returnKeyType = .go
         
         return view
     }()

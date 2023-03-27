@@ -87,6 +87,8 @@
 		2CCE902429CD58D300C904B6 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE902329CD58D300C904B6 /* ReceiveViewController.swift */; };
 		2CCE902629CD58DF00C904B6 /* ReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE902529CD58DF00C904B6 /* ReceiveView.swift */; };
 		2CCE902929CD593800C904B6 /* ReceiveHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE902829CD593700C904B6 /* ReceiveHeaderView.swift */; };
+		2CCE902B29D1A77300C904B6 /* ReceiveWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE902A29D1A77300C904B6 /* ReceiveWalletView.swift */; };
+		2CCE902D29D1ACD900C904B6 /* ReceiveQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE902C29D1ACD900C904B6 /* ReceiveQRView.swift */; };
 		2CDA0007298474A000A8CA23 /* SharedWithYouCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CDA0006298474A000A8CA23 /* SharedWithYouCore.framework */; };
 		2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F115295C288600258A98 /* CreateViewController.swift */; };
 		2CE8F118295C29B600258A98 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE8F117295C29B600258A98 /* CreateView.swift */; };
@@ -185,6 +187,9 @@
 		2CCE902329CD58D300C904B6 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
 		2CCE902529CD58DF00C904B6 /* ReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveView.swift; sourceTree = "<group>"; };
 		2CCE902829CD593700C904B6 /* ReceiveHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveHeaderView.swift; sourceTree = "<group>"; };
+		2CCE902A29D1A77300C904B6 /* ReceiveWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveWalletView.swift; sourceTree = "<group>"; };
+		2CCE902C29D1ACD900C904B6 /* ReceiveQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveQRView.swift; sourceTree = "<group>"; };
+		2CCE902E29D20A6600C904B6 /* TonWallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TonWallet.entitlements; sourceTree = "<group>"; };
 		2CDA0006298474A000A8CA23 /* SharedWithYouCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SharedWithYouCore.framework; path = System/Library/Frameworks/SharedWithYouCore.framework; sourceTree = SDKROOT; };
 		2CE8F115295C288600258A98 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		2CE8F117295C29B600258A98 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
@@ -431,6 +436,7 @@
 		2C2DCBDD29597E4200E4B688 /* TonWallet */ = {
 			isa = PBXGroup;
 			children = (
+				2CCE902E29D20A6600C904B6 /* TonWallet.entitlements */,
 				2C2DCBF729598EA000E4B688 /* Application */,
 				2C2DCBF829598EAB00E4B688 /* Modules */,
 				2C2DCBF929598EBB00E4B688 /* Shared */,
@@ -844,6 +850,8 @@
 			isa = PBXGroup;
 			children = (
 				2CCE902829CD593700C904B6 /* ReceiveHeaderView.swift */,
+				2CCE902A29D1A77300C904B6 /* ReceiveWalletView.swift */,
+				2CCE902C29D1ACD900C904B6 /* ReceiveQRView.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -1141,6 +1149,7 @@
 				2C35C6BC29A7F31F00A0F181 /* WalletCardSection.swift in Sources */,
 				2C2DCC0929598FB700E4B688 /* ListCollectionContext+Dequeue.swift in Sources */,
 				2C1BD1942983F48D001284C0 /* SuccessView.swift in Sources */,
+				2CCE902B29D1A77300C904B6 /* ReceiveWalletView.swift in Sources */,
 				2C4DE2A829A4147700BD1F05 /* CheckSeedViewController.swift in Sources */,
 				2C1BD17229818334001284C0 /* SeedPhraseAlertViewController.swift in Sources */,
 				2C1BD1892982BAD3001284C0 /* PasswordView.swift in Sources */,
@@ -1163,6 +1172,7 @@
 				2C4DE2AA29A414A800BD1F05 /* CheckSeedView.swift in Sources */,
 				2C44327E29C5EF3E009B7771 /* SendView.swift in Sources */,
 				6C8BA53D097E57E34EE801AF /* TonKeyPair.swift in Sources */,
+				2CCE902D29D1ACD900C904B6 /* ReceiveQRView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1308,6 +1318,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TonWallet/TonWallet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N422RJM586;
@@ -1351,6 +1362,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TonWallet/TonWallet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N422RJM586;

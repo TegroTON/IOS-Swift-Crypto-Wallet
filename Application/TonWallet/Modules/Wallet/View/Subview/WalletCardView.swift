@@ -81,7 +81,7 @@ class WalletCardView: UIView {
     
     let copyImage: UIImageView = {
         let view = UIImageView()
-        view.image = R.image.copy()
+        view.image = R.image.copy24()
         view.tintColor = .white
         
         return view

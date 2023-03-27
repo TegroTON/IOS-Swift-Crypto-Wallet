@@ -22,7 +22,7 @@ class SeedPhraseHeaderView: RootView {
     
     let copyButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(R.image.copy(), for: .normal)
+        button.setImage(R.image.copy24(), for: .normal)
         button.tintColor = R.color.textPrimary()
         
         return button
