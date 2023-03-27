@@ -51,7 +51,7 @@ class SendFormView: RootView {
         view.layer.borderColor = R.color.borderColor()?.cgColor
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 10
-        view.contentInset = UIEdgeInsets(top: 17.0, left: 16.0, bottom: 17.0, right: 222.0)
+        view.contentInset = UIEdgeInsets(top: 17.0, left: 148.0, bottom: 17.0, right: 16.0)
         view.font = .interFont(ofSize: 20, weight: .semiBold)
         view.textColor = R.color.textPrimary()
         view.keyboardType = .decimalPad
@@ -92,15 +92,6 @@ class SendFormView: RootView {
         return label
     }()
     
-    let fiatLabel: UILabel = {
-        let label = UILabel()
-        label.text = "~ 0 USD"
-        label.font = .interFont(ofSize: 14, weight: .medium)
-        label.textColor = R.color.textSecond()
-        
-        return label
-    }()
-    
     let scanImageView: UIImageView = {
         let view = UIImageView()
         view.image = R.image.scanBarcode()
@@ -127,7 +118,6 @@ class SendFormView: RootView {
         balanceContainer.addSubview(balanceAmountLabel)
         
         amountTextField.addSubview(tokenView)
-        amountTextField.addSubview(fiatLabel)
         
         addressTextField.addSubview(scanContainer)
         addressTextField.addSubview(pasteContainer)
@@ -175,14 +165,9 @@ class SendFormView: RootView {
         }
         
         tokenView.snp.makeConstraints { make in
-            make.right.top.bottom.equalToSuperview().inset(8.0)
+            make.left.top.bottom.equalToSuperview().inset(8.0)
         }
-        
-        fiatLabel.snp.makeConstraints { make in
-            make.right.equalTo(tokenView.snp.left).offset(-20.0)
-            make.centerY.equalToSuperview()
-        }
-            
+                    
         balanceContainer.snp.makeConstraints { make in
             make.top.equalTo(amountTextField.snp.bottom).offset(8.0)
             make.right.equalToSuperview()
