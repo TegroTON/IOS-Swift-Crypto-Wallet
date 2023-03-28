@@ -11,10 +11,14 @@ class PasswordViewController: UIViewController {
     
     private let type: ViewType
     private var userPassword: String = ""
+    private var incorrectCount: Int = 0
+    private var blockSeconds: Int = 30
     private var isPasswordSetted: Bool = false
-    private var isAnimating = false
-    private let selectionFeedback = UISelectionFeedbackGenerator()
-    private let notificationFeedback = UINotificationFeedbackGenerator()
+    private var isAnimating: Bool = false
+    
+    private var blockTimer: Timer = .init()
+    private let selectionFeedback: UISelectionFeedbackGenerator = .init()
+    private let notificationFeedback: UINotificationFeedbackGenerator = .init()
     
     var mainView: PasswordView {
         return view as! PasswordView
@@ -33,18 +37,12 @@ class PasswordViewController: UIViewController {
             userPassword = KeychainManager().getPassword() ?? ""
             isPasswordSetted = true
             
-            mainView.backButton.isHidden = true
-            mainView.setSubtitle(text: R.string.localizable.passwordEnterSubtitle())
-            mainView.titleLabel.text = R.string.localizable.passwordEnterTitle()
-            
         case .set:
             userPassword = ""
             isPasswordSetted = false
-            
-            mainView.backButton.isHidden = false
-            mainView.setSubtitle(text: R.string.localizable.passwordSubtitle())
-            mainView.titleLabel.text = R.string.localizable.passwordSetTitle()
         }
+        
+        mainView.setupContent(with: type)
     }
     
     required init?(coder: NSCoder) {
@@ -57,8 +55,12 @@ class PasswordViewController: UIViewController {
         mainView.textField.delegate = self
         mainView.textField.addTarget(self, action: #selector(textFieldDidChanged), for: .editingChanged)
         mainView.backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        
+        checkBlockTimer()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -86,6 +88,10 @@ class PasswordViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc func willEnterForeground() {
+        checkBlockTimer()
+    }
+    
     // MARK: - Private methods
     
     private func checkPassword() {
@@ -96,15 +102,24 @@ class PasswordViewController: UIViewController {
                 
                 completionHandler?(userPassword)
             } else {
-                if type == .set {
-                    userPassword = ""
-                    isPasswordSetted = false
-                }
-                
+                notificationFeedback.notificationOccurred(.error)
                 mainView.textField.text = nil
                 
-                notificationFeedback.notificationOccurred(.error)
-                animateIncorrectPassword(needToSet: type == .set)
+                switch type {
+                case .set:
+                    userPassword = ""
+                    isPasswordSetted = false
+                    animateIncorrectPassword(needToSet: type == .set)
+                    
+                case .check:
+                    incorrectCount += 1
+                    
+                    if incorrectCount == 3 {
+                        handleBlock()
+                    } else {
+                        animateIncorrectPassword(needToSet: type == .set)
+                    }
+                }
             }
         } else {
             mainView.textField.text = nil
@@ -114,15 +129,30 @@ class PasswordViewController: UIViewController {
         }
     }
     
+    private func checkBlockTimer() {
+        blockTimer.invalidate()
+        
+        if let startTime = UserSettings.blockDate {
+            let timeInterval = Date().timeIntervalSince(startTime)
+            blockSeconds = Int(30.0 - timeInterval)
+            setupTimer()
+            
+            if blockSeconds > 0 {
+                incorrectCount = 3
+                mainView.setBlockContent(blockSeconds: blockSeconds.description)
+            }
+        }
+    }
+    
     private func animateReset(with title: String) {
         isAnimating = true
         
         UIView.transition(with: mainView.titleLabel, duration: 0.3, options: .transitionCrossDissolve) {
             self.mainView.titleLabel.text = title
         }
-
+        
         UIView.transition(with: mainView.indicatorsView, duration: 0.3, options: .transitionCrossDissolve) {
-            self.mainView.indicatorsView.setIndicators(to: .off)
+            self.mainView.indicatorsView.setAllIndicators(to: .off)
         } completion: { _ in
             self.isAnimating = false
         }
@@ -135,7 +165,7 @@ class PasswordViewController: UIViewController {
         mainView.indicatorsView.shake()
         
         UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut) {
-            self.mainView.indicatorsView.setIndicators(to: .error)
+            self.mainView.indicatorsView.setAllIndicators(to: .error)
         } completion: { _ in
             guard self.isAnimating else {
                 self.mainView.titleLabel.text = title
@@ -143,7 +173,7 @@ class PasswordViewController: UIViewController {
             }
             
             UIView.animate(withDuration: 0.15, delay: 0.1, options: .curveEaseInOut) {
-                self.mainView.indicatorsView.setIndicators(to: .off)
+                self.mainView.indicatorsView.setAllIndicators(to: .off)
             } completion: { _ in
                 self.isAnimating = false
                 UIView.transition(with: self.mainView.titleLabel, duration: 0.3, options: .transitionCrossDissolve) {
@@ -152,21 +182,55 @@ class PasswordViewController: UIViewController {
             }
         }
     }
+    
+    private func handleBlock() {
+        UserSettings.blockDate = Date()
+        mainView.setBlockContent(blockSeconds: blockSeconds.description)
+        setupTimer()
+    }
+    
+    private func setupTimer() {
+        blockTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] timer in
+            guard let self = self else { return }
+            
+            if self.blockSeconds <= 0 {
+                self.blockSeconds = 30
+                self.incorrectCount = 0
+                self.mainView.indicatorsView.setAllIndicators(to: .off)
+                self.mainView.titleLabel.text = R.string.localizable.passwordEnterTitle()
+                self.mainView.setSubtitle(text: R.string.localizable.passwordEnterSubtitle())
+                self.mainView.imageView.alpha = 1
+                timer.invalidate()
+            } else {
+                self.blockSeconds -= 1
+                let seconds = self.blockSeconds.description
+                let text = R.string.localizable.passwordBlockSubtitle(seconds)
+                
+                self.mainView.setSubtitle(text: text)
+            }
+        })
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 // MARK: - UITextFieldDelegate
 
 extension PasswordViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let safeText = textField.text ?? ""
+        guard
+            let safeText = textField.text,
+            safeText.count < 4 || string == "",
+            incorrectCount < 3
+        else { return false }
         
         if safeText.isEmpty && isAnimating {
             isAnimating = false
             mainView.layer.removeAllAnimations()
-            mainView.indicatorsView.setIndicators(to: .off)
+            mainView.indicatorsView.setAllIndicators(to: .off)
         }
-        
-        guard safeText.count < 4 || string == "" else { return false }
         
         if string == "" {
             UIView.animate(withDuration: 0.15) {

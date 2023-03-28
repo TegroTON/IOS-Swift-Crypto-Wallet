@@ -145,6 +145,10 @@ class CheckSeedViewController: UIViewController {
         
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 // MARK: - UITableViewDelegate

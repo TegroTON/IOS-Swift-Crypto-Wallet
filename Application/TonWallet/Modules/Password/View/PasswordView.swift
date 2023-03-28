@@ -3,6 +3,8 @@ import Atributika
 
 class PasswordView: RootView {
 
+    typealias ViewType = PasswordViewController.ViewType
+    
     let indicatorsView: PassIndicatorsView = PassIndicatorsView()
     
     let backButton: UIButton = {
@@ -73,6 +75,27 @@ class PasswordView: RootView {
         setupConstraints()
     }
     
+    func setupContent(with type: ViewType) {
+        switch type {
+        case .check:
+            backButton.isHidden = true
+            titleLabel.text = R.string.localizable.passwordEnterTitle()
+            setSubtitle(text: R.string.localizable.passwordEnterSubtitle())
+            
+        case .set:
+            backButton.isHidden = false
+            titleLabel.text = R.string.localizable.passwordSetTitle()
+            setSubtitle(text: R.string.localizable.passwordSubtitle())
+        }
+    }
+    
+    func setBlockContent(blockSeconds: String) {
+        indicatorsView.setAllIndicators(to: .blocked)
+        titleLabel.text = R.string.localizable.passwordBlockTitle()
+        setSubtitle(text: R.string.localizable.passwordBlockSubtitle(blockSeconds))
+        imageView.alpha = 0.5
+    }
+    
     func setSubtitle(text: String) {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
@@ -111,7 +134,7 @@ class PasswordView: RootView {
         }
         
         indicatorsView.snp.makeConstraints { make in
-            make.top.equalTo(subtitleLabel.snp.bottom).offset(48.0)
+            make.top.equalTo(titleLabel.snp.bottom).offset(112.0)
             make.centerX.equalToSuperview()
         }
     }

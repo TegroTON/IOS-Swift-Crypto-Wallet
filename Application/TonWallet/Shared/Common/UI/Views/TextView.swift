@@ -120,4 +120,7 @@ class TextView: UITextView {
         heightConstraint?.isActive = true
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }

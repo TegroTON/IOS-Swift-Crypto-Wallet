@@ -27,6 +27,8 @@ password-subtitle = "Create a passcode to enter\nthe application and perform ope
 password-repeat-title = "Repeat Passcode";
 password-enter-title = "Passcode";
 password-enter-subtitle = "Enter your passcode\nto confirm the transaction";
+password-block-title = "Blocked";
+password-block-subtitle = "Try again in %@ seconds.";
 
 // Success
 success-create-title = "Congratulations!";

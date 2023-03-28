@@ -2,9 +2,11 @@ import UIKit
 
 class PassIndicatorsView: RootView {
     
-    enum IndicatorsType {
+    enum IndicatorType {
+        case on
         case off
         case error
+        case blocked
     }
     
     let firstContainer: UIView = {
@@ -93,25 +95,16 @@ class PassIndicatorsView: RootView {
     
     // MARK: - Public methods
     
-    func setIndicators(to type: IndicatorsType) {
-        let borderColor = type == .error ? UIColor(hex6: 0xF44242).cgColor : R.color.borderColor()?.cgColor
-        let backgroundColor = type == .error ? UIColor(hex6: 0xF44242) : UIColor.clear
-        
-        fourthContainer.layer.borderColor = borderColor
-        fourthView.backgroundColor = backgroundColor
-        
-        thirdContainer.layer.borderColor = borderColor
-        thirdView.backgroundColor = backgroundColor
-        
-        secondContainer.layer.borderColor = borderColor
-        secondView.backgroundColor = backgroundColor
-        
-        firstContainer.layer.borderColor = borderColor
-        firstView.backgroundColor = backgroundColor
+    func setAllIndicators(to type: IndicatorType) {
+        setIndicator(type: type, index: 0)
+        setIndicator(type: type, index: 1)
+        setIndicator(type: type, index: 2)
+        setIndicator(type: type, index: 3)
     }
     
     func setOn(_ isOn: Bool, indicator index: Int, animate: Bool) {
-        changeIndicator(isOn: isOn, index: index)
+        let type: IndicatorType = isOn ? .on : .off
+        setIndicator(type: type, index: index)
         
         if animate {
             UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut) {
@@ -139,22 +132,40 @@ class PassIndicatorsView: RootView {
     
     // MARK: - Private methods
     
-    private func changeIndicator(isOn: Bool, index: Int) {
-        let borderColor: UIColor? = isOn ? .init(hex6: 0x0066FF) : R.color.borderColor()
-        let color: UIColor? = isOn ? .init(hex6: 0x0066FF) : .clear
+    private func setIndicator(type: IndicatorType, index: Int) {
+        let borderColor: CGColor?
+        let backgroundColor: UIColor?
+        
+        switch type {
+        case .on:
+            borderColor = UIColor.init(hex6: 0x0066FF).cgColor
+            backgroundColor = .init(hex6: 0x0066FF)
+            
+        case .off:
+            borderColor = R.color.borderColor()?.cgColor
+            backgroundColor = UIColor.clear
+            
+        case .error:
+            borderColor = UIColor(hex6: 0xF44242).cgColor
+            backgroundColor = UIColor(hex6: 0xF44242)
+            
+        case .blocked:
+            borderColor = R.color.bgThird()?.cgColor
+            backgroundColor = R.color.bgThird()
+        }
         
         if index == 3 {
-            fourthContainer.layer.borderColor = borderColor?.cgColor
-            fourthView.backgroundColor = color
+            fourthContainer.layer.borderColor = borderColor
+            fourthView.backgroundColor = backgroundColor
         } else if index == 2 {
-            thirdContainer.layer.borderColor = borderColor?.cgColor
-            thirdView.backgroundColor = color
+            thirdContainer.layer.borderColor = borderColor
+            thirdView.backgroundColor = backgroundColor
         } else if index == 1 {
-            secondContainer.layer.borderColor = borderColor?.cgColor
-            secondView.backgroundColor = color
+            secondContainer.layer.borderColor = borderColor
+            secondView.backgroundColor = backgroundColor
         } else if index == 0 {
-            firstContainer.layer.borderColor = borderColor?.cgColor
-            firstView.backgroundColor = color
+            firstContainer.layer.borderColor = borderColor
+            firstView.backgroundColor = backgroundColor
         }
     }
     

@@ -163,4 +163,8 @@ class SendViewController: UIViewController {
             }
         }
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
