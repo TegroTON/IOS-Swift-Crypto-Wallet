@@ -46,8 +46,10 @@ class SendViewController: UIViewController {
     }
     
     @objc private func scanViewTapped() {
-        // TODO: Нужно вызвать модалку сканирования qr
-        generator.selectionChanged()
+        let vc = ScanViewController()
+        vc.modalPresentationStyle = .popover
+        
+        present(vc, animated: true)
     }
     
     @objc private func pasteViewTapped() {

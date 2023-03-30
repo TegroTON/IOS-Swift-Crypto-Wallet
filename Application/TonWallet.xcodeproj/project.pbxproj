@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C11B04C29D5AFCD0059C8EE /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C11B04B29D5AFCD0059C8EE /* ScanView.swift */; };
+		2C11B04F29D5AFE20059C8EE /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C11B04E29D5AFE20059C8EE /* ScanViewController.swift */; };
 		2C1BD16129817F1F001284C0 /* UIFont+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD16029817F1F001284C0 /* UIFont+Custom.swift */; };
 		2C1BD169298181B2001284C0 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BD16629818061001284C0 /* Rubik-Bold.ttf */; };
 		2C1BD16A298181B2001284C0 /* Rubik-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BD16729818061001284C0 /* Rubik-ExtraBold.ttf */; };
@@ -105,6 +107,8 @@
 
 /* Begin PBXFileReference section */
 		0A371F3D3DCE7773577B6E98 /* Pods-TonWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TonWallet.debug.xcconfig"; path = "Target Support Files/Pods-TonWallet/Pods-TonWallet.debug.xcconfig"; sourceTree = "<group>"; };
+		2C11B04B29D5AFCD0059C8EE /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
+		2C11B04E29D5AFE20059C8EE /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		2C1BD16029817F1F001284C0 /* UIFont+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Custom.swift"; sourceTree = "<group>"; };
 		2C1BD16429818061001284C0 /* Rubik-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-SemiBold.ttf"; sourceTree = "<group>"; };
 		2C1BD16529818061001284C0 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
@@ -218,6 +222,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C11B04929D5AFBB0059C8EE /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				2C11B04A29D5AFC10059C8EE /* View */,
+				2C11B04E29D5AFE20059C8EE /* ScanViewController.swift */,
+			);
+			path = Scan;
+			sourceTree = "<group>";
+		};
+		2C11B04A29D5AFC10059C8EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C11B04B29D5AFCD0059C8EE /* ScanView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2C1BD16229817F66001284C0 /* Montserrat */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +478,7 @@
 		2C2DCBF829598EAB00E4B688 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2C11B04929D5AFBB0059C8EE /* Scan */,
 				2CCE902129CD58AC00C904B6 /* Receive */,
 				2C44327B29C5EF23009B7771 /* Send */,
 				2C35C6A629A71C0300A0F181 /* TabBar */,
@@ -1131,6 +1153,7 @@
 				2C4432A229C78395009B7771 /* SendSuccessViewController.swift in Sources */,
 				2CE8F116295C288600258A98 /* CreateViewController.swift in Sources */,
 				2C35C6C629A8DAB500A0F181 /* WalletManager.swift in Sources */,
+				2C11B04C29D5AFCD0059C8EE /* ScanView.swift in Sources */,
 				2C1BD17D29818D84001284C0 /* SeedPhraseView.swift in Sources */,
 				2C44327A29C5C0E8009B7771 /* PagingFlowLayout.swift in Sources */,
 				2C4432A529C78513009B7771 /* SendSuccessHeaderView.swift in Sources */,
@@ -1161,6 +1184,7 @@
 				2CE8F118295C29B600258A98 /* CreateView.swift in Sources */,
 				2C2DCBDF29597E4200E4B688 /* AppDelegate.swift in Sources */,
 				2C35C6B429A72D8100A0F181 /* TabBarView.swift in Sources */,
+				2C11B04F29D5AFE20059C8EE /* ScanViewController.swift in Sources */,
 				2CCE902029CD572E00C904B6 /* UIView+shake.swift in Sources */,
 				2C1BD17F29818D90001284C0 /* SeedPhraseViewController.swift in Sources */,
 				2C35C6B829A7F26E00A0F181 /* WalletCardCell.swift in Sources */,

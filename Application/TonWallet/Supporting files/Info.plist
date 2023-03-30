@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Описание того, зачем вашему приложению нужен доступ к камере</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -11,7 +13,7 @@
 			<string>org.xaker.DeFiWallet</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>tegro</string>
+				<string>ton</string>
 			</array>
 		</dict>
 	</array>

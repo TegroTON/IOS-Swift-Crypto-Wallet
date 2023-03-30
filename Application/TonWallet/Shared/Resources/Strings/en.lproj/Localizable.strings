@@ -73,3 +73,6 @@ receive-qr = "QR Code";
 receive-wallet = "Wallet address";
 receive-share = "Share";
 receive-copy = "Copy address";
+
+// Scan
+scan-title = "Scan QR code";

@@ -18,6 +18,17 @@ class WalletViewController: UIViewController {
 
         adapter.collectionView = mainView.collectionView
         adapter.dataSource = self
+        
+        mainView.headerView.scanButton.addTarget(self, action: #selector(scanButtonTapped), for: .touchUpInside)
+    }
+    
+    // MARK: - Private actions
+    
+    @objc private func scanButtonTapped() {
+        let vc = ScanViewController()
+        vc.modalPresentationStyle = .automatic
+        
+        present(vc, animated: true)
     }
 
 }
@@ -54,15 +65,14 @@ extension WalletViewController: ListAdapterDataSource {
 extension WalletViewController: WalletsSectionDelegate {
     func wallets(_ section: WalletsSection, sendFrom wallet: Wallet) {
         let navVC = RootNavigationController(rootViewController: SendViewController())
-        navVC.modalPresentationStyle = .fullScreen
-        navVC.modalTransitionStyle = .crossDissolve
+        navVC.modalPresentationStyle = .overFullScreen
         
         present(navVC, animated: true)
     }
     
     func wallets(_ section: WalletsSection, receiveTo wallet: Wallet) {
         let vc = ReceiveViewController(wallet: wallet)
-        vc.modalPresentationStyle = .fullScreen
+        vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         
         present(vc, animated: true)

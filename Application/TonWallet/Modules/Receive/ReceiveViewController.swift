@@ -63,7 +63,7 @@ class ReceiveViewController: UIViewController {
         let address = wallet.selectedAddress?.address ?? ""
         mainView.set(address: address)
         
-        let urlString = "tegro://transfer?address=\(address)"
+        let urlString = "ton://transfer/\(address)"
         generateQRCode(from: urlString) { image in
             self.mainView.set(qr: image)
         }
