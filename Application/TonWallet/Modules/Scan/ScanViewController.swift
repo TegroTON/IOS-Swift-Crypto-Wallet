@@ -3,14 +3,20 @@ import AVFoundation
 
 class ScanViewController: UIViewController {
     
+    typealias Address = String
+    
     var mainView: ScanView {
         return view as! ScanView
     }
     
+    var completionHandler: ((Address) -> Void)?
+    
     private var captureSession: AVCaptureSession = .init()
     private var cameraDeviceInput: AVCaptureDeviceInput!
     private var isBlindViewHidden: Bool = false
-    
+    private var isDetected: Bool = false
+    private var frameCount: Int = 4
+    private var qrDetector: CIDetector?
     private let selectionFeedback: UISelectionFeedbackGenerator = .init()
     private let notificationFeedback: UINotificationFeedbackGenerator = .init()
     
@@ -72,7 +78,10 @@ class ScanViewController: UIViewController {
     
     private func setupCamera() {
         scanQueue.async {
-            guard let device =  AVCaptureDevice.default(for: .video) else { return }
+            guard let device = AVCaptureDevice.default(for: .video) else { return }
+            
+            let options = [CIDetectorAccuracy: CIDetectorAccuracyHigh]
+            self.qrDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: options)
             
             self.captureSession.beginConfiguration()
                     
@@ -127,6 +136,45 @@ class ScanViewController: UIViewController {
             }
         }
     }
+    
+    private func detectQR(image: UIImage) {
+        guard !isDetected else { return }
+        
+        scanQueue.async {
+            guard self.frameCount > 3 else {
+                self.frameCount += 1
+                return
+            }
+            
+            self.frameCount = 0
+            
+            guard let ciImage = CIImage(image: image) else { return }
+            
+            let features = self.qrDetector?.features(in: ciImage)
+            guard let qrCodes = features as? [CIQRCodeFeature] else { return }
+
+            for qrCode in qrCodes {
+                guard
+                    let message = qrCode.messageString,
+                    let encodedUrlString = message.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                    let url = URL(string: encodedUrlString),
+                    !self.isDetected
+                else { continue }
+
+                if url.host == "transfer" {
+                    self.isDetected = true
+                    
+                    DispatchQueue.main.async {
+                        self.notificationFeedback.notificationOccurred(.success)
+                        let address = url.lastPathComponent
+                        self.completionHandler?(address)
+                        self.dismiss(animated: true)
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 // MARK: - SampleBufferDelegate
@@ -141,5 +189,6 @@ extension ScanViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         
         mainView.frameImageView.image = outputImage
         hideBlindViewIfNeeded()
+        detectQR(image: outputImage)
     }
 }

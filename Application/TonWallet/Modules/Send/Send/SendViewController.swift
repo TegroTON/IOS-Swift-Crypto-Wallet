@@ -48,13 +48,15 @@ class SendViewController: UIViewController {
     @objc private func scanViewTapped() {
         let vc = ScanViewController()
         vc.modalPresentationStyle = .popover
+        vc.completionHandler = { address in
+            self.updateAddress(address)
+        }
         
         present(vc, animated: true)
     }
     
     @objc private func pasteViewTapped() {
-        mainView.formView.addressTextField.text = UIPasteboard.general.string
-        addressFieldChanged(mainView.formView.addressTextField)
+        updateAddress(UIPasteboard.general.string)
         generator.selectionChanged()
     }
     
@@ -164,6 +166,11 @@ class SendViewController: UIViewController {
                 self.mainView.sendButton.setTitleColor(R.color.textSecond(), for: .normal)
             }
         }
+    }
+    
+    private func updateAddress(_ address: String?) {
+        mainView.formView.addressTextField.text = address
+        addressFieldChanged(mainView.formView.addressTextField)
     }
     
     deinit {
