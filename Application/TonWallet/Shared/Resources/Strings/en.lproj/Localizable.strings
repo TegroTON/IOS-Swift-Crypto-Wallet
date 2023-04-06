@@ -39,6 +39,16 @@ wallet-title = "Tegro Wallet";
 
 // Settings
 settings-title = "Settings";
+settings-delete = "Delete account";
+settings-wallets = "My wallets";
+settings-security = "Security";
+settings-appearance = "Appearance";
+settings-language = "Language";
+settings-notifications = "Notifications";
+settings-notifications-subtitle = "Get notifications when you receive TON, tokens and NFTs";
+settings-contact-us = "Contact us";
+settings-help-center = "Help Center";
+settings-rate-app = "Rate this app";
 
 // Tab bar
 tab-bar-wallet = "Wallet";
