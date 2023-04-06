@@ -13,7 +13,7 @@ class SettingsHeaderView: RootView {
     }()
     
     let quitButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setImage(R.image.logout(), for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 16, left: 24, bottom: 16, right: 24)
         button.tintColor = R.color.textPrimary()
@@ -29,7 +29,15 @@ class SettingsHeaderView: RootView {
     }
     
     private func setupConstraints() {
+        quitButton.snp.makeConstraints { make in
+            make.top.right.bottom.equalToSuperview()
+            make.width.equalTo(24.0 + 24.0 + 24.0)
+            make.height.equalTo(16.0 + 24.0 + 16.0)
+        }
         
+        titleLabel.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
 
 }
