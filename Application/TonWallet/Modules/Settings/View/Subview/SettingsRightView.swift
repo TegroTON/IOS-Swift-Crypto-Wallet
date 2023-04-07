@@ -24,13 +24,20 @@ class SettingsRightView: RootView {
         return label
     }()
     
-    let badgeLabel: UILabel = {
+    private let badgeLabel: UILabel = {
         let label = UILabel()
         label.font = .interFont(ofSize: 14, weight: .semiBold)
         label.textColor = .white
         label.textAlignment = .center
         
         return label
+    }()
+    
+    let switcher: UISwitch = {
+        let switcher = UISwitch()
+        switcher.onTintColor = .init(hex6: 0x0066FF)
+        
+        return switcher
     }()
 
     override func layoutSubviews() {
@@ -69,49 +76,66 @@ class SettingsRightView: RootView {
     private func setup(badge number: Int) {
         badgeLabel.text = number.description
         
-        removeSubviews()
-        addSubview(badgeContainer)
-        badgeContainer.addSubview(badgeLabel)
-        
-        badgeLabel.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(8.0)
-            make.top.bottom.equalToSuperview().inset(4.0)
-        }
-        
-        badgeContainer.snp.makeConstraints { make in
-            make.centerY.left.equalToSuperview()
-            make.right.equalToSuperview().offset(-24.0)
+        if badgeContainer.bounds == .zero {
+            removeSubviews()
+            addSubview(badgeContainer)
+            badgeContainer.addSubview(badgeLabel)
+            
+            badgeLabel.snp.makeConstraints { make in
+                make.left.right.equalToSuperview().inset(8.0)
+                make.top.bottom.equalToSuperview().inset(4.0)
+            }
+            
+            badgeContainer.snp.makeConstraints { make in
+                make.centerY.left.equalToSuperview()
+                make.right.equalToSuperview().offset(-24.0)
+            }
         }
     }
     
     private func setup(label text: String) {
         titleLabel.text = text
         
-        removeSubviews()
-        addSubview(titleLabel)
-        
-        titleLabel.snp.makeConstraints { make in
-            make.centerY.left.equalToSuperview()
-            make.right.equalToSuperview().offset(-24.0)
+        if titleLabel.bounds == .zero {
+            removeSubviews()
+            addSubview(titleLabel)
+            
+            titleLabel.snp.makeConstraints { make in
+                make.centerY.left.equalToSuperview()
+                make.right.equalToSuperview().offset(-24.0)
+            }
         }
     }
     
     private func setupArrow() {
-        removeSubviews()
-        addSubview(arrowImageView)
-        
-        arrowImageView.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(-24.0)
-            make.size.equalTo(18.0)
-            make.centerY.left.equalToSuperview()
+        if arrowImageView.bounds == .zero {
+            removeSubviews()
+            addSubview(arrowImageView)
+            
+            arrowImageView.snp.makeConstraints { make in
+                make.right.equalToSuperview().offset(-24.0)
+                make.size.equalTo(18.0)
+                make.centerY.left.equalToSuperview()
+            }
         }
     }
     
-    private func setupSwitch() {}
+    private func setupSwitch() {
+        if switcher.frame.origin == .zero {
+            removeSubviews()
+            addSubview(switcher)
+            
+            switcher.snp.makeConstraints { make in
+                make.right.equalToSuperview().offset(-24.0)
+                make.centerY.left.equalToSuperview()
+            }
+        }
+    }
     
     private func removeSubviews() {
         arrowImageView.removeFromSuperview()
         titleLabel.removeFromSuperview()
         badgeContainer.removeFromSuperview()
+        switcher.removeFromSuperview()
     }
 }
