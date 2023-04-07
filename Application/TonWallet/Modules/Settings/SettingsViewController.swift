@@ -59,7 +59,7 @@ class SettingsViewController: UIViewController {
                     image: R.image.notificationBell(),
                     title: R.string.localizable.settingsNotifications(),
                     subtitle: R.string.localizable.settingsNotificationsSubtitle(),
-                    rightType: .label("Eng")
+                    rightType: .switch
                 )
             ),
         ], [
@@ -110,6 +110,11 @@ extension SettingsViewController: UITableViewDataSource {
             
             cell.iconImageView.image = image
             cell.titleLabel.text = title
+            cell.rightView.set(type: rightType)
+            
+            if let subtitle = subtitle {
+                cell.setSubtitle(subtitle)
+            }
             
             return cell
             

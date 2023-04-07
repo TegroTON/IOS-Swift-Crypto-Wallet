@@ -9,7 +9,7 @@ struct SettingsModel {
     enum RightViewType {
         case badge(Int)
         case label(String)
-        case ´switch´
+        case `switch`
         case arrow
     }
     
