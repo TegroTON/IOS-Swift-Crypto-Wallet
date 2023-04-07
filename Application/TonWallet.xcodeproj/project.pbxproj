@@ -89,6 +89,7 @@
 		2CB52F3829DF480300224071 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3729DF480300224071 /* SettingsCell.swift */; };
 		2CB52F3A29DF481D00224071 /* SettingsDeleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3929DF481D00224071 /* SettingsDeleteCell.swift */; };
 		2CB52F3D29DF533D00224071 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3C29DF533D00224071 /* SettingsModel.swift */; };
+		2CB52F3F29E02BBD00224071 /* SettingsSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3E29E02BBD00224071 /* SettingsSeparatorView.swift */; };
 		2CCE902029CD572E00C904B6 /* UIView+shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE901F29CD572E00C904B6 /* UIView+shake.swift */; };
 		2CCE902429CD58D300C904B6 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE902329CD58D300C904B6 /* ReceiveViewController.swift */; };
 		2CCE902629CD58DF00C904B6 /* ReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE902529CD58DF00C904B6 /* ReceiveView.swift */; };
@@ -195,6 +196,7 @@
 		2CB52F3729DF480300224071 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		2CB52F3929DF481D00224071 /* SettingsDeleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDeleteCell.swift; sourceTree = "<group>"; };
 		2CB52F3C29DF533D00224071 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		2CB52F3E29E02BBD00224071 /* SettingsSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSeparatorView.swift; sourceTree = "<group>"; };
 		2CCE901F29CD572E00C904B6 /* UIView+shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+shake.swift"; sourceTree = "<group>"; };
 		2CCE902329CD58D300C904B6 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
 		2CCE902529CD58DF00C904B6 /* ReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveView.swift; sourceTree = "<group>"; };
@@ -865,6 +867,7 @@
 			isa = PBXGroup;
 			children = (
 				2CB52F3429DDEBC500224071 /* SettingsHeaderView.swift */,
+				2CB52F3E29E02BBD00224071 /* SettingsSeparatorView.swift */,
 			);
 			path = Subview;
 			sourceTree = "<group>";
@@ -1162,6 +1165,7 @@
 				2C1BD17529818357001284C0 /* SeedPhraseAlertView.swift in Sources */,
 				2CCE902929CD593800C904B6 /* ReceiveHeaderView.swift in Sources */,
 				2C1BD19A2983F955001284C0 /* WalletViewController.swift in Sources */,
+				2CB52F3F29E02BBD00224071 /* SettingsSeparatorView.swift in Sources */,
 				2C44328329C5F429009B7771 /* SendViewController.swift in Sources */,
 				2C44328729C61B0F009B7771 /* TextField.swift in Sources */,
 				2C44329929C74F33009B7771 /* ConfirmDetailsView.swift in Sources */,

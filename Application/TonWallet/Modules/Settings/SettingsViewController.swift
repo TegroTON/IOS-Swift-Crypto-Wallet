@@ -18,6 +18,7 @@ class SettingsViewController: UIViewController {
         setupDataSource()
         
         mainView.tableView.dataSource = self
+        mainView.tableView.delegate = self
     }
     
     // MARK: - Private methods
@@ -117,5 +118,41 @@ extension SettingsViewController: UITableViewDataSource {
             
             return cell
         }
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension SettingsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return nil
+        }
+        
+        if section == dataSource.count - 1 {
+            return nil
+        }
+        
+        return SettingsSeparatorView()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .zero
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0.0
+        }
+        
+        if section == dataSource.count - 1 {
+            return 0.0
+        }
+        
+        return 16.0 + 1.0 + 16.0
     }
 }

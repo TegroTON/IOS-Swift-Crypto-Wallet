@@ -5,7 +5,7 @@ class SettingsView: RootView {
     let headerView: SettingsHeaderView = SettingsHeaderView()
     
     let tableView: UITableView = {
-        let view = UITableView()
+        let view = UITableView(frame: .zero, style: .grouped)
         view.backgroundColor = .clear
         view.register(SettingsCell.self, forCellReuseIdentifier: SettingsCell.description())
         view.register(SettingsDeleteCell.self, forCellReuseIdentifier: SettingsDeleteCell.description())
@@ -14,6 +14,7 @@ class SettingsView: RootView {
         view.rowHeight = UITableView.automaticDimension
         view.showsVerticalScrollIndicator = false
         view.contentInset = UIEdgeInsets(top: 16.0, left: 0.0, bottom: 16.0, right: 0.0)
+        view.sectionHeaderTopPadding = 0
         
         return view
     }()

@@ -22,8 +22,6 @@ class SettingsHeaderView: RootView {
     }()
     
     override func setup() {
-        backgroundColor = .gray
-        
         addSubview(titleLabel)
         addSubview(quitButton)
         

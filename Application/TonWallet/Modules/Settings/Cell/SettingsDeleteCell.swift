@@ -35,7 +35,8 @@ class SettingsDeleteCell: UITableViewCell {
     
     private func setupConstraints() {
         deleteButton.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview().inset(16.0)
+            make.top.equalToSuperview().offset(40.0)
+            make.bottom.equalToSuperview()
             make.left.right.equalToSuperview().inset(24.0)
             make.height.equalTo(60.0)
         }

@@ -33,11 +33,12 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupSeparator()
     }
     
     private func setupSeparator() {
+        tabBar.backgroundColor = R.color.bgPrimary()
         tabBar.addSubview(separatorView)
 
         separatorView.snp.makeConstraints { make in
