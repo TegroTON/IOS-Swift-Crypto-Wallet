@@ -3,11 +3,12 @@ import UIKit
 class PasswordViewController: UIViewController {
     
     enum ViewType {
-        case set
+        case create
         case check
+        case login
     }
     
-    var completionHandler: ((String) -> Void)?
+    var successHandler: ((String) -> Void)?
     
     private let type: ViewType
     private var userPassword: String = ""
@@ -33,11 +34,11 @@ class PasswordViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         switch type {
-        case .check:
+        case .check, .login:
             userPassword = KeychainManager().getPassword() ?? ""
             isPasswordSetted = true
             
-        case .set:
+        case .create:
             userPassword = ""
             isPasswordSetted = false
         }
@@ -49,13 +50,17 @@ class PasswordViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mainView.textField.delegate = self
         mainView.textField.addTarget(self, action: #selector(textFieldDidChanged), for: .editingChanged)
         mainView.backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-        
+        mainView.closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         checkBlockTimer()
         
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
@@ -88,6 +93,25 @@ class PasswordViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc private func closeButtonTapped() {
+        switch type {
+        case .check:
+            dismiss(animated: true)
+            
+        case .login:
+            WalletManager.shared.wallets.forEach { wallet in
+                KeychainManager().deleteKeys(for: wallet.id)
+                KeychainManager().deleteMnemonics(for: wallet.id)
+            }
+            KeychainManager().deletePassword()
+            
+            RootNavigationController.shared.setViewControllers([CreateViewController()], animated: true)
+            
+        default:
+            break
+        }
+    }
+    
     @objc func willEnterForeground() {
         checkBlockTimer()
     }
@@ -100,24 +124,24 @@ class PasswordViewController: UIViewController {
                 mainView.textField.resignFirstResponder()
                 notificationFeedback.notificationOccurred(.success)
                 
-                completionHandler?(userPassword)
+                successHandler?(userPassword)
             } else {
                 notificationFeedback.notificationOccurred(.error)
                 mainView.textField.text = nil
                 
                 switch type {
-                case .set:
+                case .create:
                     userPassword = ""
                     isPasswordSetted = false
-                    animateIncorrectPassword(needToSet: type == .set)
+                    animateIncorrectPassword(needToSet: type == .create)
                     
-                case .check:
+                case .check, .login:
                     incorrectCount += 1
                     
                     if incorrectCount == 3 {
                         handleBlock()
                     } else {
-                        animateIncorrectPassword(needToSet: type == .set)
+                        animateIncorrectPassword(needToSet: type == .create)
                     }
                 }
             }
@@ -209,10 +233,6 @@ class PasswordViewController: UIViewController {
                 self.mainView.setSubtitle(text: text)
             }
         })
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 }
 

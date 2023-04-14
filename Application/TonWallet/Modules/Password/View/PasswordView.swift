@@ -15,6 +15,13 @@ class PasswordView: RootView {
         return button
     }()
     
+    let closeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = R.color.textPrimary()
+        
+        return button
+    }()
+    
     let textField: UITextField = {
         let view = UITextField()
         view.autocorrectionType = .no
@@ -66,6 +73,7 @@ class PasswordView: RootView {
         backgroundColor = R.color.bgPrimary()
         
         addSubview(backButton)
+        addSubview(closeButton)
         addSubview(textField)
         addSubview(imageView)
         addSubview(titleLabel)
@@ -77,15 +85,25 @@ class PasswordView: RootView {
     
     func setupContent(with type: ViewType) {
         switch type {
+        case .create:
+            backButton.isHidden = false
+            closeButton.isHidden = true
+            titleLabel.text = R.string.localizable.passwordSetTitle()
+            setSubtitle(text: R.string.localizable.passwordSubtitle())
+            
         case .check:
+            closeButton.setImage(R.image.close(), for: .normal)
             backButton.isHidden = true
+            closeButton.isHidden = false
             titleLabel.text = R.string.localizable.passwordEnterTitle()
             setSubtitle(text: R.string.localizable.passwordEnterSubtitle())
             
-        case .set:
-            backButton.isHidden = false
-            titleLabel.text = R.string.localizable.passwordSetTitle()
-            setSubtitle(text: R.string.localizable.passwordSubtitle())
+        case .login:
+            closeButton.setImage(R.image.logout(), for: .normal)
+            backButton.isHidden = true
+            closeButton.isHidden = false
+            titleLabel.text = R.string.localizable.passwordEnterTitle()
+            setSubtitle(text: R.string.localizable.passwordEnterSubtitle())
         }
     }
     
@@ -113,6 +131,12 @@ class PasswordView: RootView {
     private func setupConstraints() {
         backButton.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(24.0)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(16.0)
+            make.size.equalTo(24.0)
+        }
+        
+        closeButton.snp.makeConstraints { make in
+            make.right.equalToSuperview().offset(-24.0)
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(16.0)
             make.size.equalTo(24.0)
         }

@@ -164,4 +164,18 @@ class KeychainManager {
             completion?(mnemonicsDeleteStatus == errSecSuccess)
         }
     }
+    
+    func deletePassword(completion: ((Bool) -> Void)? = nil) {
+        keychainQueue.async {
+            let query: [String: Any] = [
+                kSecClass as String: kSecClassKey,
+                kSecAttrKeyType as String: kSecAttrKeyTypeRSA,
+                kSecAttrApplicationTag as String: "\(Bundle.main.bundleIdentifier!).password",
+            ]
+            
+            let mnemonicsDeleteStatus = SecItemDelete(query as CFDictionary)
+            
+            completion?(mnemonicsDeleteStatus == errSecSuccess)
+        }
+    }
 }

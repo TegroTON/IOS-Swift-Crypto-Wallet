@@ -46,7 +46,7 @@ class SendConfirmViewController: UIViewController {
     
     @objc private func confirmButtonTapped() {
         let vc = PasswordViewController(type: .check)
-        vc.completionHandler = { [weak self] _ in
+        vc.successHandler = { [weak self] _ in
             guard let self = self else { return }
             
             let successVC = SendSuccessViewController(model: self.model)

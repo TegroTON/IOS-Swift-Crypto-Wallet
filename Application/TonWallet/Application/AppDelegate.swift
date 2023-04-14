@@ -12,7 +12,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if WalletManager.shared.wallets.isEmpty {
             rootVC = CreateViewController()
         } else {
-            rootVC = TabBarViewController()
+            var passwordVC: PasswordViewController
+            let password = KeychainManager().getPassword()
+            
+            if password == nil || password?.isEmpty == true {
+                passwordVC = PasswordViewController(type: .create)
+            } else {
+                passwordVC = PasswordViewController(type: .login)
+            }
+            
+            passwordVC.successHandler = { _ in
+                RootNavigationController.shared.setViewControllers([TabBarViewController()], animated: true)
+            }
+            
+            rootVC = passwordVC
         }
         
         let navVC = RootNavigationController.shared

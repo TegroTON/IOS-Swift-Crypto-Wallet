@@ -121,8 +121,8 @@ class CheckSeedViewController: UIViewController {
     }
     
     private func presentPassword() {
-        let vc = PasswordViewController(type: .set)
-        vc.completionHandler = { [weak self] password in
+        let vc = PasswordViewController(type: .create)
+        vc.successHandler = { [weak self] password in
             guard let self = self else { return }
             
             KeychainManager().storePassword(password) { success in
