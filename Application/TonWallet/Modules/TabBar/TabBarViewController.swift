@@ -37,6 +37,14 @@ class TabBarViewController: UITabBarController {
         setupSeparator()
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            viewControllers?.forEach { update(viewController: $0) }
+        }
+    }
+    
     private func setupSeparator() {
         tabBar.backgroundColor = R.color.bgPrimary()
         tabBar.addSubview(separatorView)
