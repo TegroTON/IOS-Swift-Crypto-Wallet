@@ -9,7 +9,7 @@ class SettingsDeleteCell: UITableViewCell {
         attributedString.mergeAttributes(container, mergePolicy: .keepNew)
         
         var configuration = UIButton.Configuration.filled()
-        configuration.image = R.image.trash()
+        configuration.image = R.image.trash()?.withTintColor(R.color.textPrimary()!)
         configuration.imagePadding = 10
         configuration.attributedTitle = attributedString
         configuration.imagePlacement = .trailing
@@ -24,7 +24,10 @@ class SettingsDeleteCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        backgroundColor = .clear
+        
         contentView.addSubview(deleteButton)
+        selectionStyle = .none
         
         setupConstraints()
     }
