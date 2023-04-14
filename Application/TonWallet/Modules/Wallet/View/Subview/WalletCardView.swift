@@ -156,6 +156,14 @@ class WalletCardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            shadowView.layer.shadowColor = R.color.walletCardShadow()!.cgColor
+        }
+    }
+    
     private func setupContent() {
         settingsButton.isHidden = type == .settings
     }
