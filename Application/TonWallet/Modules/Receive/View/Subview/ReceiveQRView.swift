@@ -4,7 +4,7 @@ class ReceiveQRView: RootView {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.receiveQr()
+        label.text = localizable.receiveQr()
         label.font = .interFont(ofSize: 16, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         

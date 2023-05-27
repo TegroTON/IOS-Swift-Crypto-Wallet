@@ -7,14 +7,14 @@ class SendConfirmView: RootView {
     
     let headerView: SendHeaderView = {
         let view = SendHeaderView()
-        view.titleLabel.text = R.string.localizable.sendConfirmTitle()
+        view.titleLabel.text = localizable.sendConfirmTitle()
         
         return view
     }()
     
     let confirmButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(R.string.localizable.sendConfirmButton(), for: .normal)
+        button.setTitle(localizable.sendConfirmButton(), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .interFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 10

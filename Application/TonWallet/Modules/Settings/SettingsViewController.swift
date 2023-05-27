@@ -28,14 +28,14 @@ class SettingsViewController: UIViewController {
             SettingsModel(
                 type: .cell(
                     image: R.image.wallet(),
-                    title: R.string.localizable.settingsWallets(),
+                    title: localizable.settingsWallets(),
                     rightType: .badge(1)
                 )
             ),
             SettingsModel(
                 type: .cell(
                     image: R.image.fingerprint(),
-                    title: R.string.localizable.settingsSecurity(),
+                    title: localizable.settingsSecurity(),
                     rightType: .arrow
                 )
             )
@@ -43,22 +43,22 @@ class SettingsViewController: UIViewController {
             SettingsModel(
                 type: .cell(
                     image: R.image.sunny(),
-                    title: R.string.localizable.settingsAppearance(),
+                    title: localizable.settingsAppearance(),
                     rightType: .label("Auto")
                 )
             ),
             SettingsModel(
                 type: .cell(
                     image: R.image.earth(),
-                    title: R.string.localizable.settingsLanguage(),
+                    title: localizable.settingsLanguage(),
                     rightType: .label("Eng")
                 )
             ),
             SettingsModel(
                 type: .cell(
                     image: R.image.notificationBell(),
-                    title: R.string.localizable.settingsNotifications(),
-                    subtitle: R.string.localizable.settingsNotificationsSubtitle(),
+                    title: localizable.settingsNotifications(),
+                    subtitle: localizable.settingsNotificationsSubtitle(),
                     rightType: .switch
                 )
             ),
@@ -66,21 +66,21 @@ class SettingsViewController: UIViewController {
             SettingsModel(
                 type: .cell(
                     image: R.image.email(),
-                    title: R.string.localizable.settingsContactUs(),
+                    title: localizable.settingsContactUs(),
                     rightType: .arrow
                 )
             ),
             SettingsModel(
                 type: .cell(
                     image: R.image.document(),
-                    title: R.string.localizable.settingsHelpCenter(),
+                    title: localizable.settingsHelpCenter(),
                     rightType: .arrow
                 )
             ),
             SettingsModel(
                 type: .cell(
                     image: R.image.stars(),
-                    title: R.string.localizable.settingsRateApp(),
+                    title: localizable.settingsRateApp(),
                     rightType: .arrow
                 )
             ),

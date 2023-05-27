@@ -60,14 +60,14 @@ class TabBarViewController: UITabBarController {
         switch viewController {
         case is WalletViewController:
             viewController.tabBarItem = UITabBarItem(
-                title: R.string.localizable.tabBarWallet(),
+                title: localizable.tabBarWallet(),
                 image: R.image.tabWallet(),
                 selectedImage: R.image.tabWalletSelected()
             )
             
         case is SettingsViewController:
             viewController.tabBarItem = UITabBarItem(
-                title: R.string.localizable.tabBarSettings(),
+                title: localizable.tabBarSettings(),
                 image: R.image.tabSettings(),
                 selectedImage: R.image.tabSettingsSelected()
             )

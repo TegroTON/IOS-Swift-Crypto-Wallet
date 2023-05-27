@@ -41,7 +41,7 @@ class PasswordView: RootView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.passwordSetTitle()
+        label.text = localizable.passwordSetTitle()
         label.font = .interFont(ofSize: 24, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         label.textAlignment = .center
@@ -63,7 +63,7 @@ class PasswordView: RootView {
             .font(.interFont(ofSize: 16, weight: .regular))
             .foregroundColor(R.color.textSecond()!)
         
-        label.attributedText = R.string.localizable.passwordSubtitle().styleAll(style)
+        label.attributedText = localizable.passwordSubtitle().styleAll(style)
         
         return label
     }()
@@ -88,29 +88,29 @@ class PasswordView: RootView {
         case .create:
             backButton.isHidden = false
             closeButton.isHidden = true
-            titleLabel.text = R.string.localizable.passwordSetTitle()
-            setSubtitle(text: R.string.localizable.passwordSubtitle())
+            titleLabel.text = localizable.passwordSetTitle()
+            setSubtitle(text: localizable.passwordSubtitle())
             
         case .check:
             closeButton.setImage(R.image.close(), for: .normal)
             backButton.isHidden = true
             closeButton.isHidden = false
-            titleLabel.text = R.string.localizable.passwordEnterTitle()
-            setSubtitle(text: R.string.localizable.passwordEnterSubtitle())
+            titleLabel.text = localizable.passwordEnterTitle()
+            setSubtitle(text: localizable.passwordEnterSubtitle())
             
         case .login:
             closeButton.setImage(R.image.logout(), for: .normal)
             backButton.isHidden = true
             closeButton.isHidden = false
-            titleLabel.text = R.string.localizable.passwordEnterTitle()
-            setSubtitle(text: R.string.localizable.passwordEnterSubtitle())
+            titleLabel.text = localizable.passwordEnterTitle()
+            setSubtitle(text: localizable.passwordEnterSubtitle())
         }
     }
     
     func setBlockContent(blockSeconds: String) {
         indicatorsView.setAllIndicators(to: .blocked)
-        titleLabel.text = R.string.localizable.passwordBlockTitle()
-        setSubtitle(text: R.string.localizable.passwordBlockSubtitle(blockSeconds))
+        titleLabel.text = localizable.passwordBlockTitle()
+        setSubtitle(text: localizable.passwordBlockSubtitle(blockSeconds))
         imageView.alpha = 0.5
     }
     

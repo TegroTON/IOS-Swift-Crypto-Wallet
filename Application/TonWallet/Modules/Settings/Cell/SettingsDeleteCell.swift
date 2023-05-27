@@ -3,7 +3,7 @@ import UIKit
 class SettingsDeleteCell: UITableViewCell {
 
     let deleteButton: UIButton = {
-        var attributedString = AttributedString(R.string.localizable.settingsDelete())
+        var attributedString = AttributedString(localizable.settingsDelete())
         var container = AttributeContainer()
         container[AttributeScopes.UIKitAttributes.FontAttribute.self] = UIFont.interFont(ofSize: 16, weight: .medium)
         attributedString.mergeAttributes(container, mergePolicy: .keepNew)

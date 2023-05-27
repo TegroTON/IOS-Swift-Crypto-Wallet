@@ -13,7 +13,7 @@ class SuccessView: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.successCreateTitle()
+        label.text = localizable.successCreateTitle()
         label.font = .interFont(ofSize: 24, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         label.textAlignment = .center
@@ -23,7 +23,7 @@ class SuccessView: UIView {
     
     let subtitleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.successCreateSubtitle()
+        label.text = localizable.successCreateSubtitle()
         label.font = .interFont(ofSize: 16, weight: .regular)
         label.textColor = R.color.textSecond()
         label.textAlignment = .center

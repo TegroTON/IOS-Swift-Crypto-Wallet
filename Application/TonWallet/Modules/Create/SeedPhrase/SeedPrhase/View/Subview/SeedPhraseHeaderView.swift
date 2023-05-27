@@ -15,7 +15,7 @@ class SeedPhraseHeaderView: RootView {
         label.font = .interFont(ofSize: 18, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         label.textAlignment = .center
-        label.text = R.string.localizable.seedPhraseReadTitle()
+        label.text = localizable.seedPhraseReadTitle()
         
         return label
     }()

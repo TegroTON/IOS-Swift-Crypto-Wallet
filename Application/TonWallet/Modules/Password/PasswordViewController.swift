@@ -149,7 +149,7 @@ class PasswordViewController: UIViewController {
             mainView.textField.text = nil
             isPasswordSetted = true
             
-            animateReset(with: R.string.localizable.passwordRepeatTitle())
+            animateReset(with: localizable.passwordRepeatTitle())
         }
     }
     
@@ -183,7 +183,7 @@ class PasswordViewController: UIViewController {
     }
     
     private func animateIncorrectPassword(needToSet: Bool) {
-        let title = needToSet ? R.string.localizable.passwordSetTitle() : R.string.localizable.passwordEnterTitle()
+        let title = needToSet ? localizable.passwordSetTitle() : localizable.passwordEnterTitle()
         isAnimating = true
         
         mainView.indicatorsView.shake()
@@ -221,14 +221,14 @@ class PasswordViewController: UIViewController {
                 self.blockSeconds = 30
                 self.incorrectCount = 0
                 self.mainView.indicatorsView.setAllIndicators(to: .off)
-                self.mainView.titleLabel.text = R.string.localizable.passwordEnterTitle()
-                self.mainView.setSubtitle(text: R.string.localizable.passwordEnterSubtitle())
+                self.mainView.titleLabel.text = localizable.passwordEnterTitle()
+                self.mainView.setSubtitle(text: localizable.passwordEnterSubtitle())
                 self.mainView.imageView.alpha = 1
                 timer.invalidate()
             } else {
                 self.blockSeconds -= 1
                 let seconds = self.blockSeconds.description
-                let text = R.string.localizable.passwordBlockSubtitle(seconds)
+                let text = localizable.passwordBlockSubtitle(seconds)
                 
                 self.mainView.setSubtitle(text: text)
             }

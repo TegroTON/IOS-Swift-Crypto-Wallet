@@ -17,7 +17,7 @@ class LoadSeedView: RootView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.loadTitle()
+        label.text = localizable.loadTitle()
         label.font = .interFont(ofSize: 24, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         label.textAlignment = .center
@@ -38,7 +38,7 @@ class LoadSeedView: RootView {
             .font(.interFont(ofSize: 16, weight: .regular))
             .foregroundColor(R.color.textSecond()!)
         
-        label.attributedText = R.string.localizable.loadSubtitle().styleAll(style)
+        label.attributedText = localizable.loadSubtitle().styleAll(style)
         
         return label
     }()

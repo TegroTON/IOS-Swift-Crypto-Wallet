@@ -4,7 +4,7 @@ class ReceiveWalletView: RootView {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.receiveWallet()
+        label.text = localizable.receiveWallet()
         label.font = .interFont(ofSize: 16, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         
@@ -23,7 +23,7 @@ class ReceiveWalletView: RootView {
     
     let addressLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.receiveWallet()
+        label.text = localizable.receiveWallet()
         label.font = .interFont(ofSize: 14, weight: .regular)
         label.textColor = R.color.textSecond()
         label.numberOfLines = 0

@@ -22,7 +22,7 @@ class ScanView: RootView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.scanTitle()
+        label.text = localizable.scanTitle()
         label.font = .interFont(ofSize: 24, weight: .bold)
         label.textColor = .white
         label.textAlignment = .center
@@ -90,7 +90,7 @@ class ScanView: RootView {
         let maskLayer = CAShapeLayer()
         let path = UIBezierPath(rect: shadowView.bounds)
         let squarePath = UIBezierPath(roundedRect: boxView.frame, cornerRadius: 10)
-
+        
         path.append(squarePath.reversing())
         maskLayer.path = path.cgPath
         shadowView.layer.mask = maskLayer

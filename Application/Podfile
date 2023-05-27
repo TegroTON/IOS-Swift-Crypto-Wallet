@@ -9,5 +9,6 @@ target 'TonWallet' do
   pod 'R.swift'
   pod 'IGListKit'
   pod 'Atributika'
+  pod 'Alamofire'
   
 end

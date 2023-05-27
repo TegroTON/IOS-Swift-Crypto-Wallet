@@ -5,7 +5,7 @@ class ReceiveHeaderView: RootView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.receiveTitle()
+        label.text = localizable.receiveTitle()
         label.font = .interFont(ofSize: 18, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         label.textAlignment = .center

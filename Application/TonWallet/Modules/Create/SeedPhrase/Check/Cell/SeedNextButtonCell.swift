@@ -4,7 +4,7 @@ class SeedNextButtonCell: UITableViewCell {
 
     let nextButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(R.string.localizable.seedPhraseEnterButton(), for: .normal)
+        button.setTitle(localizable.seedPhraseEnterButton(), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .montserratFont(ofSize: 14, weight: .semiBold)
         button.layer.cornerRadius = 10

@@ -4,7 +4,7 @@ class ConfirmCommentView: RootView {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.sendConfirmComment()
+        label.text = localizable.sendConfirmComment()
         label.font = .interFont(ofSize: 16, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         
@@ -15,7 +15,7 @@ class ConfirmCommentView: RootView {
         let view = TextView()
         view.minimumHeight = 80.0
         view.maxHeight = 250.0
-        view.placeholder = R.string.localizable.sendConfirmCommentPlaceholder()
+        view.placeholder = localizable.sendConfirmCommentPlaceholder()
         view.backgroundColor = R.color.bgInputs()
         view.layer.borderColor = R.color.borderColor()?.cgColor
         view.layer.borderWidth = 1
@@ -30,7 +30,7 @@ class ConfirmCommentView: RootView {
     
     let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.sendConfirmCommentDescription()
+        label.text = localizable.sendConfirmCommentDescription()
         label.font = .interFont(ofSize: 12, weight: .italic)
         label.textColor = R.color.textSecond()
         label.alpha = 0.8

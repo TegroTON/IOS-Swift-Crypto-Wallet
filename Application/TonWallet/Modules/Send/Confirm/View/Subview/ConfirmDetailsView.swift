@@ -4,7 +4,7 @@ class ConfirmDetailsView: RootView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.sendConfirmDetails()
+        label.text = localizable.sendConfirmDetails()
         label.font = .interFont(ofSize: 16, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         
@@ -21,7 +21,7 @@ class ConfirmDetailsView: RootView {
     
     let recipientLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.sendConfirmRecipient()
+        label.text = localizable.sendConfirmRecipient()
         label.font = .interFont(ofSize: 14, weight: .regular)
         label.textColor = R.color.textPrimary()
         
@@ -30,7 +30,7 @@ class ConfirmDetailsView: RootView {
     
     let sumLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.sendConfirmSum()
+        label.text = localizable.sendConfirmSum()
         label.font = .interFont(ofSize: 14, weight: .regular)
         label.textColor = R.color.textPrimary()
         
@@ -39,7 +39,7 @@ class ConfirmDetailsView: RootView {
     
     let commissionLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.sendConfirmCommission()
+        label.text = localizable.sendConfirmCommission()
         label.font = .interFont(ofSize: 14, weight: .regular)
         label.textColor = R.color.textPrimary()
         
@@ -48,7 +48,7 @@ class ConfirmDetailsView: RootView {
     
     let recipientValueLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.sendConfirmRecipient()
+        label.text = localizable.sendConfirmRecipient()
         label.font = .interFont(ofSize: 14, weight: .medium)
         label.textColor = R.color.textSecond()
         label.textAlignment = .right

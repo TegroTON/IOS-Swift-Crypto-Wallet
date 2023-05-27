@@ -10,7 +10,7 @@ class CreateView: RootView {
     
     let helloLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.createHello()
+        label.text = localizable.createHello()
         label.font = .interFont(ofSize: 18, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         label.textAlignment = .center
@@ -28,7 +28,7 @@ class CreateView: RootView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.createTitle()
+        label.text = localizable.createTitle()
         label.font = .interFont(ofSize: 32, weight: .extraBold)
         label.textColor = R.color.textPrimary()
         label.textAlignment = .center
@@ -49,7 +49,7 @@ class CreateView: RootView {
             .font(.interFont(ofSize: 16, weight: .regular))
             .foregroundColor(R.color.textSecond()!)
         
-        label.attributedText = R.string.localizable.createSubtitle().styleAll(style)
+        label.attributedText = localizable.createSubtitle().styleAll(style)
         
         return label
     }()
@@ -57,7 +57,7 @@ class CreateView: RootView {
     let connectButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitleColor(.white, for: .normal)
-        button.setTitle(R.string.localizable.createConnectWallet(), for: .normal)
+        button.setTitle(localizable.createConnectWallet(), for: .normal)
         button.backgroundColor = .init(hex6: 0x0066FF)
         button.titleLabel?.font = .interFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 10
@@ -68,7 +68,7 @@ class CreateView: RootView {
     let createButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitleColor(R.color.textPrimary(), for: .normal)
-        button.setTitle(R.string.localizable.createNewWallet(), for: .normal)
+        button.setTitle(localizable.createNewWallet(), for: .normal)
         button.backgroundColor = R.color.btnSecond()
         button.titleLabel?.font = .interFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 10

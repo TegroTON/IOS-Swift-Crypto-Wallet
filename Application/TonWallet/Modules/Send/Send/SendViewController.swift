@@ -48,9 +48,7 @@ class SendViewController: UIViewController {
     @objc private func scanViewTapped() {
         let vc = ScanViewController()
         vc.modalPresentationStyle = .popover
-        vc.completionHandler = { address in
-            self.updateAddress(address)
-        }
+        vc.delegate = self
         
         present(vc, animated: true)
     }
@@ -175,5 +173,21 @@ class SendViewController: UIViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+}
+
+// MARK: - ScanDelegate
+
+extension SendViewController: ScanDelegate {
+    func scan(_ controller: ScanViewController, didScan type: QRDetector.QRType) {
+        switch type {
+        case .transfer(let address):
+            print(address)
+        case .tonConnect(let query):
+            print(query)
+            
+        default:
+            break
+        }
     }
 }

@@ -10,7 +10,7 @@ class SendFormView: RootView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.sendFormTitle()
+        label.text = localizable.sendFormTitle()
         label.font = .interFont(ofSize: 16, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         
@@ -38,7 +38,7 @@ class SendFormView: RootView {
         ]
 
         view.attributedPlaceholder = NSMutableAttributedString(
-            string: R.string.localizable.sendFormAddress(),
+            string: localizable.sendFormAddress(),
             attributes: attributes
         )
         
@@ -76,7 +76,7 @@ class SendFormView: RootView {
     
     let balanceLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.sendFormBalance()
+        label.text = localizable.sendFormBalance()
         label.font = .interFont(ofSize: 14, weight: .medium)
         label.textColor = R.color.textSecond()
         
@@ -85,7 +85,7 @@ class SendFormView: RootView {
     
     let balanceAmountLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.sendFormBalanceAmount("697", "TON")
+        label.text = localizable.sendFormBalanceAmount("697", "TON")
         label.font = .interFont(ofSize: 14, weight: .medium)
         label.textColor = .init(hex6: 0x0066FF)
         

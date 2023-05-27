@@ -4,7 +4,7 @@ class WalletHeaderView: RootView {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.walletTitle()
+        label.text = localizable.walletTitle()
         label.font = .interFont(ofSize: 18, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         label.textAlignment = .left

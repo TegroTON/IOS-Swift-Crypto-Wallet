@@ -8,7 +8,7 @@ class SendView: RootView {
     
     let sendButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(R.string.localizable.sendButton(), for: .normal)
+        button.setTitle(localizable.sendButton(), for: .normal)
         button.setTitleColor(R.color.textSecond(), for: .normal)
         button.titleLabel?.font = .interFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 10

@@ -4,7 +4,7 @@ class SendSuccessDetailsView: ConfirmDetailsView {
     
     let addButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(R.string.localizable.sendSuccessAddContact(), for: .normal)
+        button.setTitle(localizable.sendSuccessAddContact(), for: .normal)
         button.setTitleColor(R.color.textPrimary(), for: .normal)
         button.titleLabel?.font = .interFont(ofSize: 14, weight: .medium)
         button.layer.cornerRadius = 10

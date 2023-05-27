@@ -25,7 +25,7 @@ class SeedPhraseWarningView: RootView {
             .font(.interFont(ofSize: 15, weight: .regular))
             .foregroundColor(R.color.textPrimary()!)
         
-        label.attributedText = R.string.localizable.seedPhraseReadWarning().styleAll(style)
+        label.attributedText = localizable.seedPhraseReadWarning().styleAll(style)
         
         return label
     }()

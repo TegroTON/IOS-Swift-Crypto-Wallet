@@ -63,7 +63,8 @@ class ReceiveViewController: UIViewController {
         let address = wallet.selectedAddress?.address ?? ""
         mainView.set(address: address)
         
-        let urlString = "ton://transfer/\(address)"
+//        let urlString = "ton://transfer/\(address)"
+        let urlString = "ton://transfer/EQCh_TYaBrxaobP2BpRP7sEfx3u5YmUw1WwaaZelo1KERQOy?amount=100&text=fuckU"
         generateQRCode(from: urlString) { image in
             self.mainView.set(qr: image)
         }

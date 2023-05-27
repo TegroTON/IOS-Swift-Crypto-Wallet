@@ -27,6 +27,7 @@ class WalletViewController: UIViewController {
     @objc private func scanButtonTapped() {
         let vc = ScanViewController()
         vc.modalPresentationStyle = .automatic
+        vc.delegate = self
         
         present(vc, animated: true)
     }
@@ -76,5 +77,21 @@ extension WalletViewController: WalletsSectionDelegate {
         vc.modalTransitionStyle = .crossDissolve
         
         present(vc, animated: true)
+    }
+}
+
+// MARK: - ScanDelegate
+
+extension WalletViewController: ScanDelegate {
+    func scan(_ controller: ScanViewController, didScan type: QRDetector.QRType) {
+        switch type {
+        case .transfer(let address):
+            print(address)
+        case .tonConnect(let query):
+            let vc = TonConnectViewController(model: query)
+            present(vc, animated: true)
+        
+        default: break
+        }
     }
 }

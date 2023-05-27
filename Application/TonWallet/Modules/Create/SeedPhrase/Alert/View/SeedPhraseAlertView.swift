@@ -23,7 +23,7 @@ class SeedPhraseAlertView: RootView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.seedPhraseCreatedTitle()
+        label.text = localizable.seedPhraseCreatedTitle()
         label.font = .interFont(ofSize: 24, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         label.textAlignment = .center
@@ -45,14 +45,14 @@ class SeedPhraseAlertView: RootView {
             .font(.interFont(ofSize: 16, weight: .regular))
             .foregroundColor(R.color.textSecond()!)
         
-        label.attributedText = R.string.localizable.seedPhraseCreatedSubtitle().styleAll(style)
+        label.attributedText = localizable.seedPhraseCreatedSubtitle().styleAll(style)
         
         return label
     }()
     
     let nextButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(R.string.localizable.seedPhraseButton(), for: .normal)
+        button.setTitle(localizable.seedPhraseButton(), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .interFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 10

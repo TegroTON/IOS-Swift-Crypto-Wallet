@@ -91,6 +91,14 @@
 		2CB52F3D29DF533D00224071 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3C29DF533D00224071 /* SettingsModel.swift */; };
 		2CB52F3F29E02BBD00224071 /* SettingsSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3E29E02BBD00224071 /* SettingsSeparatorView.swift */; };
 		2CB52F4129E0355E00224071 /* SettingsRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F4029E0355E00224071 /* SettingsRightView.swift */; };
+		2CC0B8B22A2167F600DE4E5D /* QRDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC0B8B12A2167F600DE4E5D /* QRDetector.swift */; };
+		2CC0B8B52A2237AA00DE4E5D /* ConnectQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC0B8B42A2237AA00DE4E5D /* ConnectQuery.swift */; };
+		2CC0B8B72A2237ED00DE4E5D /* ConnectRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC0B8B62A2237ED00DE4E5D /* ConnectRequest.swift */; };
+		2CC0B8BA2A22631400DE4E5D /* TonConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC0B8B92A22631400DE4E5D /* TonConnectViewController.swift */; };
+		2CC0B8BD2A22634300DE4E5D /* TonConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC0B8BC2A22634300DE4E5D /* TonConnectView.swift */; };
+		2CC0B8BF2A22652800DE4E5D /* String+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC0B8BE2A22652800DE4E5D /* String+Extentions.swift */; };
+		2CC0B8C42A22688700DE4E5D /* TonConnectProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC0B8C32A22688700DE4E5D /* TonConnectProvider.swift */; };
+		2CC0B8C72A22692600DE4E5D /* DAppManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC0B8C62A22692600DE4E5D /* DAppManifest.swift */; };
 		2CCE902029CD572E00C904B6 /* UIView+shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE901F29CD572E00C904B6 /* UIView+shake.swift */; };
 		2CCE902429CD58D300C904B6 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE902329CD58D300C904B6 /* ReceiveViewController.swift */; };
 		2CCE902629CD58DF00C904B6 /* ReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCE902529CD58DF00C904B6 /* ReceiveView.swift */; };
@@ -199,6 +207,14 @@
 		2CB52F3C29DF533D00224071 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		2CB52F3E29E02BBD00224071 /* SettingsSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSeparatorView.swift; sourceTree = "<group>"; };
 		2CB52F4029E0355E00224071 /* SettingsRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRightView.swift; sourceTree = "<group>"; };
+		2CC0B8B12A2167F600DE4E5D /* QRDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDetector.swift; sourceTree = "<group>"; };
+		2CC0B8B42A2237AA00DE4E5D /* ConnectQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectQuery.swift; sourceTree = "<group>"; };
+		2CC0B8B62A2237ED00DE4E5D /* ConnectRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRequest.swift; sourceTree = "<group>"; };
+		2CC0B8B92A22631400DE4E5D /* TonConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonConnectViewController.swift; sourceTree = "<group>"; };
+		2CC0B8BC2A22634300DE4E5D /* TonConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonConnectView.swift; sourceTree = "<group>"; };
+		2CC0B8BE2A22652800DE4E5D /* String+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extentions.swift"; sourceTree = "<group>"; };
+		2CC0B8C32A22688700DE4E5D /* TonConnectProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonConnectProvider.swift; sourceTree = "<group>"; };
+		2CC0B8C62A22692600DE4E5D /* DAppManifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAppManifest.swift; sourceTree = "<group>"; };
 		2CCE901F29CD572E00C904B6 /* UIView+shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+shake.swift"; sourceTree = "<group>"; };
 		2CCE902329CD58D300C904B6 /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
 		2CCE902529CD58DF00C904B6 /* ReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveView.swift; sourceTree = "<group>"; };
@@ -237,8 +253,10 @@
 		2C11B04929D5AFBB0059C8EE /* Scan */ = {
 			isa = PBXGroup;
 			children = (
+				2CC0B8B32A22377C00DE4E5D /* Model */,
 				2C11B04A29D5AFC10059C8EE /* View */,
 				2C11B04E29D5AFE20059C8EE /* ScanViewController.swift */,
+				2CC0B8B12A2167F600DE4E5D /* QRDetector.swift */,
 			);
 			path = Scan;
 			sourceTree = "<group>";
@@ -490,6 +508,7 @@
 		2C2DCBF829598EAB00E4B688 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2CC0B8B82A2262EA00DE4E5D /* TonConnect */,
 				2C11B04929D5AFBB0059C8EE /* Scan */,
 				2CCE902129CD58AC00C904B6 /* Receive */,
 				2C44327B29C5EF23009B7771 /* Send */,
@@ -573,6 +592,7 @@
 		2C2DCC0329598FB700E4B688 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				2CC0B8BE2A22652800DE4E5D /* String+Extentions.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -892,6 +912,50 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		2CC0B8B32A22377C00DE4E5D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2CC0B8B42A2237AA00DE4E5D /* ConnectQuery.swift */,
+				2CC0B8B62A2237ED00DE4E5D /* ConnectRequest.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2CC0B8B82A2262EA00DE4E5D /* TonConnect */ = {
+			isa = PBXGroup;
+			children = (
+				2CC0B8C52A2268DC00DE4E5D /* Provider */,
+				2CC0B8C22A22685D00DE4E5D /* Model */,
+				2CC0B8BB2A22631700DE4E5D /* View */,
+				2CC0B8B92A22631400DE4E5D /* TonConnectViewController.swift */,
+			);
+			path = TonConnect;
+			sourceTree = "<group>";
+		};
+		2CC0B8BB2A22631700DE4E5D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2CC0B8BC2A22634300DE4E5D /* TonConnectView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2CC0B8C22A22685D00DE4E5D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2CC0B8C62A22692600DE4E5D /* DAppManifest.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2CC0B8C52A2268DC00DE4E5D /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				2CC0B8C32A22688700DE4E5D /* TonConnectProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
 		2CCE902129CD58AC00C904B6 /* Receive */ = {
 			isa = PBXGroup;
 			children = (
@@ -1175,6 +1239,7 @@
 				2C1BD1982983F948001284C0 /* WalletView.swift in Sources */,
 				2C44329329C737B9009B7771 /* ConfirmCommentView.swift in Sources */,
 				2C2DCC0629598FB700E4B688 /* RootView.swift in Sources */,
+				2CC0B8B72A2237ED00DE4E5D /* ConnectRequest.swift in Sources */,
 				2C1BD16129817F1F001284C0 /* UIFont+Custom.swift in Sources */,
 				2C35C6AE29A725A000A0F181 /* SettingsView.swift in Sources */,
 				2C1BD19C2983FFEE001284C0 /* SeedNextButtonCell.swift in Sources */,
@@ -1194,6 +1259,7 @@
 				2CCE902629CD58DF00C904B6 /* ReceiveView.swift in Sources */,
 				2CB52F3529DDEBC500224071 /* SettingsHeaderView.swift in Sources */,
 				2C35C6C329A8CF1A00A0F181 /* KeychainManager.swift in Sources */,
+				2CC0B8B52A2237AA00DE4E5D /* ConnectQuery.swift in Sources */,
 				2C4DE29E29A3B48700BD1F05 /* LoadSeedView.swift in Sources */,
 				2C44328529C6144C009B7771 /* SendFormView.swift in Sources */,
 				2C2DCC0829598FB700E4B688 /* UIIColor+hex.swift in Sources */,
@@ -1203,6 +1269,7 @@
 				2C35C6C629A8DAB500A0F181 /* WalletManager.swift in Sources */,
 				2CB52F4129E0355E00224071 /* SettingsRightView.swift in Sources */,
 				2C11B04C29D5AFCD0059C8EE /* ScanView.swift in Sources */,
+				2CC0B8BF2A22652800DE4E5D /* String+Extentions.swift in Sources */,
 				2C1BD17D29818D84001284C0 /* SeedPhraseView.swift in Sources */,
 				2C44327A29C5C0E8009B7771 /* PagingFlowLayout.swift in Sources */,
 				2C4432A529C78513009B7771 /* SendSuccessHeaderView.swift in Sources */,
@@ -1217,14 +1284,18 @@
 				2C4DE2AC29A4154900BD1F05 /* SeedPhraseWarningView.swift in Sources */,
 				2C4432A729C7881F009B7771 /* SendSuccessDetailsView.swift in Sources */,
 				2C4DE29929A3143200BD1F05 /* R.generated.swift in Sources */,
+				2CC0B8B22A2167F600DE4E5D /* QRDetector.swift in Sources */,
 				2C35C6AB29A7258D00A0F181 /* SettingsViewController.swift in Sources */,
 				2C35C6BC29A7F31F00A0F181 /* WalletCardSection.swift in Sources */,
 				2C2DCC0929598FB700E4B688 /* ListCollectionContext+Dequeue.swift in Sources */,
+				2CC0B8BA2A22631400DE4E5D /* TonConnectViewController.swift in Sources */,
+				2CC0B8C72A22692600DE4E5D /* DAppManifest.swift in Sources */,
 				2C1BD1942983F48D001284C0 /* SuccessView.swift in Sources */,
 				2CCE902B29D1A77300C904B6 /* ReceiveWalletView.swift in Sources */,
 				2C4DE2A829A4147700BD1F05 /* CheckSeedViewController.swift in Sources */,
 				2C1BD17229818334001284C0 /* SeedPhraseAlertViewController.swift in Sources */,
 				2C1BD1892982BAD3001284C0 /* PasswordView.swift in Sources */,
+				2CC0B8C42A22688700DE4E5D /* TonConnectProvider.swift in Sources */,
 				2C4432A029C78378009B7771 /* SendSuccessView.swift in Sources */,
 				2C35C6C029A7F5F500A0F181 /* WalletCardView.swift in Sources */,
 				2C35C6BE29A7F4B000A0F181 /* WalletsCell.swift in Sources */,
@@ -1246,6 +1317,7 @@
 				2C44327E29C5EF3E009B7771 /* SendView.swift in Sources */,
 				6C8BA53D097E57E34EE801AF /* TonKeyPair.swift in Sources */,
 				2CCE902D29D1ACD900C904B6 /* ReceiveQRView.swift in Sources */,
+				2CC0B8BD2A22634300DE4E5D /* TonConnectView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -172,13 +172,13 @@ extension CheckSeedViewController: UITableViewDataSource, UITableViewDelegate {
             
             let text: String
             if type == .check {
-                text = R.string.localizable.seedPhraseCheckSubtitle(
+                text = localizable.seedPhraseCheckSubtitle(
                     (wordsForCheck[0].index + 1).description,
                     (wordsForCheck[1].index + 1).description,
                     (wordsForCheck[2].index + 1).description
                 )
             } else {
-                text = R.string.localizable.seedPhraseEnterSubtitle()
+                text = localizable.seedPhraseEnterSubtitle()
             }
             
             cell.setSubtitle(text: text)

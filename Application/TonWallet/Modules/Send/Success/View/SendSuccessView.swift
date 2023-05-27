@@ -7,7 +7,7 @@ class SendSuccessView: RootView {
     
     let doneButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(R.string.localizable.sendSuccessButton(), for: .normal)
+        button.setTitle(localizable.sendSuccessButton(), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .interFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 10

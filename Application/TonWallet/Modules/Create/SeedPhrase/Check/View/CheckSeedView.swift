@@ -16,7 +16,7 @@ class CheckSeedView: RootView {
         label.font = .interFont(ofSize: 18, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         label.textAlignment = .center
-        label.text = R.string.localizable.seedPhraseCheckTitle()
+        label.text = localizable.seedPhraseCheckTitle()
         
         return label
     }()
@@ -39,7 +39,7 @@ class CheckSeedView: RootView {
     
     let continueButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(R.string.localizable.seedPhraseButton(), for: .normal)
+        button.setTitle(localizable.seedPhraseButton(), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .interFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 10
@@ -63,11 +63,11 @@ class CheckSeedView: RootView {
         switch type {
         case .check:
             continueButton.isHidden = false
-            titleLabel.text = R.string.localizable.seedPhraseCheckTitle()
+            titleLabel.text = localizable.seedPhraseCheckTitle()
             
         case .enter:
             continueButton.isHidden = true
-            titleLabel.text = R.string.localizable.seedPhraseEnterTitle()
+            titleLabel.text = localizable.seedPhraseEnterTitle()
         }
     }
     

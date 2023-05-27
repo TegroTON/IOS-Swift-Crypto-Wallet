@@ -7,7 +7,7 @@ class ReceiveView: RootView {
     let qrView: ReceiveQRView = ReceiveQRView()
     
     let shareButton: UIButton = {
-        var attributedString = AttributedString(R.string.localizable.receiveShare())
+        var attributedString = AttributedString(localizable.receiveShare())
         var container = AttributeContainer()
         container[AttributeScopes.UIKitAttributes.FontAttribute.self] = UIFont.interFont(ofSize: 16, weight: .medium)
         attributedString.mergeAttributes(container, mergePolicy: .keepNew)
@@ -25,7 +25,7 @@ class ReceiveView: RootView {
     }()
     
     let copyButton: UIButton = {
-        var attributedString = AttributedString(R.string.localizable.receiveCopy())
+        var attributedString = AttributedString(localizable.receiveCopy())
         var container = AttributeContainer()
         container[AttributeScopes.UIKitAttributes.FontAttribute.self] = UIFont.interFont(ofSize: 16, weight: .medium)
         attributedString.mergeAttributes(container, mergePolicy: .keepNew)

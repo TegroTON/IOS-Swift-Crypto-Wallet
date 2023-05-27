@@ -1,22 +1,32 @@
 import UIKit
 import AVFoundation
 
+protocol ScanDelegate: AnyObject {
+    func scan(_ controller: ScanViewController, didScan type: QRDetector.QRType)
+}
+
 class ScanViewController: UIViewController {
     
     typealias Address = String
+    
+    enum ScanType {
+        case notDetected
+        case detecting
+        case detected
+    }
     
     var mainView: ScanView {
         return view as! ScanView
     }
     
-    var completionHandler: ((Address) -> Void)?
+    weak var delegate: ScanDelegate?
     
     private var captureSession: AVCaptureSession = .init()
     private var cameraDeviceInput: AVCaptureDeviceInput!
     private var isBlindViewHidden: Bool = false
-    private var isDetected: Bool = false
+    private var scanType: ScanType = .notDetected
     private var frameCount: Int = 4
-    private var qrDetector: CIDetector?
+    private var qrDetector = QRDetector()
     private let selectionFeedback: UISelectionFeedbackGenerator = .init()
     private let notificationFeedback: UINotificationFeedbackGenerator = .init()
     
@@ -80,9 +90,6 @@ class ScanViewController: UIViewController {
         scanQueue.async {
             guard let device = AVCaptureDevice.default(for: .video) else { return }
             
-            let options = [CIDetectorAccuracy: CIDetectorAccuracyHigh]
-            self.qrDetector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: options)
-            
             self.captureSession.beginConfiguration()
                     
             do {
@@ -106,24 +113,27 @@ class ScanViewController: UIViewController {
     }
     
     private func getImageFromSampleBuffer(sampleBuffer: CMSampleBuffer) ->UIImage? {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
-            return nil
-        }
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
+        
         CVPixelBufferLockBaseAddress(pixelBuffer, .readOnly)
+        
         let baseAddress = CVPixelBufferGetBaseAddress(pixelBuffer)
         let width = CVPixelBufferGetWidth(pixelBuffer)
         let height = CVPixelBufferGetHeight(pixelBuffer)
         let bytesPerRow = CVPixelBufferGetBytesPerRow(pixelBuffer)
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue)
-        guard let context = CGContext(data: baseAddress, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo.rawValue) else {
+        
+        guard
+            let context = CGContext(data: baseAddress, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo.rawValue),
+            let cgImage = context.makeImage()
+        else {
             return nil
         }
-        guard let cgImage = context.makeImage() else {
-            return nil
-        }
+        
         let image = UIImage(cgImage: cgImage, scale: 1, orientation:.right)
         CVPixelBufferUnlockBaseAddress(pixelBuffer, .readOnly)
+        
         return image
     }
     
@@ -138,40 +148,28 @@ class ScanViewController: UIViewController {
     }
     
     private func detectQR(image: UIImage) {
-        guard !isDetected else { return }
+        guard scanType == .notDetected else { return }
         
-        scanQueue.async {
-            guard self.frameCount > 3 else {
-                self.frameCount += 1
-                return
-            }
+        if frameCount > 3 {
+            frameCount = 0
+            scanType = .detecting
             
-            self.frameCount = 0
-            
-            guard let ciImage = CIImage(image: image) else { return }
-            
-            let features = self.qrDetector?.features(in: ciImage)
-            guard let qrCodes = features as? [CIQRCodeFeature] else { return }
-
-            for qrCode in qrCodes {
-                guard
-                    let message = qrCode.messageString,
-                    let encodedUrlString = message.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-                    let url = URL(string: encodedUrlString),
-                    !self.isDetected
-                else { continue }
-
-                if url.host == "transfer" {
-                    self.isDetected = true
-                    
-                    DispatchQueue.main.async {
+            qrDetector.detect(qr: image) { [weak self] type in
+                guard let self = self else { return }
+                
+                DispatchQueue.main.async {
+                    if case .none = type {
+                        self.scanType = .notDetected
+                    } else {
                         self.notificationFeedback.notificationOccurred(.success)
-                        let address = url.lastPathComponent
-                        self.completionHandler?(address)
+                        self.scanType = .detected
                         self.dismiss(animated: true)
+                        self.delegate?.scan(self, didScan: type)
                     }
                 }
             }
+        } else {
+            frameCount += 1
         }
     }
     
@@ -181,11 +179,7 @@ class ScanViewController: UIViewController {
 
 extension ScanViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard
-            let outputImage = getImageFromSampleBuffer(sampleBuffer: sampleBuffer)
-        else {
-            return
-        }
+        guard let outputImage = getImageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
         
         mainView.frameImageView.image = outputImage
         hideBlindViewIfNeeded()

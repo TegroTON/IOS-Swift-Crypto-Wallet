@@ -4,7 +4,7 @@ class SettingsHeaderView: RootView {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = R.string.localizable.settingsTitle()
+        label.text = localizable.settingsTitle()
         label.font = .interFont(ofSize: 18, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         label.textAlignment = .center

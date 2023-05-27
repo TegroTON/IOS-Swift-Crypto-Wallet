@@ -28,7 +28,7 @@ class SeedPhraseView: RootView {
     
     let nextButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(R.string.localizable.seedPhraseButton(), for: .normal)
+        button.setTitle(localizable.seedPhraseButton(), for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .interFont(ofSize: 16, weight: .medium)
         button.layer.cornerRadius = 10
