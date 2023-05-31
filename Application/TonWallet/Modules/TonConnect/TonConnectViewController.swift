@@ -58,7 +58,7 @@ class TonConnectViewController: UIViewController {
     private func createResponse(stateInit: String) {
         let replyItems: [ConnectItemReply] = createReplyItems(keyPair: keyPair!, stateInit: stateInit)
         let payload = Payload(items: replyItems, device: tonConnectDeviceInfo)
-        let response = ConnectEvent(id: "0", event: "connect", payload: payload)
+        let response = ConnectEvent(id: 0, event: "connect", payload: payload)
         
         send(response: response)
     }
@@ -263,12 +263,14 @@ class TonConnectViewController: UIViewController {
     
     func send(response: ConnectEvent) {
         let clientSessionId = model.id
+        let naclKeyPair = try! NaclBox.keyPair()
+        let sessionId = tonManager.convertBaseToHex(naclKeyPair.publicKey.base64EncodedString())
         
-        let url = "https://bridge.tonapi.io/bridge/message?client_id=\(sessionId!)&to=\(clientSessionId)&ttl=300"
+        let url = "https://bridge.tonapi.io/bridge/message?client_id=\(sessionId)&to=\(clientSessionId)&ttl=300"
         
         let baseClientSessionId = tonManager.convertHexToBase(clientSessionId)
         let dataClientSessionId = Data(base64Encoded: baseClientSessionId)!
-        
+                
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         
@@ -276,20 +278,17 @@ class TonConnectViewController: UIViewController {
         let stringResponse = String(data: jsonDataResponse, encoding: .utf8)!.data(using: .utf8)!
         
         let nonceLength = 24
-        var nonceData = randomBytes(n: nonceLength)
+        let nonceData = randomBytes(n: nonceLength)
         
-        let privateKey = try! NaclBox.keyPair().secretKey
+        let encrypted = try! NaclBox.box(message: stringResponse, nonce: nonceData, publicKey: dataClientSessionId, secretKey: naclKeyPair.secretKey)
         
-        let data = try! NaclBox.box(message: stringResponse, nonce: nonceData, publicKey: dataClientSessionId, secretKey: privateKey)
-        
-        let result = nonceData + data
+        let result = nonceData + encrypted
         
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = HTTPMethod.post.rawValue
         request.httpBody = result.base64EncodedString().data(using: .utf8)
 
-        
-        let sseURL = URL(string: "https://bridge.tonapi.io/bridge/events?client_id=\(sessionId!)")!
+        let sseURL = URL(string: "https://bridge.tonapi.io/bridge/events?client_id=\(sessionId)")!
         SSEClient.shared.connectToSSE(url: sseURL)
         
         AF.request(request).response { responseData in
@@ -340,20 +339,20 @@ class TonConnectViewController: UIViewController {
     }
     
     let tonConnectDeviceInfo: DeviceInfo = {
-        let platform = "iOS"
+        let platform = "iphone"
         let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ?? ""
         let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
         let maxProtocolVersion = 2
         let features: [Feature] = [
             Feature(name: "SendTransaction", maxMessages: nil),
-            Feature(name: "OtherFeature", maxMessages: 4)
+            Feature(name: "SendTransaction", maxMessages: 4)
         ]
         
         return DeviceInfo(platform: platform, appName: appName, appVersion: appVersion, maxProtocolVersion: maxProtocolVersion, features: features)
     }()
     
     struct ConnectEvent: Codable {
-        let id: String
+        let id: Int
         let event: String
         let payload: Payload
     }
@@ -364,7 +363,7 @@ class TonConnectViewController: UIViewController {
     }
     
     struct ConnectItemReply: Codable {
-        var name: String
+        let name: String
         let address: String?
         let network: Chain?
         let walletStateInit: String?
