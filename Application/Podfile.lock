@@ -1,32 +1,48 @@
 PODS:
+  - Alamofire (5.6.4)
   - Atributika (4.10.1)
+  - BigInt (5.2.0)
   - IGListDiffKit (4.0.0)
   - IGListKit (4.0.0):
     - IGListDiffKit (= 4.0.0)
-  - R.swift (7.2.4)
+  - Kingfisher (7.6.2)
+  - R.swift (7.3.0)
   - SnapKit (5.6.0)
+  - TweetNacl (1.0.2)
 
 DEPENDENCIES:
+  - Alamofire
   - Atributika
+  - BigInt
   - IGListKit
+  - Kingfisher
   - R.swift
   - SnapKit
+  - TweetNacl
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Atributika
+    - BigInt
     - IGListDiffKit
     - IGListKit
+    - Kingfisher
     - R.swift
     - SnapKit
+    - TweetNacl
 
 SPEC CHECKSUMS:
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   Atributika: 47e778507cfb3cd2c996278b0285221a62e97d71
+  BigInt: f668a80089607f521586bbe29513d708491ef2f7
   IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
   IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
-  R.swift: 681bb9135f482e7a81d9d27445b837fef5467e11
+  Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
+  R.swift: cef1c530541cb49412752721797f10dae6b32d11
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  TweetNacl: 3abf4d1d2082b0114e7a67410e300892448951e6
 
-PODFILE CHECKSUM: 9a4ae93e30167a0735a58249ac3596f2232c18d9
+PODFILE CHECKSUM: ec4d117f27aa04cc0018dfca9d7642ad0f2ba512
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

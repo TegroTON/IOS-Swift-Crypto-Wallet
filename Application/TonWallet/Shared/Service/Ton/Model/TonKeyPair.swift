@@ -1,4 +1,3 @@
-import shared
 import Foundation
 
 struct TonKeyPair: Codable {

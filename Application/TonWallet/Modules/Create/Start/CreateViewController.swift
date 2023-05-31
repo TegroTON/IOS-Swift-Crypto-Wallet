@@ -1,5 +1,4 @@
 import UIKit
-import shared
 
 class CreateViewController: UIViewController {
     

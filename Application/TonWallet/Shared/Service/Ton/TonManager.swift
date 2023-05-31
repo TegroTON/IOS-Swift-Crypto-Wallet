@@ -1,4 +1,5 @@
 import Foundation
+import CryptoKit
 import shared
 
 typealias AddressType = TonManager.AddressType
@@ -54,13 +55,33 @@ class TonManager {
         }
     }
     
-    func getAddress(_ type: AddressType, publicKey: String) -> WalletAddress {
+    func getAddress(_ type: AddressType, publicKey: String, isUserFriendly: Bool = true) -> WalletAddress {
         switch type {
         case .v4r2:
-            let address = ton.walletAddress(base64: publicKey)
+            let address = ton.walletAddress(pbKey: publicKey, isUserFriendly: isUserFriendly)
             let name = "V4R2"
             return WalletAddress(name: name, address: address)
         }
     }
 
+    func convertKeyToHex(_ key: String) -> String {
+        let hexKey = ton.keyToHex(pbKey: key)
+        return hexKey
+    }
+
+    func createStateInit(pbKey: String) {
+        let stateInit = ton.createStateInit(publicKey: pbKey)
+
+        delegate?.ton(stateInitDidCreated: .success(stateInit))
+    }
+
+    func convertBaseToHex(_ base64: String) -> String {
+        let hex = ton.baseToHex(base64: base64)
+        return hex
+    }
+
+    func convertHexToBase(_ hex: String) -> String {
+        let base64 = ton.hexToBase(hex: hex)
+        return  base64
+    }
 }
