@@ -89,7 +89,7 @@ class TonConnectViewController: UIViewController {
                     name: "ton_addr",
                     address: address,
                     network: .mainnet,
-                    walletStateInit: codeBOCFromTonkeeperLogs,
+                    walletStateInit: base64BOC,
                     publicKey: tonManager.convertKeyToHex(keyPair.publicKey).lowercased()
                 )
                 replyItems.append(addressItem)
