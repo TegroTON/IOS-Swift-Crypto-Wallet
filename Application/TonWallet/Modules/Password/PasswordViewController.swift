@@ -17,6 +17,7 @@ class PasswordViewController: UIViewController {
     private var isPasswordSetted: Bool = false
     private var isAnimating: Bool = false
     
+    private let userSettings = UserSettings.shared
     private var blockTimer: Timer = .init()
     private let selectionFeedback: UISelectionFeedbackGenerator = .init()
     private let notificationFeedback: UINotificationFeedbackGenerator = .init()
@@ -156,7 +157,7 @@ class PasswordViewController: UIViewController {
     private func checkBlockTimer() {
         blockTimer.invalidate()
         
-        if let startTime = UserSettings.blockDate {
+        if let startTime = userSettings.blockDate {
             let timeInterval = Date().timeIntervalSince(startTime)
             blockSeconds = Int(30.0 - timeInterval)
             setupTimer()
@@ -208,7 +209,7 @@ class PasswordViewController: UIViewController {
     }
     
     private func handleBlock() {
-        UserSettings.blockDate = Date()
+        userSettings.blockDate = Date()
         mainView.setBlockContent(blockSeconds: blockSeconds.description)
         setupTimer()
     }
@@ -220,6 +221,7 @@ class PasswordViewController: UIViewController {
             if self.blockSeconds <= 0 {
                 self.blockSeconds = 30
                 self.incorrectCount = 0
+                self.userSettings.blockDate = nil
                 self.mainView.indicatorsView.setAllIndicators(to: .off)
                 self.mainView.titleLabel.text = localizable.passwordEnterTitle()
                 self.mainView.setSubtitle(text: localizable.passwordEnterSubtitle())

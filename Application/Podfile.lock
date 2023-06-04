@@ -8,6 +8,7 @@ PODS:
   - Kingfisher (7.6.2)
   - R.swift (7.3.0)
   - SnapKit (5.6.0)
+  - Starscream (4.0.4)
   - TweetNacl (1.0.2)
 
 DEPENDENCIES:
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - Kingfisher
   - R.swift
   - SnapKit
+  - Starscream
   - TweetNacl
 
 SPEC REPOS:
@@ -30,6 +32,7 @@ SPEC REPOS:
     - Kingfisher
     - R.swift
     - SnapKit
+    - Starscream
     - TweetNacl
 
 SPEC CHECKSUMS:
@@ -41,8 +44,9 @@ SPEC CHECKSUMS:
   Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
   R.swift: cef1c530541cb49412752721797f10dae6b32d11
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
   TweetNacl: 3abf4d1d2082b0114e7a67410e300892448951e6
 
-PODFILE CHECKSUM: ec4d117f27aa04cc0018dfca9d7642ad0f2ba512
+PODFILE CHECKSUM: d4ca33effdca9b3d8fba594aef097c82fd1848c1
 
 COCOAPODS: 1.12.1

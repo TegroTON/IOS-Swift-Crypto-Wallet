@@ -1,7 +1,7 @@
 import Foundation
 import TweetNacl
 
-public struct KeyPair {
+public struct KeyPair: Codable {
     public let publicKey: Data
     public let secretKey: Data
 }

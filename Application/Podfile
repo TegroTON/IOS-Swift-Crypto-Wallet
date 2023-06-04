@@ -9,5 +9,6 @@ target 'TonWallet' do
   pod 'Kingfisher'
   pod 'TweetNacl'
   pod 'BigInt'
+  pod 'Starscream'
   
 end

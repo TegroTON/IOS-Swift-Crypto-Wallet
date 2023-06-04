@@ -7,11 +7,11 @@ class WalletManager {
     private(set) var wallets: [Wallet] = []
     private let walletQueue: DispatchQueue = DispatchQueue(label: "\(Bundle.main.bundleIdentifier!).wallet")
     private let keychein = KeychainManager()
+    private let userSettings = UserSettings.shared
 
     init() {
         do {
-            guard let data = UserSettings.wallets else { return }
-            wallets = try JSONDecoder().decode([Wallet].self, from: data)
+            wallets = userSettings.wallets
         } catch {
             print("❤️ Faild decode wallets in init(), error:", error)
         }
@@ -113,12 +113,7 @@ class WalletManager {
     /// save or update wallets
     private func saveWallets() {
         walletQueue.async {
-            do {
-                let data = try JSONEncoder().encode(self.wallets)
-                UserSettings.wallets = data
-            } catch {
-                print("❤️ Faild encode users in saveWallets(), error:",  error)
-            }
+            self.userSettings.wallets = self.wallets
         }
     }
     

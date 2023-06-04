@@ -28,6 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             rootVC = passwordVC
         }
         
+//        UserSettings.shared.connections = []
+//        UserSettings.shared.lastEventId = nil
+        SSEClient.shared.connectToSSE()
+        
         let navVC = RootNavigationController.shared
         navVC.setViewControllers([rootVC], animated: false)
         
