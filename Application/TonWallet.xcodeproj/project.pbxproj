@@ -84,6 +84,11 @@
 		2C4DE2AA29A414A800BD1F05 /* CheckSeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE2A929A414A800BD1F05 /* CheckSeedView.swift */; };
 		2C4DE2AC29A4154900BD1F05 /* SeedPhraseWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE2AB29A4154900BD1F05 /* SeedPhraseWarningView.swift */; };
 		2C4DE2AE29A4160D00BD1F05 /* SeedPhraseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DE2AD29A4160D00BD1F05 /* SeedPhraseHeaderView.swift */; };
+		2C5CBAEF2A374B76004AA8B3 /* ModalScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBAED2A374B76004AA8B3 /* ModalScrollViewController.swift */; };
+		2C5CBAF02A374B76004AA8B3 /* ModalScrollAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBAEE2A374B76004AA8B3 /* ModalScrollAnimation.swift */; };
+		2C5CBAF22A374CDF004AA8B3 /* UIScrollView+ScrollToTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBAF12A374CDF004AA8B3 /* UIScrollView+ScrollToTop.swift */; };
+		2C5CBAFC2A377CDE004AA8B3 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBAFB2A377CDE004AA8B3 /* ModalView.swift */; };
+		2C5CBAFE2A37820A004AA8B3 /* TonConnectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBAFD2A37820A004AA8B3 /* TonConnectViewModel.swift */; };
 		2CB52F3529DDEBC500224071 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3429DDEBC500224071 /* SettingsHeaderView.swift */; };
 		2CB52F3829DF480300224071 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3729DF480300224071 /* SettingsCell.swift */; };
 		2CB52F3A29DF481D00224071 /* SettingsDeleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3929DF481D00224071 /* SettingsDeleteCell.swift */; };
@@ -251,6 +256,11 @@
 		2C4DE2A929A414A800BD1F05 /* CheckSeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckSeedView.swift; sourceTree = "<group>"; };
 		2C4DE2AB29A4154900BD1F05 /* SeedPhraseWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseWarningView.swift; sourceTree = "<group>"; };
 		2C4DE2AD29A4160D00BD1F05 /* SeedPhraseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseHeaderView.swift; sourceTree = "<group>"; };
+		2C5CBAED2A374B76004AA8B3 /* ModalScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalScrollViewController.swift; sourceTree = "<group>"; };
+		2C5CBAEE2A374B76004AA8B3 /* ModalScrollAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalScrollAnimation.swift; sourceTree = "<group>"; };
+		2C5CBAF12A374CDF004AA8B3 /* UIScrollView+ScrollToTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+ScrollToTop.swift"; sourceTree = "<group>"; };
+		2C5CBAFB2A377CDE004AA8B3 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		2C5CBAFD2A37820A004AA8B3 /* TonConnectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonConnectViewModel.swift; sourceTree = "<group>"; };
 		2CB52F3429DDEBC500224071 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		2CB52F3729DF480300224071 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		2CB52F3929DF481D00224071 /* SettingsDeleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDeleteCell.swift; sourceTree = "<group>"; };
@@ -647,6 +657,7 @@
 		2C2DCBFB29598FB700E4B688 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2C5CBAEC2A374B76004AA8B3 /* Modals */,
 				2C35C6CA29A9243900A0F181 /* Helpers */,
 				2C2DCBFC29598FB700E4B688 /* UI */,
 				2C2DCC0029598FB700E4B688 /* Extentions */,
@@ -687,6 +698,7 @@
 		2C2DCC0129598FB700E4B688 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				2C5CBAF12A374CDF004AA8B3 /* UIScrollView+ScrollToTop.swift */,
 				2C1BD16029817F1F001284C0 /* UIFont+Custom.swift */,
 				2C2DCC0229598FB700E4B688 /* UIIColor+hex.swift */,
 				2CCE901F29CD572E00C904B6 /* UIView+shake.swift */,
@@ -992,6 +1004,24 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		2C5CBAEC2A374B76004AA8B3 /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+				2C5CBAFA2A377CD4004AA8B3 /* View */,
+				2C5CBAED2A374B76004AA8B3 /* ModalScrollViewController.swift */,
+				2C5CBAEE2A374B76004AA8B3 /* ModalScrollAnimation.swift */,
+			);
+			path = Modals;
+			sourceTree = "<group>";
+		};
+		2C5CBAFA2A377CD4004AA8B3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C5CBAFB2A377CDE004AA8B3 /* ModalView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		2CB52F3329DDEBB300224071 /* Subview */ = {
 			isa = PBXGroup;
 			children = (
@@ -1050,6 +1080,7 @@
 		2CC0B8C22A22685D00DE4E5D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2C5CBAFD2A37820A004AA8B3 /* TonConnectViewModel.swift */,
 				2CC0B8C62A22692600DE4E5D /* DAppManifest.swift */,
 				2CC709E82A283E81005B0651 /* ConnectEvent.swift */,
 				2CC709F12A288A13005B0651 /* ConnectionModel.swift */,
@@ -1546,6 +1577,7 @@
 				2CB52F3529DDEBC500224071 /* SettingsHeaderView.swift in Sources */,
 				2CDB309A2A255ED50020EB3B /* SnakeEncoding.swift in Sources */,
 				2C35C6C329A8CF1A00A0F181 /* KeychainManager.swift in Sources */,
+				2C5CBAF22A374CDF004AA8B3 /* UIScrollView+ScrollToTop.swift in Sources */,
 				2CC0B8B52A2237AA00DE4E5D /* ConnectQuery.swift in Sources */,
 				2CDB30B22A255ED50020EB3B /* Mnemonic.swift in Sources */,
 				2CDB30AE2A255ED50020EB3B /* TickTock.swift in Sources */,
@@ -1560,6 +1592,7 @@
 				2CDB30972A255ED50020EB3B /* Bitstring.swift in Sources */,
 				2C35C6C629A8DAB500A0F181 /* WalletManager.swift in Sources */,
 				2CDB30A12A255ED50020EB3B /* Base32.swift in Sources */,
+				2C5CBAF02A374B76004AA8B3 /* ModalScrollAnimation.swift in Sources */,
 				2CB52F4129E0355E00224071 /* SettingsRightView.swift in Sources */,
 				2C11B04C29D5AFCD0059C8EE /* ScanView.swift in Sources */,
 				2CC0B8BF2A22652800DE4E5D /* String+Extentions.swift in Sources */,
@@ -1594,6 +1627,7 @@
 				2CC0B8BA2A22631400DE4E5D /* TonConnectViewController.swift in Sources */,
 				2CC0B8C72A22692600DE4E5D /* DAppManifest.swift in Sources */,
 				2C1BD1942983F48D001284C0 /* SuccessView.swift in Sources */,
+				2C5CBAFE2A37820A004AA8B3 /* TonConnectViewModel.swift in Sources */,
 				2CCE902B29D1A77300C904B6 /* ReceiveWalletView.swift in Sources */,
 				2C4DE2A829A4147700BD1F05 /* CheckSeedViewController.swift in Sources */,
 				2CDB30B92A255ED50020EB3B /* WalletV3.swift in Sources */,
@@ -1637,7 +1671,9 @@
 				6C8BA53D097E57E34EE801AF /* TonKeyPair.swift in Sources */,
 				2CC709F02A286553005B0651 /* SessionCrypto.swift in Sources */,
 				2CCE902D29D1ACD900C904B6 /* ReceiveQRView.swift in Sources */,
+				2C5CBAFC2A377CDE004AA8B3 /* ModalView.swift in Sources */,
 				2CC0B8BD2A22634300DE4E5D /* TonConnectView.swift in Sources */,
+				2C5CBAEF2A374B76004AA8B3 /* ModalScrollViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

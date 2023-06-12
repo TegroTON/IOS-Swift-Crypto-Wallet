@@ -86,3 +86,10 @@ receive-copy = "Copy address";
 
 // Scan
 scan-title = "Scan QR code";
+
+// Ton-Connect
+ton-connect-title = "Connect to %@";
+ton-connect-access-title = "<all>%@ is reguesting access\nto your wallet address\n<secondary>%@</secondary> %@</all>";
+ton-connect-attention-title = "Be sure to check the service address\nbefore connecting the wallet.";
+ton-connect-allow-button = "Allow";
+ton-connect-cancel-button = "Cancel";

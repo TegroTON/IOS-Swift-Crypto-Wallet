@@ -5,7 +5,7 @@ import Alamofire
 import CommonCrypto
 import TweetNacl
 
-class TonConnectViewController: UIViewController {
+class TonConnectViewController: ModalScrollViewController {
     
     private var model: ConnectQuery
     private let tonManager: TonManager = .shared
@@ -34,12 +34,13 @@ class TonConnectViewController: UIViewController {
         }
     }
     
-    private var mainView: TonConnectView { view as! TonConnectView }
-    override func loadView() { view = TonConnectView() }
+    private let viewModel: TonConnectViewModel = .init()
+    private var mainView: TonConnectView { modalView as! TonConnectView }
+    override func loadModalView() { modalView = TonConnectView() }
     
     init(model: ConnectQuery) {
         self.model = model
-        super.init(nibName: nil, bundle: nil)
+        super.init()
     }
     
     required init?(coder: NSCoder) {
@@ -54,7 +55,7 @@ class TonConnectViewController: UIViewController {
         provider.delegate = self
         provider.requestManifest(with: model.request.manifestUrl)
         
-        mainView.connectButton.addTarget(self, action: #selector(connectButtonTapped), for: .touchUpInside)
+        mainView.allowButton.addTarget(self, action: #selector(connectButtonTapped), for: .touchUpInside)
     }
     
     // MARK: - Private actions
@@ -70,10 +71,13 @@ class TonConnectViewController: UIViewController {
     // MARK: - Private methods
         
     private func updateContent() {
-        if let url = URL(string: manifest.iconUrl) {
-            mainView.titleLabel.text = manifest.name
-            mainView.iconImageView.kf.setImage(with: url)
-        }
+        let walletVersion = wallet.selectedAddress?.name ?? ""
+        let walletAddress = wallet.selectedAddress?.address ?? ""
+        let domain = getDomainFromURL(manifest.url) ?? "unknown domain"
+        
+        mainView.set(name: manifest.name)
+        mainView.set(icon: manifest.iconUrl)
+        mainView.set(accessTo: domain, wallet: walletAddress, version: walletVersion)
     }
     
     private func createReplyItems(keyPair: TonKeyPair) -> [ConnectItemReply] {
@@ -129,7 +133,7 @@ class TonConnectViewController: UIViewController {
         
         let messageHash = SHA256.hash(data: messageData)
         let dataToSign = Data(hexString: "ffff")! + "ton-connect".data(using: .utf8)! + messageHash
-        let sha256ToSign = Data(SHA256.hash(data: dataToSign))
+//        let sha256ToSign = Data(SHA256.hash(data: dataToSign))
         
         do {
             let secretKey = Data(base64Encoded: keyPair.privateKey)! + Data(base64Encoded: keyPair.publicKey)!

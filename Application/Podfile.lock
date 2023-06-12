@@ -6,6 +6,7 @@ PODS:
   - IGListKit (4.0.0):
     - IGListDiffKit (= 4.0.0)
   - Kingfisher (7.6.2)
+  - PinLayout (1.10.4)
   - R.swift (7.3.0)
   - SnapKit (5.6.0)
   - Starscream (4.0.4)
@@ -17,6 +18,7 @@ DEPENDENCIES:
   - BigInt
   - IGListKit
   - Kingfisher
+  - PinLayout
   - R.swift
   - SnapKit
   - Starscream
@@ -30,6 +32,7 @@ SPEC REPOS:
     - IGListDiffKit
     - IGListKit
     - Kingfisher
+    - PinLayout
     - R.swift
     - SnapKit
     - Starscream
@@ -42,11 +45,12 @@ SPEC CHECKSUMS:
   IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
   IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
   Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
+  PinLayout: f8a677ce0cd1cfe96b58435d029b4ceb4ce9c04c
   R.swift: cef1c530541cb49412752721797f10dae6b32d11
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
   TweetNacl: 3abf4d1d2082b0114e7a67410e300892448951e6
 
-PODFILE CHECKSUM: d4ca33effdca9b3d8fba594aef097c82fd1848c1
+PODFILE CHECKSUM: cf89732333106b697332a7f39d6d6636d7761235
 
 COCOAPODS: 1.12.1

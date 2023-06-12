@@ -66,20 +66,20 @@ extension SSEClient: URLSessionDataDelegate {
             let message = messageData.data.message
             
             if let connection = userSettings.connections.first(where: { $0.clientSessionId == from }) {
-                print("💙 connection did find")
-                
                 userSettings.lastEventId = messageData.id
                 
                 let sessionCrypto = SessionCrypto(keyPair: connection.sessionKeyPair)
                 let messageData = Data(base64Encoded: message)!
                 let fromData = Data(hex: from)!
                 let jsonData = try sessionCrypto.decrypt(message: messageData, senderPublicKey: fromData)
-                
-                print("💙 message did decrypted: \(try JSONSerialization.jsonObject(with: jsonData))")
-                
                 let request = try JSONDecoder().decode(RpcRequests.self, from: jsonData)
                 
-                print("💙 requset did decoded: \(request)")
+                if request.method == "sendTransaction", let params = request.params.first {
+                    let paramsData = params.data(using: .utf8)!
+                    let params = try JSONDecoder().decode(SendTransactionParams.self, from: paramsData)
+                    
+                    print("💙 params decoded: \(params)")
+                }
             } else {
                 print("❤️ Connection with clientId \(from) not found!")
             }
@@ -94,7 +94,7 @@ extension SSEClient: URLSessionDataDelegate {
         if let error = error {
             print("SSE connection error: \(error)")
             
-            if let error = error as? NSError, error.code == -1005 {
+            if (error as NSError).code == -1005 {
                 connectToSSE()
             }
         }
@@ -109,28 +109,6 @@ struct MessageData: Codable {
 struct MessageContent: Codable {
     let from: String
     let message: String
-}
-
-struct SendTransactionParams: Codable {
-    let messages: [TransactionMessage]
-    let validUntil: Int
-    let from, network: String
-    
-    enum CodingKeys: String, CodingKey {
-        case messages
-        case validUntil = "valid_until"
-        case from, network
-    }
-    
-    struct TransactionMessage: Codable {
-        let address, amount, payload: String
-    }
-}
-
-struct SendTransactionRequest: Codable {
-    let id: String
-    let method: String
-    let params: SendTransactionParams
 }
 
 struct SignDataRequest: Codable {
@@ -153,4 +131,25 @@ struct RpcRequests: Codable {
     let id: String
     let method: String
     let params: [String]
+}
+
+
+struct SendTransactionParams: Codable {
+    let messages: [SendTransactionMessage]
+    let validUntil: Int
+    let from: String
+    let network: String
+
+    enum CodingKeys: String, CodingKey {
+        case messages
+        case validUntil = "valid_until"
+        case from, network
+    }
+}
+
+// MARK: - Message
+struct SendTransactionMessage: Codable {
+    let address: String
+    let amount: String
+    let payload: String
 }

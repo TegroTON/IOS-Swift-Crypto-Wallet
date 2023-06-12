@@ -10,5 +10,6 @@ target 'TonWallet' do
   pod 'TweetNacl'
   pod 'BigInt'
   pod 'Starscream'
+  pod 'PinLayout'
   
 end
