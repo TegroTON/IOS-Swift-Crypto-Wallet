@@ -40,7 +40,7 @@ class WalletCardsSection: ListSectionController {
         
         cell.cardView.nameLabel.text = wallet.name
         cell.cardView.addressLabel.text = wallet.selectedAddress?.address
-        cell.cardView.balanceLabel.text = "???"
+        cell.cardView.balanceLabel.text = String(format: "%.1g", wallet.balance) + " TON"
         cell.cardView.sendButton.tag = index
         cell.cardView.receiveButton.tag = index
         

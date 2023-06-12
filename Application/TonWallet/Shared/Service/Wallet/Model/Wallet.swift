@@ -6,6 +6,9 @@ class Wallet: Codable, Equatable {
     var selectedAddress: WalletAddress?
     var addresses: [WalletAddress]?
     
+    /// balance in selected address
+    var balance: Double = 0
+    
     init(id: String) {
         self.id = id
     }

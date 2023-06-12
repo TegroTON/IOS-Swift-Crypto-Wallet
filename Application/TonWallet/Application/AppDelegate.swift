@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UserSettings.shared.connections = []
 //        UserSettings.shared.lastEventId = nil
         SSEClient.shared.connectToSSE()
+        WalletManager.shared.loadAccounts()
         
         let navVC = RootNavigationController.shared
         navVC.setViewControllers([rootVC], animated: false)

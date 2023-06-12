@@ -8,7 +8,8 @@ class WalletManager {
     private let walletQueue: DispatchQueue = DispatchQueue(label: "\(Bundle.main.bundleIdentifier!).wallet")
     private let keychein = KeychainManager()
     private let userSettings = UserSettings.shared
-
+    private let provider: WalletManagerProvider = .init()
+    
     init() {
         do {
             wallets = userSettings.wallets
@@ -93,6 +94,32 @@ class WalletManager {
             if wallet.addresses?.contains(where: { $0.address == address.address }) == true {
                 wallet.selectedAddress = address
                 saveWallets()
+            }
+        }
+    }
+    
+    func loadAccounts() {
+        let tonManager = TonManager.shared
+        for (index, wallet) in wallets.enumerated() {
+            DispatchQueue.global(qos: .userInteractive).async {
+                guard
+                    let keyPair = KeychainManager().getKey(id: wallet.id),
+                    let selectedAddress = wallet.selectedAddress,
+                    let addressType = AddressType(rawValue: selectedAddress.name)
+                else { return }
+                
+                let address = tonManager.getAddress(addressType, publicKey: keyPair.publicKey, isUserFriendly: false).address.lowercased()
+                
+                self.provider.loadAccount(id: address) { result in
+                    switch result {
+                    case .success(let account):
+                        wallet.balance = Double(account.balance ?? 0)/1000000000
+                        print("💙 account: \(account)")
+                        
+                    case .failure(let error):
+                        print("❤️ error load account: \(error)")
+                    }
+                }
             }
         }
     }

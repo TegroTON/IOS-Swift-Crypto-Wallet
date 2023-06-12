@@ -59,7 +59,7 @@ class TonManager {
         switch type {
         case .v4r2:
             let address = ton.walletAddress(pbKey: publicKey, isUserFriendly: isUserFriendly)
-            let name = "V4R2"
+            let name = type.rawValue
             return WalletAddress(name: name, address: address)
         }
     }

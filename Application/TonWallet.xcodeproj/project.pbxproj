@@ -89,6 +89,11 @@
 		2C5CBAF22A374CDF004AA8B3 /* UIScrollView+ScrollToTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBAF12A374CDF004AA8B3 /* UIScrollView+ScrollToTop.swift */; };
 		2C5CBAFC2A377CDE004AA8B3 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBAFB2A377CDE004AA8B3 /* ModalView.swift */; };
 		2C5CBAFE2A37820A004AA8B3 /* TonConnectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBAFD2A37820A004AA8B3 /* TonConnectViewModel.swift */; };
+		2C5CBB0C2A37992B004AA8B3 /* Response+MapKeyPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBB022A37992B004AA8B3 /* Response+MapKeyPaths.swift */; };
+		2C5CBB112A37992B004AA8B3 /* StickerFaceAPITargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBB092A37992B004AA8B3 /* StickerFaceAPITargetType.swift */; };
+		2C5CBB122A37992B004AA8B3 /* InAppPurchasesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBB0A2A37992B004AA8B3 /* InAppPurchasesAPI.swift */; };
+		2C5CBB152A379D1F004AA8B3 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBB142A379D1F004AA8B3 /* Account.swift */; };
+		2C5CBB172A379D3F004AA8B3 /* WalletManagerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBB162A379D3F004AA8B3 /* WalletManagerProvider.swift */; };
 		2CB52F3529DDEBC500224071 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3429DDEBC500224071 /* SettingsHeaderView.swift */; };
 		2CB52F3829DF480300224071 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3729DF480300224071 /* SettingsCell.swift */; };
 		2CB52F3A29DF481D00224071 /* SettingsDeleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3929DF481D00224071 /* SettingsDeleteCell.swift */; };
@@ -173,7 +178,7 @@
 		6C8BA53D097E57E34EE801AF /* TonKeyPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8BAB58F4C34AC9D9CD6D3A /* TonKeyPair.swift */; };
 		6C8BA6EC50877D78EB58E2F6 /* TonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8BAFD75E236600AE4F8772 /* TonManager.swift */; };
 		6C8BADCC48B1E7F0A7F32C92 /* TonManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8BAE59CE7020DD0EEE2892 /* TonManagerDelegate.swift */; };
-		C93BB24FED29B17F3BA39EA1 /* Pods_TonWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C4E622ACD99AC8DCBEBE1FF /* Pods_TonWallet.framework */; };
+		94835BAF06F842661EE4EB18 /* Pods_TonWallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA8BCB9B70F85323B1DA0646 /* Pods_TonWallet.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -261,6 +266,11 @@
 		2C5CBAF12A374CDF004AA8B3 /* UIScrollView+ScrollToTop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+ScrollToTop.swift"; sourceTree = "<group>"; };
 		2C5CBAFB2A377CDE004AA8B3 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		2C5CBAFD2A37820A004AA8B3 /* TonConnectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonConnectViewModel.swift; sourceTree = "<group>"; };
+		2C5CBB022A37992B004AA8B3 /* Response+MapKeyPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Response+MapKeyPaths.swift"; sourceTree = "<group>"; };
+		2C5CBB092A37992B004AA8B3 /* StickerFaceAPITargetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerFaceAPITargetType.swift; sourceTree = "<group>"; };
+		2C5CBB0A2A37992B004AA8B3 /* InAppPurchasesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchasesAPI.swift; sourceTree = "<group>"; };
+		2C5CBB142A379D1F004AA8B3 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		2C5CBB162A379D3F004AA8B3 /* WalletManagerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManagerProvider.swift; sourceTree = "<group>"; };
 		2CB52F3429DDEBC500224071 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		2CB52F3729DF480300224071 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		2CB52F3929DF481D00224071 /* SettingsDeleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDeleteCell.swift; sourceTree = "<group>"; };
@@ -343,12 +353,12 @@
 		2CEF2A512A2BA8E8001F94B9 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
 		2CEF2A532A2BA914001F94B9 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		2CEF2A552A2BAAC8001F94B9 /* UserDefaults+SaveStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+SaveStruct.swift"; sourceTree = "<group>"; };
-		3C4E622ACD99AC8DCBEBE1FF /* Pods_TonWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TonWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C8BAB58F4C34AC9D9CD6D3A /* TonKeyPair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TonKeyPair.swift; sourceTree = "<group>"; };
 		6C8BAE59CE7020DD0EEE2892 /* TonManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TonManagerDelegate.swift; sourceTree = "<group>"; };
 		6C8BAFD75E236600AE4F8772 /* TonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TonManager.swift; sourceTree = "<group>"; };
-		93C717D47B2CE7FDB677F106 /* Pods-TonWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TonWallet.debug.xcconfig"; path = "Target Support Files/Pods-TonWallet/Pods-TonWallet.debug.xcconfig"; sourceTree = "<group>"; };
-		D8FBF42129440971CDFD3CBC /* Pods-TonWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TonWallet.release.xcconfig"; path = "Target Support Files/Pods-TonWallet/Pods-TonWallet.release.xcconfig"; sourceTree = "<group>"; };
+		960BABFE91D811B9958BE883 /* Pods-TonWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TonWallet.debug.xcconfig"; path = "Target Support Files/Pods-TonWallet/Pods-TonWallet.debug.xcconfig"; sourceTree = "<group>"; };
+		EA8BCB9B70F85323B1DA0646 /* Pods_TonWallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TonWallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0B1A094CA24D519357BEFA8 /* Pods-TonWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TonWallet.release.xcconfig"; path = "Target Support Files/Pods-TonWallet/Pods-TonWallet.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,7 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CDA0007298474A000A8CA23 /* SharedWithYouCore.framework in Frameworks */,
-				C93BB24FED29B17F3BA39EA1 /* Pods_TonWallet.framework in Frameworks */,
+				94835BAF06F842661EE4EB18 /* Pods_TonWallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -806,6 +816,7 @@
 		2C35C6C429A8DAA900A0F181 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				2C5CBAFF2A37989C004AA8B3 /* Provider */,
 				2C35C6C729A8DAB900A0F181 /* Model */,
 				2C35C6C529A8DAB500A0F181 /* WalletManager.swift */,
 			);
@@ -1020,6 +1031,49 @@
 				2C5CBAFB2A377CDE004AA8B3 /* ModalView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		2C5CBAFF2A37989C004AA8B3 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				2C5CBB162A379D3F004AA8B3 /* WalletManagerProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		2C5CBB002A37992B004AA8B3 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2C5CBB012A37992B004AA8B3 /* Response */,
+				2C5CBB032A37992B004AA8B3 /* Model */,
+				2C5CBB072A37992B004AA8B3 /* API */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		2C5CBB012A37992B004AA8B3 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				2C5CBB022A37992B004AA8B3 /* Response+MapKeyPaths.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		2C5CBB032A37992B004AA8B3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C5CBB142A379D1F004AA8B3 /* Account.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2C5CBB072A37992B004AA8B3 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				2C5CBB092A37992B004AA8B3 /* StickerFaceAPITargetType.swift */,
+				2C5CBB0A2A37992B004AA8B3 /* InAppPurchasesAPI.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		2CB52F3329DDEBB300224071 /* Subview */ = {
@@ -1313,8 +1367,8 @@
 		3821818A4C7E1B6BCD9642F6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				93C717D47B2CE7FDB677F106 /* Pods-TonWallet.debug.xcconfig */,
-				D8FBF42129440971CDFD3CBC /* Pods-TonWallet.release.xcconfig */,
+				960BABFE91D811B9958BE883 /* Pods-TonWallet.debug.xcconfig */,
+				F0B1A094CA24D519357BEFA8 /* Pods-TonWallet.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1332,6 +1386,7 @@
 		6C8BA8D891584884DEB3A3E4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				2C5CBB002A37992B004AA8B3 /* Network */,
 				2CEF2A502A2BA8CF001F94B9 /* UserDefaults */,
 				2CC709EC2A284498005B0651 /* SSE */,
 				2C35C6C429A8DAA900A0F181 /* Wallet */,
@@ -1353,7 +1408,7 @@
 			isa = PBXGroup;
 			children = (
 				2CDA0006298474A000A8CA23 /* SharedWithYouCore.framework */,
-				3C4E622ACD99AC8DCBEBE1FF /* Pods_TonWallet.framework */,
+				EA8BCB9B70F85323B1DA0646 /* Pods_TonWallet.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1365,13 +1420,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C2DCBEF29597E4300E4B688 /* Build configuration list for PBXNativeTarget "TonWallet" */;
 			buildPhases = (
-				215666880175446CD766CEA5 /* [CP] Check Pods Manifest.lock */,
+				E24DC2CE67CD40657A40BED8 /* [CP] Check Pods Manifest.lock */,
 				2C1BD207298434E5001284C0 /* ShellScript */,
 				2C2DCBF429598DB300E4B688 /* ShellScript */,
 				2C2DCBD729597E4200E4B688 /* Sources */,
 				2C2DCBD829597E4200E4B688 /* Frameworks */,
 				2C2DCBD929597E4200E4B688 /* Resources */,
-				6771D0D29F1CFE2EAEA6678B /* [CP] Embed Pods Frameworks */,
+				51D9D162820125AAE122BD9C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1446,28 +1501,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		215666880175446CD766CEA5 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TonWallet-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2C1BD207298434E5001284C0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -1504,7 +1537,7 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
-		6771D0D29F1CFE2EAEA6678B /* [CP] Embed Pods Frameworks */ = {
+		51D9D162820125AAE122BD9C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1521,6 +1554,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TonWallet/Pods-TonWallet-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E24DC2CE67CD40657A40BED8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TonWallet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1532,6 +1587,7 @@
 				2CDB30A32A255ED50020EB3B /* Data+FromHex.swift in Sources */,
 				2CDB30AF2A255ED50020EB3B /* English.swift in Sources */,
 				2CDB309F2A255ED50020EB3B /* Data+Bytes.swift in Sources */,
+				2C5CBB122A37992B004AA8B3 /* InAppPurchasesAPI.swift in Sources */,
 				2CDB30BB2A255ED50020EB3B /* WalletV4.swift in Sources */,
 				2CCE902929CD593800C904B6 /* ReceiveHeaderView.swift in Sources */,
 				2CDB309B2A255ED50020EB3B /* Serialization.swift in Sources */,
@@ -1607,6 +1663,7 @@
 				2CDB30BA2A255ED50020EB3B /* WalletV1.swift in Sources */,
 				2CC709EE2A2844AB005B0651 /* SSEClient.swift in Sources */,
 				2C1BD1A229842B10001284C0 /* WalletsSection.swift in Sources */,
+				2C5CBB112A37992B004AA8B3 /* StickerFaceAPITargetType.swift in Sources */,
 				2C35C6A529A521FF00A0F181 /* SeedHeaderCell.swift in Sources */,
 				2C44328E29C73539009B7771 /* SendConfirmViewController.swift in Sources */,
 				2CDB30A22A255ED50020EB3B /* BitsCount.swift in Sources */,
@@ -1621,9 +1678,11 @@
 				2CDB30BE2A255ED50020EB3B /* TupleReader.swift in Sources */,
 				2CC709E92A283E81005B0651 /* ConnectEvent.swift in Sources */,
 				2CC0B8B22A2167F600DE4E5D /* QRDetector.swift in Sources */,
+				2C5CBB152A379D1F004AA8B3 /* Account.swift in Sources */,
 				2C35C6AB29A7258D00A0F181 /* SettingsViewController.swift in Sources */,
 				2C35C6BC29A7F31F00A0F181 /* WalletCardSection.swift in Sources */,
 				2C2DCC0929598FB700E4B688 /* ListCollectionContext+Dequeue.swift in Sources */,
+				2C5CBB172A379D3F004AA8B3 /* WalletManagerProvider.swift in Sources */,
 				2CC0B8BA2A22631400DE4E5D /* TonConnectViewController.swift in Sources */,
 				2CC0B8C72A22692600DE4E5D /* DAppManifest.swift in Sources */,
 				2C1BD1942983F48D001284C0 /* SuccessView.swift in Sources */,
@@ -1660,6 +1719,7 @@
 				2CDB30BD2A255ED50020EB3B /* WalletContract.swift in Sources */,
 				2C35C6B829A7F26E00A0F181 /* WalletCardCell.swift in Sources */,
 				2C1BD19F298429C0001284C0 /* WalletsSectionModel.swift in Sources */,
+				2C5CBB0C2A37992B004AA8B3 /* Response+MapKeyPaths.swift in Sources */,
 				2CDB30932A255ED50020EB3B /* Integers.swift in Sources */,
 				2C44328129C5EFEB009B7771 /* SendHeaderView.swift in Sources */,
 				6C8BA6EC50877D78EB58E2F6 /* TonManager.swift in Sources */,
@@ -1815,7 +1875,7 @@
 		};
 		2C2DCBF029597E4300E4B688 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 93C717D47B2CE7FDB677F106 /* Pods-TonWallet.debug.xcconfig */;
+			baseConfigurationReference = 960BABFE91D811B9958BE883 /* Pods-TonWallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1861,7 +1921,7 @@
 		};
 		2C2DCBF129597E4300E4B688 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8FBF42129440971CDFD3CBC /* Pods-TonWallet.release.xcconfig */;
+			baseConfigurationReference = F0B1A094CA24D519357BEFA8 /* Pods-TonWallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

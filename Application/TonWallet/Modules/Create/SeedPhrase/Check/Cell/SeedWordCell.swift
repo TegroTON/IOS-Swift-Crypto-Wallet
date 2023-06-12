@@ -110,7 +110,6 @@ extension SeedWordCell: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("did end", textField.tag)
         containerView.layer.borderWidth = 0
         
         var indexText = indexLabel.text!

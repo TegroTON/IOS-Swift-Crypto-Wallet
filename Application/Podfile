@@ -1,3 +1,5 @@
+platform :ios, '14.0'
+
 target 'TonWallet' do
   use_frameworks!
 
@@ -6,6 +8,7 @@ target 'TonWallet' do
   pod 'IGListKit'
   pod 'Atributika'
   pod 'Alamofire'
+  pod 'Moya'
   pod 'Kingfisher'
   pod 'TweetNacl'
   pod 'BigInt'

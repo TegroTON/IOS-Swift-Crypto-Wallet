@@ -125,6 +125,7 @@ class CheckSeedViewController: UIViewController {
         vc.successHandler = { [weak self] password in
             guard let self = self else { return }
             
+            WalletManager.shared.loadAccounts()
             KeychainManager().storePassword(password) { success in
                 if success {
                     print("💙 success store password")
