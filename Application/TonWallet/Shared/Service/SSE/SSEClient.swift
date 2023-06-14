@@ -150,6 +150,13 @@ struct SendTransactionParams: Codable {
 // MARK: - Message
 struct SendTransactionMessage: Codable {
     let address: String
+    
+    /// (decimal string): number of nanocoins to send.
     let amount: String
-    let payload: String
+    
+    /// (string base64, optional): raw one-cell BoC encoded in Base64./
+    let payload: String?
+    
+    /// (string base64, optional): raw once-cell BoC encoded in Base64.
+    let stateInit: String?
 }
