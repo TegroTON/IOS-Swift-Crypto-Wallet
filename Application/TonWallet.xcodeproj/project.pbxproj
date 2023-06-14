@@ -90,8 +90,8 @@
 		2C5CBAFC2A377CDE004AA8B3 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBAFB2A377CDE004AA8B3 /* ModalView.swift */; };
 		2C5CBAFE2A37820A004AA8B3 /* TonConnectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBAFD2A37820A004AA8B3 /* TonConnectViewModel.swift */; };
 		2C5CBB0C2A37992B004AA8B3 /* Response+MapKeyPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBB022A37992B004AA8B3 /* Response+MapKeyPaths.swift */; };
-		2C5CBB112A37992B004AA8B3 /* StickerFaceAPITargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBB092A37992B004AA8B3 /* StickerFaceAPITargetType.swift */; };
-		2C5CBB122A37992B004AA8B3 /* InAppPurchasesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBB0A2A37992B004AA8B3 /* InAppPurchasesAPI.swift */; };
+		2C5CBB112A37992B004AA8B3 /* TonWalletAPITargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBB092A37992B004AA8B3 /* TonWalletAPITargetType.swift */; };
+		2C5CBB122A37992B004AA8B3 /* AccountAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBB0A2A37992B004AA8B3 /* AccountAPI.swift */; };
 		2C5CBB152A379D1F004AA8B3 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBB142A379D1F004AA8B3 /* Account.swift */; };
 		2C5CBB172A379D3F004AA8B3 /* WalletManagerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBB162A379D3F004AA8B3 /* WalletManagerProvider.swift */; };
 		2CB52F3529DDEBC500224071 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3429DDEBC500224071 /* SettingsHeaderView.swift */; };
@@ -267,8 +267,8 @@
 		2C5CBAFB2A377CDE004AA8B3 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		2C5CBAFD2A37820A004AA8B3 /* TonConnectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonConnectViewModel.swift; sourceTree = "<group>"; };
 		2C5CBB022A37992B004AA8B3 /* Response+MapKeyPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Response+MapKeyPaths.swift"; sourceTree = "<group>"; };
-		2C5CBB092A37992B004AA8B3 /* StickerFaceAPITargetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerFaceAPITargetType.swift; sourceTree = "<group>"; };
-		2C5CBB0A2A37992B004AA8B3 /* InAppPurchasesAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchasesAPI.swift; sourceTree = "<group>"; };
+		2C5CBB092A37992B004AA8B3 /* TonWalletAPITargetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TonWalletAPITargetType.swift; sourceTree = "<group>"; };
+		2C5CBB0A2A37992B004AA8B3 /* AccountAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountAPI.swift; sourceTree = "<group>"; };
 		2C5CBB142A379D1F004AA8B3 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		2C5CBB162A379D3F004AA8B3 /* WalletManagerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManagerProvider.swift; sourceTree = "<group>"; };
 		2CB52F3429DDEBC500224071 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
@@ -1070,8 +1070,8 @@
 		2C5CBB072A37992B004AA8B3 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				2C5CBB092A37992B004AA8B3 /* StickerFaceAPITargetType.swift */,
-				2C5CBB0A2A37992B004AA8B3 /* InAppPurchasesAPI.swift */,
+				2C5CBB092A37992B004AA8B3 /* TonWalletAPITargetType.swift */,
+				2C5CBB0A2A37992B004AA8B3 /* AccountAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1587,7 +1587,7 @@
 				2CDB30A32A255ED50020EB3B /* Data+FromHex.swift in Sources */,
 				2CDB30AF2A255ED50020EB3B /* English.swift in Sources */,
 				2CDB309F2A255ED50020EB3B /* Data+Bytes.swift in Sources */,
-				2C5CBB122A37992B004AA8B3 /* InAppPurchasesAPI.swift in Sources */,
+				2C5CBB122A37992B004AA8B3 /* AccountAPI.swift in Sources */,
 				2CDB30BB2A255ED50020EB3B /* WalletV4.swift in Sources */,
 				2CCE902929CD593800C904B6 /* ReceiveHeaderView.swift in Sources */,
 				2CDB309B2A255ED50020EB3B /* Serialization.swift in Sources */,
@@ -1663,7 +1663,7 @@
 				2CDB30BA2A255ED50020EB3B /* WalletV1.swift in Sources */,
 				2CC709EE2A2844AB005B0651 /* SSEClient.swift in Sources */,
 				2C1BD1A229842B10001284C0 /* WalletsSection.swift in Sources */,
-				2C5CBB112A37992B004AA8B3 /* StickerFaceAPITargetType.swift in Sources */,
+				2C5CBB112A37992B004AA8B3 /* TonWalletAPITargetType.swift in Sources */,
 				2C35C6A529A521FF00A0F181 /* SeedHeaderCell.swift in Sources */,
 				2C44328E29C73539009B7771 /* SendConfirmViewController.swift in Sources */,
 				2CDB30A22A255ED50020EB3B /* BitsCount.swift in Sources */,
