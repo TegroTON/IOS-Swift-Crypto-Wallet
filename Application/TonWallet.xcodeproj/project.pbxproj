@@ -100,6 +100,7 @@
 		2CB52F3D29DF533D00224071 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3C29DF533D00224071 /* SettingsModel.swift */; };
 		2CB52F3F29E02BBD00224071 /* SettingsSeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3E29E02BBD00224071 /* SettingsSeparatorView.swift */; };
 		2CB52F4129E0355E00224071 /* SettingsRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F4029E0355E00224071 /* SettingsRightView.swift */; };
+		2CBB58BC2A3A90BD002A4DE0 /* EmulationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBB58BB2A3A90BD002A4DE0 /* EmulationAPI.swift */; };
 		2CC0B8B22A2167F600DE4E5D /* QRDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC0B8B12A2167F600DE4E5D /* QRDetector.swift */; };
 		2CC0B8B52A2237AA00DE4E5D /* ConnectQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC0B8B42A2237AA00DE4E5D /* ConnectQuery.swift */; };
 		2CC0B8B72A2237ED00DE4E5D /* ConnectRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC0B8B62A2237ED00DE4E5D /* ConnectRequest.swift */; };
@@ -277,6 +278,7 @@
 		2CB52F3C29DF533D00224071 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		2CB52F3E29E02BBD00224071 /* SettingsSeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSeparatorView.swift; sourceTree = "<group>"; };
 		2CB52F4029E0355E00224071 /* SettingsRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRightView.swift; sourceTree = "<group>"; };
+		2CBB58BB2A3A90BD002A4DE0 /* EmulationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmulationAPI.swift; sourceTree = "<group>"; };
 		2CC0B8B12A2167F600DE4E5D /* QRDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDetector.swift; sourceTree = "<group>"; };
 		2CC0B8B42A2237AA00DE4E5D /* ConnectQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectQuery.swift; sourceTree = "<group>"; };
 		2CC0B8B62A2237ED00DE4E5D /* ConnectRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectRequest.swift; sourceTree = "<group>"; };
@@ -1072,6 +1074,7 @@
 			children = (
 				2C5CBB092A37992B004AA8B3 /* TonWalletAPITargetType.swift */,
 				2C5CBB0A2A37992B004AA8B3 /* AccountAPI.swift */,
+				2CBB58BB2A3A90BD002A4DE0 /* EmulationAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1636,6 +1639,7 @@
 				2C5CBAF22A374CDF004AA8B3 /* UIScrollView+ScrollToTop.swift in Sources */,
 				2CC0B8B52A2237AA00DE4E5D /* ConnectQuery.swift in Sources */,
 				2CDB30B22A255ED50020EB3B /* Mnemonic.swift in Sources */,
+				2CBB58BC2A3A90BD002A4DE0 /* EmulationAPI.swift in Sources */,
 				2CDB30AE2A255ED50020EB3B /* TickTock.swift in Sources */,
 				2C4DE29E29A3B48700BD1F05 /* LoadSeedView.swift in Sources */,
 				2C44328529C6144C009B7771 /* SendFormView.swift in Sources */,
