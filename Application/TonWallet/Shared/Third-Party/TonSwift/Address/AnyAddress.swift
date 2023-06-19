@@ -24,6 +24,7 @@ enum AnyAddress {
     init(_ addr: Address) {
         self = .internalAddr(addr)
     }
+    
     init(_ maybeAddr: Address?) {
         if let addr = maybeAddr {
             self = .internalAddr(addr)

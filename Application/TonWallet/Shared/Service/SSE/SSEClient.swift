@@ -59,7 +59,7 @@ extension SSEClient: URLSessionDataDelegate {
         do {
             let messageData = try JSONDecoder().decode(MessageData.self, from: newData)
             
-            print("💙 messageData did decoded: \(messageData)")
+//            print("💙 messageData did decoded: \(messageData)")
             
             let from = messageData.data.from
             let message = messageData.data.message
@@ -77,55 +77,78 @@ extension SSEClient: URLSessionDataDelegate {
                     let paramsData = params.data(using: .utf8)!
                     let params = try JSONDecoder().decode(SendTransactionParams.self, from: paramsData)
                     
-                    print("💙 params decoded: \(params)")
+//                    print("💙 params decoded: \(params)")
                     
                     let id = WalletManager.shared.wallets.first!.id
                     let keyPair = KeychainManager().getKey(id: id)!
                     let wallet = WalletV4R2(publicKey: Data(base64Encoded: keyPair.publicKey)!)
+                    let target = WalletAPI.getSeqno(address: try wallet.address().toRaw().lowercased())
                     
-                    #warning("implement seqno")
-                    let seqno: UInt64 = 9
-                    let secretKey = Data(base64Encoded: keyPair.privateKey)! + Data(base64Encoded: keyPair.publicKey)!
-                    
-                    #warning("implement sendMode")
-                    let sendMode = SendMode()
-                    let timeout = UInt64(params.validUntil)
-                    var messages: [MessageRelaxed] = []
-                    
-                    for message in params.messages {
-                        let address = try! Address.parse(message.address)
-                        let body = try Cell.fromBase64(src: message.payload!)
-                        let int = try! toWei(message.amount, "gwei")
-                        let amount = "\(message.amount)"
-                        
-                        let relaxed = MessageRelaxed.internal(to: address, value: BigUInt("300000000"), body: body)
-                        
-                        messages.append(relaxed)
-                    }
+                    MoyaProvider().request(target) { result in
+                        do {
+                            let response = try result.get()
+                            let seqno = try response.decode(Int.self, atKeyPath: "seqno")
 
-                    let transferData = WalletTransferData(
-                        seqno: seqno,
-                        secretKey: secretKey,
-                        messages: messages,
-                        sendMode: sendMode,
-                        timeout: nil
-                    )
-                    
-                    let boc = try wallet.createTransfer(args: transferData).toBoc().base64EncodedString()
-                    let target = EmulationAPI.wallet(boc: boc)
-                    
-                    print("---", boc, "---")
-                    
-//                    MoyaProvider().request(target) { result in
-//                        do {
-//                            let response = try result.get()
-//                            let json = try JSONSerialization.jsonObject(with: response.data)
+                            
+                            let sendMode = SendMode(rawValue: 3)!
+                            var messages: [MessageRelaxed] = []
+                            
+                            for message in params.messages {
+                                let address = try! Address.parse(message.address)
+                                let payload = try Cell.fromBase64(src: message.payload!)
+                                let amount = BigInt(message.amount)!
+                                
+                                let relaxed = MessageRelaxed.internal(to: address, value: BigUInt(amount), body: payload)
+                                messages.append(relaxed)
+                            }
+                            
+                            let transferData = WalletTransferData(
+                                seqno: UInt64(seqno),
+                                secretKey: nil,
+                                messages: messages,
+                                sendMode: sendMode,
+                                timeout: nil
+                            )
+
+                            let boc = try wallet.createExternalMessage(args: transferData).toBoc().base64EncodedString()
+                            let target = WalletAPI.estimate(boc: boc)
+
+                            MoyaProvider().request(target) { result in
+                                do {
+                                    let accountEvent = try result.get().decode(AccountEvent.self)
+//                                    let decoder = JSONDecoder()
+//                                    decoder.keyDecodingStrategy = .convertFromSnakeCase
 //
-//                            print("💙 Emulation success - json: \(json)")
-//                        } catch {
-//                            print("❤️ Emulation request failure - error: \(error.localizedDescription)")
-//                        }
-//                    }
+//                                    let accountEvent = try decoder.decode(AccountEvent.self, from: response.data)
+                                    
+                                    print("💙 Emulation success - json: \(accountEvent)")
+                                } catch {
+                                    if let error  = error as? MoyaError {
+                                        if let data = error.response?.data {
+                                            let string = String(data: data, encoding: .utf8)!
+
+                                            print("❤️ MoyaError - \(error.response!.statusCode) - \(string)")
+                                        } else {
+                                            print("❤️ Emulation unknown failure - error: \(error.localizedDescription)")
+                                        }
+                                    } else {
+                                        print("❤️ decode error: \(error.localizedDescription)")
+                                    }
+                                }
+                            }
+                        } catch {
+                            if let error = error as? MoyaError {
+                                if let data = error.response?.data {
+                                    let json = try! JSONSerialization.jsonObject(with: data)
+                                    print("❤️ error description - \(json)")
+                                } else {
+                                    print("❤️ moya error - \(error.localizedDescription)")
+                                }
+                            } else {
+                                print("❤️ error - \(error.localizedDescription)")
+                            }
+                        }
+                    }
                 }
             } else {
                 print("❤️ Connection with clientId \(from) not found!")
@@ -192,7 +215,10 @@ struct SendTransactionParams: Codable {
     }
 }
 
+
+
 // MARK: - Message
+
 struct SendTransactionMessage: Codable {
     let address: String
     
@@ -251,8 +277,8 @@ func getValueOfUnit(_ unitInput: String) throws -> BigInt {
     return BigInt(unitValue, radix: 10)!
 }
 
-func toWei(_ etherInput: String, _ unit: String) throws -> BigInt {
-    var ether = etherInput
+func toWei(_ etherInput: Double, _ unit: String) throws -> BigInt {
+    var ether = etherInput.description
     let base = try getValueOfUnit(unit)
     let baseLength = unitMap[unit]!.count - 1
     
@@ -275,7 +301,7 @@ func toWei(_ etherInput: String, _ unit: String) throws -> BigInt {
         ])
     }
     
-    var whole = comps.first ?? "0"
+    let whole = comps.first ?? "0"
     var fraction = comps.count == 2 ? comps[1] : "0"
     
     if fraction.count > baseLength {

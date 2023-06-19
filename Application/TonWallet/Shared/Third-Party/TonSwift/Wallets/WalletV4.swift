@@ -81,17 +81,81 @@ public class WalletV4: WalletContract {
         
         try signingMessage.store(uint: args.seqno, bits: 32)
         try signingMessage.store(uint: 0, bits: 8) // Simple order
+        
         for message in args.messages {
             try signingMessage.store(uint: UInt64(args.sendMode.rawValue), bits: 8)
             try signingMessage.store(ref: try Builder().store(message))
         }
         
-        let signature = try NaclSign.sign(message: signingMessage.endCell().hash(), secretKey: args.secretKey)
+        let signature = try NaclSign.sign(message: signingMessage.endCell().hash(), secretKey: args.secretKey!)
         
         let body = Builder()
         try body.store(data: signature)
         try body.store(signingMessage)
         
         return try body.endCell()
+    }
+    
+    func createExternalMessage(args: WalletTransferData) throws -> Cell {
+        guard args.messages.count <= 4 else {
+            throw TonError.custom("Maximum number of messages in a single transfer is 4")
+        }
+        
+        let signingMessage = try Builder().store(uint: walletId, bits: 32)
+        let defaultTimeout = UInt64(Date().timeIntervalSince1970) + 60 // Default timeout: 60 seconds
+        try signingMessage.store(uint: args.timeout ?? defaultTimeout, bits: 32)
+        
+        try signingMessage.store(uint: args.seqno, bits: 32)
+        try signingMessage.store(uint: 0, bits: 8) // Simple order
+        
+        for message in args.messages {
+            try signingMessage.store(uint: UInt64(args.sendMode.rawValue), bits: 8)
+            try signingMessage.store(ref: try Builder().store(message))
+        }
+        
+        let signature = args.secretKey == nil ? Data(count: 64) : try NaclSign.sign(message: signingMessage.endCell().hash(), secretKey: args.secretKey!)
+        
+        let bodyBuilder = Builder()
+        try bodyBuilder.store(data: signature)
+        try bodyBuilder.store(signingMessage)
+        
+        /*
+        if (seqno === 0) {
+            if (!this.options.publicKey) {
+                const keyPair = nacl.sign.keyPair.fromSecretKey(secretKey)
+                this.options.publicKey = keyPair.publicKey;
+            }
+            const deploy = await this.createStateInit();
+            stateInit = deploy.stateInit;
+            code = deploy.code;
+            data = deploy.data;
+        }
+        */
+        
+        let selfAddress = try address()
+        let body = try bodyBuilder.endCell()
+        
+        let externalMessage = Builder()
+        try externalMessage.store(uint: 2, bits: 2)
+        try externalMessage.store(AnyAddress.none)
+        try externalMessage.store(AnyAddress(selfAddress))
+        try externalMessage.store(coins: Coins(0))
+        
+        let header = try externalMessage.endCell()
+        
+        let resultMessage = Builder()
+        try resultMessage.store(externalMessage)
+        try resultMessage.store(bit: 0)
+        
+        if let space = resultMessage.fit(body.metrics), space.bitsCount >= 1 {
+            try resultMessage.store(bit: 0)
+            try resultMessage.store(bodyBuilder)
+        } else {
+            try resultMessage.store(bit: 1)
+            try resultMessage.store(ref: body)
+        }
+        
+        
+        return try resultMessage.endCell()
     }
 }

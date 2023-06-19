@@ -8,7 +8,7 @@ public protocol WalletContract: Contract {
 
 public struct WalletTransferData {
     public let seqno: UInt64
-    public let secretKey: Data
+    public let secretKey: Data?
     public let messages: [MessageRelaxed]
     public let sendMode: SendMode
     public let timeout: UInt64?
