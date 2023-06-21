@@ -15,6 +15,14 @@ PODS:
   - SnapKit (5.6.0)
   - Starscream (4.0.4)
   - TweetNacl (1.0.2)
+  - YandexMobileMetrica (4.5.2):
+    - YandexMobileMetrica/Static (= 4.5.2)
+  - YandexMobileMetrica/Static (4.5.2):
+    - YandexMobileMetrica/Static/Core (= 4.5.2)
+    - YandexMobileMetrica/Static/Crashes (= 4.5.2)
+  - YandexMobileMetrica/Static/Core (4.5.2)
+  - YandexMobileMetrica/Static/Crashes (4.5.2):
+    - YandexMobileMetrica/Static/Core
 
 DEPENDENCIES:
   - Alamofire
@@ -28,6 +36,7 @@ DEPENDENCIES:
   - SnapKit
   - Starscream
   - TweetNacl
+  - YandexMobileMetrica (= 4.5.2)
 
 SPEC REPOS:
   trunk:
@@ -43,6 +52,7 @@ SPEC REPOS:
     - SnapKit
     - Starscream
     - TweetNacl
+    - YandexMobileMetrica
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
@@ -57,7 +67,8 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
   TweetNacl: 3abf4d1d2082b0114e7a67410e300892448951e6
+  YandexMobileMetrica: f5368ee93f286c793d73b58da00929babfc897c1
 
-PODFILE CHECKSUM: cb43bfcac6c859f758d3fed493a41098ee2b363a
+PODFILE CHECKSUM: b99e899b1b06d4c5cc372e5123a4b3440ad173dd
 
 COCOAPODS: 1.12.1

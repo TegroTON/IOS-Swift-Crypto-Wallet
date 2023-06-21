@@ -1,4 +1,5 @@
 import UIKit
+import YandexMobileMetrica
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        UserSettings.shared.lastEventId = nil
         SSEClient.shared.connectToSSE()
         WalletManager.shared.loadAccounts()
+        
+        let configuration: YMMYandexMetricaConfiguration = .init(apiKey: "8db5538a-7a1a-4220-aa66-54605eedc190")!
+        YMMYandexMetrica.activate(with: configuration)
         
         let navVC = RootNavigationController.shared
         navVC.setViewControllers([rootVC], animated: false)
