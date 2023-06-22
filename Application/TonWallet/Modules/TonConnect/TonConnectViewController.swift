@@ -127,12 +127,12 @@ class TonConnectViewController: ModalScrollViewController {
         let workchainData = withUnsafeBytes(of: workchain.bigEndian) { Data($0) }
         
         let addrHash = addressComponents[1].lowercased()
-        let addressData = workchainData + Data(hexString: addrHash)!
+        let addressData = workchainData + Data(hex: addrHash)!
         
         let messageData = "ton-proof-item-v2/".data(using: .utf8)! + addressData + domainData + timestampData + payload.data(using: .utf8)!
         
         let messageHash = SHA256.hash(data: messageData)
-        let dataToSign = Data(hexString: "ffff")! + "ton-connect".data(using: .utf8)! + messageHash
+        let dataToSign = Data(hex: "ffff")! + "ton-connect".data(using: .utf8)! + messageHash
 //        let sha256ToSign = Data(SHA256.hash(data: dataToSign))
         
         do {

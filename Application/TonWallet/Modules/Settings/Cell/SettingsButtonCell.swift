@@ -1,15 +1,15 @@
 import UIKit
 
-class SettingsDeleteCell: UITableViewCell {
+class SettingsButtonCell: UITableViewCell {
 
-    let deleteButton: UIButton = {
+    let logoutButton: UIButton = {
         var attributedString = AttributedString(localizable.settingsDelete())
         var container = AttributeContainer()
         container[AttributeScopes.UIKitAttributes.FontAttribute.self] = UIFont.interFont(ofSize: 16, weight: .medium)
         attributedString.mergeAttributes(container, mergePolicy: .keepNew)
         
         var configuration = UIButton.Configuration.filled()
-        configuration.image = R.image.trash()?.withTintColor(R.color.textPrimary()!)
+        configuration.image = R.image.settingsDelete()?.withTintColor(R.color.textPrimary()!)
         configuration.imagePadding = 10
         configuration.attributedTitle = attributedString
         configuration.imagePlacement = .trailing
@@ -26,7 +26,7 @@ class SettingsDeleteCell: UITableViewCell {
         
         backgroundColor = .clear
         
-        contentView.addSubview(deleteButton)
+        contentView.addSubview(logoutButton)
         selectionStyle = .none
         
         setupConstraints()
@@ -37,7 +37,7 @@ class SettingsDeleteCell: UITableViewCell {
     }
     
     private func setupConstraints() {
-        deleteButton.snp.makeConstraints { make in
+        logoutButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(40.0)
             make.bottom.equalToSuperview()
             make.left.right.equalToSuperview().inset(24.0)

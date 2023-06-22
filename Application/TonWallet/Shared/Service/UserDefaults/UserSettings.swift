@@ -16,4 +16,10 @@ class UserSettings {
     @UserDefaultWrapper(key: "lastEventId", defaultValue: nil)
     var lastEventId: Int?
     
+    func logout() {
+        lastEventId = nil
+        blockDate = nil
+        wallets = []
+        connections = []
+    }
 }

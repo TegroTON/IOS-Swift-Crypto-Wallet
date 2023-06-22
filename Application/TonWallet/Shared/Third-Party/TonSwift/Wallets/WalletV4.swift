@@ -140,9 +140,7 @@ public class WalletV4: WalletContract {
         try externalMessage.store(AnyAddress.none)
         try externalMessage.store(AnyAddress(selfAddress))
         try externalMessage.store(coins: Coins(0))
-        
-        let header = try externalMessage.endCell()
-        
+                
         let resultMessage = Builder()
         try resultMessage.store(externalMessage)
         try resultMessage.store(bit: 0)
@@ -154,7 +152,6 @@ public class WalletV4: WalletContract {
             try resultMessage.store(bit: 1)
             try resultMessage.store(ref: body)
         }
-        
         
         return try resultMessage.endCell()
     }

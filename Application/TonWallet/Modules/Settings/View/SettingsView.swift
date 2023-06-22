@@ -8,7 +8,7 @@ class SettingsView: RootView {
         let view = UITableView(frame: .zero, style: .grouped)
         view.backgroundColor = .clear
         view.register(SettingsCell.self, forCellReuseIdentifier: SettingsCell.description())
-        view.register(SettingsDeleteCell.self, forCellReuseIdentifier: SettingsDeleteCell.description())
+        view.register(SettingsButtonCell.self, forCellReuseIdentifier: SettingsButtonCell.description())
         view.separatorStyle = .none
         view.estimatedRowHeight = UITableView.automaticDimension
         view.rowHeight = UITableView.automaticDimension

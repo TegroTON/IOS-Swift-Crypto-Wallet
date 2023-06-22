@@ -39,16 +39,24 @@ wallet-title = "Tegro Wallet";
 
 // Settings
 settings-title = "Settings";
-settings-delete = "Delete account";
 settings-wallets = "My wallets";
+settings-tokens = "Custom tokens";
+settings-contacts = "Contacts";
 settings-security = "Security";
 settings-appearance = "Appearance";
+settings-currency = "Currency";
 settings-language = "Language";
+settings-search = "Search engine";
 settings-notifications = "Notifications";
 settings-notifications-subtitle = "Get notifications when you receive TON, tokens and NFTs";
 settings-contact-us = "Contact us";
 settings-help-center = "Help Center";
 settings-rate-app = "Rate this app";
+settings-delete = "Delete account";
+settings-logout = "Log out";
+settings-logout-alert-title = "Log out?";
+settings-logout-alert-message = "This will erase keys to the wallet. Make sure you have backed up your secret recovery phrase";
+settings-logout-alert-cancel = "Cancel";
 
 // Tab bar
 tab-bar-wallet = "Wallet";

@@ -1,4 +1,5 @@
 import UIKit
+import SwiftUI
 
 class SettingsHeaderView: RootView {
 
@@ -12,24 +13,23 @@ class SettingsHeaderView: RootView {
         return label
     }()
     
-    let quitButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(R.image.logout(), for: .normal)
-        button.contentEdgeInsets = UIEdgeInsets(top: 16, left: 24, bottom: 16, right: 24)
-        button.tintColor = R.color.textPrimary()
+    let logoutButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.image = R.image.logout()?.withTintColor(R.color.textPrimary()!)
+        configuration.contentInsets = .init(EdgeInsets(top: 16.0, leading: 24.0, bottom: 16.0, trailing: 24.0))
         
-        return button
+        return UIButton(configuration: configuration)
     }()
     
     override func setup() {
         addSubview(titleLabel)
-        addSubview(quitButton)
+        addSubview(logoutButton)
         
         setupConstraints()
     }
     
     private func setupConstraints() {
-        quitButton.snp.makeConstraints { make in
+        logoutButton.snp.makeConstraints { make in
             make.top.right.bottom.equalToSuperview()
             make.width.equalTo(24.0 + 24.0 + 24.0)
             make.height.equalTo(16.0 + 24.0 + 16.0)

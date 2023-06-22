@@ -10,6 +10,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let rootVC: UIViewController
          
+        
+        
         if WalletManager.shared.wallets.isEmpty {
             rootVC = CreateViewController()
         } else {

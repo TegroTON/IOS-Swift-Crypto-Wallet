@@ -11,11 +11,7 @@ class WalletManager {
     private let provider: WalletManagerProvider = .init()
     
     init() {
-        do {
-            wallets = userSettings.wallets
-        } catch {
-            print("❤️ Faild decode wallets in init(), error:", error)
-        }
+        wallets = userSettings.wallets
     }
     
     // MARK: - Public methods
@@ -100,7 +96,7 @@ class WalletManager {
     
     func loadAccounts() {
         let tonManager = TonManager.shared
-        for (index, wallet) in wallets.enumerated() {
+        for wallet in wallets {
             DispatchQueue.global(qos: .userInteractive).async {
                 guard
                     let keyPair = KeychainManager().getKey(id: wallet.id),
@@ -113,7 +109,7 @@ class WalletManager {
                 self.provider.loadAccount(id: address) { result in
                     switch result {
                     case .success(let account):
-                        wallet.balance = Double(account.balance ?? 0)/1000000000
+                        wallet.balance = Double(account.balance)/1000000000
                         print("💙 account: \(account)")
                         
                     case .failure(let error):

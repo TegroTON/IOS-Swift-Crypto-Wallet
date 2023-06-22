@@ -1,4 +1,5 @@
 import UIKit
+import SafariServices
 
 class SettingsViewController: UIViewController {
 
@@ -6,7 +7,7 @@ class SettingsViewController: UIViewController {
         return view as! SettingsView
     }
     
-    private var dataSource: [[SettingsModel]] = []
+    private var dataSource: [[SettingsType]] = []
     
     override func loadView() {
         view = SettingsView()
@@ -17,76 +18,67 @@ class SettingsViewController: UIViewController {
 
         setupDataSource()
         
+        mainView.headerView.logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
+        
         mainView.tableView.dataSource = self
         mainView.tableView.delegate = self
+    }
+    
+    // MARK: - Private actions
+    
+    @objc private func logoutButtonTapped() {
+        let alert = UIAlertController(
+            title: localizable.settingsLogoutAlertTitle(),
+            message: localizable.settingsLogoutAlertMessage(),
+            preferredStyle: .alert
+        )
+        
+        let cancelAction = UIAlertAction(title: localizable.settingsLogoutAlertCancel(), style: .cancel)
+        let logoutAction = UIAlertAction(title: localizable.settingsLogout(), style: .destructive) { _ in
+            UserSettings.shared.logout()
+            
+            for wallet in WalletManager.shared.wallets {
+                KeychainManager().deleteMnemonics(for: wallet.id)
+                KeychainManager().deleteKeys(for: wallet.id)
+                KeychainManager().deletePassword()
+            }
+            
+            RootNavigationController.shared.setViewControllers([CreateViewController()], animated: true)
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(logoutAction)
+        
+        present(alert, animated: true)
     }
     
     // MARK: - Private methods
     
     private func setupDataSource() {
-        dataSource = [[
-            SettingsModel(
-                type: .cell(
-                    image: R.image.wallet(),
-                    title: localizable.settingsWallets(),
-                    rightType: .badge(1)
-                )
-            ),
-            SettingsModel(
-                type: .cell(
-                    image: R.image.fingerprint(),
-                    title: localizable.settingsSecurity(),
-                    rightType: .arrow
-                )
-            )
-        ], [
-            SettingsModel(
-                type: .cell(
-                    image: R.image.sunny(),
-                    title: localizable.settingsAppearance(),
-                    rightType: .label("Auto")
-                )
-            ),
-            SettingsModel(
-                type: .cell(
-                    image: R.image.earth(),
-                    title: localizable.settingsLanguage(),
-                    rightType: .label("Eng")
-                )
-            ),
-            SettingsModel(
-                type: .cell(
-                    image: R.image.notificationBell(),
-                    title: localizable.settingsNotifications(),
-                    subtitle: localizable.settingsNotificationsSubtitle(),
-                    rightType: .switch
-                )
-            ),
-        ], [
-            SettingsModel(
-                type: .cell(
-                    image: R.image.email(),
-                    title: localizable.settingsContactUs(),
-                    rightType: .arrow
-                )
-            ),
-            SettingsModel(
-                type: .cell(
-                    image: R.image.document(),
-                    title: localizable.settingsHelpCenter(),
-                    rightType: .arrow
-                )
-            ),
-            SettingsModel(
-                type: .cell(
-                    image: R.image.stars(),
-                    title: localizable.settingsRateApp(),
-                    rightType: .arrow
-                )
-            ),
-        ], [
-            SettingsModel(type: .button)
-        ]]
+        dataSource = [
+            [
+                .cell(type: .wallets(count: 1)),
+                .cell(type: .security)
+            ], [
+                .cell(type: .contactUs),
+                .cell(type: .deleteAccount)
+            ], [
+                .logoutButton
+            ]
+        ]
+    }
+    
+    private func handleSelectCell(_ type: SettingsType.CellType) {
+        switch type {
+        case .wallets: break
+        case .security: break
+        case .contactUs:
+        case .deleteAccount: break
+            
+        default: break
+        }
+    }
+    
     }
 }
 
@@ -102,25 +94,22 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = dataSource[indexPath.section][indexPath.row]
+        let settingsType = dataSource[indexPath.section][indexPath.row]
         
-        switch model.type {
-        case let .cell(image, title, subtitle, rightType):
+        switch settingsType {
+        case .cell(let cellType):
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingsCell.description(), for: indexPath) as! SettingsCell
-            
-            cell.iconImageView.image = image
-            cell.titleLabel.text = title
-            cell.rightView.set(type: rightType)
-            
-            if let subtitle = subtitle {
-                cell.setSubtitle(subtitle)
-            }
-            
+
+            cell.iconImageView.image = cellType.image
+            cell.titleLabel.text = cellType.title
+            cell.rightView.set(type: cellType.rightType)
+            cell.setSubtitle(cellType.subtitle)
+
             return cell
-            
-        case .button:
-            let cell = tableView.dequeueReusableCell(withIdentifier: SettingsDeleteCell.description(), for: indexPath) as! SettingsDeleteCell
-            
+
+        case .logoutButton:
+            let cell = tableView.dequeueReusableCell(withIdentifier: SettingsButtonCell.description(), for: indexPath) as! SettingsButtonCell
+
             return cell
         }
     }
@@ -132,6 +121,10 @@ extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        switch dataSource[indexPath.section][indexPath.row] {
+        case .cell(let type): handleSelectCell(type)
+        case .logoutButton: break
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

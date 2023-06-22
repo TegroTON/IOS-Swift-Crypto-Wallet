@@ -17,6 +17,8 @@ class SettingsCell: UITableViewCell {
         return label
     }()
     
+    
+    // TODO: - Implement attributed label
     let subtitleLabel: UILabel = {
         let label = UILabel()
         label.font = .interFont(ofSize: 12, weight: .regular)
@@ -60,9 +62,10 @@ class SettingsCell: UITableViewCell {
         subtitleLabel.removeFromSuperview()
     }
     
-    func setSubtitle(_ subtitle: String) {
-        titlesStack.addArrangedSubview(subtitleLabel)
+    func setSubtitle(_ subtitle: String?) {
+        guard let subtitle = subtitle else { return }
         
+        titlesStack.addArrangedSubview(subtitleLabel)
         subtitleLabel.text = subtitle
     }
     

@@ -2,7 +2,7 @@ import UIKit
 
 class SettingsRightView: RootView {
 
-    typealias ViewType = SettingsModel.RightViewType
+    typealias ViewType = SettingsType.CellType.RightViewType
     
     private var isGradientSetted: Bool = false
     private let badgeContainer: UIView = .init()
