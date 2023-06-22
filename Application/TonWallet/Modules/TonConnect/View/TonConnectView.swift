@@ -80,9 +80,6 @@ class TonConnectView: ModalView {
     override func setup() {
         super.setup()
         
-        contentView.backgroundColor = R.color.bgPrimary()
-        bottomView.backgroundColor = R.color.bgPrimary()
-        
         contentView.addSubview(titleLabel)
         contentView.addSubview(iconImageView)
         contentView.addSubview(accessLabel)
@@ -125,7 +122,7 @@ class TonConnectView: ModalView {
     
     private func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(18.0)
+            make.top.equalToSuperview().offset(25.0)
             make.left.right.equalToSuperview()
         }
         

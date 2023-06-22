@@ -4,11 +4,17 @@ class ModalView: RootView {
     
     var contentHeight: CGFloat = .zero
     var bottomViewHeight = UIScreen.main.bounds.height
-    let contentView = UIView()
+    
+    let contentView: UIView = {
+        let view = UIView()
+        view.backgroundColor = R.color.bgPrimary()
+        
+        return view
+    }()
     
     let bottomView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = R.color.bgPrimary()
         
         return view
     }()

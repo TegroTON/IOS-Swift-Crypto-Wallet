@@ -101,3 +101,11 @@ ton-connect-access-title = "<all>%@ is reguesting access\nto your wallet address
 ton-connect-attention-title = "Be sure to check the service address\nbefore connecting the wallet.";
 ton-connect-allow-button = "Allow";
 ton-connect-cancel-button = "Cancel";
+
+// Security
+security-title = "Security";
+security-face-id = "Use Face ID";
+security-touch-id = "Use Touch ID";
+security-biometry-subtitle = "You can always unlock your wallet with a passcode.";
+security-change = "Change passcode";
+security-reset = "Reset passcode";

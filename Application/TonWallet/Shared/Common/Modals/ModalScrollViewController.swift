@@ -65,6 +65,8 @@ class ModalScrollViewController: UIViewController {
         
         return view
     }()
+    
+    private let hideIndicatorContainerHeight = 21.0
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -107,8 +109,8 @@ class ModalScrollViewController: UIViewController {
         )
         
         hideIndicatorContainer.frame = CGRect(
-            origin: .init(x: 0, y: -28),
-            size: .init(width: scrollView.frame.width, height: 28.0)
+            origin: .init(x: 0, y: -hideIndicatorContainerHeight),
+            size: .init(width: scrollView.frame.width, height: hideIndicatorContainerHeight)
         )
         
         hideIndicatorView.frame.origin = CGPoint(

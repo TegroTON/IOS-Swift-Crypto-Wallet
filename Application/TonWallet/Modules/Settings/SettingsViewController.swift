@@ -17,9 +17,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
 
         setupDataSource()
-        
-        mainView.headerView.logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
-        
+                
         mainView.tableView.dataSource = self
         mainView.tableView.delegate = self
     }
@@ -70,20 +68,33 @@ class SettingsViewController: UIViewController {
     
     private func handleSelectCell(_ type: SettingsType.CellType) {
         switch type {
-        case .wallets: break
-        case .security: break
-        case .contactUs:
-            openTelegram()
-        case .deleteAccount: break
+        case .wallets: openMyWallets()
+        case .security: openSecurity()
+        case .contactUs: openTelegram()
+        case .deleteAccount: deleteAccount()
             
         default: break
         }
+    }
+    
+    private func openMyWallets() {
+        
+    }
+    
+    private func openSecurity() {
+        let vc = SecurityViewController()
+        present(vc, animated: true)
     }
     
     private func openTelegram() {
         let vc = SFSafariViewController(url: URL(string: "https://t.me/TegroForum")!)
         present(vc, animated: true)
     }
+    
+    private func deleteAccount() {
+        
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -113,7 +124,8 @@ extension SettingsViewController: UITableViewDataSource {
 
         case .logoutButton:
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingsButtonCell.description(), for: indexPath) as! SettingsButtonCell
-
+            cell.logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
+            
             return cell
         }
     }

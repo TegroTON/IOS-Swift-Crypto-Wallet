@@ -17,17 +17,6 @@ class SettingsCell: UITableViewCell {
         return label
     }()
     
-    
-    // TODO: - Implement attributed label
-    let subtitleLabel: UILabel = {
-        let label = UILabel()
-        label.font = .interFont(ofSize: 12, weight: .regular)
-        label.textColor = R.color.textSecond()
-        label.numberOfLines = 0
-        
-        return label
-    }()
-    
     lazy var titlesStack: UIStackView = {
         let view = UIStackView(arrangedSubviews: [titleLabel])
         view.distribution = .fill
@@ -35,6 +24,16 @@ class SettingsCell: UITableViewCell {
         view.spacing = 4
         
         return view
+    }()
+    
+    // TODO: - Implement attributed label
+    private let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .interFont(ofSize: 12, weight: .regular)
+        label.textColor = R.color.textSecond()
+        label.numberOfLines = 0
+        
+        return label
     }()
     
     let rightView: SettingsRightView = .init()
