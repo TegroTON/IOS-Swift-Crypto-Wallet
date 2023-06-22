@@ -73,12 +73,16 @@ class SettingsViewController: UIViewController {
         case .wallets: break
         case .security: break
         case .contactUs:
+            openTelegram()
         case .deleteAccount: break
             
         default: break
         }
     }
     
+    private func openTelegram() {
+        let vc = SFSafariViewController(url: URL(string: "https://t.me/TegroForum")!)
+        present(vc, animated: true)
     }
 }
 
