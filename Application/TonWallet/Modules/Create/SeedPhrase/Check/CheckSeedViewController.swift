@@ -1,5 +1,6 @@
 import UIKit
 import Atributika
+import LocalAuthentication
 
 class CheckSeedViewController: UIViewController {
 
@@ -126,30 +127,43 @@ class CheckSeedViewController: UIViewController {
             guard let self = self else { return }
             
             WalletManager.shared.loadAccounts()
-            KeychainManager().storePassword(password) { success in
-                if success {
-                    print("💙 success store password")
-                } else {
-                    print("❤️ failure store password")
-                }
-            }
-            
-            let biometry = BiometryViewController()
-            biometry.disappearHandler = { [weak self] in
-                guard let self = self else { return }
-
-                let success = SuccessViewController()
-                success.modalPresentationStyle = .overFullScreen
-                
-                self.present(success, animated: false) {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        self.navigationController?.setViewControllers([TabBarViewController()], animated: true)
-                    }
-                }
-            }
+            KeychainManager().storePassword(password)
+            showBiometry()
         }
         
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func showBiometry() {
+        let context = LAContext()
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
+            switch context.biometryType {
+            case .faceID, .touchID:
+                let biometry = BiometryViewController()
+                biometry.disappearHandler = { [weak self] in
+                    guard let self = self else { return }
+                    self.showSuccess()
+                }
+                
+                present(biometry, animated: true)
+                
+            case .none: showSuccess()
+            @unknown default: showSuccess()
+            }
+        } else {
+            showSuccess()
+        }
+    }
+    
+    private func showSuccess() {
+        let success = SuccessViewController()
+        success.modalPresentationStyle = .overFullScreen
+        
+        self.present(success, animated: false) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.navigationController?.setViewControllers([TabBarViewController()], animated: true)
+            }
+        }
     }
     
     deinit {

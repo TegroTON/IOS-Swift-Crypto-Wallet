@@ -21,28 +21,8 @@ class BiometryViewController: ModalScrollViewController {
     }
     
     @objc private func enableButtonTapped() {
-        let context = LAContext()
-        var error: NSError?
-        
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "Authenticate to access the app"
-            
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, error in
-                DispatchQueue.main.async {
-                    if success {
-                        UserSettings.shared.biometryEnabled = true
-                    } else {
-                        UserSettings.shared.biometryEnabled = false
-                    }
-                    
-                    self.dismiss(animated: true)
-                }
-            }
-            
-        } else {
-            UserSettings.shared.biometryEnabled = false
-            dismiss(animated: true)
-        }
+        UserSettings.shared.biometryEnabled = true
+        self.dismiss(animated: true)
     }
     
 }

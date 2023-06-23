@@ -71,7 +71,11 @@ class PasswordViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        checkBiometry()
+        if type == .login {
+            checkBiometry()
+        } else {
+            mainView.textField.becomeFirstResponder()
+        }
     }
     
     // MARK: - Private actions
@@ -126,17 +130,13 @@ class PasswordViewController: UIViewController {
                 guard let self = self else { return }
 
                 if success {
-                    print("Biometric authentication succeeded")
+                    successHandler?(userPassword)
                 } else {
-                    if let error = error {
-                        print("Biometric authentication failed with error: \(error.localizedDescription)")
-                    } else {
-                        print("Biometric authentication failed")
-                    }
+                    mainView.textField.becomeFirstResponder()
                 }
             }
         } else {
-            self.mainView.textField.becomeFirstResponder()
+            mainView.textField.becomeFirstResponder()
         }
     }
     

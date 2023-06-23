@@ -4,7 +4,7 @@ import LocalAuthentication
 class SecurityViewController: ModalScrollViewController {
     
     private var dataSource: [[SecurityType]] = []
-    private var biometryType: SecurityType.BiometryType = .touchID
+    private var biometryType: SecurityType.BiometryType = .faceID
     
     private var mainView: SecurityView { modalView as! SecurityView }
     override func loadModalView() { modalView = SecurityView() }
@@ -23,6 +23,7 @@ class SecurityViewController: ModalScrollViewController {
     
     @objc private func handleSwitcher(_ sender: UISwitch) {
         UserSettings.shared.biometryEnabled = sender.isOn
+        dataSource[0][0] = .biometry(type: biometryType, isOn: sender.isOn)
     }
     
     // MARK: - Private methods
@@ -52,8 +53,6 @@ class SecurityViewController: ModalScrollViewController {
         }
     }
     
-    //TODO: нужен метод который будет находить модель биометрии и перезаписывать ее
-    //TODO: нужен метод который будет включать и выключать свитчер в клетке и в нем же нужно записывать в юзер дефолтс, и нужно мб сиреал кью для записи чтобы не было лагов(надо потестить)
 }
 
 // MARK: - UITableViewDataSource
@@ -95,7 +94,9 @@ extension SecurityViewController: UITableViewDelegate {
         switch dataSource[indexPath.section][indexPath.row] {
         case .biometry(_, let isOn):
             let cell = tableView.cellForRow(at: indexPath) as! SettingsCell
+            cell.rightView.switcher.setOn(!isOn, animated: true)
             UserSettings.shared.biometryEnabled = !isOn
+            dataSource[indexPath.section][indexPath.row] = .biometry(type: biometryType, isOn: !isOn)
             
         default: break
         }
