@@ -67,26 +67,26 @@ enum SettingsType {
         
         var rightType: RightViewType {
             switch self {
-            case .wallets(let badge):      return .badge(badge)
-            case .tokens(let badge):       return .badge(badge)
-            case .contacts:                return .arrow
-            case .security:                return .arrow
-            case .appearance(let current): return .label(current.title)
-            case .currency(let current):   return .label(current)
-            case .language(let current):   return .label(current.title)
-            case .search(let current):     return .label(current.rawValue)
-            case .notifications:           return .switch
-            case .contactUs:               return .arrow
-            case .helpCenter:              return .arrow
-            case .rate:                    return .arrow
-            case .deleteAccount:           return .arrow
+            case .wallets(let badge):       return .badge(badge)
+            case .tokens(let badge):        return .badge(badge)
+            case .contacts:                 return .arrow
+            case .security:                 return .arrow
+            case .appearance(let current):  return .label(current.title)
+            case .currency(let current):    return .label(current)
+            case .language(let current):    return .label(current.title)
+            case .search(let current):      return .label(current.rawValue)
+            case .notifications(let isOn):  return .switch(isOn)
+            case .contactUs:                return .arrow
+            case .helpCenter:               return .arrow
+            case .rate:                     return .arrow
+            case .deleteAccount:            return .arrow
             }
         }
         
         enum RightViewType {
             case badge(Int)
             case label(String)
-            case `switch`
+            case `switch`(Bool)
             case arrow
         }
         

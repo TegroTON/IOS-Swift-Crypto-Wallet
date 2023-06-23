@@ -44,6 +44,8 @@
 		2C3557612A449C7B003EB9FF /* SecurityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3557602A449C7B003EB9FF /* SecurityView.swift */; };
 		2C3557642A449EB5003EB9FF /* SecurityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3557632A449EB5003EB9FF /* SecurityType.swift */; };
 		2C3557662A44AB3E003EB9FF /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3557652A44AB3E003EB9FF /* TableView.swift */; };
+		2C35576A2A44B4AF003EB9FF /* BiometryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3557692A44B4AF003EB9FF /* BiometryViewController.swift */; };
+		2C35576C2A44B4C9003EB9FF /* BiometryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35576B2A44B4C9003EB9FF /* BiometryView.swift */; };
 		2C35C6A529A521FF00A0F181 /* SeedHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35C6A429A521FF00A0F181 /* SeedHeaderCell.swift */; };
 		2C35C6A829A71C1800A0F181 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35C6A729A71C1800A0F181 /* TabBarViewController.swift */; };
 		2C35C6AB29A7258D00A0F181 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35C6AA29A7258D00A0F181 /* SettingsViewController.swift */; };
@@ -227,6 +229,8 @@
 		2C3557602A449C7B003EB9FF /* SecurityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityView.swift; sourceTree = "<group>"; };
 		2C3557632A449EB5003EB9FF /* SecurityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityType.swift; sourceTree = "<group>"; };
 		2C3557652A44AB3E003EB9FF /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		2C3557692A44B4AF003EB9FF /* BiometryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometryViewController.swift; sourceTree = "<group>"; };
+		2C35576B2A44B4C9003EB9FF /* BiometryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometryView.swift; sourceTree = "<group>"; };
 		2C35C6A429A521FF00A0F181 /* SeedHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedHeaderCell.swift; sourceTree = "<group>"; };
 		2C35C6A729A71C1800A0F181 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		2C35C6AA29A7258D00A0F181 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -644,6 +648,7 @@
 		2C2DCBF829598EAB00E4B688 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				2C3557672A44B488003EB9FF /* Biometry */,
 				2C35575C2A449C28003EB9FF /* Security */,
 				2CC0B8B82A2262EA00DE4E5D /* TonConnect */,
 				2C11B04929D5AFBB0059C8EE /* Scan */,
@@ -790,6 +795,23 @@
 				2C3557632A449EB5003EB9FF /* SecurityType.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2C3557672A44B488003EB9FF /* Biometry */ = {
+			isa = PBXGroup;
+			children = (
+				2C3557682A44B4A0003EB9FF /* View */,
+				2C3557692A44B4AF003EB9FF /* BiometryViewController.swift */,
+			);
+			path = Biometry;
+			sourceTree = "<group>";
+		};
+		2C3557682A44B4A0003EB9FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C35576B2A44B4C9003EB9FF /* BiometryView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		2C35C6A329A51E2600A0F181 /* Subview */ = {
@@ -1729,6 +1751,7 @@
 				2C5CBB172A379D3F004AA8B3 /* WalletManagerProvider.swift in Sources */,
 				2CC0B8BA2A22631400DE4E5D /* TonConnectViewController.swift in Sources */,
 				2CC0B8C72A22692600DE4E5D /* DAppManifest.swift in Sources */,
+				2C35576C2A44B4C9003EB9FF /* BiometryView.swift in Sources */,
 				2C1BD1942983F48D001284C0 /* SuccessView.swift in Sources */,
 				2C5CBAFE2A37820A004AA8B3 /* TonConnectViewModel.swift in Sources */,
 				2CCE902B29D1A77300C904B6 /* ReceiveWalletView.swift in Sources */,
@@ -1764,6 +1787,7 @@
 				2CDB309C2A255ED50020EB3B /* SHA256.swift in Sources */,
 				2CDB30BD2A255ED50020EB3B /* WalletContract.swift in Sources */,
 				2C35C6B829A7F26E00A0F181 /* WalletCardCell.swift in Sources */,
+				2C35576A2A44B4AF003EB9FF /* BiometryViewController.swift in Sources */,
 				2C35575F2A449C3C003EB9FF /* SecurityViewController.swift in Sources */,
 				2C35575B2A40E8B1003EB9FF /* AccountEvent.swift in Sources */,
 				2C1BD19F298429C0001284C0 /* WalletsSectionModel.swift in Sources */,

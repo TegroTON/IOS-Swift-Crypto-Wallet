@@ -65,8 +65,8 @@ class SettingsRightView: RootView {
         case .label(let text):
             setup(label: text)
             
-        case .switch:
-            setupSwitch()
+        case .switch(let isOn):
+            setupSwitch(isON: isOn)
             
         case .arrow:
             setupArrow()
@@ -120,7 +120,7 @@ class SettingsRightView: RootView {
         }
     }
     
-    private func setupSwitch() {
+    private func setupSwitch(isON: Bool) {
         if switcher.frame.origin == .zero {
             removeSubviews()
             addSubview(switcher)
@@ -130,6 +130,8 @@ class SettingsRightView: RootView {
                 make.centerY.left.equalToSuperview()
             }
         }
+        
+        switcher.setOn(isON, animated: false)
     }
     
     private func removeSubviews() {

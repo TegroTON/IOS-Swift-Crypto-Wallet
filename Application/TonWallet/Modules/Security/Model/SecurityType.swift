@@ -1,13 +1,13 @@
 import UIKit
 
 enum SecurityType {
-    case biometry(type: BiometryType)
+    case biometry(type: BiometryType, isOn: Bool)
     case changePasscode
     case resetPasscode
     
     var image: UIImage? {
         switch self {
-        case .biometry(let type):
+        case .biometry(let type, _):
             switch type {
             case .faceID: return UIImage(systemName: "faceid")
             case .touchID: return UIImage(systemName: "touchid")
@@ -19,7 +19,7 @@ enum SecurityType {
     
     var title: String {
         switch self {
-        case .biometry(let type):
+        case .biometry(let type, _):
             switch type {
             case .faceID: return localizable.securityFaceId()
             case .touchID: return localizable.securityTouchId()
@@ -38,7 +38,7 @@ enum SecurityType {
     
     var rightType: SettingsType.CellType.RightViewType {
         switch self {
-        case .biometry: return .switch
+        case .biometry(_, let isON): return .switch(isON)
         case .changePasscode: return .arrow
         case .resetPasscode: return .arrow
         }

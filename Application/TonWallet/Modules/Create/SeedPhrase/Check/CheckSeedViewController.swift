@@ -134,12 +134,17 @@ class CheckSeedViewController: UIViewController {
                 }
             }
             
-            let vc = SuccessViewController()
-            vc.modalPresentationStyle = .overFullScreen
-            
-            self.present(vc, animated: false) {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    self.navigationController?.setViewControllers([TabBarViewController()], animated: true)
+            let biometry = BiometryViewController()
+            biometry.disappearHandler = { [weak self] in
+                guard let self = self else { return }
+
+                let success = SuccessViewController()
+                success.modalPresentationStyle = .overFullScreen
+                
+                self.present(success, animated: false) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        self.navigationController?.setViewControllers([TabBarViewController()], animated: true)
+                    }
                 }
             }
         }

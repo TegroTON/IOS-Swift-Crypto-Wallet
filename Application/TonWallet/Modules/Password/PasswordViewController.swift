@@ -1,4 +1,5 @@
 import UIKit
+import LocalAuthentication
 
 class PasswordViewController: UIViewController {
     
@@ -70,7 +71,7 @@ class PasswordViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        mainView.textField.becomeFirstResponder()
+        checkBiometry()
     }
     
     // MARK: - Private actions
@@ -118,6 +119,26 @@ class PasswordViewController: UIViewController {
     }
     
     // MARK: - Private methods
+    
+    private func checkBiometry() {
+        if userSettings.biometryEnabled {
+            evaluatePolicy { [weak self] success, error in
+                guard let self = self else { return }
+
+                if success {
+                    print("Biometric authentication succeeded")
+                } else {
+                    if let error = error {
+                        print("Biometric authentication failed with error: \(error.localizedDescription)")
+                    } else {
+                        print("Biometric authentication failed")
+                    }
+                }
+            }
+        } else {
+            self.mainView.textField.becomeFirstResponder()
+        }
+    }
     
     private func checkPassword() {
         if isPasswordSetted {
@@ -236,6 +257,28 @@ class PasswordViewController: UIViewController {
             }
         })
     }
+    
+    private func evaluatePolicy(completion: @escaping (Bool, Error?) -> Void) {
+        let context = LAContext()
+        var error: NSError?
+
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Authenticate to access the app"
+
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, error in
+                DispatchQueue.main.async {
+                    if success {
+                        completion(true, nil)
+                    } else {
+                        completion(false, error)
+                    }
+                }
+            }
+        } else {
+            completion(false, error)
+        }
+    }
+
 }
 
 // MARK: - UITextFieldDelegate

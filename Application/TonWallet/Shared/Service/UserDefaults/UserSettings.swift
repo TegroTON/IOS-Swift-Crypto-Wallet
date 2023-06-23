@@ -16,10 +16,14 @@ class UserSettings {
     @UserDefaultWrapper(key: "lastEventId", defaultValue: nil)
     var lastEventId: Int?
     
+    @UserDefaultWrapper(key: "biometryEnabled", defaultValue: false)
+    var biometryEnabled: Bool
+    
     func logout() {
         lastEventId = nil
         blockDate = nil
         wallets = []
         connections = []
+        biometryEnabled = false
     }
 }

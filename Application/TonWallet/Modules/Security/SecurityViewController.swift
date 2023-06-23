@@ -1,8 +1,10 @@
 import UIKit
+import LocalAuthentication
 
 class SecurityViewController: ModalScrollViewController {
     
     private var dataSource: [[SecurityType]] = []
+    private var biometryType: SecurityType.BiometryType = .touchID
     
     private var mainView: SecurityView { modalView as! SecurityView }
     override func loadModalView() { modalView = SecurityView() }
@@ -10,10 +12,17 @@ class SecurityViewController: ModalScrollViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkBiometricType()
         setupDataSource()
                 
         mainView.tableView.dataSource = self
         mainView.tableView.delegate = self
+    }
+    
+    // MARK: - Private actions
+    
+    @objc private func handleSwitcher(_ sender: UISwitch) {
+        UserSettings.shared.biometryEnabled = sender.isOn
     }
     
     // MARK: - Private methods
@@ -21,7 +30,7 @@ class SecurityViewController: ModalScrollViewController {
     private func setupDataSource() {
         dataSource = [
             [
-                .biometry(type: .faceID)
+                .biometry(type: biometryType, isOn: UserSettings.shared.biometryEnabled)
             ], [
                 .changePasscode,
                 .resetPasscode
@@ -29,11 +38,22 @@ class SecurityViewController: ModalScrollViewController {
         ]
     }
     
-    private func handleSelectCell(_ type: SecurityType) {
-        switch type {
-        default: break
+    private func checkBiometricType() {
+        let context = LAContext()
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
+            switch context.biometryType {
+            case .faceID: biometryType = .faceID
+            case .touchID: biometryType = .touchID
+                
+            case .none: break
+            @unknown default: break
+            }
         }
-    }    
+    }
+    
+    //TODO: нужен метод который будет находить модель биометрии и перезаписывать ее
+    //TODO: нужен метод который будет включать и выключать свитчер в клетке и в нем же нужно записывать в юзер дефолтс, и нужно мб сиреал кью для записи чтобы не было лагов(надо потестить)
 }
 
 // MARK: - UITableViewDataSource
@@ -56,6 +76,12 @@ extension SecurityViewController: UITableViewDataSource {
         cell.rightView.set(type: type.rightType)
         cell.setSubtitle(type.subtitle)
         
+        switch type.rightType {
+        case .switch:
+            cell.rightView.switcher.addTarget(self, action: #selector(handleSwitcher), for: .valueChanged)
+        default: break
+        }
+        
         return cell
     }
 }
@@ -65,7 +91,14 @@ extension SecurityViewController: UITableViewDataSource {
 extension SecurityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        handleSelectCell(dataSource[indexPath.section][indexPath.row])
+        
+        switch dataSource[indexPath.section][indexPath.row] {
+        case .biometry(_, let isOn):
+            let cell = tableView.cellForRow(at: indexPath) as! SettingsCell
+            UserSettings.shared.biometryEnabled = !isOn
+            
+        default: break
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
