@@ -68,6 +68,15 @@ class PasswordView: RootView {
         return label
     }()
     
+    let titlesStack: UIStackView = {
+        let view = UIStackView()
+        view.spacing = 16
+        view.alignment = .center
+        view.axis = .vertical
+        
+        return view
+    }()
+    
     
     override func setup() {
         backgroundColor = R.color.bgPrimary()
@@ -76,9 +85,11 @@ class PasswordView: RootView {
         addSubview(closeButton)
         addSubview(textField)
         addSubview(imageView)
-        addSubview(titleLabel)
-        addSubview(subtitleLabel)
+        addSubview(titlesStack)
         addSubview(indicatorsView)
+        
+        titlesStack.addArrangedSubview(titleLabel)
+        titlesStack.addArrangedSubview(subtitleLabel)
         
         setupConstraints()
     }
@@ -96,7 +107,6 @@ class PasswordView: RootView {
             backButton.isHidden = true
             closeButton.isHidden = false
             titleLabel.text = localizable.passwordEnterTitle()
-            setSubtitle(text: localizable.passwordEnterSubtitle())
             
         case .login:
             closeButton.setImage(R.image.logout(), for: .normal)
@@ -104,6 +114,13 @@ class PasswordView: RootView {
             closeButton.isHidden = false
             titleLabel.text = localizable.passwordEnterTitle()
             setSubtitle(text: localizable.passwordEnterSubtitle())
+            
+        case .change:
+            closeButton.setImage(R.image.close(), for: .normal)
+            backButton.isHidden = true
+            closeButton.isHidden = false
+            titleLabel.text = localizable.passwordCurrentTitle()
+            setSubtitle(text: localizable.passwordCurrentSubtitle())
         }
     }
     
@@ -147,18 +164,13 @@ class PasswordView: RootView {
             make.size.equalTo(100.0)
         }
         
-        titleLabel.snp.makeConstraints { make in
+        titlesStack.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).offset(32.0)
             make.left.right.equalToSuperview()
         }
         
-        subtitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(16.0)
-            make.left.right.equalToSuperview().inset(30.0)
-        }
-        
         indicatorsView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(112.0)
+            make.top.equalTo(imageView.snp.bottom).offset(176.0)
             make.centerX.equalToSuperview()
         }
     }

@@ -7,11 +7,11 @@ class PasswordViewController: UIViewController {
         case create
         case check
         case login
+        case change
     }
     
     var successHandler: ((String) -> Void)?
     
-    private let type: ViewType
     private var userPassword: String = ""
     private var incorrectCount: Int = 0
     private var blockSeconds: Int = 30
@@ -23,17 +23,18 @@ class PasswordViewController: UIViewController {
     private let selectionFeedback: UISelectionFeedbackGenerator = .init()
     private let notificationFeedback: UINotificationFeedbackGenerator = .init()
     
-    var mainView: PasswordView {
-        return view as! PasswordView
+    private var type: ViewType = .check {
+        didSet {
+            mainView.setupContent(with: type)
+        }
     }
     
-    override func loadView() {
-        view = PasswordView()
-    }
+    private var mainView: PasswordView { view as! PasswordView }
+    override func loadView() { view = PasswordView() }
     
     init(type: ViewType) {
-        self.type = type
         super.init(nibName: nil, bundle: nil)
+        self.type = type
         
         switch type {
         case .check, .login:
@@ -42,6 +43,10 @@ class PasswordViewController: UIViewController {
             
         case .create:
             userPassword = ""
+            isPasswordSetted = false
+            
+        case .change:
+            userPassword = KeychainManager().getPassword() ?? ""
             isPasswordSetted = false
         }
         
@@ -60,9 +65,11 @@ class PasswordViewController: UIViewController {
         super.viewDidLoad()
         
         mainView.textField.delegate = self
+        
         mainView.textField.addTarget(self, action: #selector(textFieldDidChanged), for: .editingChanged)
         mainView.backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         mainView.closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        
         checkBlockTimer()
         
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
@@ -71,11 +78,7 @@ class PasswordViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if type == .login {
-            checkBiometry()
-        } else {
-            mainView.textField.becomeFirstResponder()
-        }
+        activateKeyboard()
     }
     
     // MARK: - Private actions
@@ -86,33 +89,21 @@ class PasswordViewController: UIViewController {
         
         if safeText.count < 5 {
             if safeText.count == 4 {
-                if !isPasswordSetted {
-                    userPassword = safeText
-                }
-                
-                checkPassword()
+                checkPassword(safeText)
             }
         }
     }
     
     @objc private func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
+        closeScreen()
     }
     
     @objc private func closeButtonTapped() {
         switch type {
-        case .check:
-            dismiss(animated: true)
-            
+        case .check, .change:
+            closeScreen()
         case .login:
-            WalletManager.shared.wallets.forEach { wallet in
-                KeychainManager().deleteKeys(for: wallet.id)
-                KeychainManager().deleteMnemonics(for: wallet.id)
-            }
-            KeychainManager().deletePassword()
-            
-            RootNavigationController.shared.setViewControllers([CreateViewController()], animated: true)
-            
+            logout()
         default:
             break
         }
@@ -124,6 +115,18 @@ class PasswordViewController: UIViewController {
     
     // MARK: - Private methods
     
+    private func activateKeyboard() {
+        mainView.textField.becomeFirstResponder()
+        
+        switch type {
+        case .login, .check:
+            checkBiometry()
+            
+        default:
+            break
+        }
+    }
+    
     private func checkBiometry() {
         if userSettings.biometryEnabled {
             evaluatePolicy { [weak self] success, error in
@@ -131,18 +134,17 @@ class PasswordViewController: UIViewController {
 
                 if success {
                     successHandler?(userPassword)
-                } else {
-                    mainView.textField.becomeFirstResponder()
                 }
             }
-        } else {
-            mainView.textField.becomeFirstResponder()
         }
     }
     
-    private func checkPassword() {
-        if isPasswordSetted {
-            if userPassword == mainView.textField.text ?? "" {
+    private func checkPassword(_ password: String) {
+        switch type {
+        case .create:
+            checkNewPassword(password)
+        case .login, .check:
+            if userPassword == password {
                 mainView.textField.resignFirstResponder()
                 notificationFeedback.notificationOccurred(.success)
                 
@@ -150,43 +152,50 @@ class PasswordViewController: UIViewController {
             } else {
                 notificationFeedback.notificationOccurred(.error)
                 mainView.textField.text = nil
+                incorrectCount += 1
                 
-                switch type {
-                case .create:
-                    userPassword = ""
-                    isPasswordSetted = false
-                    animateIncorrectPassword(needToSet: type == .create)
-                    
-                case .check, .login:
-                    incorrectCount += 1
-                    
-                    if incorrectCount == 3 {
-                        handleBlock()
-                    } else {
-                        animateIncorrectPassword(needToSet: type == .create)
-                    }
+                if incorrectCount == 3 {
+                    handleBlock()
+                } else {
+                    animateIncorrectPassword(needToSet: false)
                 }
             }
-        } else {
-            mainView.textField.text = nil
-            isPasswordSetted = true
-            
-            animateReset(with: localizable.passwordRepeatTitle())
+        case .change:
+            if !userPassword.isEmpty && !isPasswordSetted {
+                if userPassword == password {
+                    userPassword = ""
+                    mainView.textField.text = nil
+                    animateReset(with: localizable.passwordNewTitle())
+                    notificationFeedback.notificationOccurred(.success)
+                } else {
+                    notificationFeedback.notificationOccurred(.error)
+                    mainView.textField.text = nil
+                    animateIncorrectPassword(needToSet: true)
+                }
+            } else {
+                checkNewPassword(password)
+            }
         }
     }
     
-    private func checkBlockTimer() {
-        blockTimer.invalidate()
-        
-        if let startTime = userSettings.blockDate {
-            let timeInterval = Date().timeIntervalSince(startTime)
-            blockSeconds = Int(30.0 - timeInterval)
-            setupTimer()
-            
-            if blockSeconds > 0 {
-                incorrectCount = 3
-                mainView.setBlockContent(blockSeconds: blockSeconds.description)
+    private func checkNewPassword(_ password: String) {
+        if isPasswordSetted {
+            if userPassword == password {
+                mainView.textField.resignFirstResponder()
+                notificationFeedback.notificationOccurred(.success)
+                successHandler?(userPassword)
+            } else {
+                notificationFeedback.notificationOccurred(.error)
+                isPasswordSetted = false
+                userPassword = ""
+                mainView.textField.text = nil
+                animateIncorrectPassword(needToSet: true)
             }
+        } else {
+            isPasswordSetted = true
+            userPassword = password
+            mainView.textField.text = nil
+            animateReset(with: localizable.passwordRepeatTitle())
         }
     }
     
@@ -229,6 +238,21 @@ class PasswordViewController: UIViewController {
         }
     }
     
+    private func checkBlockTimer() {
+        blockTimer.invalidate()
+        
+        if let startTime = userSettings.blockDate {
+            let timeInterval = Date().timeIntervalSince(startTime)
+            blockSeconds = Int(30.0 - timeInterval)
+            setupTimer()
+            
+            if blockSeconds > 0 {
+                incorrectCount = 3
+                mainView.setBlockContent(blockSeconds: blockSeconds.description)
+            }
+        }
+    }
+    
     private func handleBlock() {
         userSettings.blockDate = Date()
         mainView.setBlockContent(blockSeconds: blockSeconds.description)
@@ -244,8 +268,7 @@ class PasswordViewController: UIViewController {
                 self.incorrectCount = 0
                 self.userSettings.blockDate = nil
                 self.mainView.indicatorsView.setAllIndicators(to: .off)
-                self.mainView.titleLabel.text = localizable.passwordEnterTitle()
-                self.mainView.setSubtitle(text: localizable.passwordEnterSubtitle())
+                self.mainView.setupContent(with: type)
                 self.mainView.imageView.alpha = 1
                 timer.invalidate()
             } else {
@@ -278,7 +301,41 @@ class PasswordViewController: UIViewController {
             completion(false, error)
         }
     }
+    
+    private func logout() {
+        let alert = UIAlertController(
+            title: localizable.settingsLogoutAlertTitle(),
+            message: localizable.settingsLogoutAlertMessage(),
+            preferredStyle: .alert
+        )
+        
+        let cancelAction = UIAlertAction(title: localizable.settingsLogoutAlertCancel(), style: .cancel)
+        let logoutAction = UIAlertAction(title: localizable.settingsLogout(), style: .destructive) { _ in
+            UserSettings.shared.logout()
+            
+            for wallet in WalletManager.shared.wallets {
+                KeychainManager().deleteMnemonics(for: wallet.id)
+                KeychainManager().deleteKeys(for: wallet.id)
+            }
+            KeychainManager().deletePassword()
+            
+            RootNavigationController.shared.setViewControllers([CreateViewController()], animated: true)
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(logoutAction)
+        
+        present(alert, animated: true)
+    }
 
+    private func closeScreen() {
+        if let navigationController = navigationController {
+            navigationController.popViewController(animated: true)
+        } else {
+            dismiss(animated: true)
+        }
+    }
+    
 }
 
 // MARK: - UITextFieldDelegate

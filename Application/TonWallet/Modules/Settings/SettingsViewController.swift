@@ -38,8 +38,8 @@ class SettingsViewController: UIViewController {
             for wallet in WalletManager.shared.wallets {
                 KeychainManager().deleteMnemonics(for: wallet.id)
                 KeychainManager().deleteKeys(for: wallet.id)
-                KeychainManager().deletePassword()
             }
+            KeychainManager().deletePassword()
             
             RootNavigationController.shared.setViewControllers([CreateViewController()], animated: true)
         }

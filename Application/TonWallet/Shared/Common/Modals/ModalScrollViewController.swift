@@ -61,7 +61,7 @@ class ModalScrollViewController: UIViewController {
     let hideIndicatorView: UIView = {
         let view = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 32.0, height: 5.0)))
         view.layer.cornerRadius = 5/2
-        view.backgroundColor = .init(hex6: 0xDFE6F1)
+        view.backgroundColor = R.color.bgThird()
         
         return view
     }()

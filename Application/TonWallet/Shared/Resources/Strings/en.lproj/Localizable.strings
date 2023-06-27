@@ -29,6 +29,10 @@ password-enter-title = "Passcode";
 password-enter-subtitle = "Enter your passcode\nto confirm the transaction";
 password-block-title = "Blocked";
 password-block-subtitle = "Try again in %@ seconds.";
+password-current-title = "Current Passcode";
+password-current-subtitle = "Enter your current password\nto be able to change your passcode";
+password-new-title = "New Passcode";
+password-new-subtitle = "Create a new password to\nenter the application and\nperform operations";
 
 // Success
 success-create-title = "Congratulations!";

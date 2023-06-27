@@ -9,11 +9,11 @@ enum SecurityType {
         switch self {
         case .biometry(let type, _):
             switch type {
-            case .faceID: return UIImage(systemName: "faceid")
-            case .touchID: return UIImage(systemName: "touchid")
+            case .faceID: return UIImage(systemName: "faceid")?.withTintColor(R.color.textPrimary()!)
+            case .touchID: return UIImage(systemName: "touchid")?.withTintColor(R.color.textPrimary()!)
             }
-        case .changePasscode: return R.image.securityChange()
-        case .resetPasscode: return R.image.securityReset()
+        case .changePasscode: return R.image.securityChange()?.withTintColor(R.color.textPrimary()!)
+        case .resetPasscode: return R.image.securityReset()?.withTintColor(R.color.textPrimary()!)
         }
     }
     

@@ -33,8 +33,7 @@ class SecurityViewController: ModalScrollViewController {
             [
                 .biometry(type: biometryType, isOn: UserSettings.shared.biometryEnabled)
             ], [
-                .changePasscode,
-                .resetPasscode
+                .changePasscode
             ]
         ]
     }
@@ -97,6 +96,21 @@ extension SecurityViewController: UITableViewDelegate {
             cell.rightView.switcher.setOn(!isOn, animated: true)
             UserSettings.shared.biometryEnabled = !isOn
             dataSource[indexPath.section][indexPath.row] = .biometry(type: biometryType, isOn: !isOn)
+            
+        case .changePasscode:
+            let vc = PasswordViewController(type: .change)
+            vc.modalPresentationStyle = .fullScreen
+            vc.modalTransitionStyle = .crossDissolve
+            
+            vc.successHandler = { [weak self] newPassword in
+                guard let self = self else { return }
+                
+                KeychainManager().storePassword(newPassword)
+                vc.dismiss(animated: true)
+                UINotificationFeedbackGenerator().notificationOccurred(.success)
+            }
+            
+            present(vc, animated: true)
             
         default: break
         }

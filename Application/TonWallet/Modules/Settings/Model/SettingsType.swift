@@ -33,7 +33,7 @@ enum SettingsType {
             case .contactUs:     return R.image.settingsContactUs()
             case .helpCenter:    return R.image.settingsHelpCenter()
             case .rate:          return R.image.settingsRate()
-            case .deleteAccount: return R.image.settingsDelete()
+            case .deleteAccount: return R.image.settingsDelete()?.withTintColor(R.color.textPrimary()!)
             }
         }
         
