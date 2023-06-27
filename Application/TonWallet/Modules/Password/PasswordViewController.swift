@@ -157,7 +157,7 @@ class PasswordViewController: UIViewController {
                 if incorrectCount == 3 {
                     handleBlock()
                 } else {
-                    animateIncorrectPassword(needToSet: false)
+                    animateIncorrectPassword()
                 }
             }
         case .change:
@@ -165,12 +165,12 @@ class PasswordViewController: UIViewController {
                 if userPassword == password {
                     userPassword = ""
                     mainView.textField.text = nil
-                    animateReset(with: localizable.passwordNewTitle())
+                    animateReset(with: localizable.passwordNewTitle(), subtitle: localizable.passwordNewSubtitle())
                     notificationFeedback.notificationOccurred(.success)
                 } else {
                     notificationFeedback.notificationOccurred(.error)
                     mainView.textField.text = nil
-                    animateIncorrectPassword(needToSet: true)
+                    animateIncorrectPassword()
                 }
             } else {
                 checkNewPassword(password)
@@ -189,7 +189,9 @@ class PasswordViewController: UIViewController {
                 isPasswordSetted = false
                 userPassword = ""
                 mainView.textField.text = nil
-                animateIncorrectPassword(needToSet: true)
+                
+                let resetTitle = type == .create ? localizable.passwordCreateTitle() : localizable.passwordNewTitle()
+                animateIncorrectPassword(resetTitle: resetTitle)
             }
         } else {
             isPasswordSetted = true
@@ -199,11 +201,17 @@ class PasswordViewController: UIViewController {
         }
     }
     
-    private func animateReset(with title: String) {
+    private func animateReset(with title: String, subtitle: String? = nil) {
         isAnimating = true
         
-        UIView.transition(with: mainView.titleLabel, duration: 0.3, options: .transitionCrossDissolve) {
+        UIView.transition(with: mainView.titleLabel, duration: 0.3, options: .transitionFlipFromRight) {
             self.mainView.titleLabel.text = title
+        }
+        
+        if let subtitle = subtitle {
+            UIView.transition(with: mainView.subtitleLabel, duration: 0.3, options: .transitionFlipFromRight) {
+                self.mainView.setSubtitle(text: subtitle)
+            }
         }
         
         UIView.transition(with: mainView.indicatorsView, duration: 0.3, options: .transitionCrossDissolve) {
@@ -213,17 +221,17 @@ class PasswordViewController: UIViewController {
         }
     }
     
-    private func animateIncorrectPassword(needToSet: Bool) {
-        let title = needToSet ? localizable.passwordSetTitle() : localizable.passwordEnterTitle()
+    private func animateIncorrectPassword(resetTitle: String? = nil) {
         isAnimating = true
-        
         mainView.indicatorsView.shake()
         
         UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut) {
             self.mainView.indicatorsView.setAllIndicators(to: .error)
         } completion: { _ in
             guard self.isAnimating else {
-                self.mainView.titleLabel.text = title
+                if let resetTitle = resetTitle {
+                    self.mainView.titleLabel.text = resetTitle
+                }
                 return
             }
             
@@ -231,8 +239,10 @@ class PasswordViewController: UIViewController {
                 self.mainView.indicatorsView.setAllIndicators(to: .off)
             } completion: { _ in
                 self.isAnimating = false
-                UIView.transition(with: self.mainView.titleLabel, duration: 0.3, options: .transitionCrossDissolve) {
-                    self.mainView.titleLabel.text = title
+                if let resetTitle = resetTitle {
+                    UIView.transition(with: self.mainView.titleLabel, duration: 0.3, options: .transitionFlipFromLeft) {
+                        self.mainView.titleLabel.text = resetTitle
+                    }
                 }
             }
         }

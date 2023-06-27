@@ -41,7 +41,7 @@ class PasswordView: RootView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = localizable.passwordSetTitle()
+        label.text = localizable.passwordTitle()
         label.font = .interFont(ofSize: 24, weight: .semiBold)
         label.textColor = R.color.textPrimary()
         label.textAlignment = .center
@@ -63,7 +63,7 @@ class PasswordView: RootView {
             .font(.interFont(ofSize: 16, weight: .regular))
             .foregroundColor(R.color.textSecond()!)
         
-        label.attributedText = localizable.passwordSubtitle().styleAll(style)
+        label.attributedText = localizable.passwordLoginSubtitle().styleAll(style)
         
         return label
     }()
@@ -99,21 +99,22 @@ class PasswordView: RootView {
         case .create:
             backButton.isHidden = false
             closeButton.isHidden = true
-            titleLabel.text = localizable.passwordSetTitle()
-            setSubtitle(text: localizable.passwordSubtitle())
+            titleLabel.text = localizable.passwordCreateTitle()
+            setSubtitle(text: localizable.passwordCreateSubtitle())
             
         case .check:
             closeButton.setImage(R.image.close(), for: .normal)
             backButton.isHidden = true
             closeButton.isHidden = false
-            titleLabel.text = localizable.passwordEnterTitle()
+            titleLabel.text = localizable.passwordTitle()
+            setSubtitle(text: localizable.passwordConfirmSubtitle())
             
         case .login:
             closeButton.setImage(R.image.logout(), for: .normal)
             backButton.isHidden = true
             closeButton.isHidden = false
-            titleLabel.text = localizable.passwordEnterTitle()
-            setSubtitle(text: localizable.passwordEnterSubtitle())
+            titleLabel.text = localizable.passwordTitle()
+            setSubtitle(text: localizable.passwordLoginSubtitle())
             
         case .change:
             closeButton.setImage(R.image.close(), for: .normal)

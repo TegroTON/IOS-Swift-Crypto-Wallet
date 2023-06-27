@@ -22,11 +22,12 @@ seed-phrase-enter-subtitle = "To restore access, enter the 24 secret words you r
 seed-phrase-enter-button = "Connect Wallet";
 
 // Password
-password-set-title = "Set Passcode";
-password-subtitle = "Create a passcode to enter\nthe application and perform operations.";
+password-create-title = "Set Passcode";
+password-create-subtitle = "Create a passcode to enter\nthe application and perform operations.";
 password-repeat-title = "Repeat Passcode";
-password-enter-title = "Passcode";
-password-enter-subtitle = "Enter your passcode\nto confirm the transaction";
+password-title = "Passcode";
+password-confirm-subtitle = "Enter your passcode\nto confirm the transaction";
+password-login-subtitle = "Enter your password\nto login application";
 password-block-title = "Blocked";
 password-block-subtitle = "Try again in %@ seconds.";
 password-current-title = "Current Passcode";
