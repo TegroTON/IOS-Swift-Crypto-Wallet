@@ -23,7 +23,7 @@ class PasswordViewController: UIViewController {
     private let selectionFeedback: UISelectionFeedbackGenerator = .init()
     private let notificationFeedback: UINotificationFeedbackGenerator = .init()
     
-    private var type: ViewType = .check {
+    private var type: ViewType = .login {
         didSet {
             mainView.setupContent(with: type)
         }
@@ -131,7 +131,7 @@ class PasswordViewController: UIViewController {
         if userSettings.biometryEnabled {
             evaluatePolicy { [weak self] success, error in
                 guard let self = self else { return }
-
+                
                 if success {
                     successHandler?(userPassword)
                 }
@@ -190,8 +190,16 @@ class PasswordViewController: UIViewController {
                 userPassword = ""
                 mainView.textField.text = nil
                 
-                let resetTitle = type == .create ? localizable.passwordCreateTitle() : localizable.passwordNewTitle()
-                animateIncorrectPassword(resetTitle: resetTitle)
+                
+                switch type {
+                case .create:
+                    animateIncorrectPassword(resetTitle: localizable.passwordCreateTitle())
+                    
+                case .change:
+                    animateIncorrectPassword(resetTitle: localizable.passwordNewTitle())
+                    
+                default: break
+                }
             }
         } else {
             isPasswordSetted = true
@@ -203,6 +211,7 @@ class PasswordViewController: UIViewController {
     
     private func animateReset(with title: String, subtitle: String? = nil) {
         isAnimating = true
+        
         
         UIView.transition(with: mainView.titleLabel, duration: 0.3, options: .transitionFlipFromRight) {
             self.mainView.titleLabel.text = title

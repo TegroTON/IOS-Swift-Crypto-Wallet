@@ -92,19 +92,37 @@ extension SecurityViewController: UITableViewDelegate {
         
         switch dataSource[indexPath.section][indexPath.row] {
         case .biometry(_, let isOn):
-            let cell = tableView.cellForRow(at: indexPath) as! SettingsCell
-            cell.rightView.switcher.setOn(!isOn, animated: true)
-            UserSettings.shared.biometryEnabled = !isOn
-            dataSource[indexPath.section][indexPath.row] = .biometry(type: biometryType, isOn: !isOn)
+            if !isOn {
+                let password = PasswordViewController(type: .check)
+                password.modalPresentationStyle = .fullScreen
+                password.modalTransitionStyle = .crossDissolve
+                
+                password.successHandler = { [weak self] newPassword in
+                    guard let self = self else { return }
+                    
+                    UserSettings.shared.biometryEnabled = !isOn
+                    
+                    password.dismiss(animated: true) {
+                        let cell = tableView.cellForRow(at: indexPath) as! SettingsCell
+                        cell.rightView.switcher.setOn(!isOn, animated: true)
+                        self.dataSource[indexPath.section][indexPath.row] = .biometry(type: self.biometryType, isOn: !isOn)
+                    }
+                }
+                
+                present(password, animated: true)
+            } else {
+                let cell = tableView.cellForRow(at: indexPath) as! SettingsCell
+                cell.rightView.switcher.setOn(!isOn, animated: true)
+                UserSettings.shared.biometryEnabled = !isOn
+                self.dataSource[indexPath.section][indexPath.row] = .biometry(type: biometryType, isOn: !isOn)
+            }
             
         case .changePasscode:
             let vc = PasswordViewController(type: .change)
             vc.modalPresentationStyle = .fullScreen
             vc.modalTransitionStyle = .crossDissolve
             
-            vc.successHandler = { [weak self] newPassword in
-                guard let self = self else { return }
-                
+            vc.successHandler = { newPassword in
                 KeychainManager().storePassword(newPassword)
                 vc.dismiss(animated: true)
                 UINotificationFeedbackGenerator().notificationOccurred(.success)
