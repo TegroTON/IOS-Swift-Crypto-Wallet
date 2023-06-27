@@ -110,7 +110,7 @@ class PasswordView: RootView {
             setSubtitle(text: localizable.passwordConfirmSubtitle())
             
         case .login:
-            closeButton.setImage(R.image.logout(), for: .normal)
+            closeButton.setImage(R.image.logout24(), for: .normal)
             backButton.isHidden = true
             closeButton.isHidden = false
             titleLabel.text = localizable.passwordTitle()

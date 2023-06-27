@@ -3,13 +3,13 @@ import UIKit
 class SettingsButtonCell: UITableViewCell {
 
     let logoutButton: UIButton = {
-        var attributedString = AttributedString(localizable.settingsDelete())
+        var attributedString = AttributedString(localizable.settingsLogoutButton())
         var container = AttributeContainer()
         container[AttributeScopes.UIKitAttributes.FontAttribute.self] = UIFont.interFont(ofSize: 16, weight: .medium)
         attributedString.mergeAttributes(container, mergePolicy: .keepNew)
         
         var configuration = UIButton.Configuration.filled()
-        configuration.image = R.image.settingsDelete()?.withTintColor(R.color.textPrimary()!)
+        configuration.image = R.image.logout20()?.withTintColor(R.color.textPrimary()!)
         configuration.imagePadding = 10
         configuration.attributedTitle = attributedString
         configuration.imagePlacement = .trailing

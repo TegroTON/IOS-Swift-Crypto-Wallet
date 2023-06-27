@@ -92,7 +92,29 @@ class SettingsViewController: UIViewController {
     }
     
     private func deleteAccount() {
+        let alert = UIAlertController(
+            title: localizable.settingsDeleteAlertTitle(),
+            message: localizable.settingsDeleteAlertMessage(),
+            preferredStyle: .alert
+        )
         
+        let cancelAction = UIAlertAction(title: localizable.settingsLogoutAlertCancel(), style: .cancel)
+        let logoutAction = UIAlertAction(title: localizable.settingsDeleteAlertOk(), style: .destructive) { _ in
+            UserSettings.shared.logout()
+            
+            for wallet in WalletManager.shared.wallets {
+                KeychainManager().deleteMnemonics(for: wallet.id)
+                KeychainManager().deleteKeys(for: wallet.id)
+            }
+            KeychainManager().deletePassword()
+            
+            RootNavigationController.shared.setViewControllers([CreateViewController()], animated: true)
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(logoutAction)
+        
+        present(alert, animated: true)
     }
     
 }

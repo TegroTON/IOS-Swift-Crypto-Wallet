@@ -59,9 +59,13 @@ settings-help-center = "Help Center";
 settings-rate-app = "Rate this app";
 settings-delete = "Delete account";
 settings-logout = "Log out";
+settings-logout-button = "Logout";
 settings-logout-alert-title = "Log out?";
 settings-logout-alert-message = "This will erase keys to the wallet. Make sure you have backed up your secret recovery phrase";
 settings-logout-alert-cancel = "Cancel";
+settings-delete-alert-title = "Are you sure you want to delete your account?";
+settings-delete-alert-message = "This action will delete your account and all data from this application.";
+settings-delete-alert-ok = "Delete account and data";
 
 // Tab bar
 tab-bar-wallet = "Wallet";
