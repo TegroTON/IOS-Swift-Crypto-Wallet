@@ -3,6 +3,7 @@ import IGListKit
 protocol WalletCardsSectionDelegate: AnyObject {
     func walletCards(_ section: WalletCardsSection, sendFrom wallet: Wallet)
     func walletsCards(_ section: WalletCardsSection, receiveTo wallet: Wallet)
+    func walletsCards(_ section: WalletCardsSection, settingsFor wallet: Wallet)
 }
 
 class WalletCardsSection: ListSectionController {
@@ -41,14 +42,19 @@ class WalletCardsSection: ListSectionController {
         cell.cardView.nameLabel.text = wallet.name
         cell.cardView.addressLabel.text = wallet.selectedAddress?.address
         cell.cardView.balanceLabel.text = String(format: "%.1g", wallet.balance) + " TON"
+        
         cell.cardView.sendButton.tag = index
         cell.cardView.receiveButton.tag = index
+        cell.cardView.settingsButton.tag = index
         
         cell.cardView.sendButton.removeTarget(nil, action: nil, for: .touchUpInside)
         cell.cardView.sendButton.addTarget(self, action: #selector(sendButtonTapped), for: .touchUpInside)
         
         cell.cardView.receiveButton.removeTarget(nil, action: nil, for: .touchUpInside)
         cell.cardView.receiveButton.addTarget(self, action: #selector(receiveButtonTapped), for: .touchUpInside)
+        
+        cell.cardView.settingsButton.removeTarget(nil, action: nil, for: .touchUpInside)
+        cell.cardView.settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
         
         return cell
     }
@@ -65,5 +71,12 @@ class WalletCardsSection: ListSectionController {
         let wallet = model.wallets[index]
         
         delegate?.walletsCards(self, receiveTo: wallet)
+    }
+    
+    @objc private func settingsButtonTapped(_ sender: UIButton) {
+        let index = sender.tag
+        let wallet = model.wallets[index]
+        
+        delegate?.walletsCards(self, settingsFor: wallet)
     }
 }

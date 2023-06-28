@@ -6,6 +6,14 @@ class WalletSettingsViewController: UIViewController {
     
     private var mainView: WalletSettingsView { view as! WalletSettingsView }
     override func loadView() { view = WalletSettingsView() }
+//
+//    init(wallet: Wallet) {
+//        super.init(nibName: nil, bundle: nil)
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

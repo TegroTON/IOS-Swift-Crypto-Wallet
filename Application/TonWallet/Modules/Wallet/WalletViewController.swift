@@ -72,11 +72,18 @@ extension WalletViewController: WalletsSectionDelegate {
     }
     
     func wallets(_ section: WalletsSection, receiveTo wallet: Wallet) {
-        let vc = ReceiveViewController(wallet: wallet)
-        vc.modalPresentationStyle = .overFullScreen
-        vc.modalTransitionStyle = .crossDissolve
+        let receive = ReceiveViewController(wallet: wallet)
+        receive.modalPresentationStyle = .overFullScreen
+        receive.modalTransitionStyle = .crossDissolve
         
-        present(vc, animated: true)
+        present(receive, animated: true)
+    }
+    
+    func wallets(_ section: WalletsSection, settingsFor wallet: Wallet) {
+        let wallet = WalletSettingsViewController()
+        wallet.modalPresentationStyle = .fullScreen
+        
+        present(wallet, animated: true)
     }
 }
 
