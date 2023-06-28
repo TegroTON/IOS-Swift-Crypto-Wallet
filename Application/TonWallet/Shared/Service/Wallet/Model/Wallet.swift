@@ -2,7 +2,7 @@ import Foundation
 
 class Wallet: Codable, Equatable {
     let id: String
-    var name: String = "Wallet"
+    var name: String = "Ton Wallet"
     var selectedAddress: WalletAddress?
     var addresses: [WalletAddress]?
     

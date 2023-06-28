@@ -53,12 +53,12 @@ class WalletSettingsView: RootView {
             make.top.equalTo(walletCardView.snp.bottom).offset(24.0)
             make.left.right.equalToSuperview().inset(24.0)
         }
-        
+
         walletNameView.snp.makeConstraints { make in
             make.top.equalTo(warningView.snp.bottom).offset(32.0)
             make.left.right.equalToSuperview().inset(24.0)
         }
-        
+
         tableView.snp.makeConstraints { make in
             make.top.equalTo(walletNameView.snp.bottom).offset(24.0)
             make.left.right.equalToSuperview()

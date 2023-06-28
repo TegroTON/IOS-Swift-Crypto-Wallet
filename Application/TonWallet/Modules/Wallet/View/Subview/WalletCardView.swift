@@ -27,7 +27,6 @@ class WalletCardView: UIView {
         let view = UIImageView()
         view.image = R.image.cardDimond()
         view.contentMode = .scaleAspectFill
-        view.clipsToBounds = true
         
         return view
     }()
@@ -37,8 +36,6 @@ class WalletCardView: UIView {
         view.image = R.image.stackedWaves()
         view.contentMode = .scaleAspectFill
         view.alpha = 0.8
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 12
         
         return view
     }()
@@ -128,6 +125,7 @@ class WalletCardView: UIView {
         let view = UIView()
         view.backgroundColor = .init(hex6: 0x0066FF)
         view.layer.cornerRadius = 12
+        view.clipsToBounds = true
         
         return view
     }()
@@ -141,13 +139,16 @@ class WalletCardView: UIView {
         
         containerView.addSubview(wavesImageView)
         containerView.addSubview(dimondImageView)
-        containerView.addSubview(settingsButton)
         containerView.addSubview(nameLabel)
         containerView.addSubview(balanceLabel)
         containerView.addSubview(addressLabel)
         containerView.addSubview(copyImage)
-        containerView.addSubview(sendButton)
-        containerView.addSubview(receiveButton)
+        
+        if type == .default {
+            containerView.addSubview(settingsButton)
+            containerView.addSubview(sendButton)
+            containerView.addSubview(receiveButton)
+        }
         
         setupConstraints()
     }
@@ -164,11 +165,10 @@ class WalletCardView: UIView {
         }
     }
     
-    private func setupContent() {
-        settingsButton.isHidden = type == .settings
-    }
-    
     private func setupConstraints() {
+        wavesImageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        dimondImageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        
         containerView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -180,17 +180,8 @@ class WalletCardView: UIView {
             make.height.equalTo(20)
         }
         
-        dimondImageView.snp.makeConstraints { make in
-            make.top.bottom.right.equalToSuperview()
-        }
-        
         wavesImageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
-        settingsButton.snp.makeConstraints { make in
-            make.top.right.equalToSuperview()
-            make.size.equalTo(16.0 + 10.0 + 10.0)
+            make.center.equalToSuperview()
         }
         
         nameLabel.snp.makeConstraints { make in
@@ -202,31 +193,57 @@ class WalletCardView: UIView {
             make.left.equalToSuperview().offset(16.0)
             make.top.equalTo(nameLabel.snp.bottom).offset(12.0)
         }
-        
-        addressLabel.snp.makeConstraints { make in
-            make.top.equalTo(balanceLabel.snp.bottom).offset(16.0)
-            make.left.equalToSuperview().offset(16.0)
-            make.right.equalTo(sendButton.snp.left)
-        }
-        
+
         copyImage.snp.makeConstraints { make in
             make.left.equalTo(addressLabel.snp.right).offset(11.0)
             make.size.equalTo(14.0)
             make.centerY.equalTo(addressLabel.snp.centerY)
         }
-                
-        sendButton.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(-8.0)
-            make.width.equalToSuperview().multipliedBy(0.4385964912)
-            make.height.equalTo(45.0)
-            make.bottom.equalToSuperview().offset(-8.0)
-        }
         
-        receiveButton.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(8.0)
-            make.bottom.equalToSuperview().offset(-8.0)
-            make.height.equalTo(45.0)
-            make.width.equalToSuperview().multipliedBy(0.4385964912)
+        switch type {
+        case .default:
+            dimondImageView.snp.makeConstraints { make in
+                make.right.equalToSuperview()
+                make.centerY.equalToSuperview()
+            }
+            
+            settingsButton.snp.makeConstraints { make in
+                make.top.right.equalToSuperview()
+                make.size.equalTo(16.0 + 10.0 + 10.0)
+            }
+            
+            addressLabel.snp.makeConstraints { make in
+                make.top.equalTo(balanceLabel.snp.bottom).offset(16.0)
+                make.left.equalToSuperview().offset(16.0)
+                make.right.equalTo(sendButton.snp.left)
+            }
+
+            sendButton.snp.makeConstraints { make in
+                make.right.equalToSuperview().offset(-8.0)
+                make.width.equalToSuperview().multipliedBy(0.4385964912)
+                make.height.equalTo(45.0)
+                make.bottom.equalToSuperview().offset(-8.0)
+            }
+
+            receiveButton.snp.makeConstraints { make in
+                make.left.equalToSuperview().offset(8.0)
+                make.bottom.equalToSuperview().offset(-8.0)
+                make.height.equalTo(45.0)
+                make.width.equalToSuperview().multipliedBy(0.4385964912)
+            }
+            
+        case .settings:
+            addressLabel.snp.makeConstraints { make in
+                make.top.equalTo(balanceLabel.snp.bottom).offset(16.0)
+                make.left.equalToSuperview().offset(16.0)
+                make.right.equalTo(dimondImageView.snp.left).offset(-34.0)
+                make.bottom.equalToSuperview().offset(-16.0)
+            }
+            
+            dimondImageView.snp.makeConstraints { make in
+                make.right.equalToSuperview()
+                make.top.equalToSuperview().offset(12.0)
+            }
         }
     }
 }
