@@ -78,7 +78,7 @@ class SettingsCell: UITableViewCell {
         titlesStack.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(20.0)
             make.left.equalTo(iconImageView.snp.right).offset(16.0)
-            make.right.equalTo(rightView.snp.left).offset(-47.0)
+            make.right.equalToSuperview().offset(-120)
         }
         
         rightView.snp.makeConstraints { make in

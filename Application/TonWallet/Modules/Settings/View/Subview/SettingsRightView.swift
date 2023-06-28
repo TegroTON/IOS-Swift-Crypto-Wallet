@@ -89,6 +89,7 @@ class SettingsRightView: RootView {
             badgeContainer.snp.makeConstraints { make in
                 make.centerY.left.equalToSuperview()
                 make.right.equalToSuperview().offset(-24.0)
+                make.width.greaterThanOrEqualTo(25.0)
             }
         }
     }

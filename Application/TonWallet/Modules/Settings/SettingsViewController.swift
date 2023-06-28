@@ -55,7 +55,7 @@ class SettingsViewController: UIViewController {
     private func setupDataSource() {
         dataSource = [
             [
-                .cell(type: .wallets(count: 1)),
+                .cell(type: .wallets(count: UserSettings.shared.wallets.count)),
                 .cell(type: .security)
             ], [
                 .cell(type: .contactUs),
@@ -78,7 +78,10 @@ class SettingsViewController: UIViewController {
     }
     
     private func openMyWallets() {
+        let wallet = WalletSettingsViewController()
+        wallet.modalPresentationStyle = .fullScreen
         
+        present(wallet, animated: true)
     }
     
     private func openSecurity() {

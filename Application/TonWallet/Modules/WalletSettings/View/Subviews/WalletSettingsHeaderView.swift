@@ -1,8 +1,8 @@
 import UIKit
 import SwiftUI
 
-class SettingsHeaderView: RootView {
-
+class WalletSettingsHeaderView: RootView {
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = localizable.settingsTitle()
@@ -13,8 +13,17 @@ class SettingsHeaderView: RootView {
         return label
     }()
     
+    let closeButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.image = R.image.close()?.withTintColor(R.color.textPrimary()!)
+        configuration.contentInsets = .init(EdgeInsets(top: 15.0, leading: 24.0, bottom: 15.0, trailing: 24.0))
+        
+        return UIButton(configuration: configuration)
+    }()
+    
     override func setup() {
         addSubview(titleLabel)
+        addSubview(closeButton)
         
         setupConstraints()
     }
@@ -25,6 +34,10 @@ class SettingsHeaderView: RootView {
             make.top.equalToSuperview().offset(15.0)
             make.bottom.equalToSuperview().offset(-15.0)
         }
+        
+        closeButton.snp.makeConstraints { make in
+            make.right.bottom.top.equalToSuperview()
+        }
     }
-
+    
 }

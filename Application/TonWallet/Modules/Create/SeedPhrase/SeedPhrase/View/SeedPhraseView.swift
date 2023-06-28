@@ -4,7 +4,7 @@ import Atributika
 class SeedPhraseView: RootView {
     
     let headerView: SeedPhraseHeaderView = SeedPhraseHeaderView()
-    let warningView: SeedPhraseWarningView = SeedPhraseWarningView()
+    let warningView: WarningView = WarningView()
     
     let leftStackView: UIStackView = {
         let view = UIStackView()

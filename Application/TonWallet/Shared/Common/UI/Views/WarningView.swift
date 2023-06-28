@@ -1,7 +1,7 @@
 import UIKit
 import Atributika
 
-class SeedPhraseWarningView: RootView {
+class WarningView: RootView {
 
     let infoImageView: UIImageView = {
         let view = UIImageView()
@@ -39,6 +39,20 @@ class SeedPhraseWarningView: RootView {
         addSubview(warningLabel)
         
         setupConstraints()
+    }
+    
+    func setWarningText(_ text: String) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .left
+        paragraphStyle.lineHeightMultiple = 1.27
+        paragraphStyle.lineBreakMode = .byWordWrapping
+        
+        let style = Style()
+            .paragraphStyle(paragraphStyle)
+            .font(.interFont(ofSize: 15, weight: .regular))
+            .foregroundColor(R.color.textPrimary()!)
+        
+        warningLabel.attributedText = text.styleAll(style)
     }
     
     private func setupConstraints() {

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "close-lg.png",
+      "filename" : "reload-ui.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "close-lg@2x.png",
+      "filename" : "reload-ui@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "close-lg@3x.png",
+      "filename" : "reload-ui@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

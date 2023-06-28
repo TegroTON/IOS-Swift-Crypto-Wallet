@@ -118,3 +118,10 @@ security-touch-id = "Use Touch ID";
 security-biometry-subtitle = "You can always unlock your wallet with a passcode.";
 security-change = "Change passcode";
 security-reset = "Reset passcode";
+
+// Wallet settings
+wallet-settings-back-up = "Back up your recovery phrase!";
+wallet-settings-wallet-name = "Wallet name";
+wallet-settings-active-address = "Active address";
+wallet-settings-recovery = "Show recovery phrase";
+wallet-settings-delete = "Delete account";
