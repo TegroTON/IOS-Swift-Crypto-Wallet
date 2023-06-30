@@ -14,7 +14,7 @@ class WalletSettingsView: RootView {
     }()
     
     let tableView: TableView = {
-        let view = TableView(frame: .zero, style: .plain)
+        let view = TableView()
         view.backgroundColor = .clear
         view.register(SettingsCell.self, forCellReuseIdentifier: SettingsCell.description())
         view.separatorStyle = .none
@@ -36,6 +36,14 @@ class WalletSettingsView: RootView {
         addSubview(tableView)
         
         setupConstraints()
+    }
+    
+    func setupWalletInfo(with wallet: Wallet) {
+        walletCardView.nameLabel.text = wallet.name
+        walletCardView.balanceLabel.text = String(format: "%.1g", wallet.balance ?? 0.0) + " TON"
+        walletCardView.addressLabel.text = (try? wallet.activeContract?.contract.address().toString()) ?? ""
+        
+        walletNameView.textField.text = wallet.name
     }
     
     private func setupConstraints() {

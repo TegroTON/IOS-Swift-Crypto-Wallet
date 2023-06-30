@@ -1,9 +1,9 @@
 import IGListKit
 
 protocol WalletCardsSectionDelegate: AnyObject {
-    func walletCards(_ section: WalletCardsSection, sendFrom wallet: WalletNew)
-    func walletsCards(_ section: WalletCardsSection, receiveTo wallet: WalletNew)
-    func walletsCards(_ section: WalletCardsSection, settingsFor wallet: WalletNew)
+    func walletCards(_ section: WalletCardsSection, sendFrom wallet: Wallet)
+    func walletsCards(_ section: WalletCardsSection, receiveTo wallet: Wallet)
+    func walletsCards(_ section: WalletCardsSection, settingsFor wallet: Wallet)
 }
 
 class WalletCardsSection: ListSectionController {

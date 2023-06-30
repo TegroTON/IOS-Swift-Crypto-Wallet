@@ -1,41 +1,11 @@
 import Foundation
 
-@available(*, deprecated, message: "This method not use new models for wallets")
-class Wallet: Codable, Equatable {
-    let id: String
-    var name: String = "Ton Wallet"
-    
-    var selectedAddress: WalletAddress?
-    var addresses: [WalletAddress]?
-    
-    /// balance in selected address
-    var balance: Double = 0
-    
-    init(id: String) {
-        self.id = id
-    }
-    
-    static func == (lhs: Wallet, rhs: Wallet) -> Bool {
-        return lhs.id == rhs.id
-    }
-}
-
-class WalletAddress: Codable {
-    let name: String
-    let address: String
-    
-    init(name: String, address: String) {
-        self.name = name
-        self.address = address
-    }
-}
-
 struct SavedWallet: Codable {
     let id: String
     let name: String
 }
 
-class WalletNew: Equatable {
+class Wallet: Equatable {
     let id: String
     var name: String
     var nanoBalance: Double?
@@ -56,12 +26,13 @@ class WalletNew: Equatable {
         self.contractVersions = contractVersions
     }
     
-    static func == (lhs: WalletNew, rhs: WalletNew) -> Bool {
+    static func == (lhs: Wallet, rhs: Wallet) -> Bool {
         return lhs.id == rhs.id
     }
 }
 
 enum ContractVersion {
+    
     case v4r2(WalletV4R2)
     case v3r2(WalletV3)
     case v3r1(WalletV3)
@@ -71,6 +42,14 @@ enum ContractVersion {
         case .v4r2(let contract): return contract
         case .v3r2(let contract): return contract
         case .v3r1(let contract): return contract
+        }
+    }
+    
+    var versionName: String {
+        switch self {
+        case .v4r2: return "v4R2"
+        case .v3r2: return "v3R2"
+        case .v3r1: return "v3R1"
         }
     }
 }

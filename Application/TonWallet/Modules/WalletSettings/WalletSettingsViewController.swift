@@ -2,29 +2,38 @@ import UIKit
 
 class WalletSettingsViewController: UIViewController {
     
+    private let wallet: Wallet
     private var dataSource: [WalletSettingsCellType] = []
+    private var mnemonics: [String] = []
     
     private var mainView: WalletSettingsView { view as! WalletSettingsView }
     override func loadView() { view = WalletSettingsView() }
-//
-//    init(wallet: Wallet) {
-//        super.init(nibName: nil, bundle: nil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+
+    init(wallet: Wallet) {
+        self.wallet = wallet
+        super.init(nibName: nil, bundle: nil)
+        
+        mainView.setupWalletInfo(with: wallet)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupDataSource()
         
-        mainView.addTapGesture(target: self, action: #selector(viewTapped))
+//        mainView.addTapGesture(target: self, action: #selector(viewTapped))
         mainView.headerView.closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
-        
-        mainView.tableView.delegate = self
+
         mainView.tableView.dataSource = self
+        mainView.tableView.delegate = self
+        
+        DispatchQueue.global().async {
+            self.mnemonics = KeychainManager().getMnemonics(id: self.wallet.id) ?? []
+        }
     }
     
     // MARK: - Private actions
@@ -40,14 +49,14 @@ class WalletSettingsViewController: UIViewController {
     // MARK: - Private methods
     
     private func setupDataSource() {
-        dataSource = [.address(active: "v3R2"), .phrase]
+        dataSource = [.address(active: wallet.activeContract?.versionName ?? ""), .phrase]
     }
     
 }
 
 // MARK: - UITableViewDataSource
 
-extension WalletSettingsViewController: UITableViewDataSource {
+extension WalletSettingsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
@@ -67,16 +76,17 @@ extension WalletSettingsViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension WalletSettingsViewController: UITableViewDelegate {
+extension WalletSettingsViewController  {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        print("--- ALOHA")
         switch dataSource[indexPath.row] {
         case .address:
             break
             
         case .phrase:
-            break
+            let mnemonics = SeedPhraseViewController(mnemonics: mnemonics)
+            navigationController?.pushViewController(mnemonics, animated: true)
         }
     }
 }

@@ -43,9 +43,9 @@ class SettingsCell: UITableViewCell {
         
         backgroundColor = .clear
         
-        contentView.addSubview(iconImageView)
-        contentView.addSubview(titlesStack)
-        contentView.addSubview(rightView)
+        addSubview(iconImageView)
+        addSubview(titlesStack)
+        addSubview(rightView)
         
         setupConstraints()
     }

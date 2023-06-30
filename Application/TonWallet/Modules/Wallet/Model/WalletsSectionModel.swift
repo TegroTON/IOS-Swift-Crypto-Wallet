@@ -1,9 +1,9 @@
 import IGListDiffKit
 
 class WalletsSectionModel {
-    let wallets: [WalletNew]
+    let wallets: [Wallet]
     
-    init(wallets: [WalletNew]) {
+    init(wallets: [Wallet]) {
         self.wallets = wallets
     }
 }

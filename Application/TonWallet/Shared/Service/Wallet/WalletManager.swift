@@ -4,8 +4,8 @@ class WalletManager {
 
     static let shared = WalletManager()
     
-    private(set) var wallets: [WalletNew] = []
-    private(set) var currentWallet: WalletNew?
+    private(set) var wallets: [Wallet] = []
+    private(set) var currentWallet: Wallet?
     private let walletQueue: DispatchQueue = DispatchQueue(label: "\(Bundle.main.bundleIdentifier!).wallet")
     private let keychein = KeychainManager()
     private let userSettings = UserSettings.shared
@@ -34,38 +34,6 @@ class WalletManager {
                 print(error.localizedDescription)
                 completion(.failure(error))
             }
-        }
-    }
-    
-    
-    /// delete wallet from user defaults app
-    /// - Parameter id: wallet id
-    @available(*, deprecated, message: "This method not use TonSwift")
-    func delete(wallet id: String) {
-        let index = wallets.firstIndex(where: { $0.id == id })!
-        wallets.remove(at: index)
-        saveWallets()
-    }
-    
-    /// set new name for wallet
-    /// - Parameters:
-    ///   - name: new wallet name
-    ///   - id: wallet id
-    @available(*, deprecated, message: "This method not use TonSwift")
-    func set(name: String, for id: String) {
-        if let wallet = wallets.first(where: { $0.id == id }) {
-            
-        }
-    }
-    
-    /// select address for wallet like main address, this will be displayed on the home screen
-    /// - Parameters:
-    ///   - address: the address of one of the wallet contracts, if this address is not in any of the contracts, it will not be selected
-    ///   - id: wallet id
-    @available(*, deprecated, message: "This method not use TonSwift")
-    func select(address: WalletAddress, for id: String) {
-        if let wallet  = wallets.first(where: { $0.id == id }) {
-           
         }
     }
     
@@ -121,7 +89,7 @@ class WalletManager {
         loadAccounts()
     }
     
-    private func createWallet(id: String, name: String, mnemonics: [String]) throws -> WalletNew {
+    private func createWallet(id: String, name: String, mnemonics: [String]) throws -> Wallet {
         let keyPair = try Mnemonic.mnemonicToPrivateKey(mnemonicArray: mnemonics)
         
         let contracts: [ContractVersion] = [
@@ -130,24 +98,10 @@ class WalletManager {
             .v3r2(try WalletV3(workchain: 0, publicKey: keyPair.publicKey, revision: .r1))
         ]
         
-        let wallet = WalletNew(id: id, name: name, contractVersions: contracts)
+        let wallet = Wallet(id: id, name: name, contractVersions: contracts)
         wallet.activeContract = contracts[0]
         
         return wallet
-    }
-    
-    /// save or update wallets
-    @available(*, deprecated, message: "This method not use TonSwift")
-    private func saveWallets() {
-        walletQueue.async {
-            
-        }
-    }
-    
-    @available(*, deprecated, message: "This method not use TonSwift")
-    private func getAddresses(publicKey: String) -> [WalletAddress] {
-        let v4r2 = TonManager.shared.getAddress(.v4r2, publicKey: publicKey)
-        return [v4r2]
     }
     
 }

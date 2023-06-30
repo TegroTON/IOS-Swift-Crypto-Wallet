@@ -236,7 +236,7 @@ class WalletCardView: UIView {
             addressLabel.snp.makeConstraints { make in
                 make.top.equalTo(balanceLabel.snp.bottom).offset(16.0)
                 make.left.equalToSuperview().offset(16.0)
-                make.right.equalTo(dimondImageView.snp.left).offset(-34.0)
+                make.width.equalTo(168.0)
                 make.bottom.equalToSuperview().offset(-16.0)
             }
             

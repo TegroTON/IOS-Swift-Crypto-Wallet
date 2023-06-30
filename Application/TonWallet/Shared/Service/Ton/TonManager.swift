@@ -57,15 +57,15 @@ class TonManager {
         }
     }
     
-    @available(*, deprecated, message: "This method not use TonSwift")
-    func getAddress(_ type: AddressType, publicKey: String, isUserFriendly: Bool = true) -> WalletAddress {
-        switch type {
-        case .v4r2:
-            let address = ton.walletAddress(pbKey: publicKey, isUserFriendly: isUserFriendly)
-            let name = type.rawValue
-            return WalletAddress(name: name, address: address)
-        }
-    }
+//    @available(*, deprecated, message: "This method not use TonSwift")
+//    func getAddress(_ type: AddressType, publicKey: String, isUserFriendly: Bool = true) -> WalletAddress {
+//        switch type {
+//        case .v4r2:
+//            let address = ton.walletAddress(pbKey: publicKey, isUserFriendly: isUserFriendly)
+//            let name = type.rawValue
+//            return WalletAddress(name: name, address: address)
+//        }
+//    }
 
     @available(*, deprecated, message: "This method not use TonSwift")
     func convertKeyToHex(_ key: String) -> String {

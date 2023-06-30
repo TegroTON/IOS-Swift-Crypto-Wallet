@@ -11,7 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootVC: UIViewController
 
         if !UserSettings.shared.wallets.isEmpty {
-            var passwordVC: PasswordViewController = .init(type: .login)
+            let passwordVC: PasswordViewController = .init(type: .login)
             passwordVC.successHandler = { _ in
                 RootNavigationController.shared.setViewControllers([TabBarViewController()], animated: true)
             }

@@ -116,14 +116,12 @@ class PasswordViewController: UIViewController {
     // MARK: - Private methods
     
     private func activateKeyboard() {
-        mainView.textField.becomeFirstResponder()
-        
         switch type {
         case .login, .check:
             checkBiometry()
             
         default:
-            break
+            mainView.textField.becomeFirstResponder()
         }
     }
     
@@ -134,8 +132,12 @@ class PasswordViewController: UIViewController {
                 
                 if success {
                     successHandler?(userPassword)
+                } else {
+                    mainView.textField.becomeFirstResponder()
                 }
             }
+        } else {
+            mainView.textField.becomeFirstResponder()
         }
     }
     

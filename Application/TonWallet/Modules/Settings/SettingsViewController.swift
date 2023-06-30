@@ -70,10 +70,11 @@ class SettingsViewController: UIViewController {
     }
     
     private func openMyWallets() {
-        let wallet = WalletSettingsViewController()
+        let wallet = WalletSettingsViewController(wallet: WalletManager.shared.currentWallet!)
         wallet.modalPresentationStyle = .fullScreen
         
-        present(wallet, animated: true)
+        let navVC = RootNavigationController(rootViewController: wallet)
+        present(navVC, animated: true)
     }
     
     private func openSecurity() {

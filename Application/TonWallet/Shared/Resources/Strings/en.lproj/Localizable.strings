@@ -44,7 +44,7 @@ wallet-title = "Tegro Wallet";
 
 // Settings
 settings-title = "Settings";
-settings-wallets = "My wallets";
+settings-wallets = "My wallet";
 settings-tokens = "Custom tokens";
 settings-contacts = "Contacts";
 settings-security = "Security";

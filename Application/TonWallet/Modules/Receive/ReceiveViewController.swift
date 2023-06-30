@@ -2,7 +2,7 @@ import UIKit
 
 class ReceiveViewController: UIViewController {
     
-    let wallet: WalletNew
+    let wallet: Wallet
     let colorFilter = CIFilter(name: "CIFalseColor")
     let qrQueue = DispatchQueue(label: "\(Bundle.main.bundleIdentifier!).qrQueue")
     
@@ -10,7 +10,7 @@ class ReceiveViewController: UIViewController {
         return view as! ReceiveView
     }
     
-    init(wallet: WalletNew) {
+    init(wallet: Wallet) {
         self.wallet = wallet
         super.init(nibName: nil, bundle: nil)
     }

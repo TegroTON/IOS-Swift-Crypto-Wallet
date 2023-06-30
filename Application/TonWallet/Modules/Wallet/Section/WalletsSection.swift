@@ -1,9 +1,9 @@
 import IGListKit
 
 protocol WalletsSectionDelegate: AnyObject {
-    func wallets(_ section: WalletsSection, sendFrom wallet: WalletNew)
-    func wallets(_ section: WalletsSection, receiveTo wallet: WalletNew)
-    func wallets(_ section: WalletsSection, settingsFor wallet: WalletNew)
+    func wallets(_ section: WalletsSection, sendFrom wallet: Wallet)
+    func wallets(_ section: WalletsSection, receiveTo wallet: Wallet)
+    func wallets(_ section: WalletsSection, settingsFor wallet: Wallet)
 }
 
 class WalletsSection: ListSectionController {
@@ -64,15 +64,15 @@ extension WalletsSection: ListAdapterDataSource {
 // MARK: - WalletCardsSectionDelegate
 
 extension WalletsSection: WalletCardsSectionDelegate {
-    func walletsCards(_ section: WalletCardsSection, receiveTo wallet: WalletNew) {
+    func walletsCards(_ section: WalletCardsSection, receiveTo wallet: Wallet) {
         delegate?.wallets(self, receiveTo: wallet)
     }
     
-    func walletCards(_ section: WalletCardsSection, sendFrom wallet: WalletNew) {
+    func walletCards(_ section: WalletCardsSection, sendFrom wallet: Wallet) {
         delegate?.wallets(self, sendFrom: wallet)
     }
     
-    func walletsCards(_ section: WalletCardsSection, settingsFor wallet: WalletNew) {
+    func walletsCards(_ section: WalletCardsSection, settingsFor wallet: Wallet) {
         delegate?.wallets(self, settingsFor: wallet)
     }
 }

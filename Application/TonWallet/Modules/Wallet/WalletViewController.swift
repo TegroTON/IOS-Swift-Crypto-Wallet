@@ -64,14 +64,14 @@ extension WalletViewController: ListAdapterDataSource {
 // MARK: - WalletsSectionDelegate
 
 extension WalletViewController: WalletsSectionDelegate {
-    func wallets(_ section: WalletsSection, sendFrom wallet: WalletNew) {
+    func wallets(_ section: WalletsSection, sendFrom wallet: Wallet) {
         let navVC = RootNavigationController(rootViewController: SendViewController())
         navVC.modalPresentationStyle = .overFullScreen
         
         present(navVC, animated: true)
     }
     
-    func wallets(_ section: WalletsSection, receiveTo wallet: WalletNew) {
+    func wallets(_ section: WalletsSection, receiveTo wallet: Wallet) {
         let receive = ReceiveViewController(wallet: wallet)
         receive.modalPresentationStyle = .overFullScreen
         receive.modalTransitionStyle = .crossDissolve
@@ -79,11 +79,12 @@ extension WalletViewController: WalletsSectionDelegate {
         present(receive, animated: true)
     }
     
-    func wallets(_ section: WalletsSection, settingsFor wallet: WalletNew) {
-        let wallet = WalletSettingsViewController()
+    func wallets(_ section: WalletsSection, settingsFor wallet: Wallet) {
+        let wallet = WalletSettingsViewController(wallet: wallet)
         wallet.modalPresentationStyle = .fullScreen
         
-        present(wallet, animated: true)
+        let navVC = RootNavigationController(rootViewController: wallet)
+        present(navVC, animated: true)
     }
 }
 
