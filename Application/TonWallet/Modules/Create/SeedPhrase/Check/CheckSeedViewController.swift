@@ -1,34 +1,47 @@
 import UIKit
-import Atributika
-import LocalAuthentication
+
+protocol CheckSeedDelegate: AnyObject {
+    func checkSeed(_ controller: CheckSeedViewController, approved wallet: CreatedWallet)
+}
 
 class CheckSeedViewController: UIViewController {
 
     enum ViewType {
-        case check
-        case enter
+        case check(CreatedWallet)
+        case create
     }
 
-    var mainView: CheckSeedView {
-        return view as? CheckSeedView ?? CheckSeedView()
-    }
+    weak var delegate: CheckSeedDelegate?
+    
+    private let type: ViewType
+    
+    private let checkQueue = DispatchQueue(label: "\(Bundle.main.bundleIdentifier!).checkSeed")
+    private var wordsForCheck = [(index: Int, word: String)]()
+    private var userSeedPhrase = [Int: String]()
+    private var didAppeared: Bool = false
 
-    let type: ViewType
-    let phrases = TonManager.shared.mnemonics ?? []
-    var wordsForCheck = [(index: Int, word: String)]()
-    var userSeedPhrase = [Int: String]()
-    var didAppeared: Bool = false
-
-    override func loadView() {
-        view = CheckSeedView()
-    }
+    private var mainView: CheckSeedView { view as! CheckSeedView }
+    override func loadView() { view = CheckSeedView() }
     
     init(type: ViewType) {
         self.type = type
         super.init(nibName: nil, bundle: nil)
         
-        if type == .enter {
+        switch type {
+        case .create:
             wordsForCheck = Array(0...23).map { (index: $0, word: "") }
+            
+        case .check(let createdWallet):
+            let mnemonics = createdWallet.mnemonics
+            let firstIndex = Int.random(in: 0..<7)
+            let secondIndex = Int.random(in: 7..<15)
+            let thirdIndex = Int.random(in: 15...23)
+
+            wordsForCheck = [
+                (index: firstIndex, word: mnemonics[firstIndex]),
+                (index: secondIndex, word: mnemonics[secondIndex]),
+                (index: thirdIndex, word: mnemonics[thirdIndex])
+            ]
         }
     }
     
@@ -36,12 +49,14 @@ class CheckSeedViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(resignAllFirstResponder))
-        mainView.addGestureRecognizer(gesture)
-        
+        mainView.addTapGesture(target: self, action: #selector(resignAllFirstResponder))
         mainView.continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
         mainView.backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         
@@ -76,6 +91,7 @@ class CheckSeedViewController: UIViewController {
         mainView.endEditing(true)
     }
     
+    /// action in check state
     @objc private func continueButtonTapped() {
         for index in 0..<wordsForCheck.count {
             let word = wordsForCheck[index]
@@ -84,17 +100,19 @@ class CheckSeedViewController: UIViewController {
             }
         }
         
-        presentPassword()
+        if case let .check(createdWallet) = type {
+            delegate?.checkSeed(self, approved: createdWallet)
+        }
     }
     
-    @objc private func connectButtonTapped() {
+    /// action in create state
+    @objc private func connectButtonTapped(_ sender: UIButton) {
         resignAllFirstResponder()
         let words = Array(0...23).compactMap { userSeedPhrase[$0] }
         
         if words.count == 24 {
-            TonManager.shared.delegate = self
-            TonManager.shared.mnemonics = words
-            TonManager.shared.calculateKeyPair(mnemonics: words)
+            // TODO: check valid mnemonics
+            
         } else {
             // TODO: scroll to and show wrong phrase
         }
@@ -105,77 +123,19 @@ class CheckSeedViewController: UIViewController {
     }
     
     private func setupTableView() {
-        if type == .check {
-            let firstIndex = Int.random(in: 0..<7)
-            let secondIndex = Int.random(in: 7..<15)
-            let thirdIndex = Int.random(in: 15...23)
-
-            wordsForCheck = [
-                (index: firstIndex, word: phrases[firstIndex]),
-                (index: secondIndex, word: phrases[secondIndex]),
-                (index: thirdIndex, word: phrases[thirdIndex])
-            ]
-        }
-
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
-    }
-    
-    private func presentPassword() {
-        let vc = PasswordViewController(type: .create)
-        vc.successHandler = { [weak self] password in
-            guard let self = self else { return }
-            
-            WalletManager.shared.loadAccounts()
-            KeychainManager().storePassword(password)
-            showBiometry()
-        }
-        
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    private func showBiometry() {
-        let context = LAContext()
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
-            switch context.biometryType {
-            case .faceID, .touchID:
-                let biometry = BiometryViewController()
-                biometry.disappearHandler = { [weak self] in
-                    guard let self = self else { return }
-                    self.showSuccess()
-                }
-                
-                present(biometry, animated: true)
-                
-            case .none: showSuccess()
-            @unknown default: showSuccess()
-            }
-        } else {
-            showSuccess()
-        }
-    }
-    
-    private func showSuccess() {
-        let success = SuccessViewController()
-        success.modalPresentationStyle = .overFullScreen
-        
-        self.present(success, animated: false) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                self.navigationController?.setViewControllers([TabBarViewController()], animated: true)
-            }
-        }
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 }
 
 // MARK: - UITableViewDelegate
 
 extension CheckSeedViewController: UITableViewDataSource, UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {        
-        return type == .enter ? 3 : 2
+    func numberOfSections(in tableView: UITableView) -> Int {
+        switch type {
+        case .create: return 3
+        case .check: return 2
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -191,18 +151,21 @@ extension CheckSeedViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: SeedHeaderCell.description(), for: indexPath) as! SeedHeaderCell
             
             let text: String
-            if type == .check {
+            switch type {
+            case .check:
                 text = localizable.seedPhraseCheckSubtitle(
                     (wordsForCheck[0].index + 1).description,
                     (wordsForCheck[1].index + 1).description,
                     (wordsForCheck[2].index + 1).description
                 )
-            } else {
+                cell.imgView.image = R.image.seedPhraseCheck()
+                
+            case .create:
                 text = localizable.seedPhraseEnterSubtitle()
+                cell.imgView.image = R.image.seedPhraseEnter()
             }
             
             cell.setSubtitle(text: text)
-            cell.imgView.image = type == .check ? R.image.seedPhraseCheck() : R.image.seedPhraseEnter()
             
             return cell
         }
@@ -250,25 +213,13 @@ extension CheckSeedViewController: SeedWordCellDelegate {
         
         userSeedPhrase[index] = text
         
-        let word = wordsForCheck[rowIndex]
-        return type == .check ? userSeedPhrase[word.index] == word.word : true
-    }
-}
-
-// MARK: - TonManagerDelegate
-
-extension CheckSeedViewController: TonManagerDelegate {
-    func ton(keyPairCalculated result: Result<TonKeyPair, Error>) {
-        switch result {
-        case .success(let keyPair):
-            guard let mnemonics = TonManager.shared.mnemonics else { return }
+        switch type {
+        case .check:
+            let word = wordsForCheck[rowIndex]
+            return userSeedPhrase[word.index] == word.word
             
-            let createdWallet = WalletManager.shared.create(wallet: mnemonics)
-            WalletManager.shared.set(keys: keyPair, for: createdWallet.id)
-            presentPassword()
-            
-        case .failure(let error):
-            print("❤️ keyPairCalculated error", error)
+        case .create:
+            return true
         }
     }
 }

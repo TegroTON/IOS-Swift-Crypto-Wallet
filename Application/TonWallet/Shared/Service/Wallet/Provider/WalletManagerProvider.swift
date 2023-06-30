@@ -9,8 +9,8 @@ class WalletManagerProvider {
     
     weak var delegate: WalletManagerProviderDelegate?
     
-    func loadAccount(id: String, completion: ((Result<Account, Error>) -> Void)? = nil) {
-        let target = AccountAPI.account(id: id)
+    func loadAccount(address: String, completion: ((Result<Account, Error>) -> Void)? = nil) {
+        let target = AccountAPI.account(id: address)
         
         MoyaProvider().request(target) { [weak self] result in
             do {

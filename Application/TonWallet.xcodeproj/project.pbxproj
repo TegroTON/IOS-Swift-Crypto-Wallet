@@ -15,7 +15,7 @@
 		2C1BD16B298181B2001284C0 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BD16529818061001284C0 /* Rubik-Medium.ttf */; };
 		2C1BD16C298181B2001284C0 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BD16829818061001284C0 /* Rubik-Regular.ttf */; };
 		2C1BD16D298181B2001284C0 /* Rubik-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C1BD16429818061001284C0 /* Rubik-SemiBold.ttf */; };
-		2C1BD17229818334001284C0 /* SeedPhraseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD17129818334001284C0 /* SeedPhraseAlertViewController.swift */; };
+		2C1BD17229818334001284C0 /* WalletCreatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD17129818334001284C0 /* WalletCreatedViewController.swift */; };
 		2C1BD17529818357001284C0 /* SeedPhraseAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD17429818357001284C0 /* SeedPhraseAlertView.swift */; };
 		2C1BD179298189D2001284C0 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD178298189D2001284C0 /* RootNavigationController.swift */; };
 		2C1BD17D29818D84001284C0 /* SeedPhraseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1BD17C29818D84001284C0 /* SeedPhraseView.swift */; };
@@ -52,6 +52,7 @@
 		2C35577D2A4C1629003EB9FF /* WalletSettingsName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35577C2A4C1629003EB9FF /* WalletSettingsName.swift */; };
 		2C35577F2A4C19D7003EB9FF /* UIView+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35577E2A4C19D7003EB9FF /* UIView+Gesture.swift */; };
 		2C3557822A4C1AF1003EB9FF /* WalletSettingsCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3557812A4C1AF1003EB9FF /* WalletSettingsCellType.swift */; };
+		2C3557842A4DF967003EB9FF /* CreatedWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3557832A4DF967003EB9FF /* CreatedWallet.swift */; };
 		2C35C6A529A521FF00A0F181 /* SeedHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35C6A429A521FF00A0F181 /* SeedHeaderCell.swift */; };
 		2C35C6A829A71C1800A0F181 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35C6A729A71C1800A0F181 /* TabBarViewController.swift */; };
 		2C35C6AB29A7258D00A0F181 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C35C6AA29A7258D00A0F181 /* SettingsViewController.swift */; };
@@ -204,7 +205,7 @@
 		2C1BD16629818061001284C0 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		2C1BD16729818061001284C0 /* Rubik-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-ExtraBold.ttf"; sourceTree = "<group>"; };
 		2C1BD16829818061001284C0 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
-		2C1BD17129818334001284C0 /* SeedPhraseAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseAlertViewController.swift; sourceTree = "<group>"; };
+		2C1BD17129818334001284C0 /* WalletCreatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCreatedViewController.swift; sourceTree = "<group>"; };
 		2C1BD17429818357001284C0 /* SeedPhraseAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseAlertView.swift; sourceTree = "<group>"; };
 		2C1BD178298189D2001284C0 /* RootNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		2C1BD17C29818D84001284C0 /* SeedPhraseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedPhraseView.swift; sourceTree = "<group>"; };
@@ -243,6 +244,7 @@
 		2C35577C2A4C1629003EB9FF /* WalletSettingsName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSettingsName.swift; sourceTree = "<group>"; };
 		2C35577E2A4C19D7003EB9FF /* UIView+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gesture.swift"; sourceTree = "<group>"; };
 		2C3557812A4C1AF1003EB9FF /* WalletSettingsCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSettingsCellType.swift; sourceTree = "<group>"; };
+		2C3557832A4DF967003EB9FF /* CreatedWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedWallet.swift; sourceTree = "<group>"; };
 		2C35C6A429A521FF00A0F181 /* SeedHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedHeaderCell.swift; sourceTree = "<group>"; };
 		2C35C6A729A71C1800A0F181 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		2C35C6AA29A7258D00A0F181 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -449,19 +451,19 @@
 			isa = PBXGroup;
 			children = (
 				2C4DE2A429A4144100BD1F05 /* Check */,
-				2C1BD17029818319001284C0 /* Alert */,
+				2C1BD17029818319001284C0 /* WalletCreated */,
 				2C1BD17A29818D6F001284C0 /* SeedPhrase */,
 			);
 			path = SeedPhrase;
 			sourceTree = "<group>";
 		};
-		2C1BD17029818319001284C0 /* Alert */ = {
+		2C1BD17029818319001284C0 /* WalletCreated */ = {
 			isa = PBXGroup;
 			children = (
 				2C1BD17329818345001284C0 /* View */,
-				2C1BD17129818334001284C0 /* SeedPhraseAlertViewController.swift */,
+				2C1BD17129818334001284C0 /* WalletCreatedViewController.swift */,
 			);
-			path = Alert;
+			path = WalletCreated;
 			sourceTree = "<group>";
 		};
 		2C1BD17329818345001284C0 /* View */ = {
@@ -939,6 +941,7 @@
 			isa = PBXGroup;
 			children = (
 				2C35C6C829A8DAC400A0F181 /* Wallet.swift */,
+				2C3557832A4DF967003EB9FF /* CreatedWallet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1811,7 +1814,7 @@
 				2CCE902B29D1A77300C904B6 /* ReceiveWalletView.swift in Sources */,
 				2C4DE2A829A4147700BD1F05 /* CheckSeedViewController.swift in Sources */,
 				2CDB30B92A255ED50020EB3B /* WalletV3.swift in Sources */,
-				2C1BD17229818334001284C0 /* SeedPhraseAlertViewController.swift in Sources */,
+				2C1BD17229818334001284C0 /* WalletCreatedViewController.swift in Sources */,
 				2C35577D2A4C1629003EB9FF /* WalletSettingsName.swift in Sources */,
 				2C1BD1892982BAD3001284C0 /* PasswordView.swift in Sources */,
 				2CC0B8C42A22688700DE4E5D /* TonConnectProvider.swift in Sources */,
@@ -1838,6 +1841,7 @@
 				2CDB30C12A282A000020EB3B /* Data+Extentions.swift in Sources */,
 				2CDB30962A255ED50020EB3B /* Boc.swift in Sources */,
 				2CCE902029CD572E00C904B6 /* UIView+shake.swift in Sources */,
+				2C3557842A4DF967003EB9FF /* CreatedWallet.swift in Sources */,
 				2C1BD17F29818D90001284C0 /* SeedPhraseViewController.swift in Sources */,
 				2CDB309E2A255ED50020EB3B /* CRC.swift in Sources */,
 				2CDB309C2A255ED50020EB3B /* SHA256.swift in Sources */,

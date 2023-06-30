@@ -1,9 +1,9 @@
 import IGListKit
 
 protocol WalletCardsSectionDelegate: AnyObject {
-    func walletCards(_ section: WalletCardsSection, sendFrom wallet: Wallet)
-    func walletsCards(_ section: WalletCardsSection, receiveTo wallet: Wallet)
-    func walletsCards(_ section: WalletCardsSection, settingsFor wallet: Wallet)
+    func walletCards(_ section: WalletCardsSection, sendFrom wallet: WalletNew)
+    func walletsCards(_ section: WalletCardsSection, receiveTo wallet: WalletNew)
+    func walletsCards(_ section: WalletCardsSection, settingsFor wallet: WalletNew)
 }
 
 class WalletCardsSection: ListSectionController {
@@ -40,8 +40,8 @@ class WalletCardsSection: ListSectionController {
         let wallet = model.wallets[index]
         
         cell.cardView.nameLabel.text = wallet.name
-        cell.cardView.addressLabel.text = wallet.selectedAddress?.address
-        cell.cardView.balanceLabel.text = String(format: "%.1g", wallet.balance) + " TON"
+        cell.cardView.addressLabel.text = try? wallet.activeContract?.contract.address().toFriendly().toString()
+        cell.cardView.balanceLabel.text = String(format: "%.1g", wallet.balance ?? 0.0) + " TON"
         
         cell.cardView.sendButton.tag = index
         cell.cardView.receiveButton.tag = index

@@ -2,7 +2,7 @@ import UIKit
 
 class ReceiveViewController: UIViewController {
     
-    let wallet: Wallet
+    let wallet: WalletNew
     let colorFilter = CIFilter(name: "CIFalseColor")
     let qrQueue = DispatchQueue(label: "\(Bundle.main.bundleIdentifier!).qrQueue")
     
@@ -10,7 +10,7 @@ class ReceiveViewController: UIViewController {
         return view as! ReceiveView
     }
     
-    init(wallet: Wallet) {
+    init(wallet: WalletNew) {
         self.wallet = wallet
         super.init(nibName: nil, bundle: nil)
     }
@@ -60,11 +60,11 @@ class ReceiveViewController: UIViewController {
     
     //TODO: нужно придумать мб что то по типо Constraint.transferURL(for wallet:_)
     private func setupContent() {
-        let address = wallet.selectedAddress?.address ?? ""
+        let address = (try? wallet.activeContract?.contract.address().toString()) ?? ""
         mainView.set(address: address)
         
-//        let urlString = "ton://transfer/\(address)"
-        let urlString = "ton://transfer/EQCh_TYaBrxaobP2BpRP7sEfx3u5YmUw1WwaaZelo1KERQOy?amount=100&text=fuckU"
+        let urlString = "ton://transfer/\(address)"
+//        let urlString = "ton://transfer/EQCh_TYaBrxaobP2BpRP7sEfx3u5YmUw1WwaaZelo1KERQOy?amount=100&text=fuckU"
         generateQRCode(from: urlString) { image in
             self.mainView.set(qr: image)
         }

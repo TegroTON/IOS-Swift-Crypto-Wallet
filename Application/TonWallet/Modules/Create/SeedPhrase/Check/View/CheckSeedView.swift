@@ -65,7 +65,7 @@ class CheckSeedView: RootView {
             continueButton.isHidden = false
             titleLabel.text = localizable.seedPhraseCheckTitle()
             
-        case .enter:
+        case .create:
             continueButton.isHidden = true
             titleLabel.text = localizable.seedPhraseEnterTitle()
         }

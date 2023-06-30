@@ -18,6 +18,7 @@ class TonManager {
     var mnemonics: [String]?
     var keyPair: TonKeyPair?
 
+    @available(*, deprecated, message: "This method not use TonSwift")
     func generateMnemonic() {
         ton.generateMnemonic { mnemonics, error in
             DispatchQueue.main.async {
@@ -36,6 +37,7 @@ class TonManager {
         }
     }
 
+    @available(*, deprecated, message: "This method not use TonSwift")
     func calculateKeyPair(mnemonics: [String]) {
         self.ton.calculateKeyPair(mnemonics: mnemonics) { keyPair, error in
             DispatchQueue.main.async {
@@ -55,6 +57,7 @@ class TonManager {
         }
     }
     
+    @available(*, deprecated, message: "This method not use TonSwift")
     func getAddress(_ type: AddressType, publicKey: String, isUserFriendly: Bool = true) -> WalletAddress {
         switch type {
         case .v4r2:
@@ -64,22 +67,26 @@ class TonManager {
         }
     }
 
+    @available(*, deprecated, message: "This method not use TonSwift")
     func convertKeyToHex(_ key: String) -> String {
         let hexKey = ton.keyToHex(pbKey: key)
         return hexKey
     }
 
+    @available(*, deprecated, message: "This method not use TonSwift")
     func createStateInit(pbKey: String) {
         let stateInit = ton.createStateInit(publicKey: pbKey)
 
         delegate?.ton(stateInitDidCreated: .success(stateInit))
     }
 
+    @available(*, deprecated, message: "This method not use TonSwift")
     func convertBaseToHex(_ base64: String) -> String {
         let hex = ton.baseToHex(base64: base64)
         return hex
     }
 
+    @available(*, deprecated, message: "This method not use TonSwift")
     func convertHexToBase(_ hex: String) -> String {
         let base64 = ton.hexToBase(hex: hex)
         return  base64

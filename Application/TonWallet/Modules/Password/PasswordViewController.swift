@@ -330,13 +330,12 @@ class PasswordViewController: UIViewController {
         
         let cancelAction = UIAlertAction(title: localizable.settingsLogoutAlertCancel(), style: .cancel)
         let logoutAction = UIAlertAction(title: localizable.settingsLogout(), style: .destructive) { _ in
-            UserSettings.shared.logout()
-            
-            for wallet in WalletManager.shared.wallets {
-                KeychainManager().deleteMnemonics(for: wallet.id)
-                KeychainManager().deleteKeys(for: wallet.id)
+            for savedWallet in UserSettings.shared.wallets {
+                KeychainManager().deleteMnemonics(for: savedWallet.id)
             }
+            
             KeychainManager().deletePassword()
+            UserSettings.shared.logout()
             
             RootNavigationController.shared.setViewControllers([CreateViewController()], animated: true)
         }

@@ -64,14 +64,14 @@ extension WalletViewController: ListAdapterDataSource {
 // MARK: - WalletsSectionDelegate
 
 extension WalletViewController: WalletsSectionDelegate {
-    func wallets(_ section: WalletsSection, sendFrom wallet: Wallet) {
+    func wallets(_ section: WalletsSection, sendFrom wallet: WalletNew) {
         let navVC = RootNavigationController(rootViewController: SendViewController())
         navVC.modalPresentationStyle = .overFullScreen
         
         present(navVC, animated: true)
     }
     
-    func wallets(_ section: WalletsSection, receiveTo wallet: Wallet) {
+    func wallets(_ section: WalletsSection, receiveTo wallet: WalletNew) {
         let receive = ReceiveViewController(wallet: wallet)
         receive.modalPresentationStyle = .overFullScreen
         receive.modalTransitionStyle = .crossDissolve
@@ -79,7 +79,7 @@ extension WalletViewController: WalletsSectionDelegate {
         present(receive, animated: true)
     }
     
-    func wallets(_ section: WalletsSection, settingsFor wallet: Wallet) {
+    func wallets(_ section: WalletsSection, settingsFor wallet: WalletNew) {
         let wallet = WalletSettingsViewController()
         wallet.modalPresentationStyle = .fullScreen
         
@@ -94,9 +94,9 @@ extension WalletViewController: ScanDelegate {
         switch type {
         case .transfer(let address):
             print(address)
-        case .tonConnect(let query):
-            let vc = TonConnectViewController(model: query)
-            present(vc, animated: true)
+//        case .tonConnect(let query):
+//            let vc = TonConnectViewController(model: query)
+//            present(vc, animated: true)
         
         default: break
         }

@@ -3,7 +3,6 @@ import SnapKit
 
 class LoadAnimateView: RootView {
 
-    var needToStopAnimation: Bool = false
     let color: UIColor = .init(hex6: 0x0066FF)
     
     let firstBallView: UIView = {
@@ -34,6 +33,9 @@ class LoadAnimateView: RootView {
     var secondSizeConstraint: Constraint?
     var thirdSizeConstraint: Constraint?
     
+    private var completionModel: Any?
+    private var needToStopAnimation: Bool = false
+    
     override func setup() {
         addSubview(firstBallView)
         addSubview(secondBallView)
@@ -42,11 +44,11 @@ class LoadAnimateView: RootView {
         setupConstraints()
     }
     
-    func startAnimation(_ completion: @escaping () -> Void) {
+    func startAnimation(_ completion: @escaping (Any?) -> Void) {
         firstSizeConstraint?.update(offset: 12)
         secondSizeConstraint?.update(offset: 16)
                 
-        UIView.animate(withDuration: 0.3, delay: 0.3, options: .curveEaseInOut) {
+        UIView.animate(withDuration: 0.3, delay: 0.15, options: .curveEaseInOut) {
             self.firstBallView.layer.cornerRadius = 12/2
             self.secondBallView.layer.cornerRadius = 16/2
             
@@ -71,7 +73,7 @@ class LoadAnimateView: RootView {
                 self.layoutIfNeeded()
             } completion: { _ in
                 if self.needToStopAnimation {
-                    completion()
+                    completion(self.completionModel)
                 } else {
                     self.reset {
                         self.startAnimation(completion)
@@ -97,9 +99,13 @@ class LoadAnimateView: RootView {
             
             self.layoutIfNeeded()
         } completion: { _ in
-            self.startAnimation(completion)
+            completion()
         }
-
+    }
+    
+    func stopAnimation(with model: Any? = nil) {
+        completionModel = model
+        needToStopAnimation = true
     }
 
     private func setupConstraints() {

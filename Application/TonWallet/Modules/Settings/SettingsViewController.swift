@@ -33,15 +33,7 @@ class SettingsViewController: UIViewController {
         
         let cancelAction = UIAlertAction(title: localizable.settingsLogoutAlertCancel(), style: .cancel)
         let logoutAction = UIAlertAction(title: localizable.settingsLogout(), style: .destructive) { _ in
-            UserSettings.shared.logout()
-            
-            for wallet in WalletManager.shared.wallets {
-                KeychainManager().deleteMnemonics(for: wallet.id)
-                KeychainManager().deleteKeys(for: wallet.id)
-            }
-            KeychainManager().deletePassword()
-            
-            RootNavigationController.shared.setViewControllers([CreateViewController()], animated: true)
+            self.logout()
         }
         
         alert.addAction(cancelAction)
@@ -55,7 +47,7 @@ class SettingsViewController: UIViewController {
     private func setupDataSource() {
         dataSource = [
             [
-                .cell(type: .wallets(count: UserSettings.shared.wallets.count)),
+                .cell(type: .wallets(count: WalletManager.shared.wallets.count)),
                 .cell(type: .security)
             ], [
                 .cell(type: .contactUs),
@@ -103,21 +95,24 @@ class SettingsViewController: UIViewController {
         
         let cancelAction = UIAlertAction(title: localizable.settingsLogoutAlertCancel(), style: .cancel)
         let logoutAction = UIAlertAction(title: localizable.settingsDeleteAlertOk(), style: .destructive) { _ in
-            UserSettings.shared.logout()
-            
-            for wallet in WalletManager.shared.wallets {
-                KeychainManager().deleteMnemonics(for: wallet.id)
-                KeychainManager().deleteKeys(for: wallet.id)
-            }
-            KeychainManager().deletePassword()
-            
-            RootNavigationController.shared.setViewControllers([CreateViewController()], animated: true)
+            self.logout()
         }
         
         alert.addAction(cancelAction)
         alert.addAction(logoutAction)
         
         present(alert, animated: true)
+    }
+    
+    private func logout() {
+        for savedWallet in UserSettings.shared.wallets {
+            KeychainManager().deleteMnemonics(for: savedWallet.id)
+        }
+        
+        KeychainManager().deletePassword()
+        UserSettings.shared.logout()
+        
+        RootNavigationController.shared.setViewControllers([CreateViewController()], animated: true)
     }
     
 }

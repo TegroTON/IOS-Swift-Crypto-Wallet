@@ -1,7 +1,7 @@
 import UIKit
 import Atributika
 
-class SeedPhraseAlertView: RootView {
+class WalletCreatedView: RootView {
 
     let titlesBgView: UIView = UIView()
     let titlesContainer: UIView = UIView()

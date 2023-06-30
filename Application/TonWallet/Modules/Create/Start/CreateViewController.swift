@@ -2,13 +2,8 @@ import UIKit
 
 class CreateViewController: UIViewController {
     
-    var mainView: CreateView {
-        return view as! CreateView
-    }
-    
-    override func loadView() {
-        view = CreateView()
-    }
+    private var mainView: CreateView { view as! CreateView }
+    override func loadView() { view = CreateView() }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return traitCollection.userInterfaceStyle == .light ? .darkContent : .lightContent
@@ -26,7 +21,7 @@ class CreateViewController: UIViewController {
     }
     
     @objc private func connectButtonTapped() {
-        navigationController?.pushViewController(CheckSeedViewController(type: .enter), animated: true)
+        navigationController?.pushViewController(CheckSeedViewController(type: .create), animated: true)
     }
     
 }

@@ -9,32 +9,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let rootVC: UIViewController
-         
-        
-        
-        if WalletManager.shared.wallets.isEmpty {
-            rootVC = CreateViewController()
-        } else {
-            var passwordVC: PasswordViewController
-            let password = KeychainManager().getPassword()
-            
-            if password == nil || password?.isEmpty == true {
-                passwordVC = PasswordViewController(type: .create)
-            } else {
-                passwordVC = PasswordViewController(type: .login)
-            }
-            
+
+        if !UserSettings.shared.wallets.isEmpty {
+            var passwordVC: PasswordViewController = .init(type: .login)
             passwordVC.successHandler = { _ in
                 RootNavigationController.shared.setViewControllers([TabBarViewController()], animated: true)
             }
             
             rootVC = passwordVC
+        } else {
+            rootVC = CreateViewController()
         }
-        
-//        UserSettings.shared.connections = []
-//        UserSettings.shared.lastEventId = nil
+
         SSEClient.shared.connectToSSE()
-        WalletManager.shared.loadAccounts()
+        WalletManager.shared.initialize()
         
         let configuration: YMMYandexMetricaConfiguration = .init(apiKey: "8db5538a-7a1a-4220-aa66-54605eedc190")!
         YMMYandexMetrica.activate(with: configuration)

@@ -54,12 +54,10 @@ extension SSEClient: URLSessionDataDelegate {
         dataString = dataString.replacingOccurrences(of: "\n", with: "")
         dataString = dataString.replacingOccurrences(of: "id", with: "\"id\"")
         dataString = dataString.replacingOccurrences(of: "data", with: ",\"data\"")
-        let newData = dataString.data(using: .utf8)!
                 
         do {
+            let newData = dataString.data(using: .utf8)!
             let messageData = try JSONDecoder().decode(MessageData.self, from: newData)
-            
-//            print("💙 messageData did decoded: \(messageData)")
             
             let from = messageData.data.from
             let message = messageData.data.message
@@ -77,12 +75,9 @@ extension SSEClient: URLSessionDataDelegate {
                     let paramsData = params.data(using: .utf8)!
                     let params = try JSONDecoder().decode(SendTransactionParams.self, from: paramsData)
                     
-//                    print("💙 params decoded: \(params)")
-                    
-                    let id = WalletManager.shared.wallets.first!.id
-                    let keyPair = KeychainManager().getKey(id: id)!
-                    let wallet = WalletV4R2(publicKey: Data(base64Encoded: keyPair.publicKey)!)
-                    let target = WalletAPI.getSeqno(address: try wallet.address().toRaw().lowercased())
+                    #warning("need get address from connection????")
+                    let address = try WalletManager.shared.currentWallet?.activeContract?.contract.address()
+                    let target = WalletAPI.getSeqno(address: address?.toRaw().lowercased() ?? "")
                     
                     MoyaProvider().request(target) { result in
                         do {
@@ -110,6 +105,7 @@ extension SSEClient: URLSessionDataDelegate {
                                 timeout: nil
                             )
 
+                            let wallet = WalletManager.shared.currentWallet!.activeContract?.contract as! WalletV4R2
                             let boc = try wallet.createExternalMessage(args: transferData).toBoc().base64EncodedString()
                             let target = WalletAPI.estimate(boc: boc)
 

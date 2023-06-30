@@ -5,8 +5,8 @@ class UserSettings {
     static let shared = UserSettings()
     
     @UserDefaultWrapper(key: "wallets", defaultValue: [])
-    var wallets: [Wallet]
-    
+    var wallets: [SavedWallet]
+        
     @UserDefaultWrapper(key: "blockDate", defaultValue: nil)
     var blockDate: Date?
     

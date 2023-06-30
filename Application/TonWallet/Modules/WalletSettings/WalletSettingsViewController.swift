@@ -62,6 +62,7 @@ extension WalletSettingsViewController: UITableViewDataSource {
         
         return cell
     }
+
 }
 
 // MARK: - UITableViewDelegate
@@ -76,8 +77,6 @@ extension WalletSettingsViewController: UITableViewDelegate {
             
         case .phrase:
             break
-            
-        default: break
         }
     }
 }
