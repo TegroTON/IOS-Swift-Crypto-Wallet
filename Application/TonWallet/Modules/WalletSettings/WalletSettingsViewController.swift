@@ -79,7 +79,6 @@ extension WalletSettingsViewController: UITableViewDataSource, UITableViewDelega
 extension WalletSettingsViewController  {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("--- ALOHA")
         switch dataSource[indexPath.row] {
         case .address:
             break

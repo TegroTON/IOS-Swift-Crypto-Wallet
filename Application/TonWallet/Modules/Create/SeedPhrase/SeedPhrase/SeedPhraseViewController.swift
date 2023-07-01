@@ -22,6 +22,7 @@ class SeedPhraseViewController: UIViewController {
         
         mainView.nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
         mainView.headerView.backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        mainView.headerView.copyButton.addTarget(self, action: #selector(copyButtonTapped), for: .touchUpInside)
         
         mainView.nextButton.isHidden = continueAction == nil
         
@@ -34,6 +35,12 @@ class SeedPhraseViewController: UIViewController {
     
     @objc private func backButtonTapped() {
         navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @objc private func copyButtonTapped() {
+        UIPasteboard.general.strings = mnemonics
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
+        //TODO: SHOW TOAST
     }
         
     private func configureSeedStack() {
