@@ -16,6 +16,7 @@ class WalletHeaderView: RootView {
         let button = UIButton(type: .system)
         button.setImage(R.image.plus(), for: .normal)
         button.tintColor = R.color.textPrimary()
+        button.isHidden = true
         
         return button
     }()
@@ -24,6 +25,7 @@ class WalletHeaderView: RootView {
         let button = UIButton(type: .system)
         button.setImage(R.image.scanBarcode(), for: .normal)
         button.tintColor = R.color.textPrimary()
+        button.isHidden = true
         
         return button
     }()

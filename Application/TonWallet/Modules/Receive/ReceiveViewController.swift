@@ -29,6 +29,9 @@ class ReceiveViewController: UIViewController {
         setupContent()
         
         mainView.headerView.closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        mainView.shareButton.addTarget(self, action: #selector(shareButtonTapped), for: .touchUpInside)
+        mainView.copyButton.addTarget(self, action: #selector(copyAddress), for: .touchUpInside)
+        mainView.walletAddressView.addTapGesture(target: self, action: #selector(copyAddress))
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -54,6 +57,20 @@ class ReceiveViewController: UIViewController {
     
     @objc private func closeButtonTapped() {
         dismiss(animated: true)
+    }
+    
+    @objc private func copyAddress() {
+        let address = try? wallet.activeContract?.contract.address().toString()
+        UIPasteboard.general.string = address
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
+        //TODO: SHOW TOAST
+    }
+    
+    @objc private func shareButtonTapped() {
+        let address = try? wallet.activeContract?.contract.address().toString()
+        let activityViewController = UIActivityViewController(activityItems: [address ?? ""], applicationActivities: nil)
+        
+        present(activityViewController, animated: true, completion: nil)
     }
     
     // MARK: - Private methods
