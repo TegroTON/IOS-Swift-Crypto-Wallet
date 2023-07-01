@@ -57,13 +57,13 @@ class WalletCardView: UIView {
         return label
     }()
     
-    let balanceLabel: UILabel = {
-        let label = UILabel()
-        label.text = "697 TON"
-        label.font = .interFont(ofSize: 24, weight: .semiBold)
-        label.textColor = .white
+    let balanceButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.baseBackgroundColor = .clear
+        configuration.baseForegroundColor = .white
+        configuration.contentInsets = .zero
         
-        return label
+        return UIButton(configuration: configuration)
     }()
     
     let addressLabel: UILabel = {
@@ -140,7 +140,7 @@ class WalletCardView: UIView {
         containerView.addSubview(wavesImageView)
         containerView.addSubview(dimondImageView)
         containerView.addSubview(nameLabel)
-        containerView.addSubview(balanceLabel)
+        containerView.addSubview(balanceButton)
         containerView.addSubview(addressLabel)
         containerView.addSubview(copyImage)
         
@@ -165,6 +165,18 @@ class WalletCardView: UIView {
         }
     }
     
+    func setBalance(_ balance: Double) {
+        let fontKey = AttributeScopes.UIKitAttributes.FontAttribute.self
+        var container = AttributeContainer()
+        container[fontKey] = UIFont.interFont(ofSize: 24, weight: .semiBold)
+        
+        let balance = String(format: "%.1g", balance) + " TON"
+        var attributedString = AttributedString(balance)
+        attributedString.mergeAttributes(container, mergePolicy: .keepNew)
+        
+        balanceButton.configuration?.attributedTitle = attributedString
+    }
+    
     private func setupConstraints() {
         wavesImageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         dimondImageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
@@ -185,13 +197,14 @@ class WalletCardView: UIView {
         }
         
         nameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16.0)
-            make.left.equalToSuperview().offset(16.0)
+            make.top.equalToSuperview().offset(14.0)
+            make.left.equalToSuperview().offset(14.0)
         }
         
-        balanceLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(16.0)
+        balanceButton.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(14.0)
             make.top.equalTo(nameLabel.snp.bottom).offset(12.0)
+            make.height.equalTo(24.0)
         }
 
         copyImage.snp.makeConstraints { make in
@@ -213,8 +226,8 @@ class WalletCardView: UIView {
             }
             
             addressLabel.snp.makeConstraints { make in
-                make.top.equalTo(balanceLabel.snp.bottom).offset(16.0)
-                make.left.equalToSuperview().offset(16.0)
+                make.top.equalTo(balanceButton.snp.bottom).offset(20.0)
+                make.left.equalToSuperview().offset(14.0)
                 make.right.equalTo(sendButton.snp.left)
             }
 
@@ -234,8 +247,8 @@ class WalletCardView: UIView {
             
         case .settings:
             addressLabel.snp.makeConstraints { make in
-                make.top.equalTo(balanceLabel.snp.bottom).offset(16.0)
-                make.left.equalToSuperview().offset(16.0)
+                make.top.equalTo(balanceButton.snp.bottom).offset(20.0)
+                make.left.equalToSuperview().offset(14.0)
                 make.width.equalTo(168.0)
                 make.bottom.equalToSuperview().offset(-16.0)
             }

@@ -76,12 +76,15 @@ extension WalletSettingsViewController: UITableViewDataSource, UITableViewDelega
 
 // MARK: - UITableViewDelegate
 
-extension WalletSettingsViewController  {
+extension WalletSettingsViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch dataSource[indexPath.row] {
         case .address:
-            break
+            let addresses = WalletAddressesViewController(wallet: wallet)
+            addresses.delegate = self
+            
+            present(addresses, animated: true)
             
         case .phrase:
             let mnemonics = SeedPhraseViewController(mnemonics: mnemonics)
@@ -90,3 +93,25 @@ extension WalletSettingsViewController  {
     }
 }
 
+extension WalletSettingsViewController: WalletAddressesDelegate {
+    func walletAddresses(_ controller: WalletAddressesViewController, didSelect address: ContractVersion) {
+        mainView.walletCardView.balanceButton.configuration?.showsActivityIndicator = true
+        mainView.walletCardView.balanceButton.configuration?.attributedTitle = nil
+        
+        WalletManager.shared.select(active: address, for: wallet)
+        WalletManager.shared.updateBalance(for: wallet) { [weak self] in
+            guard let self = self else { return }
+            
+            self.mainView.walletCardView.balanceButton.configuration?.showsActivityIndicator = false
+            self.mainView.walletCardView.setBalance(wallet.balance ?? 0.0)
+            
+            NotificationCenter.default.post(name: .walletAddressDidChanged, object: nil)
+        }
+        
+        setupDataSource()
+        mainView.tableView.reloadData()
+        mainView.walletCardView.addressLabel.text = try? address.contract.address().toString()
+        
+        controller.dismiss(animated: true)
+    }
+}

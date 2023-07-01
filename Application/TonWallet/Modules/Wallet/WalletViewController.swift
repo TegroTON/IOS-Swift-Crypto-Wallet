@@ -20,6 +20,8 @@ class WalletViewController: UIViewController {
         adapter.dataSource = self
         
         mainView.headerView.scanButton.addTarget(self, action: #selector(scanButtonTapped), for: .touchUpInside)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(walletAddressDidChanged), name: .walletAddressDidChanged, object: nil)
     }
     
     // MARK: - Private actions
@@ -30,6 +32,10 @@ class WalletViewController: UIViewController {
         vc.delegate = self
         
         present(vc, animated: true)
+    }
+    
+    @objc private func walletAddressDidChanged() {
+        adapter.reloadData()
     }
 
 }

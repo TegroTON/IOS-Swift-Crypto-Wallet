@@ -41,7 +41,7 @@ class WalletCardsSection: ListSectionController {
         
         cell.cardView.nameLabel.text = wallet.name
         cell.cardView.addressLabel.text = try? wallet.activeContract?.contract.address().toFriendly().toString()
-        cell.cardView.balanceLabel.text = String(format: "%.1g", wallet.balance ?? 0.0) + " TON"
+        cell.cardView.setBalance(wallet.balance ?? 0.0)
         
         cell.cardView.sendButton.tag = index
         cell.cardView.receiveButton.tag = index

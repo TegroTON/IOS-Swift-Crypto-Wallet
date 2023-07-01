@@ -27,34 +27,59 @@ class WalletManager {
                 
                 self.wallets.append(wallet)
                 self.currentWallet = wallet
-                self.loadAccounts()
+                self.loadBalances()
                 
-                completion(.success(result))
+                DispatchQueue.main.async {
+                    completion(.success(result))
+                }
             } catch {
                 print(error.localizedDescription)
-                completion(.failure(error))
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
             }
         }
     }
     
-    func loadAccounts() {
+    func loadBalances() {
         walletQueue.async {
             for wallet in self.wallets {
-                do {
-                    let address = try wallet.activeContract?.contract.address().toRaw() ?? ""
-                    
-                    self.provider.loadAccount(address: address) { result in
-                        switch result {
-                        case .success(let account):
-                            wallet.nanoBalance = Double(account.balance)
-                            print("💙 account: \(account)")
-                            
-                        case .failure(let error):
-                            print("❤️ error load account: \(error.localizedDescription)")
-                        }
+                self.updateBalance(for: wallet)
+            }
+        }
+    }
+    
+    func updateBalance(for wallet: Wallet, completion: (() -> (Void))? = nil) {
+        walletQueue.async {
+            do {
+                let address = try wallet.activeContract?.contract.address().toRaw() ?? ""
+                
+                self.provider.loadAccount(address: address) { result in
+                    switch result {
+                    case .success(let account):
+                        wallet.nanoBalance = Double(account.balance)
+                        print("💙 account: \(account)")
+                        completion?()
+                        
+                    case .failure(let error):
+                        print("❤️ error load account: \(error.localizedDescription)")
+                        completion?()
                     }
-                } catch {
-                    print("❤️ error get address: \(error.localizedDescription)")
+                }
+            } catch {
+                print("❤️ error get address: \(error.localizedDescription)")
+                completion?()
+            }
+        }
+    }
+    
+    func select(active contract: ContractVersion, for wallet: Wallet) {
+        if let index = wallets.firstIndex(of: wallet) {
+            wallets[index].activeContract = contract
+            
+            walletQueue.async {
+                if let index = self.userSettings.wallets.firstIndex(where: { $0.id == wallet.id }) {
+                    self.userSettings.wallets[index].versionName = contract.versionName
                 }
             }
         }
@@ -82,11 +107,15 @@ class WalletManager {
                 let wallet = try? createWallet(id: savedWallet.id, name: savedWallet.name, mnemonics: mnemonics)
             else { continue }
             
+            if let contract = wallet.contractVersions.first(where: { $0.versionName == savedWallet.versionName }) {
+                wallet.activeContract = contract
+            }
+            
             wallets.append(wallet)
         }
         
         currentWallet = wallets.first
-        loadAccounts()
+        loadBalances()
     }
     
     private func createWallet(id: String, name: String, mnemonics: [String]) throws -> Wallet {
@@ -95,7 +124,7 @@ class WalletManager {
         let contracts: [ContractVersion] = [
             .v4r2(WalletV4R2(publicKey: keyPair.publicKey)),
             .v3r2(try WalletV3(workchain: 0, publicKey: keyPair.publicKey, revision: .r2)),
-            .v3r2(try WalletV3(workchain: 0, publicKey: keyPair.publicKey, revision: .r1))
+            .v3r1(try WalletV3(workchain: 0, publicKey: keyPair.publicKey, revision: .r1))
         ]
         
         let wallet = Wallet(id: id, name: name, contractVersions: contracts)

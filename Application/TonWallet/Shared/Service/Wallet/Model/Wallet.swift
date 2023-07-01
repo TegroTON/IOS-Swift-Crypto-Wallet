@@ -3,13 +3,14 @@ import Foundation
 struct SavedWallet: Codable {
     let id: String
     let name: String
+    var versionName: String
 }
 
 class Wallet: Equatable {
     let id: String
     var name: String
     var nanoBalance: Double?
-    var activeContract: ContractVersion?
+    var activeContract: ContractVersion!
     var contractVersions: [ContractVersion] = []
     
     var balance: Double? {

@@ -40,7 +40,7 @@ class WalletSettingsView: RootView {
     
     func setupWalletInfo(with wallet: Wallet) {
         walletCardView.nameLabel.text = wallet.name
-        walletCardView.balanceLabel.text = String(format: "%.1g", wallet.balance ?? 0.0) + " TON"
+        walletCardView.setBalance(wallet.balance ?? 0.0)
         walletCardView.addressLabel.text = (try? wallet.activeContract?.contract.address().toString()) ?? ""
         
         walletNameView.textField.text = wallet.name

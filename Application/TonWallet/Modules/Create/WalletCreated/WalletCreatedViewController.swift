@@ -57,7 +57,9 @@ class WalletCreatedViewController: UIViewController {
                 
                 let id = self.createdWallet.wallet.id
                 let name = self.createdWallet.wallet.name
-                let savedWallet = SavedWallet(id: id, name: name)
+                let versionName = self.createdWallet.wallet.activeContract.versionName
+                let savedWallet = SavedWallet(id: id, name: name, versionName: versionName)
+                
                 UserSettings.shared.wallets.append(savedWallet)
             }
             

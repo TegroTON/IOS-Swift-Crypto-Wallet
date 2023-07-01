@@ -125,3 +125,4 @@ wallet-settings-wallet-name = "Wallet name";
 wallet-settings-active-address = "Active address";
 wallet-settings-recovery = "Show recovery phrase";
 wallet-settings-delete = "Delete account";
+wallet-settings-addresses-title = "Active address";

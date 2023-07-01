@@ -110,9 +110,16 @@ class CheckSeedViewController: UIViewController {
         resignAllFirstResponder()
         let words = Array(0...23).compactMap { userSeedPhrase[$0] }
         
-        if words.count == 24 {
-            // TODO: check valid mnemonics
-            
+        if words.count == 24 && Mnemonic.mnemonicValidate(mnemonicArray: words) {
+            WalletManager.shared.createNewWallet(mnemonics: words) { result in
+                switch result {
+                case .success(let wallet):
+                    self.delegate?.checkSeed(self, approved: wallet)
+                    
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
         } else {
             // TODO: scroll to and show wrong phrase
         }
