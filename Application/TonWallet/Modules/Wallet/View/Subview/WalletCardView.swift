@@ -134,6 +134,8 @@ class WalletCardView: UIView {
         self.type = type
         super.init(frame: .zero)
         
+        sendButton.isHidden = true
+        
         addSubview(shadowView)
         addSubview(containerView)
         
@@ -228,21 +230,23 @@ class WalletCardView: UIView {
             addressLabel.snp.makeConstraints { make in
                 make.top.equalTo(balanceButton.snp.bottom).offset(20.0)
                 make.left.equalToSuperview().offset(14.0)
-                make.right.equalTo(sendButton.snp.left)
+                make.width.equalTo(168.0)
+//                make.right.equalTo(sendButton.snp.left)
             }
 
-            sendButton.snp.makeConstraints { make in
-                make.right.equalToSuperview().offset(-8.0)
-                make.width.equalToSuperview().multipliedBy(0.4385964912)
-                make.height.equalTo(45.0)
-                make.bottom.equalToSuperview().offset(-8.0)
-            }
+//            sendButton.snp.makeConstraints { make in
+//                make.right.equalToSuperview().offset(-8.0)
+//                make.width.equalToSuperview().multipliedBy(0.4385964912)
+//                make.height.equalTo(45.0)
+//                make.bottom.equalToSuperview().offset(-8.0)
+//            }
 
             receiveButton.snp.makeConstraints { make in
                 make.left.equalToSuperview().offset(8.0)
                 make.bottom.equalToSuperview().offset(-8.0)
                 make.height.equalTo(45.0)
-                make.width.equalToSuperview().multipliedBy(0.4385964912)
+//                make.width.equalToSuperview().multipliedBy(0.4385964912)
+                make.right.equalToSuperview().offset(-8.0)
             }
             
         case .settings:
