@@ -85,6 +85,18 @@ class WalletManager {
         }
     }
     
+    func change(name: String, for wallet: Wallet) {
+        if let index = wallets.firstIndex(of: wallet) {
+            wallets[index].name = name
+            
+            walletQueue.async {
+                if let index = self.userSettings.wallets.firstIndex(where: { $0.id == wallet.id }) {
+                    self.userSettings.wallets[index].name = name
+                }
+            }
+        }
+    }
+    
     // MARK: - Private methods
     
     /// generating unique id for wallet

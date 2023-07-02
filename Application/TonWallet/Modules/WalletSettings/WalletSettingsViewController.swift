@@ -27,7 +27,8 @@ class WalletSettingsViewController: UIViewController {
         
 //        mainView.addTapGesture(target: self, action: #selector(viewTapped))
         mainView.headerView.closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
-
+        mainView.walletNameView.textField.addTarget(self, action: #selector(nameFieldChanged), for: .editingChanged)
+        
         mainView.tableView.dataSource = self
         mainView.tableView.delegate = self
         
@@ -44,6 +45,14 @@ class WalletSettingsViewController: UIViewController {
     
     @objc private func viewTapped() {
         mainView.walletNameView.textField.resignFirstResponder()
+    }
+    
+    @objc private func nameFieldChanged(_ sender: TextField) {
+        let name = sender.text ?? ""
+        WalletManager.shared.change(name: name, for: wallet)
+        mainView.walletCardView.nameLabel.text = name
+        
+        NotificationCenter.default.post(name: .walletInfoDidChanged, object: nil)
     }
     
     // MARK: - Private methods
@@ -105,7 +114,7 @@ extension WalletSettingsViewController: WalletAddressesDelegate {
             self.mainView.walletCardView.balanceButton.configuration?.showsActivityIndicator = false
             self.mainView.walletCardView.setBalance(wallet.balance ?? 0.0)
             
-            NotificationCenter.default.post(name: .walletAddressDidChanged, object: nil)
+            NotificationCenter.default.post(name: .walletInfoDidChanged, object: nil)
         }
         
         setupDataSource()

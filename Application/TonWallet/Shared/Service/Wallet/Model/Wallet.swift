@@ -2,7 +2,7 @@ import Foundation
 
 struct SavedWallet: Codable {
     let id: String
-    let name: String
+    var name: String
     var versionName: String
 }
 
