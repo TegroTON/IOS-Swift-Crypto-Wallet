@@ -40,7 +40,8 @@ class SeedPhraseViewController: UIViewController {
     @objc private func copyButtonTapped() {
         UIPasteboard.general.strings = mnemonics
         UINotificationFeedbackGenerator().notificationOccurred(.success)
-        //TODO: SHOW TOAST
+        
+        ToastController.showNotification(title: localizable.toastMnemonics())
     }
         
     private func configureSeedStack() {

@@ -139,6 +139,8 @@ class WalletCardView: UIView {
         addSubview(shadowView)
         addSubview(containerView)
         
+        containerView.addTapGesture(target: self, action: #selector(viewTapped))
+        
         containerView.addSubview(wavesImageView)
         containerView.addSubview(dimondImageView)
         containerView.addSubview(nameLabel)
@@ -177,6 +179,13 @@ class WalletCardView: UIView {
         attributedString.mergeAttributes(container, mergePolicy: .keepNew)
         
         balanceButton.configuration?.attributedTitle = attributedString
+    }
+    
+    @objc private func viewTapped() {
+        UIPasteboard.general.string = addressLabel.text
+        UINotificationFeedbackGenerator().notificationOccurred(.success)
+        
+        ToastController.showNotification(title: localizable.toastAddress())
     }
     
     private func setupConstraints() {

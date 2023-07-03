@@ -126,3 +126,7 @@ wallet-settings-active-address = "Active address";
 wallet-settings-recovery = "Show recovery phrase";
 wallet-settings-delete = "Delete account";
 wallet-settings-addresses-title = "Active address";
+
+// Toast
+toast-address = "Address has been copied";
+toast-mnemonics = "Your recovery phrase copied";

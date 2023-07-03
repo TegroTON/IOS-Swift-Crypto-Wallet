@@ -59,11 +59,21 @@ class ReceiveViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    
+    func generateRandomColor() -> UIColor {
+        let red = CGFloat.random(in: 0...1)
+        let green = CGFloat.random(in: 0...1)
+        let blue = CGFloat.random(in: 0...1)
+        
+        return UIColor(red: red, green: green, blue: blue, alpha: 1)
+    }
+    
     @objc private func copyAddress() {
         let address = try? wallet.activeContract?.contract.address().toString()
         UIPasteboard.general.string = address
         UINotificationFeedbackGenerator().notificationOccurred(.success)
-        //TODO: SHOW TOAST
+        
+        ToastController.showNotification(title: localizable.toastAddress())
     }
     
     @objc private func shareButtonTapped() {

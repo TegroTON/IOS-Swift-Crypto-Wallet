@@ -112,6 +112,7 @@
 		2C5CBB122A37992B004AA8B3 /* AccountAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBB0A2A37992B004AA8B3 /* AccountAPI.swift */; };
 		2C5CBB152A379D1F004AA8B3 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBB142A379D1F004AA8B3 /* Account.swift */; };
 		2C5CBB172A379D3F004AA8B3 /* WalletManagerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5CBB162A379D3F004AA8B3 /* WalletManagerProvider.swift */; };
+		2C6513FF2A52C8E9006CCD96 /* ToastController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6513FE2A52C8E9006CCD96 /* ToastController.swift */; };
 		2CA937CF2A3DE6980052E6C1 /* WalletAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA937CE2A3DE6980052E6C1 /* WalletAPI.swift */; };
 		2CB52F3529DDEBC500224071 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3429DDEBC500224071 /* SettingsHeaderView.swift */; };
 		2CB52F3829DF480300224071 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB52F3729DF480300224071 /* SettingsCell.swift */; };
@@ -308,6 +309,7 @@
 		2C5CBB0A2A37992B004AA8B3 /* AccountAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountAPI.swift; sourceTree = "<group>"; };
 		2C5CBB142A379D1F004AA8B3 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		2C5CBB162A379D3F004AA8B3 /* WalletManagerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletManagerProvider.swift; sourceTree = "<group>"; };
+		2C6513FE2A52C8E9006CCD96 /* ToastController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastController.swift; sourceTree = "<group>"; };
 		2CA937CE2A3DE6980052E6C1 /* WalletAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAPI.swift; sourceTree = "<group>"; };
 		2CB52F3429DDEBC500224071 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		2CB52F3729DF480300224071 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
@@ -680,6 +682,7 @@
 				2C3557852A5069F3003EB9FF /* WalletAdresses */,
 				2C35C6A929A7257A00A0F181 /* Settings */,
 				2C1BD1862982BA62001284C0 /* Password */,
+				2C1BD16F29818307001284C0 /* SeedPhrase */,
 				2CE8F112295C285E00258A98 /* Create */,
 			);
 			path = Modules;
@@ -1228,6 +1231,14 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		2C6513FB2A52C8AD006CCD96 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				2C6513FE2A52C8E9006CCD96 /* ToastController.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		2CB52F3329DDEBB300224071 /* Subview */ = {
 			isa = PBXGroup;
 			children = (
@@ -1484,7 +1495,6 @@
 				2C4DE29A29A3B43100BD1F05 /* Start */,
 				2C4DE29B29A3B45600BD1F05 /* Load */,
 				2C1BD17029818319001284C0 /* WalletCreated */,
-				2C1BD16F29818307001284C0 /* SeedPhrase */,
 				2C1BD18F2983F42D001284C0 /* Success */,
 			);
 			path = Create;
@@ -1539,6 +1549,7 @@
 		6C8BA8D891584884DEB3A3E4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				2C6513FB2A52C8AD006CCD96 /* Notification */,
 				2C5CBB002A37992B004AA8B3 /* Network */,
 				2CEF2A502A2BA8CF001F94B9 /* UserDefaults */,
 				2CC709EC2A284498005B0651 /* SSE */,
@@ -1739,6 +1750,7 @@
 				2C1BD17529818357001284C0 /* SeedPhraseAlertView.swift in Sources */,
 				2CDB30A32A255ED50020EB3B /* Data+FromHex.swift in Sources */,
 				2CDB30AF2A255ED50020EB3B /* English.swift in Sources */,
+				2C6513FF2A52C8E9006CCD96 /* ToastController.swift in Sources */,
 				2CDB309F2A255ED50020EB3B /* Data+Bytes.swift in Sources */,
 				2C5CBB122A37992B004AA8B3 /* AccountAPI.swift in Sources */,
 				2CDB30BB2A255ED50020EB3B /* WalletV4.swift in Sources */,
