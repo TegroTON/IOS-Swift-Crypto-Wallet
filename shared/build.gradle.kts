@@ -22,7 +22,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api("org.ton:ton-kotlin:0.2.14")
+                api("org.ton:ton-kotlin:0.2.16")
             }
         }
         val commonTest by getting {
