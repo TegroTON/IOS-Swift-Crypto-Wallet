@@ -21,7 +21,7 @@ The development of Tegro Wallet aims to create a convenient, secure, and reliabl
 
 - **GitHub Repository:** [Tegro Wallet GitHub](https://github.com/TegroTON/IOS-Swift-Crypto-Wallet)
 - **Figma Design:** [Tegro Wallet Figma Design](https://www.figma.com/@toncoin)
-- **Demonstration Version:** [English](https://tgrtoken.com/wallet/) | [Русский](https://tegro.ru/wallet/)
+- **Demonstration Version:** [English](https://tegro.finance/wallet/) | [Русский](https://tegro.finance/wallet/)
 
 ## Getting Started
 
@@ -61,6 +61,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Tegro Team @TegroTON - support@tegro.ru & support@tegro.money
+Tegro Team @TegroTON - support@tegro.money
 
 Project Link: [https://github.com/TegroTON/IOS-Swift-Crypto-Wallet](https://github.com/TegroTON/IOS-Swift-Crypto-Wallet)
