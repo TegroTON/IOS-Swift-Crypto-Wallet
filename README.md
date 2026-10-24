@@ -61,6 +61,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Tegro Team @TegroTON - support@tegro.money
-
 Project Link: [https://github.com/TegroTON/IOS-Swift-Crypto-Wallet](https://github.com/TegroTON/IOS-Swift-Crypto-Wallet)
